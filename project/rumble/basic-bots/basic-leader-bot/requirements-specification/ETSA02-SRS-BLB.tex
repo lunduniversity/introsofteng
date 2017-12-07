@@ -1,0 +1,458 @@
+%
+% Copyright 2017 Markus Borg, Lund University
+%
+% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+% See http://creativecommons.org/licenses/by-sa/4.0/
+%
+% The dodument is based on a LaTeX template that respects IEEE Standards developed by Jean-Philippe Eisenbarth
+% https://github.com/jpeisenbarth/SRS-Tex
+%
+% Originally based on:
+% 1) Code by Yiannis Lazarides
+% http://tex.stackexchange.com/questions/42602/software-requirements-specification-with-latex
+% http://tex.stackexchange.com/users/963/yiannis-lazarides
+% 2) A template by Karl E. Wiegers
+% http://www.se.rit.edu/~emad/teaching/slides/srs_template_sep14.pdf
+% http://karlwiegers.com
+%
+\documentclass{scrreprt}
+\usepackage{listings}
+\usepackage{underscore}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\hypersetup{
+    bookmarks=false,    % show bookmarks bar?
+    pdftitle={Software Requirement Specification},    % title
+    pdfauthor={Markus Borg},                     % author
+    pdfsubject={TeX and LaTeX},                        % subject of the document
+    pdfkeywords={TeX, LaTeX, graphics, images}, % list of keywords
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,       % color of internal links
+    citecolor=black,       % color of links to bibliography
+    filecolor=black,        % color of file links
+    urlcolor=purple,        % color of external links
+    linktoc=page            % only page is linked
+}%
+\def\myversion{0.1 }
+\date{}
+%\title{%
+
+%}
+\usepackage{hyperref}
+\begin{document}
+
+\begin{flushright}
+    \rule{16cm}{5pt}\vskip1cm
+    \begin{bfseries}
+    	\LARGE{ETSA02-SRS-BLB}\\
+    	\vspace{1.5cm}
+        \Huge{SOFTWARE REQUIREMENTS\\ SPECIFICATION}\\
+        \vspace{0.5cm}
+        for\\
+        \vspace{0.5cm}
+        Basic Leader Bot\\
+        \vspace{1.5cm}
+        \LARGE{Version \myversion approved}\\
+        \vspace{1.5cm}
+        Prepared by Markus Borg\\
+        %\vspace{1.5cm}
+        Dept. of Computer Science, Lund University\\
+        \vspace{1.5cm}
+        \today\\
+    \end{bfseries}
+\end{flushright}
+
+\tableofcontents
+
+
+\chapter*{Revision History}
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+	    Name & Date & Reason For Changes & Version\\
+        \hline
+	    Markus Borg & 2017-12-07 & Initial draft. & 0.1\\
+        \hline
+    \end{tabular}
+\end{center}
+
+\chapter{Introduction}
+
+\section{Purpose}
+Basic Leader Bot describes a robot that can be a part of team matches in RoboCode.\\\\
+
+$<$Identify the product whose software requirements are specified in this 
+document, including the revision or release number. Describe the scope of the 
+product that is covered by this SRS, particularly if this SRS describes only 
+part of the system or a single subsystem.$>$
+
+\section{Document Conventions}
+In the remainder of this document, we refer to Basic Leader Bot as ``the robot''.
+
+This document is organized according to the ISO/IEC/IEEE template X...
+
+This document uses the term ``quality requirements'' to specify operational requirements on system behavior. Other synonymous terms include ``non-functional requirements'' and ``extra-functional requirements''.
+
+Section 4, System Features, constitutes the backbone of this document. The section is organized around high-level features that are briefly described and complemented with their respective stimuli, i.e., the event that trigges the execution of the feature. Each feature is further refined into detailed requirements of one or more of the following types: 1) use cases, 2) functional requirements or 3) quality requirements. 
+
+Use cases are used when the robot shall conduct a sequence of steps, and there are explicit exception cases that needs to be specified.
+
+All quality requirements are explicitly categorized according to ISO/IEC 25010, specified with capital letters in brackets. Moreover, each detailed requirement has a unique identifier according to the below formats: 
+
+\begin{itemize}
+\item UC-$<$Feature Number$>$-$<$Running number$>$ for use cases
+\item FREQ-$<$Feature Number$>$-$<$Running Number$>$ for functional requirements
+\item QREQ-$<$Feature Number$>$-$<$Running Number$>$ for quality requirements
+\end{itemize}
+
+
+Using the identifiers, each detailed requirement can be traced both to the implementation in Java source code and the test specification
+
+In the document, text in bold font is used to indicate the priority of a feature. Unless otherwise stated, the priority of a feature is inherited by the detailed requirements. 
+
+Terms expressed in italic font carry a particular meaning. All terms in italic font are defined in the Glossary in Appendix A. 
+
+$<$Describe any standards or typographical conventions that were followed when 
+writing this SRS, such as fonts or highlighting that have special significance.  
+For example, state whether priorities  for higher-level requirements are assumed 
+to be inherited by detailed requirements, or whether every requirement statement 
+is to have its own priority.$>$
+
+\section{Intended Audience and Reading Suggestions}
+The document constitutes an example of a software requirements specification for RoboCode robots. The primary readership is ETSA02 teams from two perspectives: 1) developing their own robots to offer on the RobotMarket, and 2) designing a robot team for the ETSA02 RoboRumble. In particular:
+
+\begin{itemize}
+\item ETSA02 Requirements engineers (learn what a SRS could look like)
+\item ETSA02 Domain experts ()
+\end{itemize}
+
+Secondary stakeholders include:
+\begin{itemize}
+\item ETSA02 Test managers (studying what testable requirements can look like)
+\item ETSA02 Project Supervisors
+\end{itemize}
+
+Tertiary stakeholders include:
+\begin{itemize}
+\item ETSA02 Sales engineers
+\item ETSA02 Project managers
+\item ETSA02 Development leads
+\item The general population of RoboCode users
+\item University teachers (to find inspiration for software engineering teaching)
+\end{itemize}
+
+\begin{table}[]
+\centering
+\caption{Intended readers of ETSA02-SRS-BLB.}
+\label{tab:readers}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Stakeholder type}     & \textbf{Goal when reading document}                                                                               & \textbf{\begin{tabular}[c]{@{}l@{}}Recommended\\ sections\end{tabular}} \\ \hline
+ETSA02 Requirements engineers & Learn from an archetypical Robot SRS                                                                              & All document                                                            \\ \hline
+ETSA02 Domain experts         & Considering robot purchase for own team                                                                           &                                                                         \\ \hline
+ETSA02 Test managers          & \begin{tabular}[c]{@{}l@{}}Learn from examples what testable\\ requirements could look like\end{tabular}          & Section 4                                                               \\ \hline
+ETSA02 Project supervisors    & \begin{tabular}[c]{@{}l@{}}Support project grading by studying \\ an archetypical Robot SRS\end{tabular}          & All document                                                            \\ \hline
+ETSA02 Sales engineers        & \begin{tabular}[c]{@{}l@{}}Adapt marketing strategy based \\ on basic robots available on the market\end{tabular} &                                                                         \\ \hline
+ETSA02 Project managers       & \begin{tabular}[c]{@{}l@{}}Obtaining a general understanding \\ of an available basicrobot\end{tabular}           &                                                                         \\ \hline
+ETSA02 Development leads      & \begin{tabular}[c]{@{}l@{}}Preparing development activities \\ based on an archetypical robot SRS\end{tabular}    &                                                                         \\ \hline
+Robocode users                &                                                                                                                   &                                                                         \\ \hline
+University teachers           &                                                                                                                   &                                                                         \\ \hline
+\end{tabular}
+\end{table}
+
+$<$Describe the different types of reader that the document is intended for, 
+such as developers, project managers, marketing staff, users, testers, and 
+documentation writers. Describe what the rest of this SRS contains and how it is 
+organized. Suggest a sequence for reading the document, beginning with the 
+overview sections and proceeding through the sections that are most pertinent to 
+each reader type.$>$
+
+\section{Project Scope}
+$<$Provide a short description of the software being specified and its purpose, 
+including relevant benefits, objectives, and goals. Relate the software to 
+corporate goals or business strategies. If a separate vision and scope document 
+is available, refer to it rather than duplicating its contents here.$>$
+
+\section{References}
+ISO/IEC/IEEE Template\\
+ISO/IEC 25010\\
+ETSA02 RoboTalk Protocol\\\\
+$<$List any other documents or Web addresses to which this SRS refers. These may 
+include user interface style guides, contracts, standards, system requirements 
+specifications, use case documents, or a vision and scope document. Provide 
+enough information so that the reader could access a copy of each reference, 
+including title, author, version number, date, and source or location.$>$
+
+
+\chapter{Overall Description}
+
+\section{Product Perspective}
+Basic Leader Bot constitutes a leader robot that can be used in robot teams in the ETSA02 RoboRumble. The robot lacks any offensive capabilities, instead it is entirely designed to broadcast information about enemy targets using radar actions. The robot is not completely stationary, however, as it moves a short distance forward and returns after completing its radar action.\\
+
+The robot is available as open source as ``MyFirstLeader'' in the RoboCode sampleteam folder, from which this Software Requirements Specification has been reverse engineered. As all RoboCode robots, the Basic Leader Bot consists of a body, larvfötter, a turret, and a radar dish (see Figure X). Furthermore, as all RoboCode Leader robots, the Basic Leader Bot has 20\% more energy than standard robots.\\\\
+
+Figure X: The Basic Leader Bot, with team mates, and its main radar action.\\
+
+The Basic Leader Bot is in no way a spectacular robot, but its low price and simplicity can make it a useful member of robot teams. The robot broadcasts the positions of enemy targets almost continuously, thus it can be successfully combined with effectively uses such information.\\\\
+$<$Describe the context and origin of the product being specified in this SRS.  
+For example, state whether this product is a follow-on member of a product 
+family, a replacement for certain existing systems, or a new, self-contained 
+product. If the SRS defines a component of a larger system, relate the 
+requirements of the larger system to the functionality of this software and 
+identify interfaces between the two. A simple diagram that shows the major 
+components of the overall system, subsystem interconnections, and external 
+interfaces can be helpful.$>$
+
+\section{Product Functions}
+$<$Summarize the major functions the product must perform or must let the user 
+perform. Details will be provided in Section 3, so only a high level summary 
+(such as a bullet list) is needed here. Organize the functions to make them 
+understandable to any reader of the SRS. A picture of the major groups of 
+related requirements and how they relate, such as a top level data flow diagram 
+or object class diagram, is often effective.$>$
+
+\section{User Classes and Characteristics}
+$<$Identify the various user classes that you anticipate will use this product.  
+User classes may be differentiated based on frequency of use, subset of product 
+functions used, technical expertise, security or privilege levels, educational 
+level, or experience. Describe the pertinent characteristics of each user class.  
+Certain requirements may pertain only to certain user classes. Distinguish the 
+most important user classes for this product from those who are less important 
+to satisfy.$>$
+
+\section{Operating Environment}
+$<$Describe the environment in which the software will operate, including the 
+hardware platform, operating system and versions, and any other software 
+components or applications with which it must peacefully coexist.$>$
+
+\section{Design and Implementation Constraints}
+$<$Describe any items or issues that will limit the options available to the 
+developers. These might include: corporate or regulatory policies; hardware 
+limitations (timing requirements, memory requirements); interfaces to other 
+applications; specific technologies, tools, and databases to be used; parallel 
+operations; language requirements; communications protocols; security 
+considerations; design conventions or programming standards (for example, if the 
+customer’s organization will be responsible for maintaining the delivered 
+software).$>$
+
+\section{User Documentation}
+$<$List the user documentation components (such as user manuals, on-line help, 
+and tutorials) that will be delivered along with the software. Identify any 
+known user documentation delivery formats or standards.$>$
+\section{Assumptions and Dependencies}
+
+$<$List any assumed factors (as opposed to known facts) that could affect the 
+requirements stated in the SRS. These could include third-party or commercial 
+components that you plan to use, issues around the development or operating 
+environment, or constraints. The project could be affected if these assumptions 
+are incorrect, are not shared, or change. Also identify any dependencies the 
+project has on external factors, such as software components that you intend to 
+reuse from another project, unless they are already documented elsewhere (for 
+example, in the vision and scope document or the project plan).$>$
+
+
+\chapter{External Interface Requirements}
+
+\section{User Interfaces}
+$<$Describe the logical characteristics of each interface between the software 
+product and the users. This may include sample screen images, any GUI standards 
+or product family style guides that are to be followed, screen layout 
+constraints, standard buttons and functions (e.g., help) that will appear on 
+every screen, keyboard shortcuts, error message display standards, and so on.  
+Define the software components for which a user interface is needed. Details of 
+the user interface design should be documented in a separate user interface 
+specification.$>$
+
+\section{Hardware Interfaces}
+N/A -- The Basic Leader Bot is a pure software system entirely restricted to RoboRumble simulators.
+
+\section{Software Interfaces}
+$<$Describe the connections between this product and other specific software 
+components (name and version), including databases, operating systems, tools, 
+libraries, and integrated commercial components. Identify the data items or 
+messages coming into the system and going out and describe the purpose of each.  
+Describe the services needed and the nature of communications. Refer to 
+documents that describe detailed application programming interface protocols.  
+Identify data that will be shared across software components. If the data 
+sharing mechanism must be implemented in a specific way (for example, use of a 
+global data area in a multitasking operating system), specify this as an 
+implementation constraint.$>$
+
+\section{Communications Interfaces}
+Basic Leader Bot adheres to the ETSA02 RoboTalk protocol [REF] for message broadcasting. The communication is restricted to providing locations of enemy targets according to the following format:\\
+
+PRESENT THE MESSAGE.
+
+$<$Describe the requirements associated with any communications functions 
+required by this product, including e-mail, web browser, network server 
+communications protocols, electronic forms, and so on. Define any pertinent 
+message formatting. Identify any communication standards that will be used, such 
+as FTP or HTTP. Specify any communication security or encryption issues, data 
+transfer rates, and synchronization mechanisms.$>$
+
+
+\chapter{System Features}
+The Basic Leader Bot has four primary features: 1) Target Identification, 2) Broadcasting Information, 3) Standard Movement, and 4) Evasive Movement.\\\\
+$<$This template illustrates organizing the functional requirements for the 
+product by system features, the major services provided by the product. You may 
+prefer to organize this section by use case, mode of operation, user class, 
+object class, functional hierarchy, or combinations of these, whatever makes the 
+most logical sense for your product.$>$
+
+\section{Feature 1 -- Target identification}
+
+\subsection{Description and Priority}
+The robot is exclusively designed to be a surveillance robot, thus target identification is a high priority feature. The target identification consists of a single extensive radar action.
+
+\subsection{Stimulus/Response Sequences}
+N/A -- the robot executes target identification as part of its standard sequence.
+
+\subsection{Functional Requirements}
+\begin{itemize}
+\item[FREQ-1-1] A radar action shall constitute a 10,000 degrees clockwise radar movement. 
+\item[FREQ-1-2] The radar action shall distinguish between friendly targets and enemy targets.
+\item[FREQ-1-3] If an enemy target is located, the robot shall calculate the position of the enemy based on the robot's own bearing and the distance to the enemy target. 
+\item[FREQ-1-4] When the position of the enemy target has been calculated, the position should be broadcast to all robot teammates as specified by Feature 2 – ``Broadcasting Information''.
+\end{itemize}
+
+\subsection{Quality Requirements}
+\begin{itemize}
+\item[QREQ-1-1] The robot shall detect enemy targets with an accuracy of TBD. 
+\item[QREQ-1-2] Round-of errors...
+\end{itemize}
+
+\section{Feature 2 -- Broadcasting information }
+Whenever Feature 1 -- Target identification locates an enemy target and calculates its position, the robot then provides the corresponding information to its teammates. As Basic Leader Bot is a surveillance robot, consequently Broadcasting information is a high priority feature.
+
+\subsection{Stimulus/Response Sequences}
+The robot performs this feature when the position of an enemy target has been calculated in Feature 1 -- Target identification.
+
+\subsection{Functional Requirements}
+\begin{itemize}
+\item[FREQ-2-1] All teammates shall receive the position of the enemy target. 
+\item[FREQ-2-2] If broadcasting of a message fails, an error message shall be printed to standard output.
+\end{itemize}
+
+\subsection{Quality Requirements}
+\begin{itemize}
+\item[QREQ-2-1] The broadcast message shall adhere to the ETSA02 RoboTalk protocol. [ADHERENCE]
+\item[QREQ-2-2] The error message shall contain a stack trace. [MAINTAINABILITY]
+\end{itemize}
+
+\section{Feature 3 -- Standard movement }
+Standard movement is the default movement pattern the robot executes. It is a low priority feature, as it is independent of the high priority robot features and represents a very rudimentary behavior.\\\\
+	
+Figure X: Standard flow. Exception flow when collision moving forward/backwards.
+	
+\subsection{Stimulus/Response Sequences}
+The robot conducts standard movement when one complete radar action has completed.
+	
+\subsection{UC-3-1 -- Restricted Line Movement}	
+\begin{itemize}
+\item[Step 1] The robot moves 100 units forwards.
+\item[Step 2] The robot moves 100 units backwards.
+\end{itemize}
+
+Exception cases that take precedence at any time:
+\begin{itemize}
+\item[Case A] If the robot is hit by a bullet while executing restricted line movement, the robot initiates Feature 4 – Evasive movement.
+\item[Case B] If the robot collides with another object (robot or wall) while moving forwards or backwards, the movement in that direction stops, see Figure X.
+\end{itemize}
+
+\subsection{Functional Requirements}
+\begin{itemize}
+\item[FREQ-3-1] The robot shall not be stationary on the battleground between radar actions. 
+\item[FREQ-3-2] Unless the robot collides with another object, it shall return to its original position after completing a sequence of restricted line movement as specified in UC-3-1.
+\end{itemize}
+
+\subsection{Quality Requirements}
+TBD
+
+\section{Feature 4 -- Evasive Action }
+When the Basic Leader Bot is hit, more hits are likely to follow. The evasive action turns the tracks of the robot perpendicular to the bullet path, see Figure X. During the next standard movement, the robot will move along a new line. Evasive action is a medium priority feature.
+
+\subsection{Stimulus/Response Sequences}
+The robot undertakes evasive action when it has been hit by a bullet, no matter whether the incoming fire is from an enemy or a teammate.
+	
+\subsection{Functional Requirements}
+\begin{itemize}
+\item[FREQ-4-1] When hit by a bullet, the robot shall turn its tracks counter-clockwise perpendicular to the path of the incoming bullet.
+\end{itemize}
+
+\subsection{Quality Requirements}
+TBD
+
+\chapter{Other Nonfunctional Requirements}
+This section describes quality requirements that apply to the system level rather than on an individual feature level. 
+
+\section{Performance Requirements}
+The Basic Leader Bot must fulfil general performance requirements for RoboRumbles. This includes:\\\\
+
+$<$If there are performance requirements for the product under various 
+circumstances, state them here and explain their rationale, to help the 
+developers understand the intent and make suitable design choices. Specify the 
+timing relationships for real time systems. Make such requirements as specific 
+as possible. You may need to state performance requirements for individual 
+functional requirements or features.$>$
+
+\section{Security Requirements}
+RoboCode robots are executed in a tailored sandbox, and thus have very limited access to the underlying operating system and its file system.\\\\
+
+$<$Specify any requirements regarding security or privacy issues surrounding use 
+of the product or protection of the data used or created by the product. Define 
+any user identity authentication requirements. Refer to any external policies or 
+regulations containing security issues that affect the product. Define any 
+security or privacy certifications that must be satisfied.$>$
+
+\section{Memory Footprint}
+Basic Leader Bot is designed to be simple and affordable robot. The jar-file of the entire robot deliverable should not exceed 15 kB.\\\\
+
+$<$Specify any additional quality characteristics for the product that will be 
+important to either the customers or the developers. Some to consider are: 
+adaptability, availability, correctness, flexibility, interoperability, 
+maintainability, portability, reliability, reusability, robustness, testability, 
+and usability. Write these to be specific, quantitative, and verifiable when 
+possible. At the least, clarify the relative preferences for various attributes, 
+such as ease of use over ease of learning.$>$
+
+\section{Software Quality Attributes}
+$<$Specify any additional quality characteristics for the product that will be 
+important to either the customers or the developers. Some to consider are: 
+adaptability, availability, correctness, flexibility, interoperability, 
+maintainability, portability, reliability, reusability, robustness, testability, 
+and usability. Write these to be specific, quantitative, and verifiable when 
+possible. At the least, clarify the relative preferences for various attributes, 
+such as ease of use over ease of learning.$>$
+
+\chapter{Other Requirements}
+$<$Define any other requirements not covered elsewhere in the SRS. This might 
+include database requirements, internationalization requirements, legal 
+requirements, reuse objectives for the project, and so on. Add any new sections 
+that are pertinent to the project.$>$
+
+\section{Appendix A: Glossary}
+%see https://en.wikibooks.org/wiki/LaTeX/Glossary
+
+Radar action -- A robot action that explicitly scans the battleground for enemy targets.\\
+Standard sequence --
+Friendly target --
+Enemy target --
+RoboRumble --
+
+$<$Define all the terms necessary to properly interpret the SRS, including 
+acronyms and abbreviations. You may wish to build a separate glossary that spans 
+multiple projects or the entire organization, and just include terms specific to 
+a single project in each SRS.$>$
+
+\section{Appendix B: Analysis Models}
+$<$Optionally, include any pertinent analysis models, such as data flow 
+diagrams, class diagrams, state-transition diagrams, or entity-relationship 
+diagrams.$>$
+
+\section{Appendix C: To Be Determined List}
+$<$Collect a numbered list of the TBD (to be determined) references that remain 
+in the SRS so they can be tracked to closure.$>$
+
+\end{document}
