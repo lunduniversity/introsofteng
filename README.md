@@ -5,8 +5,6 @@ Teaching material for "Introduction to Software Engineering" at Lund University,
 
 Copyright © 2017. Dept. of Computer Science at Lund University, Lund, Sweden.
 
-Contributors: https://github.com/lunduniversity/introsofteng/blob/master/contributors.tex
-
 This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 
 You are free to:
