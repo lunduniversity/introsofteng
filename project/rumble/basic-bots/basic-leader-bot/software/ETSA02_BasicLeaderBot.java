@@ -30,8 +30,8 @@ import java.awt.*;
 import java.io.IOException;
 
 /**
- * ETSA02_BasicLeaderBot - a sample team robot for ETSA02.
- * <p/>
+ * ETSA02_BasicLeaderBot (BLB) - a sample team robot for ETSA02.
+ * 
  * Looks around for enemies, and orders teammates to fire.
  * If an enemy is close, it sometimes changes its position.
  *
@@ -39,22 +39,21 @@ import java.io.IOException;
  */
 public class ETSA02_BasicLeaderBot extends TeamRobot {
 	
-	private LinkedList<Point> enemyPositions;
+	private LinkedList<Point> enemyList;
 
 	/**
-	 * run:  Leader's default behavior
+	 * run:  BLB's default behavior
 	 */
 	public void run() {
-		// Prepare RobotColors object
+		// Prepare RobotColors object with LU colors
 		RobotColors c = new RobotColors();
+		c.bodyColor = Color.brown;
+		c.gunColor = Color.blue;
+		c.radarColor = Color.blue;
+		c.scanColor = Color.brown;
+		c.bulletColor = Color.brown;
 
-		c.bodyColor = Color.red;
-		c.gunColor = Color.red;
-		c.radarColor = Color.red;
-		c.scanColor = Color.yellow;
-		c.bulletColor = Color.yellow;
-
-		// Set the color of this robot containing the RobotColors
+		// Set the color of BLB
 		setBodyColor(c.bodyColor);
 		setGunColor(c.gunColor);
 		setRadarColor(c.radarColor);
@@ -68,7 +67,7 @@ public class ETSA02_BasicLeaderBot extends TeamRobot {
 		// Initiate attributes
 		enemyPositions = new LinkedList<Position>();
 		
-		// Normal behavior
+		// Default behavior - BLB's standard sequence
 		while (true) {
 			setTurnRadarRight(10000);
 			ahead(100);
@@ -77,24 +76,29 @@ public class ETSA02_BasicLeaderBot extends TeamRobot {
 	}
 
 	/**
-	 * onScannedRobot:  What to do when you see another robot
+	 * onScannedRobot:  BLB has detected another robot. If hostile, share position with the team.
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
-		// Don't fire on teammates
+		// No action if a teammate is detected 
 		if (isTeammate(e.getName())) {
 			return;
 		}
-		// Calculate enemy bearing
+		
+		// Calculate enemy's bearing and position
 		double enemyBearing = calculateEnemyBearing(e);
-		// Calculate enemy's position
-		double enemyX = getX() + e.getDistance() * Math.sin(Math.toRadians(enemyBearing));
-		double enemyY = getY() + e.getDistance() * Math.cos(Math.toRadians(enemyBearing));
-
-		// 
+		Point enemyPosition = calculateEnemyPosition(e, enemyBearing);
+		
+		// If enemy is known, update its position
+		if (enemyList.contains(e.getName())) {
+			// update position
+		} // otherwise, add new enemy to the list
+		else {
+			enemyList.add(new EnemyPosition(e.getName(), enemyPosition);
+		}
 		
 		try {
 			// Send enemy position to teammates
-			broadcastMessage(new Point(enemyX, enemyY));
+			broadcastMessage(enemyPosition);
 		} catch (IOException ex) {
 			out.println("Unable to send order: ");
 			ex.printStackTrace(out);
@@ -102,7 +106,7 @@ public class ETSA02_BasicLeaderBot extends TeamRobot {
 	}
 
 	/**
-	 * onHitByBullet:  Turn perpendicular to bullet path
+	 * onHitByBullet:  BLB has been hit by a bullet. Turn perpendicular to path of the bullet.
 	 */
 	public void onHitByBullet(HitByBulletEvent e) {
 		turnLeft(90 - e.getBearing());
@@ -115,16 +119,30 @@ public class ETSA02_BasicLeaderBot extends TeamRobot {
 		return this.getHeading() + e.getBearing();
 	}
 	
+	/**
+	 * calculateEnemyPosition:  Compute enemy position using its bearing
+	 */
+	private Point calculateEnemyPosition(ScannedRobotEvent e) {
+		double enemyX = getX() + e.getDistance() * Math.sin(Math.toRadians(enemyBearing));
+		double enemyY = getY() + e.getDistance() * Math.cos(Math.toRadians(enemyBearing));
+		return new Point(enemyX, enemyY);
+	}
+	
 	private class EnemyPosition {
 		
 		private String enemyName;
 		private Point enemyPosition;
 		
+		public EnemyPosition(String enemyName, Point enemyPosition) {
+			this.enemyName = enemyName;
+			this.enemyPosition = enemyPosition;
+		}
+		
 		public String getEnemyName() {
 			return enemyName;
 		}
 		
-		public Point enemyPosition() {
+		public Point getEnemyPosition() {
 			return enemyPosition();
 		}
 	
