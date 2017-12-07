@@ -20,6 +20,9 @@ tmp
 # Eclipse
 **/*.cache-main
 **/.metadata
+.settings/
+.classpath
+.project
 
 # Sbt
 **/target
