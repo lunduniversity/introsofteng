@@ -1,0 +1,86 @@
+%
+% Copyright 2017 Markus Borg, Lund University
+%
+% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+% See http://creativecommons.org/licenses/by-sa/4.0/
+%
+% The dodument is based on a LaTeX template developed by Jean-Philippe Eisenbarth
+% https://github.com/jpeisenbarth/SRS-Tex
+%
+\documentclass{scrreprt}
+\usepackage{listings}
+\usepackage{underscore}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\hypersetup{
+    bookmarks=false,    % show bookmarks bar?
+    pdftitle={Software Requirement Specification},    % title
+    pdfauthor={Markus Borg},                     % author
+    pdfsubject={TeX and LaTeX},                        % subject of the document
+    pdfkeywords={TeX, LaTeX, graphics, images}, % list of keywords
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,       % color of internal links
+    citecolor=black,       % color of links to bibliography
+    filecolor=black,        % color of file links
+    urlcolor=purple,        % color of external links
+    linktoc=page            % only page is linked
+}%
+\def\myversion{0.1 }
+\date{}
+%\title{%
+
+%}
+\usepackage{hyperref}
+\begin{document}
+
+\begin{flushright}
+    \rule{16cm}{5pt}\vskip1cm
+    \begin{bfseries}
+    	\LARGE{ETSA02-ADM-INS}\\
+    	\vspace{1.5cm}
+        \Huge{Project\\ Instructions}\\
+        \vspace{0.5cm}
+        for\\
+        \vspace{0.5cm}
+        LU Rumble\\
+        \vspace{1.5cm}
+        \LARGE{Version \myversion approved}\\
+        \vspace{1.5cm}
+        Prepared by Markus Borg\\
+        %\vspace{1.5cm}
+        Dept. of Computer Science, Lund University\\
+        \vspace{1.5cm}
+        \today\\
+    \end{bfseries}
+\end{flushright}
+
+\tableofcontents
+
+
+\chapter*{Revision History}
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+	    Name & Date & Reason For Changes & Version\\
+        \hline
+	    Markus Borg & 2017-12-07 & Initial draft. & 0.1\\
+        \hline
+    \end{tabular}
+\end{center}
+
+\chapter{Introduction}
+
+\section{Learning goals}
+
+\section{Roles}
+Project managers = Leda teamet, kommunikation mot kursen, tidrapportering, översikt
+Development lead = övergripande ansvar för utvecklingen
+Test manager = ansvar för test strategy, unit test, integrations test, system test
+Requirements engineer = feature planning, requirements specification, internal product perspective
+Sales engineer = marketing, sales, negotiations, customer interaction, external product perspective
+Domain expert = strategies in RoboCode, understanding rules, purchasing a robot team
+
+
+\end{document}

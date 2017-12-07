@@ -93,7 +93,7 @@ public class ETSA02_BasicLeaderBot extends TeamRobot {
 			// update position
 		} // otherwise, add new enemy to the list
 		else {
-			enemyList.add(new EnemyPosition(e.getName(), enemyPosition);
+			enemyList.add(new EnemyPosition(e.getName(), enemyPosition));
 		}
 		
 		try {
