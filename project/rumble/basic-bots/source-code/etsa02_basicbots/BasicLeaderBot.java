@@ -86,17 +86,9 @@ public class BasicLeaderBot extends TeamRobot {
 		}
 		
 		// Calculate enemy's bearing and position
-		double enemyBearing = calculateEnemyBearing(e);
-		Point enemyPosition = calculateEnemyPosition(e, enemyBearing);
-		
-		// If enemy is known, update its position
-		if (enemyList.contains(e.getName())) {
-			// update position
-		} // otherwise, add new enemy to the list
-		else {
-			enemyList.add(new EnemyPosition(e.getName(), enemyPosition));
-		}
-		
+		double enemyBearing = calculateRobotBearing(e);
+		Point enemyPosition = calculateRobotPosition(e, enemyBearing);
+				
 		try {
 			// Send enemy position to teammates
 			broadcastMessage(enemyPosition);
@@ -104,6 +96,19 @@ public class BasicLeaderBot extends TeamRobot {
 			out.println("Unable to send order: ");
 			ex.printStackTrace(out);
 		}
+		
+		// Keep track of all enemy positions
+		EnemyPosition ePos = findEnemy(e.getName());
+		if (ePos != null) {
+			// If enemy is known, update its position
+			ePos.setEnemyPosition(enemyPosition);			
+		} // otherwise, add new enemy to the list
+		else {
+			enemyList.add(new EnemyPosition(e.getName(), enemyPosition));
+		}
+		
+		
+		
 	}
 
 	/**
@@ -116,19 +121,50 @@ public class BasicLeaderBot extends TeamRobot {
 	/**
 	 * calculateEnemyBearing:  Compute bearing by adding own robot's bearing and enemy bearing
 	 */
-	private double calculateEnemyBearing(ScannedRobotEvent e) {
+	private double calculateRobotBearing(ScannedRobotEvent e) {
 		return this.getHeading() + e.getBearing();
 	}
 	
 	/**
-	 * calculateEnemyPosition:  Compute enemy position using its bearing
+	 * calculateRobotPosition:  Compute enemy position using its bearing
+	 * 
+	 * @param The ScannedRobotEvent
+	 * @param Bearing of the scanned robot
+	 * @return A Point representing the scanned robot's position
 	 */
-	private Point calculateEnemyPosition(ScannedRobotEvent e, double enemyBearing) {
-		double enemyX = getX() + e.getDistance() * Math.sin(Math.toRadians(enemyBearing));
-		double enemyY = getY() + e.getDistance() * Math.cos(Math.toRadians(enemyBearing));
+	private Point calculateRobotPosition(ScannedRobotEvent e, double robotBearing) {
+		double enemyX = getX() + e.getDistance() * Math.sin(Math.toRadians(robotBearing));
+		double enemyY = getY() + e.getDistance() * Math.cos(Math.toRadians(robotBearing));
 		return new Point(enemyX, enemyY);
 	}
 	
+	/**
+	 * 
+	 * @param enemyName
+	 * @return The EnemyPosition or null if not found.
+	 */
+	private EnemyPosition findEnemy(String enemyName) {
+		
+		for (int i=0; i<enemyList.size(); i++) {
+			EnemyPosition tempEnemy = enemyList.get(i);
+			if (enemyName.equals(tempEnemy.getEnemyName())) {
+				return tempEnemy;
+			}
+		}
+		return null;
+		
+		/*ListIterator<EnemyPosition> listIterator = enemyList.listIterator();
+		while (listIterator.hasNext()) {
+			if (enemyName.equals(((EnemyPosition) listIterator).getEnemyName())) {
+				return (EnemyPosition) listIterator;	
+			}
+		}
+		return null;*/
+	}
+	
+	/**
+	 * EnemyPosition - Represents an enemy through its name and position.
+	 */
 	private class EnemyPosition {
 		
 		private String enemyName;
@@ -146,6 +182,16 @@ public class BasicLeaderBot extends TeamRobot {
 		public Point getEnemyPosition() {
 			return enemyPosition;
 		}
+		
+		public void setEnemyPosition(Point ePos) {
+			this.enemyPosition = ePos;
+		}
+		
+		@Override
+		public boolean equals(Object obj) {
+			String otherRobot = ((EnemyPosition) obj).getEnemyName();
+		    return enemyName.equals(otherRobot);
+		  }
 	
 	}
 }
