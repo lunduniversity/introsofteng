@@ -1,0 +1,6 @@
+#Robocode robot team
+#Sun Dec 10 00:02:06 CET 2017
+team.members=etsa02_basicbots.BasicLeaderBot*,etsa02_basicbots.BasicDroid*,etsa02_basicbots.BasicDroid*
+team.author.name=
+robocode.version=1.9.2.5
+team.description=Basic team for ETSA02. Note that the configuration file expects Robots in development mode.
