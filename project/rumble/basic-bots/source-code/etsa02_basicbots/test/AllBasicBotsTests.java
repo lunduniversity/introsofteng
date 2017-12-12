@@ -1,3 +1,4 @@
+package etsa02_basicbots.systemtest;
 /**	
 Copyright (c) 2017 Markus Borg
 
@@ -19,14 +20,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package etsa02_basicbots.test;
+
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ TestBLB_LoseAgainstSpinBot.class, TestBLB_SurviveSittingDuck.class })
-public class AllBLBTests {
+@SuiteClasses({ BasicBots_UnitTests.class, BLB_LoseAgainstSpinBot_SystemTest.class, BLB_SurviveSittingDuck_SystemTest.class })
+public class AllBasicBotsTests {
 
 }
