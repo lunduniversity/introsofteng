@@ -26,6 +26,7 @@ package etsa02_basicbots;
 import robocode.HitByBulletEvent;
 import robocode.ScannedRobotEvent;
 import robocode.TeamRobot;
+
 import java.awt.*;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -40,6 +41,7 @@ import java.util.LinkedList;
  */
 public class BasicLeaderBot extends TeamRobot {
 	
+	private RadarSystem radar;
 	private LinkedList<EnemyPosition> enemyList;
 
 	/**
@@ -66,6 +68,7 @@ public class BasicLeaderBot extends TeamRobot {
 		} catch (IOException ignored) {}
 		
 		// Initiate attributes
+		radar = new RadarSystem();
 		enemyList = new LinkedList<EnemyPosition>();
 		
 		// Default behavior - BLB's standard sequence
@@ -86,8 +89,8 @@ public class BasicLeaderBot extends TeamRobot {
 		}
 		
 		// Calculate enemy's bearing and position
-		double enemyBearing = calculateRobotBearing(e);
-		Point enemyPosition = calculateRobotPosition(e, enemyBearing);
+		double enemyBearing = radar.calculateRobotBearing(this, e);
+		Point enemyPosition = radar.calculateRobotPosition(this, e, enemyBearing);
 				
 		try {
 			// Send enemy position to teammates
@@ -106,9 +109,6 @@ public class BasicLeaderBot extends TeamRobot {
 		else {
 			enemyList.add(new EnemyPosition(e.getName(), enemyPosition));
 		}
-		
-		
-		
 	}
 
 	/**
@@ -116,26 +116,6 @@ public class BasicLeaderBot extends TeamRobot {
 	 */
 	public void onHitByBullet(HitByBulletEvent e) {
 		turnLeft(90 - e.getBearing());
-	}
-	
-	/**
-	 * calculateEnemyBearing:  Compute bearing by adding own robot's bearing and enemy bearing
-	 */
-	private double calculateRobotBearing(ScannedRobotEvent e) {
-		return this.getHeading() + e.getBearing();
-	}
-	
-	/**
-	 * calculateRobotPosition:  Compute enemy position using its bearing
-	 * 
-	 * @param The ScannedRobotEvent
-	 * @param Bearing of the scanned robot
-	 * @return A Point representing the scanned robot's position
-	 */
-	private Point calculateRobotPosition(ScannedRobotEvent e, double robotBearing) {
-		double enemyX = getX() + e.getDistance() * Math.sin(Math.toRadians(robotBearing));
-		double enemyY = getY() + e.getDistance() * Math.cos(Math.toRadians(robotBearing));
-		return new Point(enemyX, enemyY);
 	}
 	
 	/**
@@ -152,14 +132,6 @@ public class BasicLeaderBot extends TeamRobot {
 			}
 		}
 		return null;
-		
-		/*ListIterator<EnemyPosition> listIterator = enemyList.listIterator();
-		while (listIterator.hasNext()) {
-			if (enemyName.equals(((EnemyPosition) listIterator).getEnemyName())) {
-				return (EnemyPosition) listIterator;	
-			}
-		}
-		return null;*/
 	}
 	
 	/**
