@@ -1,114 +1,108 @@
-/**	
-Copyright (c) 2017 Markus Borg
+package etsa02_basicbots.test;
 
-Building on work by Philip Johnson, University of Hawaii.
-https://ics613s13.wordpress.com/
+import static org.junit.Assert.*;
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+import etsa02_basicbots.BasicLeaderBot;
+import etsa02_basicbots.RadarSystem;
+import robocode.ScannedRobotEvent;
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
+public class BasicBots_UnitTests {
 
-package etsa02_basicbots.systemtest;
-
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-import robocode.BattleResults;
-import robocode.control.events.BattleCompletedEvent;
-import robocode.control.events.TurnEndedEvent;
-import robocode.control.snapshot.IRobotSnapshot;
-import robocode.control.testing.RobotTestBed;
- 
-
-/**
- * Test class for the BasicLeaderBot.
- *
- * @author Keone Hiraide
- *
- */
-@RunWith(JUnit4.class)
-public class BasicBots_UnitTests extends RobotTestBed {
- 
-	/**
-	 * The names of the robots that want battling is specified.
-	 * 
-	 * @return The names of the robots we want battling.
-	 */
-	@Override
-	public String getRobotNames() {
-		return "etsa02_basicbots.BasicLeaderBot*";
+	// Units under test (UT = under test)
+	private BasicLeaderBot blbUT;
+	private RadarSystem radarUT;
+	
+	private double fakeEnergy;
+	private double fakeHeading;
+	
+	// Mock robots detected by fake radar
+	private MockScannedRobot mockTeammate;
+	private MockScannedRobot mockEnemy1;
+	private MockScannedRobot mockEnemy2;
+	
+	@Before
+	public void setUp() throws Exception {
+		blbUT = new BasicLeaderBot();
+		radarUT = new RadarSystem();
+		setUpHealthyRight();
+		mockTeammate = new MockScannedRobot("mockFriend", 10, 10, 10, 10, 10, false);
+		mockEnemy1 = new MockScannedRobot("mockEnemy1", 20, 20, 20, 20, 20, false);
+		mockEnemy2 = new MockScannedRobot("mockEnemy2", 30, 30, 30, 30, 30, false);	
 	}
 
-	/**
-	 * Pick the amount of rounds that we want our robots to battle for.
-	 *
-	 * @return Amount of rounds we want to battle for.
-	 */
-  @Override
-  public int getNumRounds() {
-    return 10;
-  }
- 
-  /**
-   * Tests to see if our robot won most rounds.
-   * @param event Holds information about the battle has been completed.
-   */
-  @Override
-  public void onBattleCompleted(BattleCompletedEvent event) {
-    // Return the results in order of getRobotNames.
-    BattleResults[] battleResults = event.getIndexedResults();
-    // Sanity check that results[0] is PewPew.
-    BattleResults testBattleResults = battleResults[0];
-    String robotName = testBattleResults.getTeamLeaderName();
-    assertEquals("Check that testBattleResults[1] is BasicLeaderBot", "etsa02_basicbots.BasicLeaderBot*", robotName);
-    // Check to make sure BasicLeaderBot won at least won over half the rounds.
-    assertEquals("Check that BasicLeaderBot won all battles against SittingDuck", 10, testBattleResults.getFirsts());
-  }
-  
-	  
-  @Override
-  public void onTurnEnded(TurnEndedEvent event) {
-	  
-  }
-  
-  @Override
-  public String getInitialPositions() {
-    return null;
-  }
+	@After
+	public void tearDown() throws Exception {
+		blbUT = null;
+		radarUT = null;
+		mockTeammate = null;
+		mockEnemy1 = null;
+		mockEnemy2 = null;
+	}
 
-  /**
-   * Invoked before the test battle begins. Default behavior is to do nothing. Override this method
-   * in your test case to add behavior before the battle starts.
-   */
-  @Override
-  protected void runSetup() {
-    
-  }
-
-  /**
-   * Invoked after the test battle ends. Default behavior is to do nothing. Override this method in
-   * your test case to add behavior after the battle ends.
-   */
-  @Override
-  protected void runTeardown() {
-    // Default does nothing.
-}
-  
-  
+	@Test
+	public void testDetectTeammate() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testDetectNewEnemy() {
+		fail("Not yet implemented");
+	}	
+	
+	@Test
+	public void testDetectSameEnemy() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testCalculateRobotBearing() {		
+		ScannedRobotEvent e = new ScannedRobotEvent(mockEnemy1.name, mockEnemy1.energy, 
+													mockEnemy1.bearing, mockEnemy1.distance, 
+													mockEnemy1.heading, mockEnemy1.velocity,
+													mockEnemy1.isSentryRobot);
+		assertEquals(90, fakeHeading, 0.01);
+		assertEquals(20, mockEnemy1.bearing, 0.01);
+		System.out.println(e.getHeading());
+		assertEquals(20, e.getRobotBearing(), 0.01);
+		assertEquals(110, radarUT.calculateRobotBearing(fakeHeading, e), 0.1);
+		//assertEquals("Check that bearing of scanned enemy is correctly calculated", 
+		//			 110, radarUT.calculateRobotBearing(fakeHeading, e), 0.01);
+	}
+	
+	@Test
+	public void testCalculateRobotPosition() {
+		fail("Not yet implemented");
+	}
+	
+	private void setUpHealthyRight() {
+		fakeEnergy = 100;
+		fakeHeading = 90;
+	}
+	
+	private class MockScannedRobot {
+		String name;
+		double energy;
+		double bearing;
+		double distance;
+		double heading;
+		double velocity;
+		boolean isSentryRobot;
+		
+		MockScannedRobot(String name, double energy, double bearing, 
+						  double distance, double heading, double velocity, 
+						  boolean isSentryRobot) {
+			this.name = name;
+			this.energy = energy;
+			this.bearing = bearing;
+			this.distance = distance;
+			this.heading = heading;
+			this.velocity = velocity;
+			this.isSentryRobot = isSentryRobot;
+		}
+	}
+	
 }
