@@ -1,6 +1,8 @@
 /**	
 Copyright (c) 2017 Markus Borg
 
+Building on work by Mathew A. Nelson and Robocode contributors.
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -19,15 +21,55 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-
 package etsa02_basicbots.test;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import robocode.HitByBulletEvent;
+import robocode.ScannedRobotEvent;
+import robocode.TeamRobot;
 
-@RunWith(Suite.class)
-@SuiteClasses({ BasicBots_UnitTests.class, BLB_LoseAgainstSpinBot_SystemTest.class, BLB_SurviveSittingDuck_SystemTest.class })
-public class AllBasicBotsTests {
+import java.awt.*;
+import java.io.IOException;
+import java.util.LinkedList;
 
+import etsa02_basicbots.BasicLeaderBot;
+import etsa02_basicbots.RadarSystem;
+
+/**
+ * MockBot - a mock robot to enable unit testing for ETSA02.
+ *
+ * @author Markus Borg
+ */
+public class MockBot extends BasicLeaderBot {
+	
+	private RadarSystem radar;
+	
+	private String name;
+	private double fakeEnergy;
+	private double fakeHeading;
+	private double fakePosX;
+	private double fakePosY;
+	
+	public MockBot(String name, double fakeEnergy, double fakeHeading,
+				   double fakePosX, double fakePosY) {
+		this.name = name;
+		this.fakeEnergy = fakeEnergy;
+		this.fakeHeading = fakeHeading;
+		this.fakePosX = fakePosX;
+		this.fakePosY = fakePosY;
+	}
+	
+	@Override
+	public double getHeading() {
+		return fakeHeading;
+	}
+	
+	@Override
+	public double getX() {
+		return fakePosX;
+	}
+	
+	@Override 
+	public double getY() {
+		return fakePosY;
+	}
 }
