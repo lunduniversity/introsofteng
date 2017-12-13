@@ -89,7 +89,8 @@ public class BasicLeaderBot extends TeamRobot {
 		}
 		
 		// Calculate enemy's bearing and position
-		double enemyBearing = radar.calculateRobotBearing(this, e);
+		double myHeading = getHeading();
+		double enemyBearing = radar.calculateRobotBearing(myHeading, e);
 		Point enemyPosition = radar.calculateRobotPosition(this, e, enemyBearing);
 				
 		try {

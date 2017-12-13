@@ -50,7 +50,7 @@ public class MockScannedRobotEvent extends ScannedRobotEvent {
 	private boolean fakeIsSentryRobot;
 
 	public MockScannedRobotEvent(String fakeName, double fakeEnergy, double fakeBearing, double fakeDistance,
-						  double fakeHeading, double fakeVelocity, boolean fakeIsSentryRobot) {
+			double fakeHeading, double fakeVelocity, boolean fakeIsSentryRobot) {
 		this.fakeName = fakeName;
 		this.fakeEnergy = fakeEnergy;
 		this.fakeBearing = fakeBearing;
@@ -61,12 +61,32 @@ public class MockScannedRobotEvent extends ScannedRobotEvent {
 	}
 
 	@Override
-	public double getHeading() {
-		return fakeHeading;
+	public double getEnergy() {
+		return fakeEnergy;
 	}
 
 	@Override
 	public double getBearing() {
 		return fakeBearing;
+	}
+
+	@Override
+	public double getDistance() {
+		return fakeDistance;
+	}
+
+	@Override
+	public double getHeading() {
+		return fakeHeading;
+	}
+
+	@Override
+	public double getVelocity() {
+		return fakeVelocity;
+	}
+
+	@Override
+	public boolean isSentryRobot() {
+		return fakeIsSentryRobot;
 	}
 }

@@ -27,22 +27,34 @@ import robocode.TeamRobot;
 public class RadarSystem {
 
 	/**
-	 * calculateEnemyBearing:  Compute bearing by adding own robot's bearing and enemy bearing
+	 * calculateEnemyBearing: Compute bearing by adding own robot's bearing and
+	 * enemy bearing
 	 */
-	public double calculateRobotBearing(TeamRobot robot, ScannedRobotEvent e) {
-		return robot.getHeading() + e.getBearing();
+	public double calculateRobotBearing(double myBearing, ScannedRobotEvent e) {
+		return myBearing + e.getBearing();
 	}
-	
+
 	/**
-	 * calculateRobotPosition:  Compute enemy position using its bearing
+	 * calculateRobotPosition: Compute enemy position using its bearing
 	 * 
-	 * @param The ScannedRobotEvent
-	 * @param Bearing of the scanned robot
+	 * @param The
+	 *            ScannedRobotEvent
+	 * @param Bearing
+	 *            of the scanned robot
 	 * @return A Point representing the scanned robot's position
 	 */
 	public Point calculateRobotPosition(TeamRobot robot, ScannedRobotEvent e, double enemyBearing) {
 		double enemyX = robot.getX() + e.getDistance() * Math.sin(Math.toRadians(enemyBearing));
 		double enemyY = robot.getY() + e.getDistance() * Math.cos(Math.toRadians(enemyBearing));
+
+		/*
+		 * Saved for debug purposes System.out.println( "x = " + robot.getX() +
+		 * " + " + e.getDistance() + " * sin(" + Math.toRadians(enemyBearing) +
+		 * ") = " + enemyX); System.out.println( "y = " + robot.getY() + " + " +
+		 * e.getDistance() + " * cos(" + Math.toRadians(enemyBearing) + ") = " +
+		 * enemyY);
+		 */
+
 		return new Point(enemyX, enemyY);
 	}
 }
