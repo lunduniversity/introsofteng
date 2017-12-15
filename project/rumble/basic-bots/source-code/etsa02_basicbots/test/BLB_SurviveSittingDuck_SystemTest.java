@@ -75,7 +75,7 @@ public class BLB_SurviveSittingDuck_SystemTest extends RobotTestBed {
 		String robotName = blbResults.getTeamLeaderName();
 		assertEquals("Check that BasicLeaderBot is at the expected position in the results array",
 				"etsa02_basicbots.BasicLeaderBot*", robotName);
-		assertEquals("Check that BLD didn't take any damage against SittingDuck", 0, blbResults.getBulletDamage());
+		assertEquals("Check that BLD didn't do any damage against SittingDuck", 0, blbResults.getBulletDamage());
 	}
 
 	/**
