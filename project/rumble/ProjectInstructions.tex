@@ -8,6 +8,7 @@
 % https://github.com/jpeisenbarth/SRS-Tex
 %
 \documentclass{scrreprt}
+\usepackage{graphicx}
 \usepackage{listings}
 \usepackage{underscore}
 \usepackage[bookmarks=true]{hyperref}
@@ -74,19 +75,154 @@
 
 \section{Learning goals}
 
-\section{Roles}
+\section{The Robocode domain}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.50\textwidth]{figures/robotSide.jpg}
+\caption{Model of the Robocode robot (\copyright~Klaus Knopper under CC BY-SA 3.0).}
+\label{fig:overview}
+\end{figure}
+
+\section{Project overview}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{figures/projectOverview.png}
+\caption{Project overview.}
+\label{fig:overview}
+\end{figure}
+
+\chapter{Mastering the domain -- LU Rumble}
+
+\chapter{Engineering the robot}
+
+\chapter{Monetizing the robot}
+After pitching the robot, all teams present a hidden purchase array representing what the team is willing to pay for each of the available robots. For each robot, the highest bidder establishes a customer relationship. If there is a tie, the business relations are assigned randomly.
+
+Signed contracts in grå skåpet.
+
+\chapter{Process model}
+The process model describing the product development encompasses three sprints, each with a separate set of deliverables. 
+After the three sprints, the final part of the course is dedicated to acceptance testing (potentially followed by filing of formal business complaints) and, of course, the concluding LU Rumble and the award ceremonies. 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{figures/processModel.png}
+\caption{Process model.}
+\label{fig:overview}
+\end{figure}
+
+%Produktutvecklingen genomförs i fyra faser enligt modellen Unified Software Development
+%Process [Jacobson et al., 1999]: 1) Inception, 2) Elaboration, 3) Construction och 4) Transition.
+%De mest omfattande faserna är uppdelade i flera iterationer. Faserna visas överst i figur 3.1 och
+%iterationerna presenteras nederst.
+%
+%Varje fas kommer att domineras av en typ av arbete, men även kompletterande arbete av tidigare
+%slag, dvs. arbetstyperna överlappar. Exempelvis kommer viss kravhantering att fortsätta ske
+%även under fasen Construction – krav kommer troligtvis att behöva kompletteras eller förfinas.
+%Varje fas är uppdelad i interationer genom ett antal vecko-sprints. Kombinationen av fasernas
+%överlappande arbetsuppgifter samt uppdelning i sprints möjliggör iterativt arbete, vilket ofta är
+%en nyckel för framgångsrika utvecklingsprojekt.
+%
+%Fas 2 och 3 avslutas med milstolpar. Avsikten med en milstolpe är att det tydligt ska framgå
+%om den uppnåtts eller inte och på så vis synliggöra hur långt projektet kommit. Exakt vad som
+%ingår i de olika milstolparna bör vara känt av samtliga deltagare i projektet och övriga andra
+%intressenter, såsom kunder och linjechefer. Projektet har två milstolpar som uppnås när samtliga
+%inblandade leverabler är godkända av alla berörda parter. När en milstolpe har passerats
+%betraktas huvuddelen av fasens arbete slutfört, därefter sker enbart komplettering och förfining.
+%Den grundläggande tanken med projektmodellen är att en fas inte påbörjas förrän föregående 
+%milstolpe har uppnåtts. Men även om man inte startar en fas innan de tidigare faserna är
+%slutförda är det naturligtvis tillåtet, och i många fall lämpligt, att börja förbereda sig för framtida
+%faser. Till exempel, om du vet att du kommer att implementera ett användargränssnitt i
+%implementationsfasen men du vet inte hur man gör detta, då du kan börja förbereda implementationsfasen
+%tidigt i projektet. Du kan börja studera användargränssnitt, fråga folk som vet mer
+%om ämnet eller skapa en mindre prototyp för användargränssnitt bara för att lära sig hur man
+%gör. Man kan naturligtvis, i mån av tid, även chansa och påbörja något som man räknar med
+%eller hoppas kan bli användbart senare i projektet, men du bör då vara medveten om risken att
+%kraven och design kan ändras tidigt i projektet och att det inte är säkert att programkoden du
+%har skrivit verkligen blir användbar.
+
+\section{Sprint 1}
+%Projektets första fas innebär en uppstart av projektet. Projektmedlemmarna får en chans att
+%träffas och eventuellt nya kontakter etableras. För att gruppen ska fungera bra ihop under projektets
+%gång är det viktigt att medlemmarna kommunicerar effektivt med varandra – försök
+%komma överens om hur ni kan säkerställa detta. Det är även bra att diskutera era målsättningar,
+%eftersom olika förväntningar på arbetsinsats och projektbetyg är en av de främsta orsakerna till
+%konflikter i grupparbeten. Relaterat till detta kommer ni även utse olika roller i projektet, dvs.
+%ansvarsområden. Detta ska ni beskriva i projektplanen, där ni även i grova drag ska planera
+%ert arbete. Slutligen kommer ni att lära känna den dokumentstruktur som ska följas på Google
+%Drive.
+%Fas 1 avslutas inte med en formell milstolpe, men trots det produceras viktiga resultat:
+%Gruppens målsättning förankras
+%Infrastruktur skapas på Google Drive
+%Projektplan
+
+\section{Sprint 2}
+%Projektets andra fas innebär en detaljerad analys av kundens behov och en efterföljande teknisk
+%kravställning. Arbetet i denna fas utgår från en idé om vad man ska genomföra samt från en
+%rad förutsättningar vad gäller tidsplaner, tidsfrister och budget i förhållande till kostnaden. Den
+%inledande projektidén är beskriven på en hög nivå som inte är tillräckligt tydlig för att i detalj
+%definiera exakt vad som ska utvecklas. Arbetet i denna fas syftar till att precisera exakt vad
+%som ska utvecklas under resten av projektet. I denna fas utvecklas även en högnivådesign för
+%produkten, dvs. ett klassdiagram.
+%Fas 2 avslutas med Milstolpe 1 (MS1). Milstolpen godkänns av projekthandledaren och nås
+%när både Projektplan (från Fas 1) och Kravspecifikation är godkända.
+
+\section{Sprint 3}
+%I den tredje fasen av projektet ligger fokus på att utveckla det exekverbara programmet. Detta
+%innebär att varje utvecklare utvecklar programkod som kompileras och enhetstestas. Enhetstest
+%innebär att man testar delar av programmet isolerat från övriga delar av systemet. Källkoden
+%ska även dokumenteras, vilket i kombination med högnivådesignen utgör ett designdokument.
+%Utöver detta färdigställs testplan och de testfall som ska genomföras i den sista fasen.
+%Fas 3 avslutas med Milstolpe 2 (MS2). Vid denna milstolpe ska Testplan godkännas. Detta
+%görs inom projektgruppen efter en intern granskning (se avsnitt 3.6) av dokumentet. När
+%testplanen godkänts inom gruppen sätts de i baseline, dvs. version 1.0 varpå de tillsammans
+%med granskningsprotokoll skickas för kännedom till projekthandledaren. Om projekthandledaren
+%har ytterligare synpunkter kan det bli aktuellt att göra ytterligare förändringar av något eller
+%båda dokumenten. För de ändringarna, och eventuell andra framtida ändringar gäller formell
+%ändringshantering enligt avsnitt 3.6 med den skillnaden att projekthandledaren inte behöver
+%engageras.
+
+\section{Acceptance testing and business claims}
+%I den fjärde och sista fasen av projektet ligger fokus på att testa hela systemet och överlämna
+%det till kund. Det innebär att alla enheter av programvaran måste integreras till ett system
+%Faser och milstolpar 23
+%som kan testas. Vid systemtest verifieras att systemet uppfyller alla krav i kravspecifikationen.
+%Detta görs genom att man kör samtliga testfall i testplanen. Systemtesterna dokumenteras i en
+%Testrapport som för varje testfall visar om det lyckas eller inte. Fasen kan inte avslutas förrän
+%alla testfall genomförs utan misslyckanden. Detta innebär att om något test avslöjar fel får man
+%gå tillbaka och ändra i de utvecklade produkterna (krav, kod, etc.) och upprepa samtliga testfall.
+%Projektgruppen ska även skriva en kort Användarmanual för systemstart.
+
+\section{LU Rumble and Awards}
+%Efter fas 4 har den utvecklade produkten levererats till kund och projektet kan därmed avslutas.
+%Sedan är det upp till kunden att utföra acceptanstest (se avsnitt 2.5) i syfte att verifiera att det
+%som levererats är av tillräcklig kvalitet.
+
+\chapter{Team organization}
+Everyone should do everything, but some are more responsible than others.
+
 \begin{itemize}
-\item Project manager -- Leda teamet, kommunikation mot kursen, tidrapportering, översikt
-\item Development lead -- övergripande ansvar för utvecklingen
-\item Test manager -- ansvar för test strategy, unit test, integrations test, system test
-\item Requirements engineer -- feature planning, requirements specification, internal product perspective
-\item Sales engineer -- marketing, sales, negotiations, customer interaction, external product perspective
-\item Domain expert -- strategies in Robocode, understanding rules, purchasing a robot team
+\item Project manager -- Coordination, time reporting, communication with regulatory body -- Weekly time reports, formal claims (based on failed acceptance test)
+\item Development lead -- Design, implementation, source code quality -- jar_v0.5, jar_v0.9, jar_v1.0
+\item Test manager -- Test strategy, unit testing, system testing -- Unit tests, Test spec v1.0 (incl. test code), test results
+\item Requirements engineer -- End-user perspective, feature scoping, detailed requirements -- SRS v0.5, SRS v0.9, SRS v1.0
+\item Sales engineer -- Marketing, customer communication, negotiations -- Marketing concept, signed contract (as supplier)
+\item Domain expert -- Mastering Robocode, LU Rumble strategy, supplier communication, negotiations, acceptance testing -- Signed contract (as customer), acceptance test report, team jar-file
 \end{itemize}
 
-\section{Engineering the Robot}
-
-\section{Monetizing the Robot}
-After pitching the robot, all teams present a hidden purchase array representing what the team is willing to pay for each of the available robots. For each robot, the highest bidder establishes a customer relationship. If there is a tie, the business relations are assigned randomly.
+\chapter{Deliverables}
+\begin{itemize}
+\item Marketing concepts
+\item SRS
+\item Source code
+\item Releases
+\item Test code
+\item Test spec
+\item Test res
+\item Acceptance test
+\item LU Rumble team
+\end{itemize}
 
 \end{document}
