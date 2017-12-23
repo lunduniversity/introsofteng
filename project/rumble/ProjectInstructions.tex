@@ -120,13 +120,31 @@ The project will be graded as 3, 4, 5 or UG. Project supervisors will in general
 \end{itemize}
 
 \chapter{Engineering the robot}
+Each team will develop a robot according to engineering principles. Prototyping and capturing requirements, testing early.
 
+\section{Specification}
+
+\section{Implementation}
+The first two computer exercises will help groups set up Robocode development in Eclipse and source code control in git.
+
+As most implementation work will be done outside of scheduled sessions, how the backbone of the programming is conducted will be decided by the individual groups. Still, for this project we recommend groups to follow a handful of well-known agile development practices, originally proposed as part of Extreme Programming (XP) [REF]. Below we list five that we believe are particularly suitable for the process model, along with their Wikipedia definitions:
+
+\begin{description}
+\item[Pair programming] All code is produced by two people programming  on one workstation. One programmer has control over the workstation and is thinking mostly about the coding in detail. The other programmer is more focused on the big picture, and is continually reviewing the code that is being produced by the first programmer. Programmers trade roles after minute to hour periods. The pairs are not fixed; programmers switch partners frequently, so that everyone knows what everyone is doing, and everybody remains familiar with the whole system, even the parts outside their skill set. This way, pair programming also can enhance team-wide communication and goes hand-in-hand with the concept of Collective Code Ownership.
+\item[Continuous integration] The development team should always be working on the latest version of the software. Since different team members may have versions saved locally with various changes and improvements, they should try to upload their current version to the code repository every few hours, or when a significant break presents itself. Continuous integration will avoid delays later on in the project cycle, caused by integration problems, aka. ``big bang integration''.
+\item[Code refactoring] Restructuring existing code without changing its external behavior. Refactoring improves quality attributes of the software, e.g., code readability, performance, maintainability. Refactoring is often initiated when a so called ``code smell'' is identified, i.e., structures in the code that indicate violation of fundamental design principles and negatively impact design quality. 
+\item[Test-driven development] Create unit tests before the eventual code is written. This approach is intended to stimulate the programmer to think about conditions in which his or her code could fail. Test driven development proceeds by quickly cycling through the following steps: 1) write unit tests, 2) run tests, watch them fail, 3) write code, 4) run tests, watch them pass, and 5) refactor the code. Adhering to test-driven development leads to a large set of test cases that can be automatically executed, increasing developers' confidence when e.g. refactoring code.
+\item[Collective code ownership] Everyone is responsible for all the code; therefore, everybody is allowed to change any part of the code. Collective code ownership is not only an organizational policy but also an attitude. Pair programming, especially overlapping pair rotation, contributes to this practice: by working in different pairs, programmers better understand the system context and contribute to more areas of the code base. Collective code ownership may accelerate development because a developer who spots an error can fix it immediately, which can reduce bugs overall. However, programmers may also introduce bugs when changing code that they do not understand well. Sufficiently well-defined unit tests should mitigate this problem: if unforeseen dependencies create errors, then when unit tests are run, they will show failures.
+\end{description}
 \begin{figure}
 \centering
 \includegraphics[width=0.50\textwidth]{figures/robotSide.jpg}
 \caption{Model of the Robocode robot (\copyright~Klaus Knopper under CC BY-SA 3.0).}
 \label{fig:overview}
 \end{figure}
+
+\section{Verification}
+Unit testing with JUnit. System testing with JUnit.
 
 \chapter{Monetizing the robot}
 After pitching the robot, all teams present a hidden purchase array representing what the team is willing to pay for each of the available robots. For each robot, the highest bidder establishes a customer relationship. If there is a tie, the business relations are assigned randomly.
