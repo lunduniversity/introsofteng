@@ -83,7 +83,7 @@ On top of your skills with traditional software engineering concepts and the too
 TODO: Make sure this is aligned with the formal course description.
 
 \section{Robocode -- Build the best, destroy the rest!}
-The goal of Robocode is to implement the behavior of a robot to compete against other robots in a battle arena. The contestants have no direct influence on the game, instead they write the AI of the robot telling it how to behave and react on events occurring in the battle arena. Battles are running in real-time and on-screen, see Figure~\ref{fig:screenshot}.
+The goal of Robocode is to implement the behavior of a robot to compete against other robots in a battle arena. The contestants have no direct influence on the game, instead they write the AI of the robot telling it how to behave and react on events occurring in the battle arena. Battles are running in real-time and on-screen, see Figure~\ref{fig:screenshot}. Robocode battles, referred to as ``rumbles'', are either in the form of duels between individual robots, free-for-all battles with multiple robots, or battles between robot teams.
 
 \begin{figure}
 \centering
@@ -97,26 +97,38 @@ Robocode offers complete development environment, and comes with its own install
 
 Robocode is an Open Source project, which means that all sources are open to everybody. In addition, Robocode is provided under the terms of EPL (Eclipse Public License). The Robocode game was originally started by Mathew A. Nelson as a personal endeavor in late 2000 and became a professional one when he brought it to IBM in July 2001. In the beginning of 2005, Mathew convinced IBM to release Robocode as Open Source on SourceForge. Eventually, Flemming N. Larsen took over the Robocode project at SourceForge as administrator and developer in July 2006 to continue the original Robocode game -- which now is hosted on GitHub.
 
+\section{Project overview}
+Each project team will develop a robot using established software engineering practices. Furthermore, each team will compose a robot team to compete in a ``LU Rumble'' at the final lecture in the course. However, no team is allowed to field their own robot -- instead robots developed by other teams must be purchased on an open market (in truth a somewhat regulated market). Consequently, each team has two primary goals: 1) maximizing profit by selling a successfully engineered robot on the market and 2) winning the LU Rumble by composing a competitive Robocode team. Teams pursue the two goals by completing three main activities that we refer to as \textit{strategizing}, \textit{engineering}, and \textit{monetizing}, respectively.
+
+Figure~\ref{fig:overview} shows the four main phases of the project. First, during the course inception, the course infrastructure and the project tasks are introduce. More importantly, teams consisting of six students (preferably!) are established. Second, the backbone of the course follows: three development sprints mixing engineering, monetizing, and strategizing. Third, purchasers of robots perform acceptance testing to ensure that the delivered robot fulfills the expectations -- otherwise purchasers file business claims to require money back. Fourth, in the last phase of the project, the LU Rumble takes place followed by an awards ceremony to recognize the both winners -- and the most profitable teams.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.99\textwidth]{figures/projectOverview.png}
+\caption{Project overview.}
+\label{fig:overview}
+\end{figure}
+
+The project will be graded as 3, 4, 5 or UG. Project supervisors will in general evaluate the following:
+\begin{itemize}
+\item The final release meets the final requirements specification. This is partly indicated by the customer's successful acceptance testing.
+\item The delivered robot is successful and non-trivial.
+\item All the robots behaviors are covered by the requirements specification.
+\item The test specification describes a comprehensive verification of the robot. Automated test cases and test reports are provided.
+\item The team adhered to the process model and met all deadlines.
+\item All deliverables are of high quality.
+\end{itemize}
+
+\chapter{Strategizing to win the LU Rumble}
+
+\chapter{Engineering the robot}
+
 \begin{figure}
 \centering
 \includegraphics[width=0.50\textwidth]{figures/robotSide.jpg}
 \caption{Model of the Robocode robot (\copyright~Klaus Knopper under CC BY-SA 3.0).}
 \label{fig:overview}
 \end{figure}
-
-\section{Project overview}
-
-
-\begin{figure}
-\centering
-\includegraphics[width=0.85\textwidth]{figures/projectOverview.png}
-\caption{Project overview.}
-\label{fig:overview}
-\end{figure}
-
-\chapter{Mastering the domain -- LU Rumble}
-
-\chapter{Engineering the robot}
 
 \chapter{Monetizing the robot}
 After pitching the robot, all teams present a hidden purchase array representing what the team is willing to pay for each of the available robots. For each robot, the highest bidder establishes a customer relationship. If there is a tie, the business relations are assigned randomly.
