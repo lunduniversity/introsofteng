@@ -44,7 +44,7 @@
         \vspace{0.5cm}
         for\\
         \vspace{0.5cm}
-        LU Rumble\\
+        the LU Rumble\\
         \vspace{1.5cm}
         \LARGE{Version \myversion approved}\\
         \vspace{1.5cm}
@@ -109,22 +109,37 @@ Figure~\ref{fig:overview} shows the four main phases of the project. First, duri
 \label{fig:overview}
 \end{figure}
 
-The project will be graded as 3, 4, 5 or UG. Project supervisors will in general evaluate the following:
+The project will be graded as 3, 4, 5 or UG. The project supervisors' overall grading guidelines include the following:
 \begin{itemize}
 \item The final release meets the final requirements specification. This is partly indicated by the customer's successful acceptance testing.
 \item The delivered robot is successful and non-trivial.
 \item All the robots behaviors are covered by the requirements specification.
 \item The test specification describes a comprehensive verification of the robot. Automated test cases and test reports are provided.
 \item The team adhered to the process model and met all deadlines.
-\item All deliverables are of high quality.
+\item All deliverables are of high quality. Appropriate technical language and a consistent look-and-feel across documents.
 \end{itemize}
 
 \chapter{Engineering the robot}
-Each team will develop a robot according to engineering principles. Prototyping and capturing requirements, testing early.
+Each team will develop a robot according to engineering principles. Prototyping and capturing requirements, testing early. The engineering is organized in three development sprints.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.50\textwidth]{figures/robotSide.jpg}
+\caption{Model of the Robocode robot (\copyright~Klaus Knopper under CC BY-SA 3.0).}
+\label{fig:overview}
+\end{figure}
 
 \section{Specification}
+Each group will perform ``integrated requirements engineering'' [REF], i.e., continuously evolving requirements throughout the entire development effort. The requirements will be captured in a Software Requirements Specification (SRS).
 
-\section{Implementation}
+As a result from the specification activities, each group shall produce the following deliverables:
+\begin{description}
+\item[Sprint 1] SRS v0.5
+\item[Sprint 2] SRS v0.9
+\item[Sprint 3] SRS v1.0
+\end{description}
+
+\section{Construction}
 The first two computer exercises will help groups set up Robocode development in Eclipse and source code control in git.
 
 As most implementation work will be done outside of scheduled sessions, how the backbone of the programming is conducted will be decided by the individual groups. Still, for this project we recommend groups to follow a handful of well-known agile development practices, originally proposed as part of Extreme Programming (XP) [REF]. Below we list five that we believe are particularly suitable for the process model, along with their Wikipedia definitions:
@@ -136,15 +151,23 @@ As most implementation work will be done outside of scheduled sessions, how the 
 \item[Test-driven development] Create unit tests before the eventual code is written. This approach is intended to stimulate the programmer to think about conditions in which his or her code could fail. Test driven development proceeds by quickly cycling through the following steps: 1) write unit tests, 2) run tests, watch them fail, 3) write code, 4) run tests, watch them pass, and 5) refactor the code. Adhering to test-driven development leads to a large set of test cases that can be automatically executed, increasing developers' confidence when e.g. refactoring code.
 \item[Collective code ownership] Everyone is responsible for all the code; therefore, everybody is allowed to change any part of the code. Collective code ownership is not only an organizational policy but also an attitude. Pair programming, especially overlapping pair rotation, contributes to this practice: by working in different pairs, programmers better understand the system context and contribute to more areas of the code base. Collective code ownership may accelerate development because a developer who spots an error can fix it immediately, which can reduce bugs overall. However, programmers may also introduce bugs when changing code that they do not understand well. Sufficiently well-defined unit tests should mitigate this problem: if unforeseen dependencies create errors, then when unit tests are run, they will show failures.
 \end{description}
-\begin{figure}
-\centering
-\includegraphics[width=0.50\textwidth]{figures/robotSide.jpg}
-\caption{Model of the Robocode robot (\copyright~Klaus Knopper under CC BY-SA 3.0).}
-\label{fig:overview}
-\end{figure}
+
+As a result from the verification activities, each group shall produce the following deliverables:
+\begin{description}
+\item[Sprint 1] SRS v0.5
+\item[Sprint 2] SRS v0.9
+\item[Sprint 3] SRS v1.0
+\end{description}
 
 \section{Verification}
 Unit testing with JUnit. System testing with JUnit.
+
+As a result from the construction activities, each group shall produce the following deliverables:
+\begin{description}
+\item[Sprint 1] Test specification v0.5 -- Initial unit test suite
+\item[Sprint 2] Test specification v0.9 -- Initial system test suite
+\item[Sprint 3] Test specification v1.0 and a signed test report
+\end{description}
 
 \chapter{Monetizing the robot}
 After pitching the robot, all teams present a hidden purchase array representing what the team is willing to pay for each of the available robots. For each robot, the highest bidder establishes a customer relationship. If there is a tie, the business relations are assigned randomly.
