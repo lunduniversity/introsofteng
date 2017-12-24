@@ -27,7 +27,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.1 }
+\def\myversion{0.2 }
 \date{}
 %\title{%
 
@@ -68,10 +68,17 @@
         \hline
 	    Markus Borg & 2017-12-07 & Initial draft. & 0.1\\
         \hline
+        Markus Borg & 2017-12-27 & Complete draft. Sent for external review. & 0.2\\
+        \hline
     \end{tabular}
 \end{center}
 
 \chapter{Introduction}
+This document describes the project in ETSA02 Introduction to Software Engineering -- Methodology. Together with other students, you will work together to engineer a robot for competition in LU Rumble -- a local instance of team battles in Robocode. 
+
+In the remainder of this document, we use the term ``group'' to refer to the students working together during the project. While the student constellations would better be described as teams, i.e., groups of people working together toward a common goal, we reserve the term ``team'' to robots competing together in Robocode.
+
+This document is organized as follows: 
 
 \section{Learning goals}
 The project primarily aims to increase your ability to develop high quality software systems using established software engineering best practices. Moreover, basic software business concepts will be introduced  as each group will offer their product on a highly competitive market.
@@ -109,6 +116,20 @@ Figure~\ref{fig:overview} shows the four main phases of the project. First, duri
 \label{fig:overview}
 \end{figure}
 
+Figure~\ref{fig:context} shows the context of each individual group during the project. Organizationally, your group has three divisions: 1) engineering, 2) purchasing, and 3) sales. Your group will assign the following roles: 1) project manager, 2) requirements engineer, 3) development lead, 4) test lead, 5) domain expert, and 6) sales engineer. Each role is described in detail in Section~\ref{sec:org}.
+
+Groups do not exist in isolation, instead they act in a software ecosystem [REF]. During engineering of the robot, each group will be part of two supplier-customer relationships. First, your sales engineer will be responsible for marketing the robot under development. The domain expert of another team will sign a contract of sale, establishing a formal relationship. Your sales engineer will be the primary communication point for the purchasing group's domain expert, i.e., a supplier-customer relationship involving feedback, feature requests, and negotiations. Second, analogously, your domain expert will act as the customer in a supplier-customer relationship with another group. Note that, in some cases, groups might buy from and sell to the same other group -- this is not regulated in the ecosystem.
+
+On top of the two supplier-customer relationships, your group will also CONTINUE HERE.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.99\textwidth]{figures/projectContext.png}
+\caption{Project context.}
+\label{fig:context}
+\end{figure}
+
+
 The project will be graded as 3, 4, 5 or UG. The project supervisors' overall grading guidelines include the following:
 \begin{itemize}
 \item The final release meets the final requirements specification. This is partly indicated by the customer's successful acceptance testing.
@@ -132,7 +153,7 @@ Each team will develop a robot according to engineering principles. Prototyping 
 \section{Specification}
 Each group will perform ``integrated requirements engineering'' [REF], i.e., continuously evolving requirements throughout the entire development effort. The requirements will be captured in a Software Requirements Specification (SRS).
 
-As a result from the specification activities, each group shall produce the following deliverables:
+As a result from the specification activities, each group shall produce the following deliverables, further described in Section~\ref{sec:process}:
 \begin{description}
 \item[Sprint 1] SRS v0.5
 \item[Sprint 2] SRS v0.9
@@ -142,7 +163,7 @@ As a result from the specification activities, each group shall produce the foll
 \section{Construction}
 The first two computer exercises will help groups set up Robocode development in Eclipse and source code control in git.
 
-As most implementation work will be done outside of scheduled sessions, how the backbone of the programming is conducted will be decided by the individual groups. Still, for this project we recommend groups to follow a handful of well-known agile development practices, originally proposed as part of Extreme Programming (XP) [REF]. Below we list five that we believe are particularly suitable for the process model, along with their Wikipedia definitions:
+As most implementation work will be done outside of scheduled sessions, how the backbone of the programming is conducted will be decided by the individual groups. Still, for this project, we recommend groups to follow a handful of well-known agile development practices, originally proposed as part of Extreme Programming (XP) [REF]. Below we list five that we believe are particularly suitable for the process model, along with their Wikipedia definitions:
 
 \begin{description}
 \item[Pair programming] All code is produced by two people programming  on one workstation. One programmer has control over the workstation and is thinking mostly about the coding in detail. The other programmer is more focused on the big picture, and is continually reviewing the code that is being produced by the first programmer. Programmers trade roles after minute to hour periods. The pairs are not fixed; programmers switch partners frequently, so that everyone knows what everyone is doing, and everybody remains familiar with the whole system, even the parts outside their skill set. This way, pair programming also can enhance team-wide communication and goes hand-in-hand with the concept of Collective Code Ownership.
@@ -152,17 +173,18 @@ As most implementation work will be done outside of scheduled sessions, how the 
 \item[Collective code ownership] Everyone is responsible for all the code; therefore, everybody is allowed to change any part of the code. Collective code ownership is not only an organizational policy but also an attitude. Pair programming, especially overlapping pair rotation, contributes to this practice: by working in different pairs, programmers better understand the system context and contribute to more areas of the code base. Collective code ownership may accelerate development because a developer who spots an error can fix it immediately, which can reduce bugs overall. However, programmers may also introduce bugs when changing code that they do not understand well. Sufficiently well-defined unit tests should mitigate this problem: if unforeseen dependencies create errors, then when unit tests are run, they will show failures.
 \end{description}
 
-As a result from the verification activities, each group shall produce the following deliverables:
+As a result from the verification activities, each group shall produce the following deliverables. Each release consists of a jar-file, a class diagram, and source code documentation as further described in Section~\ref{sec:process}:
 \begin{description}
-\item[Sprint 1] SRS v0.5
-\item[Sprint 2] SRS v0.9
-\item[Sprint 3] SRS v1.0
+\item[Sprint 1] Robot Alpha release (Robot v0.5)
+\item[Sprint 2] Robot Beta release (Robot v0.9)
+\item[Sprint 3] Robot Final release (Robot v1.0)
 \end{description}
 
 \section{Verification}
-Unit testing with JUnit. System testing with JUnit.
+The first two computer exercises will introduce working with the JUnit framework for automated testing.
+Groups will work with unit testing as a natural companion to the programming during development. While JUnit is designed for automated execution of unit test cases, groups will also JUnit for system testing of both functional and non-functional aspects of the robot under development. Finally, groups will learn to use measure code coverage and use static code analysis tools to support software quality assurance.
 
-As a result from the construction activities, each group shall produce the following deliverables:
+As a result from the construction activities, each group shall produce the following deliverables, further described in Section~\ref{sec:process}:
 \begin{description}
 \item[Sprint 1] Test specification v0.5 -- Initial unit test suite
 \item[Sprint 2] Test specification v0.9 -- Initial system test suite
@@ -184,7 +206,9 @@ Purchase a robot from another group. Build a strategy around it. When it has bee
 \item Each team has a budget of \$100 to purchase robots.
 \end{enumerate}
 
-\chapter{Process model}
+\chapter{Maintaining supplier-customer relations}
+
+\chapter{Process model} \label{sec:process}
 The process model describing the product development encompasses three sprints, each with a separate set of deliverables. 
 After the three sprints, the final part of the course is dedicated to acceptance testing (potentially followed by filing of formal business complaints) and, of course, the concluding LU Rumble and the award ceremonies. 
 
@@ -288,7 +312,7 @@ Complete product, maximize sales, optimize Rumble strategy
 %Sedan är det upp till kunden att utföra acceptanstest (se avsnitt 2.5) i syfte att verifiera att det
 %som levererats är av tillräcklig kvalitet.
 
-\chapter{Team organization}
+\chapter{Group organization} \label{sec:org}
 Everyone should do everything, but some are more responsible than others.
 
 \begin{itemize}
