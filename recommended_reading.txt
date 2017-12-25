@@ -1,0 +1,9 @@
+Methods:
+L. Vijayasarathy and C. Butler. Choice of Software Development Methodologies: Do Organizational, Project, and Team Characteristics Matter? IEEE Software, 33(6), pp. 86-94, Aug 2016.
+A. Elbanna and S. Sarker. The Risks of Agile Software Development: Learning from Adoptersm IEEE Software, 33(5), pp. 72-75, Sept-Oct 2016.
+M. Poppendieck and M. Cusumano Lean Software Development: A Tutorial, IEEE Software, 29(5), pp. 26-32, Sept-Oct 2012.
+C. Ebert and M. Paasivaara. Scaling Agile, IEEE Software, 34(6), pp. 98-103, Nov-Dec 2017.
+
+Requirements engineering:
+I. Sommerville. Integrated Requirements Engineering: A Tutorial. 22(1), pp. 16-23, Jan-Feb 2005.
+
