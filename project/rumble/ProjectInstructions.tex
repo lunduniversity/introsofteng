@@ -203,10 +203,15 @@ As a result from the construction activities, each group shall produce the follo
 \end{description}
 
 \section{Verification}
-The first two computer exercises will introduce working with the JUnit framework for automated testing.
-Groups will work with unit testing as a natural companion to the programming during development. While JUnit is designed for automated execution of unit test cases, groups will also JUnit for system testing of both functional and non-functional aspects of the robot under development. Finally, groups will learn to use measure code coverage and use static code analysis tools to support software quality assurance.
+The first two computer exercises will introduce working with the JUnit framework for automated testing. Groups will work with unit testing as a natural companion to the programming during development. While JUnit is designed for automated execution of unit test cases, groups will also use JUnit for system testing of both functional and non-functional (quality) aspects of the robot under development. Finally, groups will learn to use measure code coverage and use static code analysis tools to support software quality assurance.
 
-As a result from the construction activities, each group shall produce the following deliverables, further described in Section~\ref{sec:process}:
+The test lead is responsible for delivering three growing development artifacts during the projects, as well as a final test report at the final release. First, a suite of automated unit test cases shall evolve during during the project. At sprint 1, an initial version shall simply be executable, but at the final release all source code shall be exercised by unit tests. Second, a suite of automated system test cases shall be developed -- an initial version at sprint 2, and the complete suite with the final release. Third, a test specification that describes the group's test and quality activities. At sprint 3, all requirements in the SRS shall be verified either by automated test cases or targeted by a convincing argumentation that the requirement has been verified through inspection.
+
+Verification activities are naturally supported by tools. Apart from the JUnit framework, the groups will use Eclipse plugins to measure code coverage and a set of static analysis tools to automatically analyze the source code from different quality perspectives. TODO: describe the tools to use.
+
+The final robot release shall be accompanied with a test report, signed by the test lead, showing that all test cases have been executed -- and all corresponding test verdicts. The customer will surely expect that all test cases passed, i.e., that you provide evidence that the entire SRS has been fulfilled by the final robot. In addition to the test verdicts, the test report shall contain appendices with extracted report from the code coverage tool as well as the static code analysis tools.
+
+As a result from the verification activities, each group shall produce the following deliverables, further described in Section~\ref{sec:process}:
 \begin{description}
 \item[Sprint 1] Test specification v0.5 -- Initial unit test suite
 \item[Sprint 2] Test specification v0.9 -- Initial system test suite
