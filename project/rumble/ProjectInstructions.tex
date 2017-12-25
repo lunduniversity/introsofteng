@@ -160,6 +160,7 @@ The IEEE SRS template provides a standard document structure: 1) an introduction
 The SRS connects all roles in the student group. While the requirements engineer is responsible for the SRS, the sales engineer is responsible for developing a marketing strategy based on its content. The SRS will be public on the Robot Market, i.e., when other teams consider purchasing your robot, they will critically review your SRS. The domain expert, having the most chance to predict what features will be valued on the Robot Market, will provide important input to the SRS -- effectively acting as a proxy-customer until the supplier-customer relationship has been established. Finally, the development lead is responsible for implementing the SRS in source code and the test lead is responsible for verifying that the developed product fulfills the SRS.
 
 There are several quality attributes that a high-quality SRS should comply with. First, the SRS should be complete, i.e., if properly implemented, the developed product shall be a competitive robot. Just as importantly, the robot shall not offer any features that are not properly captured in the SRS -- the customer is not allowed any surprises. Second, the SRS should constitute a coherent document that is easy to follow. Furthermore, each individual requirement should be:
+
 \begin{description}
 \item[Complete] All information needed to implement source code to fulfill the requirement shall be specified. Developers must not be forced to read between the lines.
 \item[Consistent] There are no contradictions between individual requirements.
@@ -180,7 +181,9 @@ As a result from the specification activities, each group shall produce the foll
 \section{Construction}
 The first two computer labs will help groups set up Robocode development in Eclipse and source code control in git. Moreover, the second computer lab will initiate automated unit testing, an activity that overlaps construction and verification.
 
-As most practical construction work will be done outside of scheduled sessions, how the backbone of the programming is conducted will be decided by the individual groups. Still, for this project, we recommend groups to follow a handful of well-known agile development practices, originally proposed as part of Extreme Programming (XP) [REF]. Below we list five that we believe are particularly suitable for the process model, along with their Wikipedia definitions:
+An early construction activity is software design. In this project, the design is limited to object-oriented design -- the robot development is too restricted to address any considerations on the software architecture level and there is also no user interaction design. Each group will present the Object-Oriented Design (OOD) using a Unified Modeling Language (UML) class diagram. As the project in inspired by agile development methodologies, there will be no big design activity upfront. Instead, the OOD will evolve as the construction phase proceeds. The development lead is responsible to complement the final source code delivery with a class diagram to describe the OOD after-the-fact. Any group that recognizes a value in using class diagrams in their  robot marketing are of course welcome to do so. Furthermore, the final source code deliverable shall be complemented by Javadoc documentation.  
+
+As most practical construction work will be done outside of scheduled sessions, how the backbone of the programming will be conducted must be decided by the individual groups. Still, for this project, we recommend groups to follow a handful of well-known agile development practices, originally proposed as part of Extreme Programming (XP) [REF]. Below we list five that we believe are particularly suitable for the process model, along with their Wikipedia definitions:
 
 \begin{description}
 \item[Pair programming] All code is produced by two people programming  on one workstation. One programmer has control over the workstation and is thinking mostly about the coding in detail. The other programmer is more focused on the big picture, and is continually reviewing the code that is being produced by the first programmer. Programmers trade roles after minute to hour periods. The pairs are not fixed; programmers switch partners frequently, so that everyone knows what everyone is doing, and everybody remains familiar with the whole system, even the parts outside their skill set. This way, pair programming also can enhance team-wide communication and goes hand-in-hand with the concept of Collective Code Ownership.
@@ -190,11 +193,13 @@ As most practical construction work will be done outside of scheduled sessions, 
 \item[Collective code ownership] Everyone is responsible for all the code; therefore, everybody is allowed to change any part of the code. Collective code ownership is not only an organizational policy but also an attitude. Pair programming, especially overlapping pair rotation, contributes to this practice: by working in different pairs, programmers better understand the system context and contribute to more areas of the code base. Collective code ownership may accelerate development because a developer who spots an error can fix it immediately, which can reduce bugs overall. However, programmers may also introduce bugs when changing code that they do not understand well. Sufficiently well-defined unit tests should mitigate this problem: if unforeseen dependencies create errors, then when unit tests are run, they will show failures.
 \end{description}
 
-As a result from the verification activities, each group shall produce the following deliverables. Each release consists of a jar-file, a class diagram, and source code documentation as further described in Section~\ref{sec:process}:
+The construction phase involves prototyping to quickly create a working robot. Prototyping supports specification activities by enabling early executable software -- truly beneficial in contexts where the requirements are very unstable. Already at the end of sprint 1, around the LU Robot Fair, the group shall deliver a first version of the robot. In line with lean software development practices, the first version shall be a Minimum Viable Product (MVP), i.e., a product with just enough features to satisfy early customers to enable feedback for future product evolution throughout sprints 2 and 3. 
+
+As a result from the construction activities, each group shall produce the following deliverables. Each release shall be prepared as two jar-files: 1) one jar-file for customers and 2) one jar-file with embedded source code for the regulatory body. As previously stated, the final release to the regulatory body shall be complemented by a class diagram and Javadoc documentation, as further described in Section~\ref{sec:process}:
 \begin{description}
 \item[Sprint 1] Robot Alpha release (Robot v0.5) -- An MVP
-\item[Sprint 2] Robot Beta release (Robot v0.9)
-\item[Sprint 3] Robot Final release (Robot v1.0)
+\item[Sprint 2] Robot Beta release (Robot v0.9) -- A better robot
+\item[Sprint 3] Robot Final release (Robot v1.0) -- The final robot
 \end{description}
 
 \section{Verification}
