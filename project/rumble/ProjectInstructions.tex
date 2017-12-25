@@ -155,7 +155,7 @@ Each team will develop a robot (see Figure~\ref{fig:robot}) according to establi
 \section{Specification}
 Requirements engineering, i.e., a systematic approach to developing a product with an end-user perspective, will be an integrated activity throughout the project. The requirements will be captured in a Software Requirements Specification (SRS) adhering to a template structure provided by the Institute of Electrical and Electronics Engineers (IEEE). IEEE is the world's largest technical professional organization, and a natural resource for software engineers -- possibly contented by the Association of Computing Machinery (ACM). Both organizations support engineers in development of software products adhering to state-of-practice approaches and provide ethical guidelines.
 
-The IEEE SRS template provides a standard document structure: 1) an introduction section, 2) an overall description of the product under development, and 3) a list of product features further broken down into detailed requirements. Furthermore, the template supports engineers to specify quality requirements such as performance, maintainability, and memory footprint.
+The IEEE SRS template provides a standard document structure: 1) an introduction section, 2) an overall description of the product under development, and 3) a list of product features further broken down into detailed requirements. Furthermore, the template supports engineers to specify quality requirements such as performance, maintainability, and memory footprint. Groups are recommended to use a combination of traditional requirements of ``shall'' format and step-wise use case descriptions. While also user stories are covered in the lectures, it uses a narrative style that is less appropriate for development of autonomous robots.
 
 The SRS connects all roles in the student group. While the requirements engineer is responsible for the SRS, the sales engineer is responsible for developing a marketing strategy based on its content. The SRS will be public on the Robot Market, i.e., when other teams consider purchasing your robot, they will critically review your SRS. The domain expert, having the most chance to predict what features will be valued on the Robot Market, will provide important input to the SRS -- effectively acting as a proxy-customer until the supplier-customer relationship has been established. Finally, the development lead is responsible for implementing the SRS in source code and the test lead is responsible for verifying that the developed product fulfills the SRS.
 
@@ -166,14 +166,15 @@ There are several quality attributes that a high-quality SRS should comply with.
 \item[Feasible] The requirement can be practically implemented by the developers given the available resources. Also, the requirement will bring value to the end user or another stakeholder.
 \item[Modifiable] An SRS is rarely static, thus all requirements must be able to change. Each requirement should be clearly identifiable.
 \item[Unambiguous] A requirement shall only be interpretable in one way, i.e., no subjectivity can exist. Quality requirements should be quantified, not described using vague adjectives.
+\item[Design free] Requirements shall specify what the system must or must not do, but not how the software will ensure the requirement is met -- leave that to the construction phase.
 \item[Testable] Requirements shall be possible to verifiable, preferably by testing, otherwise inspection. 
 \end{description}
 
 As a result from the specification activities, each group shall produce the following deliverables, further described in Section~\ref{sec:process}:
 \begin{description}
 \item[Sprint 1] SRS v0.5 -- Main features captured
-\item[Sprint 2] SRS v0.9 -- Detailed requirements specified.
-\item[Sprint 3] SRS v1.0 -- What you read is what you get
+\item[Sprint 2] SRS v0.9 -- Detailed requirements specified
+\item[Sprint 3] SRS v1.0 -- A complete Robot specification
 \end{description}
 
 \section{Construction}
