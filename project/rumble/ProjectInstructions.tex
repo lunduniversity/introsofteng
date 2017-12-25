@@ -46,7 +46,7 @@
         \vspace{0.5cm}
         the LU Rumble\\
         \vspace{1.5cm}
-        \LARGE{Version \myversion approved}\\
+        \LARGE{Version \myversion}\\ %approved}\\
         \vspace{1.5cm}
         Prepared by Markus Borg\\
         %\vspace{1.5cm}
@@ -129,8 +129,10 @@ On top of the two supplier-customer relationships, your group will also communic
 \label{fig:context}
 \end{figure}
 
+\section{Project grading}
+The project will be graded as 3, 4, 5 or UG. TODO: Group grading and individual grades.
 
-The project will be graded as 3, 4, 5 or UG. The project supervisors' overall grading guidelines include the following:
+The project supervisors' overall grading guidelines include the following:
 \begin{itemize}
 \item The final release meets the final requirements specification. This is partly indicated by the customer's successful acceptance testing.
 \item The delivered robot is successful and non-trivial.
@@ -141,29 +143,43 @@ The project will be graded as 3, 4, 5 or UG. The project supervisors' overall gr
 \end{itemize}
 
 \chapter{Engineering the robot}
-Each team will develop a robot according to engineering principles. Prototyping and capturing requirements, testing early. The engineering is organized in three development sprints.
+Each team will develop a robot (see Figure~\ref{fig:robot}) according to established engineering principles. These principles include product prototyping, integrated requirements engineering, and automated testing. The process model is organized in three development sprints, further described in Section~\ref{sec:process}. The engineering process is dominated by three core activities: \textit{specification}, \textit{construction}, and \textit{verification}. In line with agile development methodologies, all sprints consist of a mix of these three activities. Still, the groups' focus during the project will progress from specification, through construction, to verification -- also reflected by the order of the lectures.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.50\textwidth]{figures/robotSide.jpg}
 \caption{Model of the Robocode robot (\copyright~Klaus Knopper under CC BY-SA 3.0).}
-\label{fig:overview}
+\label{fig:robot}
 \end{figure}
 
 \section{Specification}
-Each group will perform ``integrated requirements engineering'' [REF], i.e., continuously evolving requirements throughout the entire development effort. The requirements will be captured in a Software Requirements Specification (SRS).
+Requirements engineering, i.e., a systematic approach to developing a product with an end-user perspective, will be an integrated activity throughout the project. The requirements will be captured in a Software Requirements Specification (SRS) adhering to a template structure provided by the Institute of Electrical and Electronics Engineers (IEEE). IEEE is the world's largest technical professional organization, and a natural resource for software engineers -- possibly contented by the Association of Computing Machinery (ACM). Both organizations support engineers in development of software products adhering to state-of-practice approaches and provide ethical guidelines.
+
+The IEEE SRS template provides a standard document structure: 1) an introduction section, 2) an overall description of the product under development, and 3) a list of product features further broken down into detailed requirements. Furthermore, the template supports engineers to specify quality requirements such as performance, maintainability, and memory footprint.
+
+The SRS connects all roles in the student group. While the requirements engineer is responsible for the SRS, the sales engineer is responsible for developing a marketing strategy based on its content. The SRS will be public on the Robot Market, i.e., when other teams consider purchasing your robot, they will critically review your SRS. The domain expert, having the most chance to predict what features will be valued on the Robot Market, will provide important input to the SRS -- effectively acting as a proxy-customer until the supplier-customer relationship has been established. Finally, the development lead is responsible for implementing the SRS in source code and the test lead is responsible for verifying that the developed product fulfills the SRS.
+
+There are several quality attributes that a high-quality SRS should comply with. First, the SRS should be complete, i.e., if properly implemented, the developed product shall be a competitive robot. Just as importantly, the robot shall not offer any features that are not properly captured in the SRS -- the customer is not allowed any surprises. Second, the SRS should constitute a coherent document that is easy to follow. Furthermore, each individual requirement should be:
+\begin{description}
+\item[Complete]
+\item[Consistent] 
+\item[Feasible]
+\item[Modifiable]
+\item[Unambiguous]
+\item[Testable]
+\end{description}
 
 As a result from the specification activities, each group shall produce the following deliverables, further described in Section~\ref{sec:process}:
 \begin{description}
-\item[Sprint 1] SRS v0.5
-\item[Sprint 2] SRS v0.9
-\item[Sprint 3] SRS v1.0
+\item[Sprint 1] SRS v0.5 -- Main features captured
+\item[Sprint 2] SRS v0.9 -- Detailed requirements specified.
+\item[Sprint 3] SRS v1.0 -- 
 \end{description}
 
 \section{Construction}
-The first two computer exercises will help groups set up Robocode development in Eclipse and source code control in git.
+The first two computer labs will help groups set up Robocode development in Eclipse and source code control in git. Moreover, the second computer lab will initiate automated unit testing, an activity that overlaps construction and verification.
 
-As most implementation work will be done outside of scheduled sessions, how the backbone of the programming is conducted will be decided by the individual groups. Still, for this project, we recommend groups to follow a handful of well-known agile development practices, originally proposed as part of Extreme Programming (XP) [REF]. Below we list five that we believe are particularly suitable for the process model, along with their Wikipedia definitions:
+As most practical construction work will be done outside of scheduled sessions, how the backbone of the programming is conducted will be decided by the individual groups. Still, for this project, we recommend groups to follow a handful of well-known agile development practices, originally proposed as part of Extreme Programming (XP) [REF]. Below we list five that we believe are particularly suitable for the process model, along with their Wikipedia definitions:
 
 \begin{description}
 \item[Pair programming] All code is produced by two people programming  on one workstation. One programmer has control over the workstation and is thinking mostly about the coding in detail. The other programmer is more focused on the big picture, and is continually reviewing the code that is being produced by the first programmer. Programmers trade roles after minute to hour periods. The pairs are not fixed; programmers switch partners frequently, so that everyone knows what everyone is doing, and everybody remains familiar with the whole system, even the parts outside their skill set. This way, pair programming also can enhance team-wide communication and goes hand-in-hand with the concept of Collective Code Ownership.
@@ -175,7 +191,7 @@ As most implementation work will be done outside of scheduled sessions, how the 
 
 As a result from the verification activities, each group shall produce the following deliverables. Each release consists of a jar-file, a class diagram, and source code documentation as further described in Section~\ref{sec:process}:
 \begin{description}
-\item[Sprint 1] Robot Alpha release (Robot v0.5)
+\item[Sprint 1] Robot Alpha release (Robot v0.5) -- An MVP
 \item[Sprint 2] Robot Beta release (Robot v0.9)
 \item[Sprint 3] Robot Final release (Robot v1.0)
 \end{description}
@@ -347,7 +363,7 @@ Everyone should do everything, but some are more responsible than others.
 \item Contract of sales
 \end{itemize}
 \item Time reporting
-\item Robot team composition
+\item Robot team composition sheet
 \end{itemize}
 
 \end{document}
