@@ -235,7 +235,17 @@ One of the primary goals of the project is to maximize the profit of the group, 
 
 The groups will market their Robot already at a robot fair already after Sprint 1. At this early point in time, only an Alpha release of the robot will be available and an initial version of the SRS -- still, the sales engineer is responsible for developing a convincing marketing concept. All groups will get the chance to pitch their robot at the robot fair, and also present it online on the Robot Market, complemented by the most recent SRS.
 
-After the robot fair, all groups will submit a ``purchase array'' to the regulatory body. The purchase array consists of one element per group, and each element should contain an integer representing how much your group is willing to pay for the corresponding robot (TODO: add a figure). You are not allowed to make an offer for your own robot, and you are not allowed to offer less than \$10 for any other robot. The purchase array should be signed by the domain expert and delivered as a physical copy to the regulatory body through the mailbox in ``grå skåpet''.
+After the robot fair, all groups will submit a ``purchase array'' to the regulatory body. The purchase array consists of one element per group, and each element should contain an integer representing how much your group is willing to pay for the corresponding robot. You are not allowed to make an offer for your own robot, and you are not allowed to offer less than \$10 for any other robot. The purchase array should be signed by the domain expert and delivered as a physical copy to the regulatory body through the mailbox in ``grå skåpet''.
+
+Figure~\ref{fig:array} shows an example of purchase arrays submitted to the regulatory body. The purchase arrays are never disclosed, the regulatory body matches groups into supplier-customer relationships. In the example, cells with bold text show winning bids. Group D, highlighted with a white row, was particularly interested in Robots E, F, and C -- but unfortunately, other teams offer more. Group D instead got to buy Robot B for \$15. Note that the highest bid for a robot can be a tie, such as for Robot A and G. In the case of Robot A, no group offered more than the minimum \$10, which resulted in a (possibly unexpected) bargain buy. 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.80\textwidth]{figures/purchaseArray.png}
+\caption{Example of seven purchase arrays submitted to the regulatory body.}
+\label{fig:array}
+\end{figure}
+
 
 When all groups have provided their purchase arrays, the regulatory body will commence its work to establish supplier-customer relationships. For each robot, the highest bidder turns into a customer of the group engineering the corresponding robot. If there is a tie, the customer relationship will be assigned randomly. In the end, all groups will 1) pre-order a robot from a supplier, and 2) have a customer that offered at least \$10 to pre-order a robot (the price of the cheapest basic bot, see TODO). Note that the decision of the regulatory body cannot be appealed. 
 
