@@ -144,7 +144,17 @@ The project supervisors' overall grading guidelines include the following:
 \item All deliverables are of high quality. Appropriate technical language and a consistent look-and-feel across documents.
 \end{itemize}
 
-\chapter{Engineering the robot}
+\chapter{The project from a bird's eye view}
+The project consists of three main activities, interconnected as presented in Figure~\ref{fig:components}. This section presents an overview of the three activities.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.40\textwidth]{figures/projectComponents.png}
+\caption{Project components.}
+\label{fig:components}
+\end{figure}
+
+\section{Engineering the robot}
 Each team will develop a robot (see Figure~\ref{fig:robot}) according to established engineering principles. These principles include product prototyping, integrated requirements engineering, and automated testing. The process model is organized in three development sprints, further described in Section~\ref{sec:process}. The engineering process is dominated by three core activities: \textit{specification}, \textit{construction}, and \textit{verification}. In line with agile development methodologies, all sprints consist of a mix of these three activities. Still, the groups' focus during the project will progress from specification, through construction, to verification -- also reflected by the order of the lectures.
 
 \begin{figure}
@@ -154,7 +164,7 @@ Each team will develop a robot (see Figure~\ref{fig:robot}) according to establi
 \label{fig:robot}
 \end{figure}
 
-\section{Specification}
+\subsection{Specification}
 Requirements engineering, i.e., a systematic approach to developing a product with an end-user perspective, will be an integrated activity throughout the project. The requirements will be captured in a Software Requirements Specification (SRS) adhering to a template structure provided by the Institute of Electrical and Electronics Engineers (IEEE). IEEE is the world's largest technical professional organization, and a natural resource for software engineers -- possibly contented by the Association of Computing Machinery (ACM). Both organizations support engineers in development of software products adhering to state-of-practice approaches and provide ethical guidelines.
 
 The IEEE SRS template provides a standard document structure: 1) an introduction section, 2) an overall description of the product under development, and 3) a list of product features further broken down into detailed requirements. Furthermore, the template supports engineers to specify quality requirements such as performance, maintainability, and memory footprint. Groups are recommended to use a combination of traditional requirements of ``shall'' format and step-wise use case descriptions. While also user stories are covered in the lectures, it uses a narrative style that is less appropriate for development of autonomous robots.
@@ -180,7 +190,7 @@ As a result from the specification activities, each group shall produce the foll
 \item[Sprint 3] SRS v1.0 -- A complete Robot specification
 \end{description}
 
-\section{Construction}
+\subsection{Construction}
 The first two computer labs will help groups set up Robocode development in Eclipse and source code control in git. Moreover, the second computer lab will initiate automated unit testing, an activity that overlaps construction and verification.
 
 An early construction activity is software design. In this project, the design is limited to object-oriented design -- the robot development is too restricted to address any considerations on the software architecture level and there is also no user interaction design. Each group will present the Object-Oriented Design (OOD) using a Unified Modeling Language (UML) class diagram. As the project in inspired by agile development methodologies, there will be no big design activity upfront. Instead, the OOD will evolve as the construction phase proceeds. The development lead is responsible to complement the final source code delivery with a class diagram to describe the OOD after-the-fact. Any group that recognizes a value in using class diagrams in their  robot marketing are of course welcome to do so. Furthermore, the final source code deliverable shall be complemented by Javadoc documentation.  
@@ -204,7 +214,7 @@ As a result from the construction activities, each group shall produce the follo
 \item[Sprint 3] Robot Final release (Robot v1.0) -- The final robot
 \end{description}
 
-\section{Verification}
+\subsection{Verification}
 The first two computer exercises will introduce working with the JUnit framework for automated testing. Groups will work with unit testing as a natural companion to the programming during development. While JUnit is designed for automated execution of unit test cases, groups will also use JUnit for system testing of both functional and non-functional (quality) aspects of the robot under development. Finally, groups will learn to use measure code coverage and use static code analysis tools to support software quality assurance.
 
 The test lead is responsible for delivering three growing development artifacts during the projects, as well as a final test report at the final release. First, a suite of automated unit test cases shall evolve during during the project. At sprint 1, an initial version shall simply be executable, but at the final release all source code shall be exercised by unit tests. Second, a suite of automated system test cases shall be developed -- an initial version at sprint 2, and the complete suite with the final release. Third, a test specification that describes the group's test and quality activities. At sprint 3, all requirements in the SRS shall be verified either by automated test cases or targeted by a convincing argumentation that the requirement has been verified through inspection.
@@ -220,7 +230,7 @@ As a result from the verification activities, each group shall produce the follo
 \item[Sprint 3] Test specification v1.0 and a signed test report
 \end{description}
 
-\chapter{Monetizing the robot}
+\section{Monetizing the robot}
 One of the primary goals of the project is to maximize the profit of the group, i.e., monetizing the robot. The business aspects of the project involves a combination of bespoke software engineering and software engineering for an open market. All groups will offer their robot on a highly competitive market -- consisting of the other groups, each with a \$100 budget to invest in a robot team for the LU Rumble.
 
 The groups will market their Robot already at a robot fair already after Sprint 1. At this early point in time, only an Alpha release of the robot will be available and an initial version of the SRS -- still, the sales engineer is responsible for developing a convincing marketing concept. All groups will get the chance to pitch their robot at the robot fair, and also present it online on the Robot Market, complemented by the most recent SRS.
@@ -242,7 +252,7 @@ Figure~\ref{fig:market} shows an example of how two groups purchase robots. Afte
 \label{fig:market}
 \end{figure}
 
-\chapter{Strategizing to win the LU Rumble}
+\section{Strategizing to win the LU Rumble}
 The LU Rumble is a customized instance of a RoboCode team rumble. Each group will compose a team of up to five robots that will compete together against other teams. Each team must have one leader robot, which can be complemented by normal robots or droids.
 
 As in any rumble, the goal is to reduce the energy of enemy robots to 0. Team robots will compete on a battlefield until one team is left. A standard robot starts with 100 energy and is equipped with a radar and a gun turret. Each time the gun is fired, the robot loses energy according to the payload. If the bullet does not hit any target, the energy is lost. If the bullet hits another robot, energy is transferred from the hit robot to the firing robot.
@@ -261,36 +271,12 @@ Each team must adhere to three strict constraints:
 \item The final team must be submitted as a jar-file to the LU Rumble on Friday morning before the event. 
 \end{enumerate}
 
-\chapter{The regulatory body} \label{sec:regbody}
-Formal document templates:
+\chapter{Project phases}
 
-\begin{itemize}
-\item Contract of sale between supplier and customer
-\item Purchase order for Robot Market
-\item Business claims
-\end{itemize}
+\section{Project inception}
+Team formation
 
-\chapter{Maintaining supplier-customer relations}
-What to do and what not to...\\
-
-Guidelines for suppliers:
-\begin{itemize}
-\item The customer is always right
-\item Do not sacrifice the chance to succeed on the open market
-\item Be open to new ideas from the customer.
-\item Embrace change -- it is inevitable anyway.
-\item Negotiate nicely.
-\end{itemize}
-
-Guidelines for customers:
-\begin{itemize}
-\item Accept what you've pre-booked.
-\item Do not provide feedback that deviates from the original vision of the robot.
-\item Be open to alternative solutions proposed by the supplier.
-\item Negotiate nicely.
-\end{itemize}
-
-\chapter{Process model} \label{sec:process}
+\section{Process model} \label{sec:process}
 The process model describing the product development encompasses three sprints, each with a separate set of deliverables. 
 After the three sprints, the final part of the course is dedicated to acceptance testing (potentially followed by filing of formal business complaints) and, of course, the concluding LU Rumble and the award ceremonies. 
 
@@ -331,8 +317,9 @@ After the three sprints, the final part of the course is dedicated to acceptance
 %kraven och design kan ändras tidigt i projektet och att det inte är säkert att programkoden du
 %har skrivit verkligen blir användbar.
 
-\section{Sprint 1}
-Team formation, feature scoping, prototyping, marketing concept
+\subsection{Sprint 1}
+
+feature scoping, prototyping, marketing concept
 
 %Projektets första fas innebär en uppstart av projektet. Projektmedlemmarna får en chans att
 %träffas och eventuellt nya kontakter etableras. För att gruppen ska fungera bra ihop under projektets
@@ -348,7 +335,7 @@ Team formation, feature scoping, prototyping, marketing concept
 %Infrastruktur skapas på Google Drive
 %Projektplan
 
-\section{Sprint 2}
+\subsection{Sprint 2}
 Maintain business relations, evolve product, develop Rumble strategy
 
 %Projektets andra fas innebär en detaljerad analys av kundens behov och en efterföljande teknisk
@@ -361,7 +348,7 @@ Maintain business relations, evolve product, develop Rumble strategy
 %Fas 2 avslutas med Milstolpe 1 (MS1). Milstolpen godkänns av projekthandledaren och nås
 %när både Projektplan (från Fas 1) och Kravspecifikation är godkända.
 
-\section{Sprint 3}
+\subsection{Sprint 3}
 Complete product, maximize sales, optimize Rumble strategy
 
 %I den tredje fasen av projektet ligger fokus på att utveckla det exekverbara programmet. Detta
@@ -378,7 +365,9 @@ Complete product, maximize sales, optimize Rumble strategy
 %ändringshantering enligt avsnitt 3.6 med den skillnaden att projekthandledaren inte behöver
 %engageras.
 
-\section{Acceptance testing and business claims}
+\section{Post mortem}
+Acceptance testing and business claims.
+
 %I den fjärde och sista fasen av projektet ligger fokus på att testa hela systemet och överlämna
 %det till kund. Det innebär att alla enheter av programvaran måste integreras till ett system
 %Faser och milstolpar 23
@@ -389,12 +378,47 @@ Complete product, maximize sales, optimize Rumble strategy
 %gå tillbaka och ändra i de utvecklade produkterna (krav, kod, etc.) och upprepa samtliga testfall.
 %Projektgruppen ska även skriva en kort Användarmanual för systemstart.
 
-\section{LU Rumble and Awards}
+\section{LU Rumble}
+Awards to the best strategizer and the best monetizer. People's choice award to the best engineering endeavor.
+
 %Efter fas 4 har den utvecklade produkten levererats till kund och projektet kan därmed avslutas.
 %Sedan är det upp till kunden att utföra acceptanstest (se avsnitt 2.5) i syfte att verifiera att det
 %som levererats är av tillräcklig kvalitet.
 
-\chapter{Group organization} \label{sec:org}
+\chapter{Inter-group communication}
+
+\section{The regulatory body} \label{sec:regbody}
+Formal document templates:
+
+\begin{itemize}
+\item Contract of sale between supplier and customer
+\item Purchase order for Robot Market
+\item Business claims
+\end{itemize}
+
+\section{Maintaining supplier-customer relations}
+What to do and what not to...\\
+
+Guidelines for suppliers:
+\begin{itemize}
+\item The customer is always right
+\item Do not sacrifice the chance to succeed on the open market
+\item Be open to new ideas from the customer.
+\item Embrace change -- it is inevitable anyway.
+\item Negotiate nicely.
+\end{itemize}
+
+Guidelines for customers:
+\begin{itemize}
+\item Accept what you've pre-booked.
+\item Do not provide feedback that deviates from the original vision of the robot.
+\item Be open to alternative solutions proposed by the supplier.
+\item Negotiate nicely.
+\end{itemize}
+
+\chapter{Details}
+
+\section{Group organization} \label{sec:org}
 Everyone should do everything, but some are more responsible than others.
 
 \begin{itemize}
@@ -406,7 +430,7 @@ Everyone should do everything, but some are more responsible than others.
 \item Domain expert -- Mastering Robocode, LU Rumble strategy, supplier communication, negotiations, acceptance testing -- Signed contract (as customer), acceptance test report, team jar-file
 \end{itemize}
 
-\chapter{Deliverables}
+\section{Deliverables}
 \begin{itemize}
 \item Marketing concepts
 \item SRS
@@ -419,7 +443,7 @@ Everyone should do everything, but some are more responsible than others.
 \item LU Rumble team
 \end{itemize}
 
-\chapter{Course infrastructure}
+\section{Course infrastructure}
 \begin{itemize}
 \item SRS template
 \item Slack workspace
