@@ -32,15 +32,16 @@ Learning outcomes
 - Be able to describe the most omportant steps in project planning and project tracking.
 - Be able to describe how an organization plan and manage a series of projects.
 
-### Competences and skills
-- For a passing grade the student must
+## Competences and skills
+
+### For a passing grade the student must
 - Be able to develop a project plan, requirements specification and test plan for a small project.
 - Be able to review a project plan, requirements specification and test plan for a small project.
 - Be able to formulate text for project documentation.
 
-### Judgement and approach
+## Judgement and approach
 
-- For a passing grade the student must
+### For a passing grade the student must
 - Understand the complexity involved in developing software systems.
 - Have an understanding of the professional role of the engineer
 
