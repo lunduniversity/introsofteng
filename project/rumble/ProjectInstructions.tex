@@ -229,12 +229,12 @@ As most practical construction work will be done outside of scheduled sessions, 
 \item[Collective code ownership] Everyone is responsible for all the code; therefore, everybody is allowed to change any part of the code. Collective code ownership is not only an organizational policy but also an attitude. Pair programming, especially overlapping pair rotation, contributes to this practice: by working in different pairs, programmers better understand the system context and contribute to more areas of the code base. Collective code ownership may accelerate development because a developer who spots an error can fix it immediately, which can reduce bugs overall. However, programmers may also introduce bugs when changing code that they do not understand well. Sufficiently well-defined unit tests should mitigate this problem: if unforeseen dependencies create errors, then when unit tests are run, they will show failures.
 \end{description}
 
-The construction phase involves prototyping to quickly create a working robot. Prototyping supports specification activities by enabling early executable software -- truly beneficial in contexts where the requirements are very unstable. Already at the end of sprint 1, around the LU Robot Fair, the group shall deliver a first version of the robot. In line with lean software development practices, the first version shall be a Minimum Viable Product (MVP), i.e., a product with just enough features to satisfy early customers to enable feedback for future product evolution throughout sprints 2 and 3. 
+The construction phase involves prototyping to quickly create a working robot. Prototyping supports specification activities by enabling early executable software -- truly beneficial in contexts where the requirements are very unstable. Already at the end of sprint 1, around the LU Robot Fair, the group shall deliver a first prototype of the robot. The prototype will help the purchaser to understand your product vision, and enable better feedback. The second deliverable shall be a Minimum Viable Product (MVP) inspired by lean software development practices [REF], i.e., a product with just enough features to satisfy early customers and to stimulate feedback for future robot evolution throughout Sprint 3. 
 
 As a result from the construction activities, each group shall produce the following deliverables. Each release shall be prepared as two jar-files: 1) one jar-file for customers and 2) one jar-file with embedded source code for the regulatory body. As previously stated, the final release to the regulatory body shall be complemented by a class diagram and Javadoc documentation, as further described in Section~\ref{sec:process}:
 \begin{description}
-\item[Sprint 1] Robot Alpha release (Robot v0.5) -- An MVP
-\item[Sprint 2] Robot Beta release (Robot v0.9) -- A better robot
+\item[Sprint 1] Robot Alpha release (Robot v0.5) -- A prototype
+\item[Sprint 2] Robot Beta release (Robot v0.9) -- An MVP
 \item[Sprint 3] Robot Final release (Robot v1.0) -- The final robot
 \end{description}
 
@@ -366,15 +366,21 @@ The process model describing the product development encompasses three sprints, 
 %har skrivit verkligen blir användbar.
 
 \subsection{Sprint 1}
-The first sprint overlaps with the project inception as the groups will start working on robot development already at the first exercise sessions in the first week. The high-level goals of Sprint 1 are to successfully do: 1) feature scoping, 2) robot prototyping, and 3) developing a marketing concept.
+The first sprint overlaps with the project inception as the groups will start working on robot development already at the first exercise sessions in the first week. The high-level goals of Sprint 1 are to successfully do: 1) feature scoping, 2) robot prototyping, and 3) developing a marketing concept. This means that the group will be focused on engineering and monetizing during Sprint 1. Some strategizing will also occur, as the domain expert will purchase a robot from a supplier after the Robot Fair.
 
-Feature scoping...
+The first steps of the requirements engineering involves analyzing what type of robot would be in high demand by the other groups. This type of market analysis is no easy task to conduct, and surely the requirements engineer will discuss intensively with the domain expert and the sales engineer. Engineering a software product means making a series of successful technology and business decisions, and already during Sprint 1 the group needs to set the direction for the engineering department. High-level requirements are referred to as features, and the task of deciding which features to implement in the product is called feature scoping. At the end of Sprint 1, SRS v0.5 should specify the features the group intends to implement in their robot. The features should be promising enough to generate good offers by other groups, but do not promise too much (aka. ``over scoping'') -- if you do not deliver a robot that fulfils the specification in the final release, your customer will most likely file business claims to the regulatory body! On the other hand, the SRS v0.5 is not carved in stone. There will be negotiations during Sprints 2 and 3, and if both the customer and the regulatory body accept your change requests, you can both modify and remove features later -- and adding new features is of course always possible.
 
 Robot prototyping...
 
-The marketing concept is the strategy that an organization implements to satisfy customers needs, increase sales, maximize profit, and beat the competition. The customers' focus and values are the routes to achieve sales and maximize profits. In the project, the marketing concept is a customer-centered ``sense and responds'' philosophy. Your group's job is not to find the right customers for your robot, but rather to find the right robot for your customers -- both the bespoke customer and the Robot Market.
+The marketing concept is the strategy that an organization implements to satisfy customers needs, increase sales, maximize profit, and beat the competition. The customers' focus and values are the routes to achieve sales and maximize profits. In the project, the marketing concept is a customer-centered ``sense and responds'' philosophy. Your group's job is not to find the right customers for your robot, but rather to find the right robot for your customers -- both the bespoke customer and the Robot Market. At the end of Sprint 1, the course will organize a Robot Fair. Each group will get a 3 minute slot to pitch their product. All groups will also have a webpage on a shared Google Drive folder.
 
-At the end of Sprint 1, the course will organize a Robot Fair. Each group will get a 3 minute slot to pitch their product. All groups will also have a webpage on a shared Google Drive folder.
+Sprint 1 shall result in the following deliverables to the following stakeholders. The responsible role is shown in parentheses.
+\begin{itemize}
+\item SRS v0.5 to the regulatory body (Requirements engineer)
+\item Robot Alpha release (Development lead)
+\item Test specification v0.5 (Test lead)
+\item 3 min sales pitch and website (Sales engineer)
+\end{itemize}
 
 %Projektets första fas innebär en uppstart av projektet. Projektmedlemmarna får en chans att
 %träffas och eventuellt nya kontakter etableras. För att gruppen ska fungera bra ihop under projektets
