@@ -330,101 +330,83 @@ The process model describing the product development encompasses three sprints, 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.85\textwidth]{figures/processModel.png}
-\caption{Process model.}
+\includegraphics[width=1.0\textwidth]{figures/processModel.png}
+\caption{The ETSA02 process model, organized in three sprints.}
 \label{fig:overview}
 \end{figure}
-
-%Produktutvecklingen genomförs i fyra faser enligt modellen Unified Software Development
-%Process [Jacobson et al., 1999]: 1) Inception, 2) Elaboration, 3) Construction och 4) Transition.
-%De mest omfattande faserna är uppdelade i flera iterationer. Faserna visas överst i figur 3.1 och
-%iterationerna presenteras nederst.
-%
-%Varje fas kommer att domineras av en typ av arbete, men även kompletterande arbete av tidigare
-%slag, dvs. arbetstyperna överlappar. Exempelvis kommer viss kravhantering att fortsätta ske
-%även under fasen Construction – krav kommer troligtvis att behöva kompletteras eller förfinas.
-%Varje fas är uppdelad i interationer genom ett antal vecko-sprints. Kombinationen av fasernas
-%överlappande arbetsuppgifter samt uppdelning i sprints möjliggör iterativt arbete, vilket ofta är
-%en nyckel för framgångsrika utvecklingsprojekt.
-%
-%Fas 2 och 3 avslutas med milstolpar. Avsikten med en milstolpe är att det tydligt ska framgå
-%om den uppnåtts eller inte och på så vis synliggöra hur långt projektet kommit. Exakt vad som
-%ingår i de olika milstolparna bör vara känt av samtliga deltagare i projektet och övriga andra
-%intressenter, såsom kunder och linjechefer. Projektet har två milstolpar som uppnås när samtliga
-%inblandade leverabler är godkända av alla berörda parter. När en milstolpe har passerats
-%betraktas huvuddelen av fasens arbete slutfört, därefter sker enbart komplettering och förfining.
-%Den grundläggande tanken med projektmodellen är att en fas inte påbörjas förrän föregående 
-%milstolpe har uppnåtts. Men även om man inte startar en fas innan de tidigare faserna är
-%slutförda är det naturligtvis tillåtet, och i många fall lämpligt, att börja förbereda sig för framtida
-%faser. Till exempel, om du vet att du kommer att implementera ett användargränssnitt i
-%implementationsfasen men du vet inte hur man gör detta, då du kan börja förbereda implementationsfasen
-%tidigt i projektet. Du kan börja studera användargränssnitt, fråga folk som vet mer
-%om ämnet eller skapa en mindre prototyp för användargränssnitt bara för att lära sig hur man
-%gör. Man kan naturligtvis, i mån av tid, även chansa och påbörja något som man räknar med
-%eller hoppas kan bli användbart senare i projektet, men du bör då vara medveten om risken att
-%kraven och design kan ändras tidigt i projektet och att det inte är säkert att programkoden du
-%har skrivit verkligen blir användbar.
 
 \subsection{Sprint 1}
 The first sprint overlaps with the project inception as the groups will start working on robot development already at the first exercise sessions in the first week. The high-level goals of Sprint 1 are to successfully do: 1) feature scoping, 2) robot prototyping, and 3) developing a marketing concept. This means that the group will be focused on engineering and monetizing during Sprint 1. Some strategizing will also occur, as the domain expert will purchase a robot from a supplier after the Robot Fair.
 
-The first steps of the requirements engineering involves analyzing what type of robot would be in high demand by the other groups. This type of market analysis is no easy task to conduct, and surely the requirements engineer will discuss intensively with the domain expert and the sales engineer. Engineering a software product means making a series of successful technology and business decisions, and already during Sprint 1 the group needs to set the direction for the engineering department. High-level requirements are referred to as features, and the task of deciding which features to implement in the product is called feature scoping. At the end of Sprint 1, SRS v0.5 should specify the features the group intends to implement in their robot. The features should be promising enough to generate good offers by other groups, but do not promise too much (aka. ``over scoping'') -- if you do not deliver a robot that fulfils the specification in the final release, your customer will most likely file business claims to the regulatory body! On the other hand, the SRS v0.5 is not carved in stone. There will be negotiations during Sprints 2 and 3, and if both the customer and the regulatory body accept your change requests, you can both modify and remove features later -- and adding new features is of course always possible.
+The first steps of the requirements engineering involves analyzing what type of robot would be in high demand by the other groups. This type of market analysis is no easy task to conduct, and surely the requirements engineer will discuss intensively with the domain expert and the sales engineer. Engineering a software product means making a series of successful technology and business decisions, and already during Sprint 1 the group needs to set the direction for the engineering department. High-level requirements are referred to as features, and the task of deciding which features to implement in the product is called \textbf{feature scoping}. At the end of Sprint 1, SRS v0.5 should specify the features the group intends to implement in their robot. The features should be promising enough to generate good offers by other groups, but do not promise too much (aka. ``over scoping'') -- if you do not deliver a robot that fulfils the specification in the final release, your customer will most likely file business claims to the regulatory body! On the other hand, the SRS v0.5 is not carved in stone. There will be negotiations during Sprints 2 and 3, and if both the customer and the regulatory body accept your change requests, you can both modify and remove features later -- and adding new features is of course always possible.
 
-Robot prototyping...
+A central part of the engineering in Sprint 1 is the \textbf{robot prototyping}, an activity that serves two main purposes. First, it helps your group experiment with different candidate features for the robot under development. There is no better way to learn the Robocode domain than by practically implementing different approaches and evaluating them. Second, the prototyping will lead to an Alpha version of the Robot. The customer will obtain the Alpha release, which will enable much richer feedback than an SRS alone. To ensure that testing is part of the development process from the start, Sprint 1 will introduce unit testing in the second week.
 
-The marketing concept is the strategy that an organization implements to satisfy customers needs, increase sales, maximize profit, and beat the competition. The customers' focus and values are the routes to achieve sales and maximize profits. In the project, the marketing concept is a customer-centered ``sense and responds'' philosophy. Your group's job is not to find the right customers for your robot, but rather to find the right robot for your customers -- both the bespoke customer and the Robot Market. At the end of Sprint 1, the course will organize a Robot Fair. Each group will get a 3 minute slot to pitch their product. All groups will also have a webpage on a shared Google Drive folder.
+The \textbf{marketing concept} is the strategy that an organization implements to satisfy customers needs, increase sales, maximize profit, and beat the competition. The customers' focus and values are the routes to achieve sales and maximize profits. In the project, the marketing concept is a customer-centered ``sense and responds'' philosophy. Your group's job is not to find the right customers for your robot, but rather to find the right robot for your customers -- both the bespoke customer and the Robot Market. At the end of Sprint 1, the course will organize a Robot Fair. Each group will get a 3 minute slot to pitch their product. All groups will also have a webpage on a shared Google Drive folder.
 
 Sprint 1 shall result in the following deliverables to the following stakeholders. The responsible role is shown in parentheses.
 \begin{itemize}
-\item SRS v0.5 to the regulatory body (Requirements engineer)
-\item Robot Alpha release (Development lead)
-\item Test specification v0.5 (Test lead)
-\item 3 min sales pitch and website (Sales engineer)
+\item SRS v0.5 to the customer and the regulatory body (Requirements engineer)
+\item Robot Alpha release to the customer (Development lead)
+\item Test specification v0.5 to the regulatory body(Test lead)
+\item 3 min sales pitch and website for Robot Market (Sales engineer)
+\item A purchase array to the regulatory body (Domain expert)
 \end{itemize}
 
-%Projektets första fas innebär en uppstart av projektet. Projektmedlemmarna får en chans att
-%träffas och eventuellt nya kontakter etableras. För att gruppen ska fungera bra ihop under projektets
-%gång är det viktigt att medlemmarna kommunicerar effektivt med varandra – försök
-%komma överens om hur ni kan säkerställa detta. Det är även bra att diskutera era målsättningar,
-%eftersom olika förväntningar på arbetsinsats och projektbetyg är en av de främsta orsakerna till
-%konflikter i grupparbeten. Relaterat till detta kommer ni även utse olika roller i projektet, dvs.
-%ansvarsområden. Detta ska ni beskriva i projektplanen, där ni även i grova drag ska planera
-%ert arbete. Slutligen kommer ni att lära känna den dokumentstruktur som ska följas på Google
-%Drive.
-%Fas 1 avslutas inte med en formell milstolpe, men trots det produceras viktiga resultat:
-%Gruppens målsättning förankras
-%Infrastruktur skapas på Google Drive
-%Projektplan
+To support Sprint 1, the following sessions are schedueled:
+\begin{itemize}
+\item Lecture 1: Robocode, Requirements engineering
+\item Exercise 1a: Requirements engineering
+\item Exercise 1b: Requirements engineering
+\item Lecture 2: Construction, Testing
+\item Lab 1: Robot development in Eclipse
+\item Exercise 2:
+\end{itemize}
 
 \subsection{Sprint 2}
-Maintain business relations, evolve product, develop Rumble strategy
+In Sprint 2, the group should be up to speed in both engineering and monetizing. Now the monetizing will decrease and the strategizing will increase in its place. The high-level goals of Sprint 2 is to 1) evolve the robot, 2) maintain the customer relationship, and 3) develop a strategy for the LU Rumble.
 
-%Projektets andra fas innebär en detaljerad analys av kundens behov och en efterföljande teknisk
-%kravställning. Arbetet i denna fas utgår från en idé om vad man ska genomföra samt från en
-%rad förutsättningar vad gäller tidsplaner, tidsfrister och budget i förhållande till kostnaden. Den
-%inledande projektidén är beskriven på en hög nivå som inte är tillräckligt tydlig för att i detalj
-%definiera exakt vad som ska utvecklas. Arbetet i denna fas syftar till att precisera exakt vad
-%som ska utvecklas under resten av projektet. I denna fas utvecklas även en högnivådesign för
-%produkten, dvs. ett klassdiagram.
-%Fas 2 avslutas med Milstolpe 1 (MS1). Milstolpen godkänns av projekthandledaren och nås
-%när både Projektplan (från Fas 1) och Kravspecifikation är godkända.
+In Sprint 2, you will have an established customer who has received your Robot Alpha release. As that group will be keen to win the LU Rumble, you will likely get feedback that they believe will guide your development to a successful robot. During the remainder of the project, maintaining a healthy \textbf{customer relationship} is critical. Your sales engineer is the main point of contact with the customer.
+
+Based on your customer's feedback, your own vision -- and possibly some negotiation in between -- you will \textbf{evolve the robot} during Sprint 2. The features will be broken down into detailed requirements, and the test specification will be elaborated to also cover system testing. At the end of Sprint 2, you will deliver Robot Beta release to your customer, constituting an MVP, i.e., a minimal product that still brings some value. To be in a good position for the next sprint, the group should try to let the SRS, source code, test specification, and marketing concept co-evolve -- otherwise they might diverge considerably, increasing the risk of a dissatisfied customer, wasted effort within your group, and reduced sales on the Robot Market.
+
+Finally, you will develop a first draft of your \textbf{Rumble strategy}. The cornerstone of your robot team will be the robot you pre-ordered. Your domain expert will be responsible for communication with your supplier's sales engineer. Just like your group should be responsive to your customer, your supplier should respond to your requests.
+
+Sprint 2 shall result in the following deliverables to the following stakeholders. The responsible role is shown in parentheses.
+\begin{itemize}
+\item SRS v0.9 to the customer and the regulatory body (Requirements engineer)
+\item Robot Beta release to the customer (Development lead)
+\item Test specification v0.9 to the regulatory body (Test lead)
+\end{itemize}
+
+To support Sprint 2, the following sessions are schedueled:
+\begin{itemize}
+\item Lecture 3:
+\item 
+\item
+\end{itemize}
 
 \subsection{Sprint 3}
 Complete product, maximize sales, optimize Rumble strategy
 
-%I den tredje fasen av projektet ligger fokus på att utveckla det exekverbara programmet. Detta
-%innebär att varje utvecklare utvecklar programkod som kompileras och enhetstestas. Enhetstest
-%innebär att man testar delar av programmet isolerat från övriga delar av systemet. Källkoden
-%ska även dokumenteras, vilket i kombination med högnivådesignen utgör ett designdokument.
-%Utöver detta färdigställs testplan och de testfall som ska genomföras i den sista fasen.
-%Fas 3 avslutas med Milstolpe 2 (MS2). Vid denna milstolpe ska Testplan godkännas. Detta
-%görs inom projektgruppen efter en intern granskning (se avsnitt 3.6) av dokumentet. När
-%testplanen godkänts inom gruppen sätts de i baseline, dvs. version 1.0 varpå de tillsammans
-%med granskningsprotokoll skickas för kännedom till projekthandledaren. Om projekthandledaren
-%har ytterligare synpunkter kan det bli aktuellt att göra ytterligare förändringar av något eller
-%båda dokumenten. För de ändringarna, och eventuell andra framtida ändringar gäller formell
-%ändringshantering enligt avsnitt 3.6 med den skillnaden att projekthandledaren inte behöver
-%engageras.
+After Sprint 3, it is important that the SRS, the Final Robot release, the test specification, and the marketing concept are aligned.
+
+Sprint 3 shall result in the following deliverables to the following stakeholders. The responsible role is shown in parentheses.
+\begin{itemize}
+\item SRS v1.0 to the customer and the regulatory body (Requirements engineer)
+\item Robot Final release to the customer and the regulatory body (Development lead)
+\item Test specification v1.0 to the regulatory body and the customer (Test lead)
+\item Test report to the regulatory body and the customer (Test lead)
+\item Purchase orders to the regulatory body (Domain expert)
+\item A robot team composition to the regulatory body (Domain expert)
+\end{itemize}
+
+To support Sprint 2, the following sessions are schedueled:
+\begin{itemize}
+\item Lecture 3:
+\item 
+\item
+\end{itemize}
 
 \section{Post mortem}
 Acceptance testing and business claims.
