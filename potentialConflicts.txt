@@ -1,0 +1,14 @@
+Group formation
+- Total number of students result in a group consisting of fewer than six people.
+- A group wants to be more than six people.
+- A group wants to be less than sex people.
+
+Within groups
+- A group wants to remove a non-performing member, i.e., a free-rider.
+- A group complains that a member dominates a group, i.e., they cannot find ways to contribute.
+- A group hides that a member is free-riding.
+- A group hides that a member dominates all effort.
+
+Tension between groups
+- Very demanding customer. The supplier struggles to keep up.
+- Very slow supplier. The customer has no chance to influence the development direction.
