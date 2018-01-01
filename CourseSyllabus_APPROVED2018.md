@@ -43,7 +43,7 @@ Learning outcomes
 
 ### For a passing grade the student must
 - Understand the complexity involved in developing software systems.
-- Have an understanding of the professional role of the engineer
+- Have an understanding of the professional role of the engineer.
 
 ## Contents
 - The software development process
