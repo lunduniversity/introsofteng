@@ -14,6 +14,7 @@
 \usepackage[bookmarks=true]{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
+\usepackage{eurosym}
 \hypersetup{
     bookmarks=false,    % show bookmarks bar?
     pdftitle={Software Requirement Specification},    % title
@@ -256,13 +257,13 @@ As a result from the verification activities, each group shall produce the follo
 \end{description}
 
 \section{Monetizing the robot}
-One of the primary goals of the project is to maximize the profit of the group, i.e., monetizing the robot. The business aspects of the project involves a combination of bespoke software engineering and software engineering for an open market. All groups will offer their robot on a highly competitive market -- consisting of the other groups, each with a \$100 budget to invest in a robot team for the LU Rumble.
+One of the primary goals of the project is to maximize the profit of the group, i.e., monetizing the robot. The business aspects of the project involves a combination of bespoke software engineering and software engineering for an open market. All groups will offer their robot on a highly competitive market -- consisting of the other groups, each with a \euro 100 budget to invest in a robot team for the LU Rumble.
 
 The groups will market their Robot already at a robot fair already after Sprint 1. At this early point in time, only an Alpha release of the robot will be available and an initial version of the SRS -- still, the sales engineer is responsible for developing a convincing marketing concept. All groups will get the chance to pitch their robot at the robot fair, and also present it online on the Robot Market, complemented by the most recent SRS.
 
-After the robot fair, all groups will submit a ``purchase array'' to the regulatory body. The purchase array consists of one element per group, and each element should contain an integer representing how much your group is willing to pay for the corresponding robot. You are not allowed to make an offer for your own robot, and you are not allowed to offer less than \$10 for any other robot. The purchase array should be signed by the domain expert and delivered as a physical copy to the regulatory body through the mailbox in ``grå skåpet''.
+After the robot fair, all groups will submit a ``purchase array'' to the regulatory body. The purchase array consists of one element per group, and each element should contain an integer representing how much your group is willing to pay for the corresponding robot. You are not allowed to make an offer for your own robot, and you are not allowed to offer less than \euro 10 for any other robot. The purchase array should be signed by the domain expert and delivered as a physical copy to the regulatory body through the mailbox in ``grå skåpet''.
 
-Figure~\ref{fig:array} shows an example of purchase arrays submitted to the regulatory body. The purchase arrays are never disclosed, the regulatory body matches groups into supplier-customer relationships. In the example, cells with bold text show winning bids. Group D, highlighted with a white row, was particularly interested in Robots E, F, and C -- but unfortunately, other teams offer more. Group D instead got to buy Robot B for \$15. Note that the highest bid for a robot can be a tie, such as for Robot A and G. In the case of Robot A, no group offered more than the minimum \$10, which resulted in a (possibly unexpected) bargain buy. 
+Figure~\ref{fig:array} shows an example of purchase arrays submitted to the regulatory body. The purchase arrays are never disclosed, the regulatory body matches groups into supplier-customer relationships. In the example, cells with bold text show winning bids. Group D, highlighted with a white row, was particularly interested in Robots E, F, and C -- but unfortunately, other teams offer more. Group D instead got to buy Robot B for \euro 15. Note that the highest bid for a robot can be a tie, such as for Robot A and G. In the case of Robot A, no group offered more than the minimum \euro 10, which resulted in a (possibly unexpected) bargain buy. 
 
 \begin{figure}
 \centering
@@ -271,14 +272,13 @@ Figure~\ref{fig:array} shows an example of purchase arrays submitted to the regu
 \label{fig:array}
 \end{figure}
 
-
-When all groups have provided their purchase arrays, the regulatory body will commence its work to establish supplier-customer relationships. For each robot, the highest bidder turns into a customer of the group engineering the corresponding robot. If there is a tie, the customer relationship will be assigned randomly. In the end, all groups will 1) pre-order a robot from a supplier, and 2) have a customer that offered at least \$10 to pre-order a robot (the price of the cheapest basic bot, see TODO). Note that the decision of the regulatory body cannot be appealed. 
+When all groups have provided their purchase arrays, the regulatory body will commence its work to establish supplier-customer relationships. For each robot, the highest bidder turns into a customer of the group engineering the corresponding robot. If there is a tie, the customer relationship will be assigned randomly. In the end, all groups will 1) pre-order a robot from a supplier, and 2) have a customer that offered at least \euro 10 to pre-order a robot (the price of the cheapest basic bot, see TODO). Note that the decision of the regulatory body cannot be appealed. 
 
 Once robots have been pre-ordered, 25\% of their costs will be transferred from the customer to the supplier. This amount will not be refunded in any case -- it represents the risks of purchasing a robot from an external organization. The remainder of the cost will be transferred at the delivery of the final robot. After the final delivery, the domain expert of the purchasing group conducts acceptance testing of the robot. If the acceptance testing shows that delivered robot does not fully comply with the SRS, the project manager of the purchasing group is entitled to file a business claim to the regulatory body, further described in Section~\ref{sec:regbody}.
 
 Each group will also offer the robot under development on the Robot Market. After Sprint 3, all groups will seek to complement the pre-ordered (by now hopefully delivered) robot with additional robots to build a competitive robot team for the LU Rumble. Throughout Sprints 2 and 3, the sales engineer is responsible for marketing the robot on Robot Market. Each group will also set a price for its robot -- a group must for at least ask as much as what the bespoke customer has payed. Before the LU Rumble, the domain expert of each team will sign purchase orders and deliver to the regulatory body through ``grå skåpet''. 
 
-Figure~\ref{fig:market} shows an example of how two groups purchase robots. After the robot fair, Group A purchases a bespoke robot from Group C. As Robot C was quite costly, Group A complements it with two cheaper droids from Robot B to create a robot team. On the other hand, Robot B resulted from bespoke development for Group C -- and they liked the result enough to buy two more at a later stage. Furthermore, Group C complements the cheap droids by two basic bots: a Basic Leader Bot and a Basic Bot. Both Groups A and C spend \$95 of their budgets.
+Figure~\ref{fig:market} shows an example of how two groups purchase robots. After the robot fair, Group A purchases a bespoke robot from Group C. As Robot C was quite costly, Group A complements it with two cheaper droids from Robot B to create a robot team. On the other hand, Robot B resulted from bespoke development for Group C -- and they liked the result enough to buy two more at a later stage. Furthermore, Group C complements the cheap droids by two basic bots: a Basic Leader Bot and a Basic Bot. Both Groups A and C spend \euro95 of their budgets.
 
 \begin{figure}
 \centering
@@ -296,13 +296,13 @@ Apart from the standard robots, there are two special types of robots. The leade
 
 At the end of Sprint 1, your group will have established a relationship with a robot supplier by pre-ordering either a leader robot, a normal robot, or a droid. The supplier will provide you with a final robot at the end of Sprint 3, but your group will have a chance to influence the evolution of the robot during Sprints 2 and 3. The domain expert in your group is responsible for developing a strategy around the robot you have pre-ordered -- to guide your feedback, you will receive two prototypes for evaluation: an Alpha release after Sprint 1, and a Beta release after Sprint 2.
 
-At the end of Sprint 3, you will complement the robot you have ordered with other robots from the Robot Market. The goal of your strategizing is to identify and purchase additional robots that can successfully cooperate with the robot from your supplier. It is important to keep an eye on the Robot Market during Sprints 2 and 3, both to find the best robots to purchase, and to understand what type of features you should provide through your own robot under development. Note that three robots are always available at fixed prices: 1) BasicLeaderBot \$20, 2) BasicBot \$15, and 3) BasicDroid \$10.
+At the end of Sprint 3, you will complement the robot you have ordered with other robots from the Robot Market. The goal of your strategizing is to identify and purchase additional robots that can successfully cooperate with the robot from your supplier. It is important to keep an eye on the Robot Market during Sprints 2 and 3, both to find the best robots to purchase, and to understand what type of features you should provide through your own robot under development. Note that three robots are always available at fixed prices: 1) BasicLeaderBot \euro 20, 2) BasicBot \euro 15, and 3) BasicDroid \euro 10.
 
 Each team must adhere to three strict constraints: 
 
 \begin{enumerate}
 \item Each team must consist of between one and five robots, including one leader robot.
-\item Each team has a budget of \$100 to purchase robots.
+\item Each team has a budget of \euro 100 to purchase robots.
 \item The final team must be submitted as a jar-file to the LU Rumble on Friday morning before the event. 
 \end{enumerate}
 
