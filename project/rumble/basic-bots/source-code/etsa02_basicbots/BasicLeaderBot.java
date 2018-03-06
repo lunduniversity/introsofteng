@@ -43,6 +43,14 @@ public class BasicLeaderBot extends TeamRobot {
 	
 	private RadarSystem radar;
 	private LinkedList<EnemyPosition> enemyList;
+	
+	/**
+	 * Added to make unit testing possible.
+	 */
+	protected void init() {
+		radar = new RadarSystem();
+		enemyList = new LinkedList<EnemyPosition>();
+	}
 
 	/**
 	 * run:  BLB's default behavior
@@ -68,8 +76,9 @@ public class BasicLeaderBot extends TeamRobot {
 		} catch (IOException ignored) {}
 		
 		// Initiate attributes
-		radar = new RadarSystem();
-		enemyList = new LinkedList<EnemyPosition>();
+		//radar = new RadarSystem();
+		//enemyList = new LinkedList<EnemyPosition>();
+		init();
 		
 		// Default behavior - BLB's standard sequence
 		while (true) {
@@ -92,7 +101,7 @@ public class BasicLeaderBot extends TeamRobot {
 		double myHeading = getHeading();
 		double enemyBearing = radar.calculateRobotBearing(myHeading, e);
 		Point enemyPosition = radar.calculateRobotPosition(this, e, enemyBearing);
-				
+		
 		try {
 			// Send enemy position to teammates
 			broadcastMessage(enemyPosition);
