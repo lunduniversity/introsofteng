@@ -156,7 +156,7 @@ http://robowiki.net/wiki/Robocode\_Documentation
 \chapter{At the lab}
 This section describes what you should complete during the lab session.
 
-\section{Install Robocode}
+\section{Install Robocode} \label{sec:install}
 First things first -- let's get Robocode up and running on your local machine.
 
 \begin{enumerate}
@@ -167,7 +167,7 @@ $java -Xmx512M -cp libs/robocode.jar robocode.Robocode$
 \item Explore Robocode by starting a few battles from the Battle menu.
 \end{enumerate}
 
-\section{Develop your first robot}
+\section{Develop your first robot using Robot Editor} \label{sec:myfirstrobot}
 This is an adapted version of Robocode's classic ``My First Robot Tutorial'' that tells how to create your first robot. Detailed instructions are available at:\\http://robowiki.net/wiki/Robocode/My\_First\_Robot
 
 Creating a robot can be easy. Making your robot a winner is not. You can spend only a few minutes on it, or you can spend months and months. I'll warn you that writing a robot can be addictive! Once you get going, you'll watch your creation as it goes through growing pains, making mistakes and missing critical shots. But as you learn, you'll be able to teach your robot how to act and what to do, where to go, who to avoid, and where to fire. Should it hide in a corner, or jump into the fray?
@@ -185,24 +185,22 @@ Robocode comes with an internal code editor. It will not be used during the cour
 \item Open the Robot Editor again and uncomment the parts about color (lines 3 and 21). Select some nice colors for your robot, save, and recompile your robot. Start a new battle and verify the new color scheme. 
 \end{enumerate}
 
-\section{Develop a Robot in Eclipse} \label{sec:develop}
-Create a project in Eclipse http://robowiki.net/wiki/Robocode/Eclipse/Create_a_Project\\
-Download the Basic Leader Bot to the project. Make sure it builds.
+\section{Getting started with Eclipse for robot development} \label{sec:eclipse}
+During the course, you will use the Eclipse IDE rather than the Robot Editor. The RoboWiki has a great guide of how to get started with robot development using Eclipse. Please follow the instructions on the following sections available at:\\http://robowiki.net/wiki/Robocode/Eclipse
 
-\section{Try the robot in Robocode} \label{sec:try}
-Add the Robot project in Robocode: http://robowiki.net/wiki/Robocode/Add_a_Robot_Project\\
-Note: Add the path to the Eclipse project (with /src and /bin as sub-folders), not the workspace.
-
-\section{Configure Eclipse to run and debug the robot}
-Run from Eclipse: http://robowiki.net/wiki/Robocode/Eclipse/Running_from_Eclipse\\
-Set up debugging from Eclipse: http://robowiki.net/wiki/Robocode/Eclipse/Debugging_Robot
-
-\section{Expand the team} \label{sec:expand}
-Repeat the instructions in Sections~\ref{sec:develop}-\ref{sec:expand} for the Basic Bot and the Basic Drone.\\
-Create a team from within Robocode (Robot-$>$Create a robot team)\\
-Try a few team battles against various opposition.
+\begin{enumerate}
+\item Creating a project in Eclipse
+\item Creating a Robot in Eclipse. Copy the source code from the robot you created in Robot Editor. Import the packages required to make it compile.
+\item Add the robot project into Robocode by following these instructions:\\http://robowiki.net/wiki/Robocode/Add\_a\_Robot\_Project Note: Add the path to the Eclipse project (with /src and /bin as sub-folders), not the Eclipse workspace.
+\item Running your robot from Eclipse
+\item Debugging your robot with Eclipse
+\end{enumerate}
 
 \chapter{After the lab}
+
+You'll eventually want to look at the Robocode API to see all the other things your robot can do.
+
+
 Reflect on what is important for successful team battles. Consider your two perspectives. First, think about what type of team you want to build to be run a successful LU rumble.
 
 Second, discuss what type of Robot you want to release on the market. What types will be in high demand? What is the competition going to offer? What could be your niche? Think about commodity, differentiation, and innovation.
