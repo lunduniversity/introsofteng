@@ -26,7 +26,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.1 }
+\def\myversion{0.3 }
 \date{}
 %\title{%
 
@@ -68,6 +68,8 @@
         \hline
         Markus Borg & 2017-12-09 & Lab scope completed and tested. & 0.2\\
         \hline
+        Markus Borg & 2018-03-07 & Complete draft based on Robocode ReadMe. & 0.3\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -78,21 +80,110 @@ Use Eclipse to build a basic robot.
 Configure Robocode to import new robot.
 Understand the basics of teams in Robocode.
 
+The instructions for Lab 1 are almost exclusively copied from the ``ReadMe for Robocode'' by Flemming N. Larsen from February 27, 2013 -- available as open source under Eclipse Public Licence v1.0 at http://robocode.sourceforge.net/docs/ReadMe.html as well as content from the RoboWiki: http://robowiki.net/
+
 \chapter{Before the lab}
-Read up on the basics of Robocode. Read the chapters of the ``Beginner Guides'' -- you can skip the last three.\\
-http://robowiki.net/wiki/Robocode\_Documentation
+To save time during the lab session, please read through this section and follow the instructions.
 
 Have a quick look at the API to get a general feeling of what all is about:\\ 
 http://robocode.sourceforge.net/docs/robocode/
 
+\section{What is Robocode?}
+Robocode is a programming game where the goal is to code a robot battle tank to compete against other robots in a battle arena. So the name Robocode is a short for "Robot code". The player is the programmer of the robot, who will have no direct influence on the game. Instead, the player must write the AI of the robot telling it how to behave and react on events occurring in the battle arena. Battles are running in real-time and on-screen.
+
+\begin{center}
+\textbf{The motto of Robocode is: Build the best, destroy the rest!}
+\end{center}
+
+Besides being a programming game, Robocode is used for learning how to program, primarily in the Java language, but other languages like C\# and Scala are becoming popular as well.
+
+Schools and universities are using Robocode as part of teaching how to program, but also for studying artificial intelligence (AI). The concept of Robocode is easy to understand, and a fun way to learn how to program.
+
+Robocode offers complete development environment, and comes with its own installer, built-in robot editor and Java compiler. Robocode only pre-requires that a JVM (Java Virtual Machine) to exist already on the system where Robocode is going to be installed. Hence, everything a robot developer needs to get started is provided with the main Robocode distribution file (robocode-xxx-setup.jar). Robocode also supports developing robots using external IDEs like e.g. Eclipse, IntelliJ IDEA, NetBeans, Visual Studio etc., which supports the developer much better than the robot editor in Robocode.
+
+The fact that Robocode runs on the Java platform makes it possible to run it on any operating system with Java pre-installed, meaning that it will be able to run on Windows, Linux, Mac OS, but also UNIX and variants of UNIX. Note that Java 6 or newer must be installed on the system before Robocode is able to run. See the System Requirements for more information.
+
+Be aware that many users of Robocode (aka Robocoders) find Robocode to be very fun, but also very addictive. :-)
+
+Robocode comes free of charge and is being developed as a spare-time project where no money is involved. The developers of Robocode are developing on Robocode because they think it is fun, and because they improve themselves as developers this way.
+
+Robocode is an Open Source project, which means that all sources are open to everybody. In addition, Robocode is provided under the terms of EPL (Eclipse Public License).
+
+\section{History of Robocode}
+The Robocode game was originally started by Mathew A. Nelson as a personal endeavor in late 2000 and became a professional one when he brought it to IBM, in the form of an AlphaWorks download, in July 2001.
+
+IBM was interested in Robocode, as they saw an opportunity to promote Robocode as a fun way to get started with learning how to program in Java. IBM wrote lots of articles about Robocode, e.g. like Rock 'em, sock 'em Robocode! from AlphaWorks / developerWorks at IBM, a series of articles like Secrets from the Robocode masters, and ``Robocode Rumble / RoboLeague''.
+
+The inspiration for creating Robocode came from Robot Battle, a programming game written by Brad Schick in 1992, which should still be alive. Robot Battle was, in turn, inspired by RobotWar, an Apple II+ game from the early 1980s.
+
+The articles from IBM and the Robocode community behind the RoboWiki made Robocode very popular as programming game, and for many years Robocode has been used for education and research at schools and universities all over the world.
+
+In the beginning of 2005, Mathew convinced IBM to release Robocode as Open Source on SourceForge. At this point, the development of Robocode had somewhat stopped. The community around Robocode began to develop their own versions of Robocode with bug fixes and new features, e.g. the ``Contributions for Open Source Robocode'' and later on the two projects, RobocodeNG and Robocode 2006, by Flemming N. Larsen.
+
+Eventually, Flemming took over the Robocode project at SourceForge as administrator and developer in July 2006 to continue the original Robocode game. The RobocodeNG project was dropped, but Robocode 2006 was merged into the official Robocode version 1.1 containing lots of improvements. Since then, lots of new versions of Robocode have been released with more and more features and contributions from the community.
+
+In May 2007, the RoboRumble client got built into Robocode. RoboRumble is widely used by the Robocode community for creating up-to-date robot ranking lists for the 1-to-1, Melee, Team, and Twin Dual competitions.
+
+Since May 2010 a .NET plugin is provided for Robocode using a .NET / Java bridge, which makes it possible to develop robots for .NET beside developing robots in Java. This part was made by Pavel Savara, who is a major Robocode contributor.
+
+\section{System Requirements}
+In order to run Robocode, Java 6 Standard Edition (SE) or a newer version of Java must be installed on your system. Both the Java Runtime Environment (JRE) and the Java Developer Kit (JDK) can be used. Note that the JRE does not include the standard Java compiler (javac), but the JDK does. However, Robocode comes with a built-in compiler (ECJ). Hence, it is sufficient running Robocode on the JRE.
+
+Also note that it is important that these environment variables have been set up prior to running Robocode:
+
+\begin{verbatim}
+    JAVA_HOME must be setup to point at the home directory for Java (JDK or JRE).
+    Windows example: JAVA\_HOME=C:\\Program Files\\Java\\jdk1.6.0\_41
+    UNIX, Linux, Mac OS example: JAVA\_HOME=/usr/local/jdk1.6.0\_41
+
+    PATH must include the path to the bin of the Java home directory
+    (JAVA_HOME) that includes java.exe for starting the Java virtual Machine (JVM).
+    Windows example: PATH=\%PATH\\%;\%JAVA_HOME\%
+    UNIX, Linux, Mac OS example: PATH=\${PATH}:\${JAVA_HOME}/bin
+\end{verbatim}
+
+\section{Understanding the basics}
+To quickly grasp the fundamentals of Robocode battles, please read the following sections on the RoboWiki's ``Beginner Guides''. 
+
+http://robowiki.net/wiki/Robocode\_Documentation
+\begin{itemize}
+\item Game physics
+\item The anatomy of a robot
+\item Scoring in Robocode
+\item Frequently asked questions
+\end{itemize}
+
 \chapter{At the lab}
+This section describes what you should complete during the lab session.
 
 \section{Install Robocode}
-Download latest Robocode: https://sourceforge.net/projects/robocode/files/\\
-Install on local drive\\
-Start a few battles. Experiment.\\
-Develop a quick robot using the internal editor: http://robowiki.net/wiki/Robocode/My_First_Robot\\
-Compile it and try it in battles.
+First things first -- let's get Robocode up and running on your local machine.
+
+\begin{enumerate}
+\item Download the latest Robocode from SourceForge:\\https://sourceforge.net/projects/robocode/files/
+\item Install Robocode. If needed, follow detailed instructions on RoboWiki:\\http://robowiki.net/wiki/Robocode/Download\_And\_Install
+\item Start Robocode. In case limited permissions stop you from running the start scripts, execute the following from Robocode installation folder:\\
+$java -Xmx512M -cp libs/robocode.jar robocode.Robocode$
+\item Explore Robocode by starting a few battles from the Battle menu.
+\end{enumerate}
+
+\section{Develop your first robot}
+This is an adapted version of Robocode's classic ``My First Robot Tutorial'' that tells how to create your first robot. Detailed instructions are available at:\\http://robowiki.net/wiki/Robocode/My\_First\_Robot
+
+Creating a robot can be easy. Making your robot a winner is not. You can spend only a few minutes on it, or you can spend months and months. I'll warn you that writing a robot can be addictive! Once you get going, you'll watch your creation as it goes through growing pains, making mistakes and missing critical shots. But as you learn, you'll be able to teach your robot how to act and what to do, where to go, who to avoid, and where to fire. Should it hide in a corner, or jump into the fray?
+
+Robocode comes with an internal code editor. It will not be used during the course, but it serves as a good way to get an first insight in robot implementation.
+
+\begin{enumerate}
+\item The first step is to open up the Robot Editor. From the main Robocode screen, click on the Robot menu, then select Source Editor.
+\item When the editor window comes up, click on the File menu, then select New Robot. 
+\item In the dialogs that follow, type in a name for your robot, and enter a unique package name. During the project, your group should use the package name ``groupXX'' -- you might just as well use it already now.
+\item Investigate the code. The robot main loop in the run() method tells the robot to move back and forth and turn the gun. Three different events describe behavior when another robot is found, the robot is hit by a bullet, and the robot collides with a wall, respectively.
+\item Save your robot by selecting the Save in the File menu. Follow the prompts to save your robot. 
+\item Compile the robot by selecting Compile in the Compiler menu.
+\item Close the Robot Editor and start a battle with your new robot.
+\item Open the Robot Editor again and uncomment the parts about color (lines 3 and 21). Select some nice colors for your robot, save, and recompile your robot. Start a new battle and verify the new color scheme. 
+\end{enumerate}
 
 \section{Develop a Robot in Eclipse} \label{sec:develop}
 Create a project in Eclipse http://robowiki.net/wiki/Robocode/Eclipse/Create_a_Project\\
