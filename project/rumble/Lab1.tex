@@ -80,6 +80,7 @@ Lab 1 will help you get started with Robocode and robot development. More specif
 \item Installation and configuration of a non-trivial software framework.
 \item The fundamentals of Robocode.
 \item Implementation of your first Robocode robot.
+\item A demonstration of team battles. 
 \item Using Eclipse for Robocode robot development.
 \end{itemize}
 
@@ -166,11 +167,11 @@ First things first -- let's get Robocode up and running on your local machine.
 \item Download the latest Robocode from SourceForge:\\https://sourceforge.net/projects/robocode/files/
 \item Install Robocode. If needed, follow detailed instructions on RoboWiki:\\http://robowiki.net/wiki/Robocode/Download\_And\_Install
 \item Start Robocode. In case limited permissions stop you from running the start scripts, execute the following from Robocode installation folder:\\
-$java -Xmx512M -cp libs/robocode.jar robocode.Robocode$
-\item Explore Robocode by starting a few battles from the Battle menu.
+$java~-Xmx512M~-cp~libs/robocode.jar~robocode.Robocode$
+\item Explore Robocode by starting a few battles from the Battle menu. The robot SittingDuck is the standard robot used for the most basic target practice.
 \end{enumerate}
 
-\section{Develop your first robot using Robot Editor} \label{sec:myfirstrobot}
+\section{Develop your first robot using the Robot Editor} \label{sec:myfirstrobot}
 This is an adapted version of Robocode's classic ``My First Robot Tutorial'' that tells how to create your first robot. Detailed instructions are available at:\\http://robowiki.net/wiki/Robocode/My\_First\_Robot
 
 Creating a robot can be easy. Making your robot a winner is not. You can spend only a few minutes on it, or you can spend months and months. I'll warn you that writing a robot can be addictive! Once you get going, you'll watch your creation as it goes through growing pains, making mistakes and missing critical shots. But as you learn, you'll be able to teach your robot how to act and what to do, where to go, who to avoid, and where to fire. Should it hide in a corner, or jump into the fray?
@@ -186,7 +187,42 @@ Robocode comes with an internal code editor. It will not be used during the cour
 \item Compile the robot by selecting Compile in the Compiler menu.
 \item Close the Robot Editor and start a battle with your new robot.
 \item Open the Robot Editor again and uncomment the parts about color (lines 3 and 21). Select some nice colors for your robot, save, and recompile your robot. Start a new battle and verify the new color scheme. 
+\item During the course, you will deliver robots packaged as jar-files using the Robot Packager. From the Robot menu, select Package robot or team. Add your new robot and click Next. In the next dialog, you can toggle whether or not to include source files -- check the box when delivering to your project supervisor, but do not check it when delivering to your future customers. Enter a reasonable version number and a short description, and click Package! Verify that you get a corresponding jar-file in your file system.
 \end{enumerate}
+
+\section{Watch your first robot team battles} \label{sec:team}
+A robot team is a group of robots that fight together to beat an enemy team. You can make a team of as many robots as you want, but teams are usually made of 5 bots -- and in the LU Rumble, you will be allowed to field more than 5 robots in a team! Robots in a team can be of different classes, or they can be 5 instances of the same robot.
+
+You implement team robots by extending the TeamRobot class that provides some functions to exchange information about robots and to check if a robot is your friend or your foe. Robocode provides also a special interface called Droid, which allows you to implement a special kind of robot without radar, but with an extra 20 energy. When you create a team, the first robot is the ``leader'' and gets an extra 100 energy (200 total, or 220 for a Droid leader). Teams with droids have the advantage of having more energy, but suffer from lack of information and get in serious troubles if the leader gets killed.
+
+Note that team play allows for a wide range of team types. For example:
+\begin{itemize}
+\item 1 team leader (with radar) + 4 droids (without radar, but with 20 extra energy, that receive orders from the leader).
+\item 5 normal team bots of the same class.
+\item 5 normal bots of different classes (note that you could specialize them in some way).
+\item Any combination of the above (e.g., 1 leader + 2 droids + 2 normal bots).
+\item 5 droids. 
+\end{itemize}
+
+Of course, the good part of teams is that they work together to win the battle. There are many different ways to make them work together, and for sure the way they coordinate will make the difference. For example:
+
+\begin{itemize}
+\item The simplest way is a collusion where bots belonging to a team avoid shooting each other.
+\item A more advanced team will exchange information about themselves and the enemies to gather intelligence and decide their actions.
+\item Another step could be to coordinate the bots to avoid ``colliding'' (in a wide sense) and may be coordinating fire.
+\item A more advanced step should be to create real team strategies, for example flocking behavior. 
+\end{itemize}
+    
+Implementing a team introduces some problems that you won't find in 1v1 or melee battles. For example:
+
+\begin{itemize}
+\item Assigning the ``good spots'' to the bots (only one at one spot).
+\item Dealing with friendly fire and line-of-sight.
+\item Coordinating team movements.
+\item Identifying the bots on your own team. 
+\end{itemize}
+
+If you have not tried team battles in Robocode yet, start a battle between Team:MyFirstTeam in the sampleteam package and a single SittingDuck robot. Watch how the team beats the sitting duck. Try starting a few more battles with different robots to study how the team performs. Also try a battle between two Team:MyFirstTeams. Can you think of any obvious improvements to the team behavior?
 
 \section{Getting started with Eclipse for robot development} \label{sec:eclipse}
 During the course, you will use the Eclipse IDE rather than the Robot Editor. The RoboWiki has a great guide of how to get started with robot development using Eclipse. Please follow the instructions on the following sections available at:\\http://robowiki.net/wiki/Robocode/Eclipse
@@ -213,5 +249,5 @@ Before the next exercise session, your group has two hours scheduled to work in 
 
 Furthermore, as your group will not only robot supplier, but also a robot customer, think about what kind of robot you would like to buy. The time you spend together before the next exercise session involves all three main activities in the course, i.e., engineering, monetization, and strategizing.  
 
-Successful development of software products for an open market requires making critical decisions under time pressure -- decisions of both technical nature as well as business nature. Your team needs to decide soon! At the next exercise, your group will start outlining the features you will implement in your robot.
+Successful development of software products for an open market requires making critical decisions under time pressure -- decisions of both technical nature as well as business nature. Your team soon needs to decide what type of robot to develop! At the next exercise, your group will start outlining the features you will implement in your robot.
 \end{document}
