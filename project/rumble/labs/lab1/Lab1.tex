@@ -26,7 +26,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.3 }
+\def\myversion{1.0 }
 \date{}
 %\title{%
 
@@ -69,6 +69,8 @@
         Markus Borg & 2017-12-09 & Lab scope completed and tested. & 0.2\\
         \hline
         Markus Borg & 2018-03-07 & Complete draft based on Robocode ReadMe. & 0.3\\
+        \hline
+        Markus Borg & 2018-03-20 & Updated after internal review. & 1.0\\
         \hline
     \end{tabular}
 \end{center}
@@ -191,7 +193,7 @@ Robocode comes with an internal code editor. It will not be used during the cour
 \end{enumerate}
 
 \section{Watch your first robot team battles} \label{sec:team}
-A robot team is a group of robots that fight together to beat an enemy team. You can make a team of as many robots as you want, but teams are usually made of 5 bots -- and in the LU Rumble, you will be allowed to field more than 5 robots in a team! Robots in a team can be of different classes, or they can be 5 instances of the same robot.
+A robot team is a group of robots that fight together to beat an enemy team. You can make a team of as many robots as you want, but teams are usually made of 5 bots -- and in the LU Rumble, you will not be allowed to field more than 5 robots in a team! Robots in a team can be of different classes, or they can be 5 instances of the same robot.
 
 You implement team robots by extending the TeamRobot class that provides some functions to exchange information about robots and to check if a robot is your friend or your foe. Robocode provides also a special interface called Droid, which allows you to implement a special kind of robot without radar, but with an extra 20 energy. When you create a team, the first robot is the ``leader'' and gets an extra 100 energy (200 total, or 220 for a Droid leader). Teams with droids have the advantage of having more energy, but suffer from lack of information and get in serious troubles if the leader gets killed.
 
@@ -224,15 +226,19 @@ Implementing a team introduces some problems that you won't find in 1v1 or melee
 
 If you have not tried team battles in Robocode yet, start a battle between Team:MyFirstTeam in the sampleteam package and a single SittingDuck robot. Watch how the team beats the sitting duck. Try starting a few more battles with different robots to study how the team performs. Also try a battle between two Team:MyFirstTeams. Can you think of any obvious improvements to the team behavior?
 
+\newpage
+
 \section{Getting started with Eclipse for robot development} \label{sec:eclipse}
 During the course, you will use the Eclipse IDE rather than the Robot Editor. The RoboWiki has a great guide of how to get started with robot development using Eclipse. Please follow the instructions on the following sections available at:\\http://robowiki.net/wiki/Robocode/Eclipse
+\\
+Note that text in bold font below matches specific headers under ``External Editors'' on the link above.
 
 \begin{enumerate}
-\item Creating a project in Eclipse
-\item Creating a Robot in Eclipse. Copy the source code from the robot you created in Robot Editor. Import the packages required to make it compile.
+\item \textbf{Creating a project in Eclipse}. Follow all instructions under this header.
+\item \textbf{Creating a Robot in Eclipse}. Follow the instructions, and eventually copy the source code from the robot you created in Robot Editor. Import the packages required to make it compile.
 \item Add the robot project into Robocode by following these instructions:\\http://robowiki.net/wiki/Robocode/Add\_a\_Robot\_Project Note: Add the path to the Eclipse project (with /src and /bin as sub-folders), not the Eclipse workspace.
-\item Running your robot from Eclipse
-\item Debugging your robot with Eclipse
+\item \textbf{Running your robot from Eclipse}. Follow all instructions under this header.
+\item \textbf{Debugging your robot with Eclipse}. Follow all instructions under this header.
 \end{enumerate}
 
 \chapter{After the lab}
