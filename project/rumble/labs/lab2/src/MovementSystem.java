@@ -26,7 +26,6 @@ package etsa02_lab2;
 
 import java.awt.geom.Point2D;
 
-import etsa02_basicbots.BattleField.Wall;
 import robocode.util.Utils;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
