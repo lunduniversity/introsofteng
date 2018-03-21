@@ -34,7 +34,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  * 
  * Example robot for ETSA02. A melee bot implemented following an object oriented design.
  */
-public class BasicMeleeBot extends AdvancedRobot{
+public class BasicMeleeBot extends AdvancedRobot {
 
 	private EnemyDatabase enemyDatabase;
 	private PositioningSystem positioningSystem;
