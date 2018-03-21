@@ -27,7 +27,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ MovementSystemTest.class, TargetingSystemTest.class, EnemyTrackerTest.class, MathUtilsTest.class })
-public class AllBasicBotsTests {
+@SuiteClasses({ MovementSystemTest.class, TargetingSystemTest.class, EnemyTrackerTest.class, 
+	PositioningSystemTest.class, MathUtilsTest.class })
+public class AllBasicBotsUnitTests {
 
 }
