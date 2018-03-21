@@ -36,7 +36,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  */
 public class BasicMeleeBot extends AdvancedRobot {
 
-	private EnemyDatabase enemyDatabase;
+	private EnemyTracker enemyTracker;
 	private PositioningSystem positioningSystem;
 	private MovementSystem movementSystem;
 	private TargetingSystem targetingSystem;
@@ -46,10 +46,10 @@ public class BasicMeleeBot extends AdvancedRobot {
 	 */
 	@Override
 	public void run() {
-		enemyDatabase = new EnemyDatabase(this);
+		enemyTracker = new EnemyTracker(this);
 		positioningSystem = new PositioningSystem(getBattleFieldWidth(), getBattleFieldHeight());
-		movementSystem = new MovementSystem(this, enemyDatabase, positioningSystem);
-		targetingSystem = new TargetingSystem(enemyDatabase, this);
+		movementSystem = new MovementSystem(this, enemyTracker, positioningSystem);
+		targetingSystem = new TargetingSystem(enemyTracker, this);
 		
 		setAdjustGunForRobotTurn(true);
 		setAdjustRadarForGunTurn(true);
@@ -73,7 +73,7 @@ public class BasicMeleeBot extends AdvancedRobot {
 	 */
 	@Override
 	public void onScannedRobot(ScannedRobotEvent event) {
-		enemyDatabase.addEnemy(event);
+		enemyTracker.addEnemy(event);
 	}
 	
 	/**
@@ -83,6 +83,6 @@ public class BasicMeleeBot extends AdvancedRobot {
 	 */
 	@Override
 	public void onRobotDeath(RobotDeathEvent event) {
-		enemyDatabase.removeEnemy(event.getName());
+		enemyTracker.removeEnemy(event.getName());
 	}
 }

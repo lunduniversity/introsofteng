@@ -35,13 +35,16 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  */
 public class TargetingSystem {
 	
+	// ETSA02 Lab2: Add attributes according to the provided UML class diagram.
+	
 	/**
 	 * Construct a simple object to handle head-on targeting. It simply shoots at the closest target 
 	 * based on the last known positions of all enemies.
-	 * @param enemyHelper the object managing enemies.
+	 * @param enemyTracker the object managing enemies.
 	 * @param robot the robot we are currently working on
 	 */
-	public TargetingSystem(EnemyDatabase enemyHelper, BasicMeleeBot robot) {
+	public TargetingSystem(EnemyTracker enemyTracker, BasicMeleeBot robot) {
+		// ETSA02 Lab2: Implement this constructor to initiate the attributes.
 		throw new NotImplementedException();
 	}
 	
@@ -49,6 +52,7 @@ public class TargetingSystem {
 	 * To be called every turn. Find the closest target and shoot at it.
 	 */
 	public void update() {
+		// ETSA02 Lab2: Implement this constructor to initiate the attributes.
 		throw new NotImplementedException();
 	}
 }

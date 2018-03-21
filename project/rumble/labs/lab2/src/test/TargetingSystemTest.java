@@ -30,33 +30,33 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import etsa02_lab2.EnemyDatabase;
+import etsa02_lab2.EnemyTracker;
 import etsa02_lab2.TargetingSystem;
 
 public class TargetingSystemTest {
 	
 	private TargetingSystem targetingUT;
 	private MockBot mockBot;
-	private EnemyDatabase enemyHelper;
+	private EnemyTracker enemyTracker;
 	
 	@Before
 	public void setUp() {
 		mockBot = new MockBot("fake robot", 100, 0, 400, 300);
-		enemyHelper = new EnemyDatabase(mockBot);
-		targetingUT = new TargetingSystem(enemyHelper, mockBot);
+		enemyTracker = new EnemyTracker(mockBot);
+		targetingUT = new TargetingSystem(enemyTracker, mockBot);
 	}
 	
 	@After
 	public void tearDown() {
 		mockBot = null;
-		enemyHelper = null;
+		enemyTracker = null;
 		targetingUT = null;
 	}
 	
 	@Test
 	public void testOneEnemyAtBearing0() {
 		MockScannedRobotEvent e = new MockScannedRobotEvent("fake enemy", 100, 0, 100, 0, 0, false);
-		enemyHelper.addEnemy(e);
+		enemyTracker.addEnemy(e);
 		targetingUT.update();
 		
 		assertEquals("Check that the gun turning angle is correct", 0, mockBot.getGunTurnRemaining(), 0.001d);
@@ -65,7 +65,7 @@ public class TargetingSystemTest {
 	@Test
 	public void testOneEnemyAtBearingPos() {
 		MockScannedRobotEvent e = new MockScannedRobotEvent("fake enemy", 100, 90, 100, 0, 0, false);
-		enemyHelper.addEnemy(e);
+		enemyTracker.addEnemy(e);
 		targetingUT.update();
 		
 		assertEquals("Check that the gun turning angle is correct", 90, mockBot.getGunTurnRemaining(), 0.001d);
@@ -74,7 +74,7 @@ public class TargetingSystemTest {
 	@Test
 	public void testOneEnemyAtBearing180() {
 		MockScannedRobotEvent e = new MockScannedRobotEvent("fake enemy", 100, 180, 100, 0, 0, false);
-		enemyHelper.addEnemy(e);
+		enemyTracker.addEnemy(e);
 		targetingUT.update();
 		
 		assertEquals("Check that the gun turning angle is correct", 180, Math.abs(mockBot.getGunTurnRemaining()), 0.001d);
@@ -83,7 +83,7 @@ public class TargetingSystemTest {
 	@Test
 	public void testOneEnemyAtBearingNeg() {
 		MockScannedRobotEvent e = new MockScannedRobotEvent("fake enemy", 100, 270, 100, 0, 0, false);
-		enemyHelper.addEnemy(e);
+		enemyTracker.addEnemy(e);
 		targetingUT.update();
 		
 		assertEquals("Check that the gun turning angle is correct", -90, mockBot.getGunTurnRemaining(), 0.001d);

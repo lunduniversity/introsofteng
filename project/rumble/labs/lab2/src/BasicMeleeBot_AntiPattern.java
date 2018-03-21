@@ -123,7 +123,7 @@ public class BasicMeleeBot_AntiPattern extends AdvancedRobot {
 		double x = getX() + event.getDistance() * Math.sin(Math.toRadians(absBearing));
 		double y = getY() + event.getDistance() * Math.cos(Math.toRadians(absBearing));
 		Point2D.Double enemyPosition = new Point2D.Double(x, y);
-		int index = findEnemyName(event.getName());
+		int index = findEnemyByName(event.getName());
 		if (index >= 0) {
 			enemyPositions[index] = enemyPosition;
 		} else {
@@ -144,7 +144,7 @@ public class BasicMeleeBot_AntiPattern extends AdvancedRobot {
 	 */
 	@Override
 	public void onRobotDeath(RobotDeathEvent event) {
-		int index = findEnemyName(event.getName());
+		int index = findEnemyByName(event.getName());
 		if (index >= 0) {
 			for (int i = index + 1; i < enemyCount; i++) {
 				enemyNames[i - 1] = enemyNames[i];
@@ -160,7 +160,7 @@ public class BasicMeleeBot_AntiPattern extends AdvancedRobot {
 	 * @param name The name of the robot.
 	 * @return The index of the robot in the internal array, -1 if not found.
 	 */
-	private int findEnemyName(String name) {
+	private int findEnemyByName(String name) {
 		for (int i = 0; i < enemyCount; i++) {
 			if (enemyNames[i].equals(name)) return i;
 		}
