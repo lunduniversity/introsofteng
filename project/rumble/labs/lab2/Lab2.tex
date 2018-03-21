@@ -27,7 +27,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.2 }
+\def\myversion{0.3 }
 \date{}
 %\title{%
 
@@ -69,6 +69,8 @@
         \hline
         Markus Borg & 2018-03-21 & Changed to refactoring+unit testing. & 0.2\\
         \hline
+        Markus Borg & 2018-03-21 & Complete draft. & 0.3\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -83,9 +85,9 @@ Lab 2 will inspire you to organize your the Robocode implementation according to
 \end{itemize}
 
 \chapter{Before the lab}
-To save time during the lab session, please read through this section and follow the instructions.
+To save time during the lab session, please read through this section and follow the instructions. Also, unless you are not already familiar with it, please read how the Robocode coordinate system works. Also this link will be helpful during the lab: http://mark.random-article.com/weber/java/robocode/lesson4.html
 
-Wikipedia is mostly a great source to read up on software engineering topics. Software engineers appear to carefully monitor and describe their work practices. Perhaps they take pride in describing what they do for the masses? Good for us, Wikipedia (at least in English) is a free an accurate source of software engineering knowledge. Besides, reading from other sources than the course book is a good idea.
+Wikipedia is a great source to read up on software engineering topics. Software engineers appear to carefully monitor and describe their work practices. Perhaps they take pride in describing what they do for the masses? Good for us, Wikipedia (at least in English) is a free and accurate source of software engineering knowledge. Besides, reading from other sources than the course book is a good idea.
 
 Prior to the lab, please browse the following Wikipedia articles:
 
@@ -96,66 +98,41 @@ Prior to the lab, please browse the following Wikipedia articles:
 \item Unit testing\\-- https://en.wikipedia.org/wiki/Unit_testing
 \end{itemize}
 
-Create a run configuration for JUnit in Eclipse\\
-Add -Drobocode.home=$<$PATH TO ROBOCODE$>$ as an argument to the VM\\
-Might need to configure Eclipse project: Properties -> Java Build Path -> Libraries -> Add Library -> JUnit -> Junit 5\\
-Try running JUnit tests
-
 \chapter{At the lab}
-Initial steps:
+Initial steps to get started with JUnit:
 \begin{enumerate}
 \item Download the Lab 2 source code from GitHub:\\
 https://github.com/lunduniversity/introsofteng/tree/master/project/rumble/labs/lab2/src
-\item Create a new project in your Eclipse workplace. As in Lab 1, add the robocode.jar as an ``External JAR'' in the Libraries tab, either when creating the project or afterwards in the project properties.
+\item Create a new Java project in your Eclipse workplace. As in Lab 1, add the robocode.jar as an ``External JAR'' in the Libraries tab, either when creating the project or afterwards in the project properties.
 \item In the ``Package Explorer'' pane, right click ``src'' and create a new ``Package'' called ``etsa02_lab''.
 \item In the ``Package Explorer'' pane, right click the newly created package and run ``Import...''. Select ``File system'' and select all downloaded files in both the ``src'' folder and the ``src/test'' folder. The content in the Package Explorer should resemble Figure~\ref{fig:afterImport}.
+\item To make the etsa02_lab2.test package build, you must configure JUnit. Right click the Java project and select ``Properties''. In the ``Java Build Path'', select the ``Libraries'' tab. You should find robocode.jar, now let's add JUnit! Click ``Add External JARs...'' and use the file browser to locate ``junit.jar''. You should find it in the ``plugins'' folder in your Eclipse installation folder.
+\item Right click ``AllBasicMeleeBotUnitTests.java'' and choose ``Run as..'' and create a new JUnit run configuration. Give the configuration a descriptive name, such as ``Lab2 unit tests''.
+\item Run the unit tests. All of them are supposed to fail!
+\end{enumerate}
+
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{figures/packageExplorerAfterImport.png}
 \caption{The Package Explorer in Eclipse after importing the Lab 2 source code.}
 \label{fig:afterImport}
 \end{figure}
-\item 
+
+Now it is time to start the refactoring task. 
+\begin{enumerate}
+\item First, you should study the implementation of the robot in ``BasicMeleeBot_AntiPattern''. The robot implements ``anti gravity movement'', i.e., it moves away from other robots. 
+\item Try the robot in Robocode to confirm the anti gravity movement.
+\item BasicMeleeBot_AntiPattern does not comply with good object oriented design practices, instead all functionality is collected in one big class. A modular robot design would greatly increase the evolvability of the product. Figure~\ref{fig:classDiagram} shows a more feasible object oriented design. 
+\item Your task is now to refactor BasicMeleeBot_AntiPattern into the structure presented in the provided class diagram. BasicMeleeBot is already implemented for you, but you should complete the missing code in the other classes. A suggested implementation order is: 1) MathUtils, 2) PositioningSystem, 3) EnemyTracker, 4) TargetingSystem, and 5) MovementSystem. The unit tests are there to guide you in the process. Study the test cases to understand the intention behind the different methods. Most importantly, run them frequently to verify that you are on the right track -- when all test cases are green, you have completed Lab 2!
 \end{enumerate}
 
-The first task is to study the implementation
+\begin{figure}
+\centering
+\includegraphics[width=1.1\textwidth]{figures/BasicMeleeBotClassDiagram.png}
+\caption{BasicMeleeBot class diagram. MathUtils is a static class.}
+\label{fig:classDiagram}
+\end{figure}
 
-Select your robot class in the Eclipse package explorer. Right-click and select new JUnit test case. Create the new test case. There are several naming conventions, e.g., using the same name as the class under test followed by the suffix `Test' and `Test' as prefix for all methods.
-Software-under-test is the normal name for the object to test, here we use bot-under-test.\\
-Introduce test driven development.
 
-Inspiration: https://ics613s13.wordpress.com/\\
-Build a robot using maven: https://github.com/bretkikehara/robocode-bki-hunter
-
-%\section{Install Robocode}
-%Download latest Robocode: https://sourceforge.net/projects/robocode/files/\\
-%Install on local drive\\
-%Start a few battles. Experiment.\\
-%Develop a quick robot using the internal editor: http://robowiki.net/wiki/Robocode/My_First_Robot\\
-%Compile it and try it in battles.
-%
-%\section{Develop a Robot in Eclipse} \label{sec:develop}
-%Create a project in Eclipse http://robowiki.net/wiki/Robocode/Eclipse/Create_a_Project\\
-%Download the Basic Leader Bot to the project. Make sure it builds.
-%
-%\section{Try the robot in Robocode} \label{sec:try}
-%Add the Robot project in Robocode: http://robowiki.net/wiki/Robocode/Add_a_Robot_Project\\
-%Note: Add the path to the Eclipse project (with /src and /bin as sub-folders), not the workspace.
-%
-%\section{Configure Eclipse to run and debug the robot}
-%Run from Eclipse: http://robowiki.net/wiki/Robocode/Eclipse/Running_from_Eclipse\\
-%Set up debugging from Eclipse: http://robowiki.net/wiki/Robocode/Eclipse/Debugging_Robot
-%
-%\section{Expand the team} \label{sec:expand}
-%Repeat the instructions in Sections~\ref{sec:develop}-\ref{sec:expand} for the Basic Bot and the Basic Drone.\\
-%Create a team from within Robocode (Robot-$>$Create a robot team)\\
-%Try a few team battles against various opposition.
-
-\chapter{After the lab}
-%Reflect on what is important for successful team battles. Consider your two perspectives. First, think about what type of team you want to build to be run a successful LU rumble.
-%
-%Second, discuss what type of Robot you want to release on the market. What types will be in high demand? What is the competition going to offer? What could be your niche? Think about commodity, differentiation, and innovation.
-%
-%Successful development of software products for an open market requires making critical decisions under time pressure -- decisions of both technical nature as well as business nature. Your team needs to decide soon!
 
 \end{document}
