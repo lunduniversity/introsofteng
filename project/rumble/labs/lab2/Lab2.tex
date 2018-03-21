@@ -42,7 +42,7 @@
     	\vspace{1.5cm}
         \Huge{Lab 2}\\
         \vspace{0.5cm}
-        Object oriented design\\
+        Object-oriented design\\
         \vspace{0.5cm}
         and unit testing\\
         \vspace{1.5cm}
@@ -129,10 +129,17 @@ Now it is time to start the refactoring task.
 \begin{figure}
 \centering
 \includegraphics[width=1.1\textwidth]{figures/BasicMeleeBotClassDiagram.png}
-\caption{BasicMeleeBot class diagram. MathUtils is a static class.}
+\caption{BasicMeleeBot class diagram. Note that MathUtils is a static class.}
 \label{fig:classDiagram}
 \end{figure}
 
+If you have time, try to improve the behavior of BasicMeleeBot. As you have might have noticed, the robot gets stuck in walls when it performs the anti gravity movement. A standard approach to solve this is to implement some form of ``wall avoidance'' strategy. Add wall avoidance to the update() method in the class MovementSystem, and use the methods in PositioningSystem to implement this improvement. Is it possible to add any unit tests for this behavior? If so, add some new unit tests. If not, try to explain why.
 
+\chapter{After the lab}
+During the lab you have practiced several fairly advanced software engineering practices at the same time. You have refactored source code into a modular object-oriented design, guided by a UML class diagram, while adhering to a test-driven development approach supported by automated unit testing. Congratulations!
+
+When your project releases software, you are supposed to provide the regulatory body with a UML class diagram and source code complemented with a suite of JUnit test cases. Note that the group purchasing your robot should not receive anything of this, they get only the requirements specification, the test specification, and the actual robot as a .jar file.
+
+It is recommended that the group helps the development lead to maintain a class diagram of the most recent robot design and the test lead to evolve a JUnit test suite. In industry, the developers are typically responsible for writing unit tests for all their source code, but in the ETSA02 project we expect the test lead to be responsible. 
 
 \end{document}
