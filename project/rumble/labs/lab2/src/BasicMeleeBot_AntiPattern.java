@@ -25,7 +25,6 @@ SOFTWARE.
 package etsa02_lab2;
 
 import java.awt.geom.Point2D;
-import java.util.Arrays;
 
 import robocode.AdvancedRobot;
 import robocode.RobotDeathEvent;
@@ -62,7 +61,7 @@ public class BasicMeleeBot_AntiPattern extends AdvancedRobot {
 		
 		//This loop is run once every turn (robocode's turn).
 		while (true) {
-			//We don't need any advanced behaviour from the radar so we just let it spin around all the time.
+			//We don't need any advanced behavior from the radar so we just let it spin around all the time.
 			setTurnRadarRight(Double.POSITIVE_INFINITY);
 			
 			//This variable is used by both movement and targeting code so make sure to take it along when refactoring.
