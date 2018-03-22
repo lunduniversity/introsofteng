@@ -27,7 +27,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.3 }
+\def\myversion{0.4 }
 \date{}
 %\title{%
 
@@ -71,11 +71,13 @@
         \hline
         Markus Borg & 2018-03-21 & Complete draft. & 0.3\\
         \hline
+        Markus Borg & 2018-03-22 & Updated after internal review. & 0.4\\
+        \hline
     \end{tabular}
 \end{center}
 
 \chapter{Introduction}
-Lab 2 will inspire you to organize your the Robocode implementation according to a a proper object oriented design. Furthermore, Lab2 will help you get started with unit testing using the JUnit framework. More specifically, Lab 2 covers:
+Lab 2 will inspire you to organize your robot implementation according to a a proper object-oriented design. Furthermore, the lab will help you get started with unit testing using the JUnit framework. More specifically, Lab 2 covers:
 
 \begin{itemize}
 \item Program comprehension, i.e., reading code of a somewhat more advanced robot.
@@ -85,12 +87,11 @@ Lab 2 will inspire you to organize your the Robocode implementation according to
 \end{itemize}
 
 \chapter{Before the lab}
-To save time during the lab session, please read through this section and follow the instructions. Also, unless you are not already familiar with it, please read how the Robocode coordinate system works. Also this link will be helpful during the lab: http://mark.random-article.com/weber/java/robocode/lesson4.html
+To save time during the lab session, please read through this section and follow the instructions. Also, unless you are already familiar with it, please read how the Robocode coordinate system works. One source to understand navigation in Robocode is this link: http://mark.random-article.com/weber/java/robocode/lesson4.html
 
 Wikipedia is a great source to read up on software engineering topics. Software engineers appear to carefully monitor and describe their work practices. Perhaps they take pride in describing what they do for the masses? Good for us, Wikipedia (at least in English) is a free and accurate source of software engineering knowledge. Besides, reading from other sources than the course book is a good idea.
 
 Prior to the lab, please browse the following Wikipedia articles:
-
 \begin{itemize}
 \item Object oriented programming (skip ``History'' and onwards)\\-- https://en.wikipedia.org/wiki/Object-oriented_programming)
 \item Class diagram\\-- https://en.wikipedia.org/wiki/Class_diagram
@@ -98,11 +99,19 @@ Prior to the lab, please browse the following Wikipedia articles:
 \item Unit testing\\-- https://en.wikipedia.org/wiki/Unit_testing
 \end{itemize}
 
+The course material is under development under an open source license on GitHub. Have a look at: https://github.com/lunduniversity/introsofteng
+If you are already familiar with git, I strongly recommend that you clone the repository. If you don't know what this means, instead click the button presented in Figure~\ref{fig:github} and choose ``Download ZIP''. Your lab instructor can help you getting started with git, but simply extracting the Lab2 files from the zip archive works fine as well. In Lab 2, you need the files located in introsofteng-master/project/rumble/labs/lab2/src, including its subfolder. Once you are comfortable with git, you are most welcome to create ``pull requests'' to improve the course material, e.g., clarifying descriptions or correcting typos!
+
+\begin{figure}
+\centering
+\includegraphics[width=0.99\textwidth]{figures/GitHub.png}
+\caption{introsofteng repository on GitHub. The arrow shows the ``Clone or download'' button.}
+\label{fig:github}
+\end{figure}
+
 \chapter{At the lab}
-Initial steps to get started with JUnit:
+The first thing you need to do is to get started with automated testing using JUnit. Start by following the following steps:
 \begin{enumerate}
-\item Download the Lab 2 source code from GitHub:\\
-https://github.com/lunduniversity/introsofteng/tree/master/project/rumble/labs/lab2/src
 \item Create a new Java project in your Eclipse workplace. As in Lab 1, add the robocode.jar as an ``External JAR'' in the Libraries tab, either when creating the project or afterwards in the project properties.
 \item In the ``Package Explorer'' pane, right click ``src'' and create a new ``Package'' called ``etsa02_lab''.
 \item In the ``Package Explorer'' pane, right click the newly created package and run ``Import...''. Select ``File system'' and select all downloaded files in both the ``src'' folder and the ``src/test'' folder. The content in the Package Explorer should resemble Figure~\ref{fig:afterImport}.
