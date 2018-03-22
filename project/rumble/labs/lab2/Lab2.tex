@@ -127,11 +127,13 @@ The first thing you need to do is to get started with automated testing using JU
 \label{fig:afterImport}
 \end{figure}
 
+\newpage
+
 Now it is time to start the refactoring task. 
 \begin{enumerate}
 \item First, you should study the implementation of the robot in ``BasicMeleeBot_AntiPattern''. The robot implements ``anti gravity movement'', i.e., it moves away from other robots. 
-\item Try the robot in Robocode to confirm the anti gravity movement.
-\item BasicMeleeBot_AntiPattern does not comply with good object oriented design practices, instead all functionality is collected in one big class. A modular robot design would greatly increase the evolvability of the product. Figure~\ref{fig:classDiagram} shows a more feasible object oriented design. 
+\item Try the robot in Robocode to verify the anti gravity movement.
+\item BasicMeleeBot_AntiPattern does not comply with good object oriented design practices, instead all functionality is collected in one big class. A modular robot design would greatly increase the evolvability of the product. Figure~\ref{fig:classDiagram} shows a more feasible object oriented design. Perhaps you can use something similar in your project?
 \item Your task is now to refactor BasicMeleeBot_AntiPattern into the structure presented in the provided class diagram. BasicMeleeBot is already implemented for you, but you should complete the missing code in the other classes. A suggested implementation order is: 1) MathUtils, 2) PositioningSystem, 3) EnemyTracker, 4) TargetingSystem, and 5) MovementSystem. The unit tests are there to guide you in the process. Study the test cases to understand the intention behind the different methods. Most importantly, run them frequently to verify that you are on the right track -- when all test cases are green, you have completed Lab 2!
 \end{enumerate}
 
@@ -142,13 +144,17 @@ Now it is time to start the refactoring task.
 \label{fig:classDiagram}
 \end{figure}
 
-If you have time, try to improve the behavior of BasicMeleeBot. As you have might have noticed, the robot gets stuck in walls when it performs the anti gravity movement. A standard approach to solve this is to implement some form of ``wall avoidance'' strategy. Add wall avoidance to the update() method in the class MovementSystem, and use the methods in PositioningSystem to implement this improvement. Is it possible to add any unit tests for this behavior? If so, add some new unit tests. If not, try to explain why.
+\newpage
+
+The following instructions are optional, in case you finish the refactoring task quickly. If you complete this task, you will have something similar to the BasicMeleeBot that will be offered as an ETSA02 basic bot on Robot Market. If you don't complete this task during the lab session, you will anyway get the corresponding source code.
+
+Try to improve the behavior of BasicMeleeBot. As you might have noticed, the robot gets stuck in walls when it performs the anti gravity movement. A standard approach to solve this is to implement some form of ``wall avoidance'' strategy. Add wall avoidance to the update() method in the class MovementSystem, and use the methods in PositioningSystem to implement this improvement. Is it possible to add any unit tests for this behavior? If so, add new unit tests to the test suite in MovementSystemTest. If not, try to explain why.
 
 \chapter{After the lab}
-During the lab you have practiced several fairly advanced software engineering practices at the same time. You have refactored source code into a modular object-oriented design, guided by a UML class diagram, while adhering to a test-driven development approach supported by automated unit testing. Congratulations!
+During the lab you have practiced several fairly advanced software engineering practices at the same time. You have refactored source code into a modular object-oriented design, guided by a UML class diagram, while adhering to a test-driven development approach supported by automated unit testing. Well done!
 
 When your project releases software, you are supposed to provide the regulatory body with a UML class diagram and source code complemented with a suite of JUnit test cases. Note that the group purchasing your robot should not receive anything of this, they get only the requirements specification, the test specification, and the actual robot as a .jar file.
 
-It is recommended that the group helps the development lead to maintain a class diagram of the most recent robot design and the test lead to evolve a JUnit test suite. In industry, the developers are typically responsible for writing unit tests for all their source code, but in the ETSA02 project we expect the test lead to be responsible. 
+We recommended that the group helps the development lead to maintain a class diagram of the most recent robot design. Also, the group should help the test lead to evolve a JUnit test suite as an approach to detect bugs early -- you should obviously run your test suite frequently. In industry, the developers are typically responsible for writing unit tests for all their source code, but in the ETSA02 project we expect the test lead to be drive this task. 
 
 \end{document}
