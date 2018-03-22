@@ -40,6 +40,8 @@ import robocode.util.Utils;
  */
 public class BasicMeleeBot_AntiPattern extends AdvancedRobot {
 	
+	//The 3 following variables are used to track enemies. An enemy will have its name and position stored
+	//at the same index in the two arrays enemyNames and enemyPositions. The number of enemies is stored in enemyCount.
 	private Point2D.Double[] enemyPositions;
 	private String[] enemyNames;
 	private int enemyCount;
@@ -49,20 +51,32 @@ public class BasicMeleeBot_AntiPattern extends AdvancedRobot {
 	 */
 	@Override
 	public void run() {
-		enemyNames = new String[1];
+		//Initiate the arrays, they should have same length.
+		enemyNames = new String[10];
 		enemyPositions = new Point2D.Double[enemyNames.length];
 		
+		//Usually when the robot turns, the gun and radar turn along with it. 
+		//This makes computations more difficult so we make them turn independently from each other.
 		setAdjustGunForRobotTurn(true);
 		setAdjustRadarForGunTurn(true);
+		
+		//This loop is run once every turn (robocode's turn).
 		while (true) {
+			//We don't need any advanced behaviour from the radar so we just let it spin around all the time.
 			setTurnRadarRight(Double.POSITIVE_INFINITY);
 			
+			//This variable is used by both movement and targeting code so make sure to take it along when refactoring.
 			Point2D.Double robotPosition = new Point2D.Double(getX(), getY());
 			
-			// MOVEMENT
-			// compute forces
+			// MOVEMENT: 
+			// Each enemy is assigned a "gravity" force that pushes our robot away. 
+			// The sum of all these forces determines the direction of our robot.
+			// Don't worry too much about the details of the computation steps.
+
+			// the sum of all forces is represented as a vector whose x and y components are xForce and yForce
 			double xForce = 0;
 			double yForce = 0;
+			// loop through all enemies and compute their forces.
 			for (int i = 0; i < enemyCount; i++) {
 				Point2D.Double enemyPosition = enemyPositions[i];
 				double absBearing=Utils.normalAbsoluteAngle(calcAngle(robotPosition, enemyPosition));
@@ -71,7 +85,7 @@ public class BasicMeleeBot_AntiPattern extends AdvancedRobot {
 				yForce -= Math.cos(absBearing) / (distance * distance);
 			}
 			
-			// set the movement
+			// set the movement in a smart way so that robot would never turn more than 90 degrees.
 			double angle = Math.atan2(xForce, yForce);
 			if (xForce == 0 && yForce == 0) {
 				// If no force, do nothing
@@ -84,10 +98,9 @@ public class BasicMeleeBot_AntiPattern extends AdvancedRobot {
 			}
 			
 			// AIMING AND SHOOTING
-			// find the closest enemy to shoot at.
+			// find the closest enemy and store its position
 			double smallestDistanceSq = Double.POSITIVE_INFINITY;
 			Point2D.Double pointToTurnTo = null;
-			
 			for (int i = 0; i < enemyCount; i++) {
 				Point2D.Double enemyPosition = enemyPositions[i];
 				double d = enemyPosition.distanceSq(robotPosition);
@@ -96,6 +109,7 @@ public class BasicMeleeBot_AntiPattern extends AdvancedRobot {
 					pointToTurnTo = enemyPosition;
 				}
 			}
+			//compute how much our robot's gun has to turn
 			double angleToTurn = 0;
 			if (pointToTurnTo != null) {
 				double dx = pointToTurnTo.x - robotPosition.x;
@@ -103,11 +117,14 @@ public class BasicMeleeBot_AntiPattern extends AdvancedRobot {
 				angleToTurn = Math.toDegrees(Math.atan2(dx, dy)) - getGunHeading();
 			}
 
+			// fire when the gun has finished turning
 			if (getGunTurnRemaining() == 0) {
 				setFire(1);
 			}
+			// turn the gun
 			setTurnGunRight(Utils.normalRelativeAngleDegrees(angleToTurn));
 			
+			// Execute the commands that we have set. Don't copy this.
 			execute();
 		}
 	}
@@ -119,18 +136,17 @@ public class BasicMeleeBot_AntiPattern extends AdvancedRobot {
 	 */
 	@Override
 	public void onScannedRobot(ScannedRobotEvent event) {
+		// compute the position of a scanned robot
 		double absBearing = event.getBearing() + getHeading();
 		double x = getX() + event.getDistance() * Math.sin(Math.toRadians(absBearing));
 		double y = getY() + event.getDistance() * Math.cos(Math.toRadians(absBearing));
 		Point2D.Double enemyPosition = new Point2D.Double(x, y);
+		
+		// if the scanned robot is already added to the arrays, update its position. Otherwise add it as a new element.
 		int index = findEnemyByName(event.getName());
 		if (index >= 0) {
 			enemyPositions[index] = enemyPosition;
 		} else {
-			if (enemyCount == enemyNames.length) {
-				enemyNames = Arrays.copyOf(enemyNames, enemyNames.length * 2);
-				enemyPositions = Arrays.copyOf(enemyPositions, enemyNames.length);
-			}
 			enemyNames[enemyCount] = event.getName();
 			enemyPositions[enemyCount] = enemyPosition;
 			enemyCount++;
@@ -144,6 +160,7 @@ public class BasicMeleeBot_AntiPattern extends AdvancedRobot {
 	 */
 	@Override
 	public void onRobotDeath(RobotDeathEvent event) {
+		// remove the destroyed robot from the arrays
 		int index = findEnemyByName(event.getName());
 		if (index >= 0) {
 			for (int i = index + 1; i < enemyCount; i++) {
@@ -155,7 +172,7 @@ public class BasicMeleeBot_AntiPattern extends AdvancedRobot {
 	}
 	
 	/**
-	 * Find the index of an enemy robot given its name.
+	 * Find the index of an enemy robot given its name. The index can then be used to access the robot's position in the position array.
 	 * 
 	 * @param name The name of the robot.
 	 * @return The index of the robot in the internal array, -1 if not found.
