@@ -52,7 +52,7 @@ public class TargetingSystem {
 	 * To be called every turn. Find the closest target and shoot at it.
 	 */
 	public void update() {
-		// ETSA02 Lab2: Implement this constructor to initiate the attributes.
+		// ETSA02 Lab2: Implement this by adapting the parts under AIMING AND SHOOTING.
 		throw new NotImplementedException();
 	}
 }

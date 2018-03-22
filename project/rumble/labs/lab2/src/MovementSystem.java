@@ -46,7 +46,7 @@ public class MovementSystem {
 	 * @param enemyHelper the object managing enemies.
 	 * @param battleField the object handling battle field related calculations.
 	 */
-	public MovementSystem(BasicMeleeBot robot, EnemyTracker enemyHelper, PositioningSystem battleField) {
+	public MovementSystem(BasicMeleeBot robot, EnemyTracker enemyTracker, PositioningSystem battleField) {
 		// ETSA02 Lab2: Implement this constructor to initiate the attributes.
 		throw new NotImplementedException();
 	}

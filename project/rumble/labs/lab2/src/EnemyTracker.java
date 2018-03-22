@@ -42,7 +42,7 @@ public class EnemyTracker {
 	 * Construct an object to help with the management of enemies.
 	 * @param robot the robot we are working on.
 	 */
-	public EnemyTracker(AdvancedRobot robot) {
+	public EnemyTracker(BasicMeleeBot robot) {
 		// ETSA02 Lab2: Implement this constructor to initiate the attributes.
 		// Make room for 10 enemies when you create the arrays.
 		throw new NotImplementedException();
@@ -56,7 +56,7 @@ public class EnemyTracker {
 		// ETSA02 Lab2: Add an enemy to the database. This behavior was previously in onScannedRobot()
 		// You get the first line of code for free - uncomment it and add the rest
 		
-		//Point2D.Double position = MathUtils.calcRobotPosition(robot, e);
+		//Point2D.Double position = MathUtils.calcEnemyPosition(robot, e);
 		throw new NotImplementedException();
 	}
 	

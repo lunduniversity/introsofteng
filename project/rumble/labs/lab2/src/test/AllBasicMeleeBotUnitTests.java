@@ -27,8 +27,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ MovementSystemTest.class, TargetingSystemTest.class, EnemyTrackerTest.class, 
-	PositioningSystemTest.class, MathUtilsTest.class })
+@SuiteClasses({ MathUtilsTest.class, PositioningSystemTest.class, EnemyTrackerTest.class, TargetingSystemTest.class, MovementSystemTest.class })
 public class AllBasicMeleeBotUnitTests {
 
 }
