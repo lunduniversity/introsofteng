@@ -265,6 +265,62 @@ As a result from the verification activities, each project group shall produce t
 \item[Sprint 3] Test specification v1.0 and a signed test report
 \end{description}
 
+\subsection{Robot communication}
+To allow communication between robots developed by different suppliers, the ETSA02 Regulatory Body has standardized a communication protocol. All messages are to be transmitted as plain text strings, with one command per line. The ETSA02 Robot Communication Protocol will be version controlled, and groups that decide to implement communication should carefully specify in their requirements specifications which version of the protocol is implemented.
+
+The ETSA02 Robot Communication Protocol will evolve during the course, i.e., the Regulatory Body will release new versions. All groups are welcome to provide feedback and requests to the standardization work done by the Regulatory Body. To do so, the project manager should submit a ``Change Request'' to the Regulatory Body. The Change Request should carefully describe what changes are proposed, and motivate why this request should be considered.
+
+In short, robots that extend TeamRobot can communicate with their team members. If you want to implement this feature, please study the Robocode API:\\http://robocode.sourceforge.net/docs/robocode/robocode/TeamRobot.html\\Note that the MessageEvent always contains the name of the sending robot and a specific message.\\
+
+Broadcasting message to all team members:
+\begin{verbatim}
+public void broadcastMessage(Serializable message)
+\end{verbatim}
+
+Sending messages to one specific team member:
+\begin{verbatim}
+TeamRobot.sendMessage(String name, Serializable message)
+\end{verbatim}
+
+When a robot receives a message, the following method is called:
+\begin{verbatim}
+onMessageReceived(MessageEvent)
+\end{verbatim}
+
+A message string should have the following overall structure, including the new lines.
+
+\begin{verbatim}
+[0-1] leadership;[followMe|leadMe]
+[0-1] teamMode;[offensive|defensive]
+[0-1] myPos;x;y
+[0-*] enemyPos;x;y
+[0-1] targetEnemy;name
+[0-1] targetPos;x;y
+[0-1] moveTo;x;y
+\end{verbatim}
+
+Example message:
+
+\begin{verbatim}
+teamMode;offensive
+myPos;100;100
+enemyPos;50;50
+enemyPos;200;150
+targetPos;50;50
+\end{verbatim}
+
+The commands shall have the following meaning:
+
+\begin{description}
+\item[leadership] Tells the receiving robot(s) that the sender takes on leadership (followMe) or reports as a follower (leadMe)
+\item[teamMode] Tells the receiving robot(s) that the team shall enter offensive mode (offensive) or defensive mode (defensive)
+\item[myPos] Tells the receiving robot(s) its current position on the 2D battlefield
+\item[enemyPos] Tells the receiving robot(s) the position of an identified enemy robot
+\item[targetPos] Tells the receiving robot(s) to fire at a specific position on the 2D battlefield
+\item[targetEnemy] Tells the receiving robot(s) to target a specific enemy robot
+\item[moveTo] Tells the receiving robot(s) to move to a specific position on the 2D battlefield
+\end{description}
+
 \section{Monetizing the robot}
 One of the primary goals of the project is to maximize the profit of the group, i.e., monetizing the robot. The business aspects of the project involves a combination of bespoke software engineering and software engineering for an open market. All project groups will offer their robot on a highly competitive market -- consisting of the other groups, each with a \euro 100 budget to invest in a robot team for the LU Rumble.
 
