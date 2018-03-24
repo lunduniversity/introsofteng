@@ -575,19 +575,23 @@ As the project progresses through phases and sprints, different roles with have 
 Report time per role on a weekly basis. Reflect on the figures after each sprint. Plan changes if needed to better balance the work load.
 
 \section{Software Releases: Alpha, Beta, and Final}
-The robot shall be released after each development sprint, each time constituting a more mature software product. In ETSA02, a software release contains:
+The robot shall be released after each development sprint, each time constituting a more mature software product. In ETSA02, you shall create each software release in two variants: 1) a customer release and 2) a regulatory body release. Groups will upload their releases in designated folders on Google Drive.
+
+The customer release shall contain the latest versions of the following:
 
 \begin{itemize}
-\item The latest version of the lean canvas (only for the supervisor).
-+item The latest version of the SRS.
-\item[SRS]
-\item[Source code] Only the regulatory body should receive the source code of the robot.
-\item[Releases] Package two releases of the robot. First, a jar-file without source code for your customer. Second, a jar-file with embedded source code for the regulatory body.
-\item[Test code]
-\item[Test spec]
-\item[Test res]
-\item[Acceptance test]
-\item[LU Rumble team]
+\item SRS
+\item Robot packaged as a jar-file -- without source code!
+\item Test specification
+\item Optional: Release notes -- if you want to clarify anything related to the release. Simply create a text file called ``ReleaseNotes_vX.txt'' and replace X with 0.5, 0.9, or 1.0.
+\end{itemize}
+
+The regulatory body release shall contain everything in the customer release, but also the latest version of the following artifacts:
+\begin{itemize}
+\item Lean canvas
+\item Robot packages as a jar-file -- including source files!
+\item Class diagram
+\item Javadoc
 \end{itemize}
 
 \chapter{Expectations per deliverable}
@@ -609,6 +613,7 @@ This section briefly explains what is expected of the various deliverables.
 \item[Final] TBD
 \end{description}
 \item[Class diagram] The object-oriented design shall be documented in a UML class diagram. You can use any tool to create the diagram, either a tailored UML tool or a standard drawing tool -- you can even scan a pen and paper sketch or take a picture of a whiteboard drawing.
+\item[Javadoc] The robot source code shall be documented and packaged using the standard Javadoc tool.
 \item[Test specification] The document shall describe how the group uses testing to increase the quality of the robot, i.e., what measures are taken to decrease the risk of releasing a product with bugs. Furthermore, system test cases used to verify that the SRS is completed shall be specified.
 \begin{description}
 \item[v0.5] A skeleton of a test specification adhering to the provided template. Initial thoughts on how the group will perform quality assurance shall be documented, in particular regarding unit testing.
@@ -617,7 +622,6 @@ This section briefly explains what is expected of the various deliverables.
 \end{description}
 \item[Test report] The final release shall be accompanied by a test report that shows that all system test cases have been executed. Each system test case shall be listed, and you shall report the date when it was executed and its result.
 \item[Purchase array] The purchase array shall specify valid offers for all other groups robots and be signed by the domain expert.
-\item[Javadoc] The robot source code shall be documented and packaged using the standard Javadoc tool.
 \item[Acceptance test report] When the final release of another group's robot has been received, you shall test it to see if it complies with its SRS. You shall write an acceptance test report clearly stating how you tested the robot and what the results were. You are free to choose a format for the document.
 \item[Business claims] This is an optional deliverable that you can send to the regulatory body. If you are not satisfied with the final release you received from another group, you can argue for your case in a written business claim. You are free to choose a format for the document. 
 \end{description}
