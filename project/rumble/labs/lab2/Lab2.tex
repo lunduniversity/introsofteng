@@ -27,7 +27,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.4 }
+\def\myversion{0.5 }
 \date{}
 %\title{%
 
@@ -73,6 +73,8 @@
         \hline
         Markus Borg & 2018-03-22 & Updated after internal review. & 0.4\\
         \hline
+        Markus Borg & 2018-03-25 & Clarified after more internal review. & 0.5\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -100,7 +102,7 @@ Prior to the lab, please browse the following Wikipedia articles:
 \end{itemize}
 
 The course material is under development under an open source license on GitHub. Have a look at: https://github.com/lunduniversity/introsofteng
-If you are already familiar with git, I strongly recommend that you clone the repository. If you don't know what this means, instead click the button presented in Figure~\ref{fig:github} and choose ``Download ZIP''. Your lab instructor can help you getting started with git, but simply extracting the Lab2 files from the zip archive works fine as well. In Lab 2, you need the files located in introsofteng-master/project/rumble/labs/lab2/src, including its subfolder. Once you are comfortable with git, you are most welcome to create ``pull requests'' to improve the course material, e.g., clarifying descriptions or correcting typos!
+If you are already familiar with git, I strongly recommend that you clone the repository. If you don't know what this means, instead click the button presented in Figure~\ref{fig:github} and choose ``Download ZIP''. Your lab instructor can help you getting started with git, but simply extracting the Lab2 files from the zip archive works fine as well. In Lab 2, you need the files located in introsofteng-master/project/rumble/labs/lab2/src, including its subfolder: `test'. Watch the video ``Lab2_download.avi'' on Google Drive (ETSA02 Everyuone/Labs) if you need support. Once you are comfortable with git, you are most welcome to create ``pull requests'' to improve the course material, e.g., clarifying descriptions or correcting typos!
 
 \begin{figure}
 \centering
@@ -110,14 +112,14 @@ If you are already familiar with git, I strongly recommend that you clone the re
 \end{figure}
 
 \chapter{At the lab}
-The first thing you need to do is to get started with automated testing using JUnit. Start by following the following steps:
+The first thing you need to do is to get started with automated testing using JUnit. Start by following the steps below. If you need more detailed instructions, watch the videos ``Lab2_createAndImport.avi'' to create a Java project and import the required files and ``Lab2_runJUnit.avi'' to create a JUnit run configuration. You can download both videos from Google Drive (ETSA02 Everyuone/Labs).
 \begin{enumerate}
-\item Create a new Java project in your Eclipse workplace. As in Lab 1, add the robocode.jar as an ``External JAR'' in the Libraries tab, either when creating the project or afterwards in the project properties.
-\item In the ``Package Explorer'' pane, right click ``src'' and create a new ``Package'' called ``etsa02_lab''.
-\item In the ``Package Explorer'' pane, right click the newly created package and run ``Import...''. Select ``File system'' and select all downloaded files in both the ``src'' folder and the ``src/test'' folder. The content in the Package Explorer should resemble Figure~\ref{fig:afterImport}.
-\item To make the etsa02_lab2.test package build, you must configure JUnit. Right click the Java project and select ``Properties''. In the ``Java Build Path'', select the ``Libraries'' tab. You should find robocode.jar, now let's add JUnit! Click ``Add Library...'' and select JUnit. Click ``Next >'' followed by ``Finish'' to accept the defaut settings. You should now see JUnit in the Package Explorer in Eclipse.
-\item Right click ``AllBasicMeleeBotUnitTests.java'' and choose ``Run as..'' and create a new JUnit run configuration. Give the configuration a descriptive name, such as ``Lab2 unit tests''.
-\item Run the unit tests. All of them are supposed to fail!
+\item \textbf{Create a new Java project for Lab2 in your Eclipse workplace.} As in Lab 1, add the robocode.jar as an ``External JAR'' in the Libraries tab, either when creating the project or afterwards in the project properties.
+\item \textbf{Create a new package called etsa02_lab2}. In the ``Package Explorer'' pane, right click ``src'' and create a new ``Package'' called ``etsa02_lab2''.
+\item \textbf{Import the source files required for lab2}, either from the cloned repository or the zip archive. In the ``Package Explorer'' pane, right click the newly created package and run ``Import...''. Click ``General'' and then choose ``File system'' and select all downloaded files in both the ``src'' folder and the ``src/test'' folder. The content in the Package Explorer should resemble Figure~\ref{fig:afterImport}.
+\item \textbf{Add JUnit as a library}. To make the etsa02_lab2.test package build, you must configure JUnit. Right click the Java project and select ``Build Path'' and click ``Add Libraries...'' and select JUnit. Click ``Next >'' followed by ``Finish'' to accept the default settings. You should now see JUnit in the Package Explorer in Eclipse. (In the video, I did this at the same time as I added the robocode.jar)
+\item \textbf{Create a JUnit run configuration}. Right click ``AllBasicMeleeBotUnitTests.java'' and choose ``Run as..'' and create a new JUnit run configuration. Give the configuration a descriptive name, such as ``Lab2 unit tests''.
+\item \textbf{Perform unit testing}. Run the unit tests. All of them are supposed to fail!
 \end{enumerate}
 
 \begin{figure}
