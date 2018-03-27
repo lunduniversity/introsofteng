@@ -52,28 +52,28 @@ public class PositioningSystemTest {
 	
 	@Test
 	public void testCheckCloseToWallTop() {
-		Point2D.Double point = new Point2D.Double(300, 790);
+		Point2D.Double point = new Point2D.Double(400, 590);
 		Wall wall = positioningSystemUT.checkCloseToWall(point, 20);
 		assertEquals("Check that positioning system can correctly detect when a point is close to top wall", Wall.TOP, wall);
 	}
 	
 	@Test
 	public void testCheckCloseToWallLeft() {
-		Point2D.Double point = new Point2D.Double(10, 400);
+		Point2D.Double point = new Point2D.Double(10, 300);
 		Wall wall = positioningSystemUT.checkCloseToWall(point, 20);
 		assertEquals("Check that positioning system can correctly detect when a point is close to left wall", Wall.LEFT, wall);
 	}
 	
 	@Test
 	public void testCheckCloseToWallBottom() {
-		Point2D.Double point = new Point2D.Double(300, 10);
+		Point2D.Double point = new Point2D.Double(400, 10);
 		Wall wall = positioningSystemUT.checkCloseToWall(point, 20);
 		assertEquals("Check that positioning system can correctly detect when a point is close to bottom wall", Wall.BOTTOM, wall);
 	}
 	
 	@Test
 	public void testCheckCloseToWallRight() {
-		Point2D.Double point = new Point2D.Double(790, 400);
+		Point2D.Double point = new Point2D.Double(790, 300);
 		Wall wall = positioningSystemUT.checkCloseToWall(point, 20);
 		assertEquals("Check that positioning system can correctly detect when a point is close to right wall", Wall.RIGHT, wall);
 	}
