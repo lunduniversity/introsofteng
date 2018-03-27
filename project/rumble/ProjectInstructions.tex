@@ -28,7 +28,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.8 }
+\def\myversion{0.85 }
 \date{}
 %\title{%
 
@@ -82,6 +82,8 @@
         Markus Borg & 2018-03-08 & Minor consistency improvements. & 0.7\\
         \hline
         Markus Borg & 2018-03-24 & Updated after course start. Added robot communication, releases and deliverables. & 0.8\\
+        \hline
+        Markus Borg & 2018-03-27 & Replaced test specification with STS. & 0.85\\
         \hline
     \end{tabular}
 \end{center}
@@ -252,7 +254,7 @@ As a result from the construction activities, each project group shall produce t
 \subsection{Verification}
 The first two computer exercises will introduce working with the JUnit framework for automated testing. Project groups will work with unit testing as a natural companion to the programming during development. While JUnit is designed for automated execution of unit test cases, groups will also use JUnit for system testing of both functional and non-functional (quality) aspects of the robot under development. Finally, groups will learn to use measure code coverage and use static code analysis tools to support software quality assurance.
 
-The test lead is responsible for delivering three growing development artifacts during the projects, as well as a final test report at the final release. First, a suite of automated unit test cases shall evolve during the project. At sprint 1, an initial version shall simply be executable, but at the final release all source code shall be exercised by unit tests. Second, a suite of automated system test cases shall be developed -- an initial version at sprint 2, and the complete suite with the final release. Third, a test specification that describes the project group's test and quality activities. At sprint 3, all requirements in the SRS shall be verified either by automated test cases or targeted by a convincing argumentation that the requirement has been verified through inspection.
+The test lead is responsible for delivering three growing development artifacts during the projects, as well as a final test report at the final release. First, a suite of automated unit test cases shall evolve during the project. At sprint 1, an initial version shall simply be executable, but at the final release all source code shall be exercised by unit tests. Second, a suite of automated system test cases shall be developed -- an initial version at sprint 2, and the complete suite with the final release. Third, a Software Test Specification (STS) that describes the project group's test and quality activities. At sprint 3, all requirements in the SRS shall be verified either by automated test cases or targeted by a convincing argumentation that the requirement has been verified through inspection.
 
 Verification activities are naturally supported by tools. Apart from the JUnit framework, the project groups will use Eclipse plugins to measure code coverage and a set of static analysis tools to automatically analyze the source code from different quality perspectives. TODO: describe the tools to use.
 
@@ -260,9 +262,9 @@ The final robot release shall be accompanied with a test report, signed by the t
 
 As a result from the verification activities, each project group shall produce the following deliverables, further described in Section~\ref{sec:process}:
 \begin{description}
-\item[Sprint 1] Test specification v0.5 -- Initial unit test suite
-\item[Sprint 2] Test specification v0.9 -- Initial system test suite
-\item[Sprint 3] Test specification v1.0 and a signed test report
+\item[Sprint 1] STS v0.5 -- Initial plan, especially regarding unit testing
+\item[Sprint 2] STS v0.9 -- System testing specified
+\item[Sprint 3] STS v1.0 and a signed test report
 \end{description}
 
 \subsection{Robot communication}
@@ -422,7 +424,7 @@ Sprint 1 shall result in the following deliverables to the following stakeholder
 Lean canvas (latest version)   & Supervisor          & Project manager           & L3: Apr 16 - 12.00 \\ \hline
 SRS v0.5                       & Customer+ Supervisor & Requirements engineer     & L3: Apr 16 - 12.00 \\ \hline
 Robot Alpha version            & Customer+ Supervisor & Development lead          & L3:Apr 16 - 12.00  \\ \hline
-Test specification v0.5        & Customer+ Supervisor & Test lead                 & L3:Apr 16 - 12.00  \\ \hline
+STS v0.5        			   & Customer+ Supervisor & Test lead                 & L3:Apr 16 - 12.00  \\ \hline
 Sales pitch + promotion folder & Course responsible  & Sales engineer            & L2: Apr 12 - 23.59 \textbf{(early!)}\\ \hline
 Purchase array                 & ``Grå skåpet''      & Domain expert             & L3:Apr 16 - 12.00  \\ \hline
 \end{tabular}
@@ -445,7 +447,7 @@ In Sprint 2, the project group should be up to speed both regarding engineering 
 
 In Sprint 2, you will have an established customer who has received your Robot Alpha release. As that project group will be keen to win the LU Rumble, you will likely get feedback that they believe will guide your development to a successful robot. During the remainder of the project, maintaining a healthy \textbf{customer relationship} is critical. Your sales engineer is the main point of contact with the customer.
 
-Based on your customer's feedback, your own vision -- and possibly some negotiation in between -- you will \textbf{evolve the robot} during Sprint 2. The features will be broken down into detailed requirements, and the test specification will be elaborated to also cover system testing. At the end of Sprint 2, you will deliver Robot Beta release to your customer, constituting an MVP, i.e., a minimal product that still brings some value. To be in a good position for the next sprint, the project group should try to let the SRS, source code, test specification, and marketing concept co-evolve -- otherwise they might diverge considerably, increasing the risk of a dissatisfied customer, wasted effort within your group, and reduced sales on the Robot Market. Make sure that any changes you make to the SRS are traceable, i.e., make sure there is a ``paper trail'', in case the regulatory body needs to settle business claims from your customer at a later stage. Significant changes to the SRS must be done in agreement with the customer and documented. If the supplier organization does not store a chain of evidence, the regulatory body is likely to side with the customer in legal contentions.
+Based on your customer's feedback, your own vision -- and possibly some negotiation in between -- you will \textbf{evolve the robot} during Sprint 2. The features will be broken down into detailed requirements, and the STS will be elaborated to also cover system testing. At the end of Sprint 2, you will deliver Robot Beta release to your customer, constituting an MVP, i.e., a minimal product that still brings some value. To be in a good position for the next sprint, the project group should try to let the lean canvas, SRS, source code, STS, and marketing concept co-evolve -- otherwise they might diverge considerably, increasing the risk of a dissatisfied customer, wasted effort within your group, and reduced sales on the Robot Market. Make sure that any changes you make to the SRS are traceable, i.e., make sure there is a ``paper trail'', in case the regulatory body needs to settle business claims from your customer at a later stage. Significant changes to the SRS must be done in agreement with the customer and documented. If the supplier organization does not store a chain of evidence, the regulatory body is likely to side with the customer in legal contentions.
 
 Finally, you will develop a first draft of your \textbf{Rumble strategy}. The cornerstone of your robot team will be the robot you pre-ordered. Your domain expert will be responsible for communication with your supplier's sales engineer. Just like your project group should be responsive to your customer, your supplier should respond to your requests.
 
@@ -454,7 +456,7 @@ Sprint 2 shall result in the following deliverables to the following stakeholder
 \item The latest version of the lean canvas (Project manager)
 \item SRS v0.9 to the customer and the regulatory body (Requirements engineer)
 \item Robot Beta release to the customer (Development lead)
-\item Test specification v0.9 to the regulatory body (Test lead)
+\item STS v0.9 to the regulatory body (Test lead)
 \end{itemize}
 
 To support Sprint 2, the following sessions are scheduled:
@@ -467,7 +469,7 @@ To support Sprint 2, the following sessions are scheduled:
 \subsection{Sprint 3}
 In Sprint 3, the project group shall conclude and tie up all activities. The engineering should lead to a successful robot, the monetizing should ensure that it is well-received on the market, and the strategizing shall finalize the robot team shall be competitive in the upcoming LU Rumble. The high-level goals of Sprint 3 are to: 1) complete the product, 2) generate high-volume sales, and to 3) optimize the Rumble strategy.
 
-The engineering department will be busy implementing the remaining requirements and putting the finishing touches to the robot. This means \textbf{completing the product} and preparing the Robot Final release. When the Final Robot is released, it is important that the SRS, the test specification, and the marketing concept are all aligned. Your customer will perform acceptance testing of your robot -- rest assured that they will scrutinize your deliverables to identify any discrepancies. The customer will be greatly motivated to assure that the Robot Final release complies with the SRS -- their entire robot team for the LU Rumble might rely on it! If the customer is not satisfied, the regulatory body is likely to receive a business claim based on their acceptance testing. However, your project group will provide the regulatory body with evidence that everything in the SRS has been verified by providing a complete test report based on Test specification v1.0.
+The engineering department will be busy implementing the remaining requirements and putting the finishing touches to the robot. This means \textbf{completing the product} and preparing the Robot Final release. When the Final Robot is released, it is important that the lean canvas, SRS, STS, and the marketing concept are all aligned. Your customer will perform acceptance testing of your robot -- rest assured that they will scrutinize your deliverables to identify any discrepancies. The customer will be greatly motivated to assure that the Robot Final release complies with the SRS -- their entire robot team for the LU Rumble might rely on it! If the customer is not satisfied, the regulatory body is likely to receive a business claim based on their acceptance testing. However, your project group will provide the regulatory body with evidence that everything in the SRS has been verified by providing a complete test report based on STS v1.0.
  
 The sales department will keep active communications with the customer, to make sure the final engineering efforts adhere to their expectations. Close communication with the customer will reduce the risks of incoming business claims. However, the sales engineer will also focus considerable effort on the robot offering on Robot Market -- trying to make the robot as attractive as possible on the open market, i.e., the sales engineer will maintain the Robot webpage with the intention to \textbf{generate high-volume sales}.
 
@@ -477,7 +479,7 @@ Sprint 3 shall result in the following deliverables to the following stakeholder
 \begin{itemize}
 \item SRS v1.0 to the customer and the regulatory body (Requirements engineer)
 \item Robot Final release to the customer and the regulatory body (Development lead)
-\item Test specification v1.0 to the regulatory body and the customer (Test lead)
+\item STS v1.0 to the regulatory body and the customer (Test lead)
 \item Test report to the regulatory body and the customer (Test lead)
 \item A robot team composition to the regulatory body (Domain expert)
 \end{itemize}
@@ -567,7 +569,7 @@ As the project progresses through phases and sprints, different roles with have 
 \item[Project manager] Coordination, time reporting, communication with the regulatory body. Identify a group member with leadership skills willing to shoulder overall responsibilities. -- Weekly time reports with reflections, business claims (based on failed acceptance test)
 \item[Requirements engineer] End-user perspective, feature scoping, detailed requirements. A requirements engineer bridges engineering and business, identify a generalist. -- SRS v0.5, SRS v0.9, SRS v1.0
 \item[Sales engineer] Marketing, sales pitch, customer communication, negotiations. Identify your natural salesman, a person with excellent communication skills. -- Sales pitch, signed contract (as supplier)
-\item[Test lead] Test strategy, unit testing, system testing. Suitable for an individual with an eye for details. -- Unit tests, Test spec v1.0 (incl. test code), test results
+\item[Test lead] Test strategy, unit testing, system testing. Suitable for an individual with an eye for details. -- Unit tests, STS v1.0 (incl. test code), test results
 \end{description}
 
 \section{Time reporting and reflections} \label{sec:time}
@@ -582,7 +584,7 @@ The customer release shall contain the latest versions of the following:
 \begin{itemize}
 \item SRS
 \item Robot packaged as a jar-file -- without source code!
-\item Test specification
+\item STS
 \item Optional: Release notes -- if you want to clarify anything related to the release. Simply create a text file called ``ReleaseNotes_vX.txt'' and replace X with 0.5, 0.9, or 1.0.
 \end{itemize}
 
@@ -614,9 +616,9 @@ This section briefly explains what is expected of the various deliverables.
 \end{description}
 \item[Class diagram] The object-oriented design shall be documented in a UML class diagram. You can use any tool to create the diagram, either a tailored UML tool or a standard drawing tool -- you can even scan a pen and paper sketch or take a picture of a whiteboard drawing.
 \item[Javadoc] The robot source code shall be documented and packaged using the standard Javadoc tool.
-\item[Test specification] The document shall describe how the group uses testing to increase the quality of the robot, i.e., what measures are taken to decrease the risk of releasing a product with bugs. Furthermore, system test cases used to verify that the SRS is completed shall be specified.
+\item[STS] The document shall describe how the group uses testing to increase the quality of the robot, i.e., what measures are taken to decrease the risk of releasing a product with bugs. Furthermore, system test cases used to verify that the SRS is completed shall be specified.
 \begin{description}
-\item[v0.5] A skeleton of a test specification adhering to the provided template. Initial thoughts on how the group will perform quality assurance shall be documented, in particular regarding unit testing.
+\item[v0.5] A skeleton of an STS adhering to the provided template. Initial thoughts on how the group will perform testing and general quality assurance shall be documented, in particular regarding unit testing.
 \item[v0.9] TBD.
 \item[v1.0] TBD.
 \end{description}
