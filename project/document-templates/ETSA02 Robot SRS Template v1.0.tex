@@ -1,0 +1,226 @@
+%Copyright 2014 Jean-Philippe Eisenbarth
+%This program is free software: you can 
+%redistribute it and/or modify it under the terms of the GNU General Public 
+%License as published by the Free Software Foundation, either version 3 of the 
+%License, or (at your option) any later version.
+%This program is distributed in the hope that it will be useful,but WITHOUT ANY 
+%WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+%PARTICULAR PURPOSE. See the GNU General Public License for more details.
+%You should have received a copy of the GNU General Public License along with 
+%this program.  If not, see <http://www.gnu.org/licenses/>.
+
+%Based on the code of Yiannis Lazarides
+%http://tex.stackexchange.com/questions/42602/software-requirements-specification-with-latex
+%http://tex.stackexchange.com/users/963/yiannis-lazarides
+%Also based on the template of Karl E. Wiegers
+%http://www.se.rit.edu/~emad/teaching/slides/srs_template_sep14.pdf
+%http://karlwiegers.com
+%Permission is granted to use, modify, and distribute the customization for Robocode development by Markus Borg (2018).
+\documentclass{scrreprt}
+\usepackage{listings}
+\usepackage{underscore}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\hypersetup{
+    bookmarks=false,    % show bookmarks bar?
+    pdftitle={Software Requirement Specification},    % title
+    pdfauthor={Jean-Philippe Eisenbarth},                     % author
+    pdfsubject={TeX and LaTeX},                        % subject of the document
+    pdfkeywords={TeX, LaTeX, graphics, images}, % list of keywords
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,       % color of internal links
+    citecolor=black,       % color of links to bibliography
+    filecolor=black,        % color of file links
+    urlcolor=purple,        % color of external links
+    linktoc=page            % only page is linked
+}%
+\def\myversion{0.5 }
+\date{}
+%\title{%
+
+%}
+\usepackage{hyperref}
+\begin{document}
+
+\begin{flushright}
+    \rule{16cm}{5pt}\vskip1cm
+    \begin{bfseries}
+        \Huge{SOFTWARE REQUIREMENTS\\ SPECIFICATION}\\
+        \vspace{1.9cm}
+        for\\
+        \vspace{1.9cm}
+        $<$Project$>$\\
+        \vspace{1.9cm}
+        \LARGE{Version \myversion}\\
+        \vspace{1.9cm}
+        Prepared by $<$author(s)$>$\\
+        \vspace{1.9cm}
+        $<$Group X$>$\\
+        \vspace{1.9cm}
+        \today\\
+    \end{bfseries}
+\end{flushright}
+
+\tableofcontents
+
+
+\chapter*{Revision History}
+$<$Note that you are might want to create intermediate versions between the releases. This is
+perfectly fine!$>$
+
+\begin{center}
+    \begin{tabular}{|c|c|p{8cm}|c|}
+        \hline
+	    Name & Date & Description & Version\\
+        \hline
+	    Author(s) &  &  Alpha release: Features described. & 0.5\\
+        \hline
+	    Author(s) &  & Beta release: Detailed requirements and quality requirements specified. & 0.9\\
+        \hline
+        Author(s) &  & Final release: A complete SRS. & 0.9\\
+        \hline
+    \end{tabular}
+\end{center}
+
+\chapter{Introduction}
+
+\section{Purpose}
+$<$Briefly describe the robot whose software requirements are specified in this document. Be specific about whether you develop a: 1) leader robot, 2) a normal robot, or 3) a droid. Clarify the purpose of the robot, i.e., to be sold on an open market to be used in team rumbles.$>$
+
+\section{Document Conventions}
+$<$Describe any standards or typographical conventions that were followed when writing this SRS, such as fonts or highlighting that have special significance.$>$
+
+\section{Intended Audience and Reading Suggestions}
+$<$Describe the different types of reader that the document is intended for, such as developers, project managers, marketing staff, testers, and potential customers. Describe what the rest of this SRS contains and how it is organized. Suggest a sequence for reading the document, beginning with the overview sections and proceeding through the sections that are most pertinent to each reader type.$>$
+
+\section{Product Scope}
+$<$Provide a short description of the purpose of the software being specified, including relevant benefits, objectives, and goals. Relate the software to corporate goals or business strategies as specified in your lean canvas.$>$
+
+\section{References}
+$<$List any other documents or Web addresses to which this SRS refers, e.g., the lean canvas, Java code conventions, and the ETSA02 Robot Communication Protocol. Provide enough information so that the reader could access a copy of each reference, including title, author, version number, date, and source or location.$>$
+
+\chapter{Overall Description}
+
+\section{Product Perspective}
+$<$Describe the context and origin of the robot being specified in this SRS. A simple diagram that shows how the robot is intended to contribute to a robot team can be helpful.$>$
+
+\section{Product Functions}
+$<$Summarize the major functions the product must perform or must let the user perform. Details will be provided in Section 3, so only a high level summary (such as a bullet list) is needed here. Organize the functions to make them understandable to any reader of the SRS.$>$
+
+\section{User Classes and Characteristics (Optional)}
+$<$If your product targets a particular market segment, describe the different types of customers that you anticipate will purchase your robot. Describe the pertinent characteristics of each type of customer, as certain requirements may pertain only to some types of customers. Distinguish the most important types of customer for this robot from those who are less important to satisfy.$>$
+
+\section{User Documentation (Optional)}
+$<$If you have any, list the user documentation components (such as user manuals, on-line help, and tutorials) that will be delivered along with the software.$>$
+
+\section{Assumptions and Dependencies (Optional)}
+$<$List any assumed factors (as opposed to known facts) that could affect the requirements stated in the SRS. These could include third-party or commercial components that you plan to use, issues around the development or operating environment, or constraints. The project could be affected if these assumptions are incorrect, are not shared, or change. Also identify any dependencies the project has on external factors, such as software components that you intend to reuse from another project.$>$
+
+\chapter{External Interface Requirements}
+
+\section{Robocode Interface}
+$<$Describe the characteristics of the interface between the robot and the hardware components of the system. List all events that your Robot intercepts from Robocode, e.g., onScannedRobot() and on RobotDeath(), and describe the purpose of each. Refer to the Robocode application programming interface.$>$
+
+\section{Software Interfaces (Optional)}
+$<$Describe the connections between the robot and other specific software components (name and version), including databases, tools, and libraries. Identify the data items or messages coming into the system and going out and describe the purpose of each. Refer to documents that describe detailed application programming interface protocols.$>$
+
+\section{Communications Interfaces (Optional)}
+$<$Describe the requirements associated with any communications functions required by this robot. If you implement the ETSA02 Robot Communication Protocol, either completely or in part, list the implemented commands and describe the purpose of each.$>$
+
+\chapter{System Features}
+$<$This template illustrates organizing the functional requirements for the product by system features, the major services provided by the product. If you have a good reason, you can reorganize this section by use case, mode of operation, user class, object class, functional hierarchy, or combinations of these, whatever makes the most logical sense for your robot.$>$
+
+\section{System Feature 1}
+$<$Don't really say ``System Feature 1.'' State the feature name in just a few words. Align this with your lean canvas.$>$
+
+\subsection{Description and Priority}
+$<$Provide a short description of the feature and indicate whether it is of High, Medium, or Low priority.$>$
+
+\subsection{Functional Requirements}
+$<$Itemize the detailed functional requirements associated with this feature.  
+These are the software capabilities that must be present in order for the user 
+to carry out the services provided by the feature, or to execute the use case.  
+Include how the product should respond to anticipated error conditions or 
+invalid inputs. Requirements should be concise, complete, unambiguous, 
+verifiable, and necessary. Use ``TBD'' as a placeholder to indicate when necessary 
+information is not yet available.$>$
+
+$<$Each requirement should be uniquely identified with a sequence number or a 
+meaningful tag of some kind.$>$\\\\
+REQ-F1-1:\\
+REQ-F1-2:\\
+REQ-F1-3:
+
+\section{System Feature 2}
+<Don't really say ``System Feature 2.'' State the feature name in just a few words. Align this with your lean canvas.$>$
+
+\subsection{Description and Priority}
+<Provide a short description of the feature and indicate whether it is of High, Medium, or Low priority.$>$
+
+\subsection{Functional Requirements}
+$<$Itemize the detailed functional requirements associated with this feature.  
+These are the software capabilities that must be present in order for the user 
+to carry out the services provided by the feature, or to execute the use case.  
+Include how the product should respond to anticipated error conditions or 
+invalid inputs. Requirements should be concise, complete, unambiguous, 
+verifiable, and necessary. Use ``TBD'' as a placeholder to indicate when necessary 
+information is not yet available.$>$
+
+$<$Each requirement should be uniquely identified with a sequence number or a 
+meaningful tag of some kind.$>$\\\\
+REQ-F2-1:\\
+REQ-F2-2:\\
+REQ-F2-3:
+
+\section{System Feature 3}
+<Don't really say ``System Feature 3.'' State the feature name in just a few words. Align this with your lean canvas.$>$
+
+\subsection{Description and Priority}
+<Provide a short description of the feature and indicate whether it is of High, Medium, or Low priority.$>$
+
+\subsection{Functional Requirements}
+$<$Itemize the detailed functional requirements associated with this feature.  
+These are the software capabilities that must be present in order for the user 
+to carry out the services provided by the feature, or to execute the use case.  
+Include how the product should respond to anticipated error conditions or 
+invalid inputs. Requirements should be concise, complete, unambiguous, 
+verifiable, and necessary. Use ``TBD'' as a placeholder to indicate when necessary 
+information is not yet available.$>$
+
+$<$Each requirement should be uniquely identified with a sequence number or a 
+meaningful tag of some kind.$>$\\\\
+REQ-F3-1:\\
+REQ-F3-2:\\
+REQ-F3-3:
+
+\section{System Feature 4 (and so on)}
+
+\chapter{Quality Requirements}
+
+\section{1-vs-1 Battle Performance Requirements}
+$<$Specify performance requirements for how your robot shall perform in 1-vs-1 battles against standard robots to help the developers understand the intent and make suitable design choices. Make such requirements as specific as possible to allow later verification work, i.e., specify quantitative targets such as ``65\% win rate against SpinBot.''$>$
+
+\section{Melee Battle Performance Requirements}
+$<$Specify performance requirements for how your robot shall perform in melee battles against standard robots to help the developers understand the intent and make suitable design choices. Make such requirements as specific as possible to allow later verification work, i.e., specify quantitative targets such as ``65\% win rate in melee battles with one SpinBot, one CrazyBot, and two TargetBots.''$>$
+
+\section{Team Battle Performance Requirements (Optional)}
+$<$Specify performance requirements for how your robot shall perform in team battles against standard robots to help the developers understand the intent and make suitable design choices. Make such requirements as specific as possible to allow later verification work. This might be useful if you want to state requirements on how multiple copies of your robot work together.$>$
+
+\section{Software Quality Attributes}
+$<$Specify any additional quality characteristics for the product that will be important to either the customers or the developers. Some to consider are: maintainability, testability, source code size, and adherence to Java code conventions.$>$
+
+\chapter{Other Requirements}
+$<$Define any other requirements not covered elsewhere in the SRS. This might include database requirements, internationalization requirements, legal requirements, reuse objectives for the project, and so on. Add any new sections that are pertinent to the project.$>$
+
+\section{Appendix A: Glossary}
+$<$Define all the terms necessary to properly interpret the SRS, including 
+acronyms and abbreviations.$>$
+
+\section{Appendix B: Analysis Models (Optional)}
+$<$Optionally, include any pertinent analysis models, such as data flow diagrams, class diagrams, state-transition diagrams, or entity-relationship diagrams.$>$
+
+\section{Appendix C: To Be Determined List (Optional)}
+$<$In the document, you might postpone some parts until later, i.e., you explicitly state ``TBD''. Here you can collect a numbered list of the TBD (to be determined) references that remain in the SRS so they can be tracked to closure.$>$
+
+\end{document}
