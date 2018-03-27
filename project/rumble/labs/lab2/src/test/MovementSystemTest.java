@@ -32,6 +32,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import etsa02_lab2.MovementSystem;
+import etsa02_lab2.PositioningSystem;
 import etsa02_lab2.EnemyTracker;
 
 public class MovementSystemTest {
@@ -39,18 +40,21 @@ public class MovementSystemTest {
 	private MovementSystem movementUT;
 	private MockBot mockBot;
 	private EnemyTracker enemyTracker;
+	private PositioningSystem mockPositioningSystem;
 	
 	@Before
 	public void setUp() {
 		mockBot = new MockBot("fake robot", 100, 0, 400, 300);
 		enemyTracker = new EnemyTracker(mockBot);
-		movementUT = new MovementSystem(mockBot, enemyTracker, null);
+		mockPositioningSystem = new MockPositioningSystem(800, 600);
+		movementUT = new MovementSystem(mockBot, enemyTracker, mockPositioningSystem);
 	}
 	
 	@After
 	public void tearDown() {
 		mockBot = null;
 		enemyTracker = null;
+		mockPositioningSystem = null;
 		movementUT = null;
 	}
 	
@@ -74,6 +78,7 @@ public class MovementSystemTest {
 		assertTrue("Check that the moving direction is correct.", mockBot.getDistanceRemaining() < 0);
 	}
 	
+	@Test
 	public void testOneEnemyAtBearingPositiveGreaterThan90() {
 		MockScannedRobotEvent e = new MockScannedRobotEvent("fake enemy", 100, 135, 100, 0, 0, false);
 		enemyTracker.addEnemy(e);
