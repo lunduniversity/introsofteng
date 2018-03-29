@@ -60,7 +60,7 @@ public class MovementSystem {
 		throw new NotImplementedException();
 	}
 	
-	private void computeForce(Point2D.Double robotPosition, Point2D.Double repulsivePoint, double weight) {
+	private void computeForce(Point2D.Double robotPosition, Point2D.Double repulsivePoint) {
 		// ETSA02 Lab2: Break out the code that sets the xForce and yForce to this method
 		throw new NotImplementedException();
 	}
