@@ -78,7 +78,7 @@ public class MovementSystem {
 		}
 		
 		// To handle wall-avoidance, we check to see if our robot is close to a wall.
-		// If it does, we spawn a repulsive point on that wall to push our robot away.
+		// If it is, we spawn a repulsive point on that wall to push our robot away.
 		Wall closestWall = positioningSystem.checkCloseToWall(robotPosition, 40);
 		if (closestWall != null) {
 			repulsivePoint = positioningSystem.getProjectionOnWall(robotPosition, closestWall);
