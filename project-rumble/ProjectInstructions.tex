@@ -83,7 +83,7 @@
         \hline
         Markus Borg & 2018-03-24 & Updated after course start. Added robot communication, releases and deliverables. & 0.8\\
         \hline
-        Markus Borg & 2018-03-27 & Replaced test specification with STS. & 0.85\\
+        Markus Borg & 2018-03-29 & Replaced test specification with STS. Fixed L4 dates. Introduced RoboTalk. & 0.85\\
         \hline
     \end{tabular}
 \end{center}
@@ -268,9 +268,9 @@ As a result from the verification activities, each project group shall produce t
 \end{description}
 
 \subsection{Robot communication}
-Your student group might want to implement communication between robots. To allow communication between robots developed by different suppliers, in practice creating a system-of-systems [REF], the ETSA02 Regulatory Body has standardized a communication protocol. All messages transmitted between  robots developed in the course should be transmitted as plain text strings, with one command per line. The ETSA02 Robot Communication Protocol is version controlled, and groups that decide to implement communication should carefully specify in their SRS which version of the protocol is implemented.
+Your student group might want to implement communication between robots. To allow communication between robots developed by different suppliers, in practice creating a system-of-systems [REF], the ETSA02 Regulatory Body has standardized a communication protocol: ETSA02 RoboTalk. All messages transmitted between robots developed in the course should be transmitted as plain text strings, with one command per line. ETSA02 RoboTalk is version controlled, and groups that decide to implement communication should carefully specify in their SRS which version of the protocol is implemented.
 
-The ETSA02 Robot Communication Protocol will evolve during the course, i.e., the Regulatory Body will release new versions. All groups are welcome to provide feedback and requests to the standardization work done by the Regulatory Body. To do so, the project manager should submit a ``Change Request'' to the Regulatory Body. The Change Request should carefully describe what changes are proposed, and motivate why this request should be considered.
+ETSA02 RoboTalk will evolve during the course, i.e., the Regulatory Body will release new versions. All groups are welcome to provide feedback and requests to the standardization work done by the Regulatory Body. To do so, the project manager should submit a ``Change Request'' to the Regulatory Body. The Change Request should carefully describe what changes are proposed, and motivate why this request should be considered.
 
 In short, robots that extend TeamRobot can communicate with their team members. If you want to implement this feature, please study the Robocode API:\\http://robocode.sourceforge.net/docs/robocode/robocode/TeamRobot.html\\Note that the MessageEvent always contains the name of the sending robot and a specific message.\\
 
@@ -295,6 +295,7 @@ A message string should have the following overall structure, including the new 
 [0-1] leadership;[followMe|leadMe]
 [0-1] teamMode;[offensive|defensive]
 [0-1] myPos;x;y
+[0-*] friendPos;x;y
 [0-*] enemyPos;x;y
 [0-1] targetEnemy;name
 [0-1] targetPos;x;y
@@ -317,6 +318,7 @@ The commands shall have the following meaning:
 \item[leadership] Tells the receiving robot(s) that the sender takes on leadership (followMe) or reports as a follower (leadMe)
 \item[teamMode] Tells the receiving robot(s) that the team shall enter offensive mode (offensive) or defensive mode (defensive)
 \item[myPos] Tells the receiving robot(s) its current position on the 2D battlefield
+\item[friendPos] Tells the receiving robot(s) the position of an identified enemy robot
 \item[enemyPos] Tells the receiving robot(s) the position of an identified enemy robot
 \item[targetPos] Tells the receiving robot(s) to fire at a specific position on the 2D battlefield
 \item[targetEnemy] Tells the receiving robot(s) to target a specific enemy robot
