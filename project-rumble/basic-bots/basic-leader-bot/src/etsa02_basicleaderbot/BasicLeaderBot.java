@@ -70,10 +70,12 @@ public class BasicLeaderBot extends TeamRobot {
 		setRadarColor(c.radarColor);
 		setScanColor(c.scanColor);
 		setBulletColor(c.bulletColor);
+		/* Temporarily commented out since the communication protocol currently does not support color commands.
 		try {
 			// Send RobotColors object to the entire team
 			broadcastMessage(c);
 		} catch (IOException ignored) {}
+		*/
 		
 		// Initiate attributes
 		//radar = new RadarSystem();
@@ -104,7 +106,9 @@ public class BasicLeaderBot extends TeamRobot {
 		
 		try {
 			// Send enemy position to teammates
-			broadcastMessage(enemyPosition);
+			MessageWriter writer = new MessageWriter();
+			writer.addTargetPos(enemyPosition.getX(), enemyPosition.getY());
+			broadcastMessage(writer.composeMessage());
 		} catch (IOException ex) {
 			out.println("Unable to send order: ");
 			ex.printStackTrace(out);
