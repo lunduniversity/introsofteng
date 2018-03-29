@@ -102,7 +102,7 @@ public class MovementSystem {
 	}
 	
 	private void computeForce(Point2D.Double robotPosition, Point2D.Double repulsivePoint) {
-		double absBearing=Utils.normalAbsoluteAngle(MathUtils.calcAngle(robotPosition, repulsivePoint));
+		double absBearing = Utils.normalAbsoluteAngle(MathUtils.calcAngle(robotPosition, repulsivePoint));
 		double distance = repulsivePoint.distance(robotPosition);
 		xForce -= Math.sin(absBearing) / (distance * distance);
 		yForce -= Math.cos(absBearing) / (distance * distance);	
