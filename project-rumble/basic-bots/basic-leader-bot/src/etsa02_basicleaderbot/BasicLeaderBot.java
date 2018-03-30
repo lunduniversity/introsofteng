@@ -41,17 +41,6 @@ import java.util.LinkedList;
  */
 public class BasicLeaderBot extends TeamRobot {
 	
-	private RadarSystem radar;
-	private LinkedList<EnemyPosition> enemyList;
-	
-	/**
-	 * Added to make unit testing possible.
-	 */
-	protected void init() {
-		radar = new RadarSystem();
-		enemyList = new LinkedList<EnemyPosition>();
-	}
-
 	/**
 	 * run:  BLB's default behavior
 	 */
@@ -76,11 +65,6 @@ public class BasicLeaderBot extends TeamRobot {
 			broadcastMessage(c);
 		} catch (IOException ignored) {}
 		*/
-		
-		// Initiate attributes
-		//radar = new RadarSystem();
-		//enemyList = new LinkedList<EnemyPosition>();
-		init();
 		
 		// Default behavior - BLB's standard sequence
 		while (true) {
@@ -113,16 +97,6 @@ public class BasicLeaderBot extends TeamRobot {
 			out.println("Unable to send order: ");
 			ex.printStackTrace(out);
 		}
-		
-		// Keep track of all enemy positions
-		EnemyPosition ePos = findEnemy(e.getName());
-		if (ePos != null) {
-			// If enemy is known, update its position
-			ePos.setEnemyPosition(enemyPosition);			
-		} // otherwise, add new enemy to the list
-		else {
-			enemyList.add(new EnemyPosition(e.getName(), enemyPosition));
-		}
 	}
 
 	/**
@@ -130,54 +104,5 @@ public class BasicLeaderBot extends TeamRobot {
 	 */
 	public void onHitByBullet(HitByBulletEvent e) {
 		turnLeft(90 - e.getBearing());
-	}
-	
-	/**
-	 * 
-	 * @param enemyName
-	 * @return The EnemyPosition or null if not found.
-	 */
-	private EnemyPosition findEnemy(String enemyName) {
-		
-		for (int i=0; i<enemyList.size(); i++) {
-			EnemyPosition tempEnemy = enemyList.get(i);
-			if (enemyName.equals(tempEnemy.getEnemyName())) {
-				return tempEnemy;
-			}
-		}
-		return null;
-	}
-	
-	/**
-	 * EnemyPosition - Represents an enemy through its name and position.
-	 */
-	private class EnemyPosition {
-		
-		private String enemyName;
-		private Point enemyPosition;
-		
-		public EnemyPosition(String enemyName, Point enemyPosition) {
-			this.enemyName = enemyName;
-			this.enemyPosition = enemyPosition;
-		}
-		
-		public String getEnemyName() {
-			return enemyName;
-		}
-		
-		public Point getEnemyPosition() {
-			return enemyPosition;
-		}
-		
-		public void setEnemyPosition(Point ePos) {
-			this.enemyPosition = ePos;
-		}
-		
-		@Override
-		public boolean equals(Object obj) {
-			String otherRobot = ((EnemyPosition) obj).getEnemyName();
-		    return enemyName.equals(otherRobot);
-		  }
-	
 	}
 }
