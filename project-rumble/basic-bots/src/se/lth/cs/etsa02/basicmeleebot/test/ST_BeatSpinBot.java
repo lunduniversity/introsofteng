@@ -1,5 +1,5 @@
 /**	
-Copyright (c) 2017 Markus Borg
+Copyright (c) 2018 Markus Borg
 
 Building on work by Philip Johnson and Keone Hiraide, University of Hawaii.
 https://ics613s13.wordpress.com/
@@ -36,11 +36,11 @@ import robocode.control.testing.RobotTestBed;
 /**
  * Test class for the BasicLeaderBot.
  *
- * @author Markus Borg
+ * @author Keone Hiraide
  *
  */
 @RunWith(JUnit4.class)
-public class ST_BeatSittingDuck extends RobotTestBed {
+public class ST_BeatSpinBot extends RobotTestBed {
 	/**
 	 * The names of the robots that want battling is specified.
 	 * 
@@ -48,7 +48,7 @@ public class ST_BeatSittingDuck extends RobotTestBed {
 	 */
 	@Override
 	public String getRobotNames() {
-		return "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*,sample.SittingDuck";
+		return "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*,sample.SpinBot";
 	}
 
 	/**
@@ -58,11 +58,11 @@ public class ST_BeatSittingDuck extends RobotTestBed {
 	 */
 	@Override
 	public int getNumRounds() {
-		return 10;
+		return 100;
 	}
 
 	/**
-	 * Tests to see that BMB robot beat SittingDuck and did maximum damage.
+	 * Tests to see if our robot won most rounds.
 	 * 
 	 * @param event
 	 *            Holds information about the battle has been completed.
@@ -71,11 +71,10 @@ public class ST_BeatSittingDuck extends RobotTestBed {
 	public void onBattleCompleted(BattleCompletedEvent event) {
 		// Return the results in order of getRobotNames.
 		BattleResults[] battleResults = event.getIndexedResults();
-		BattleResults bmbResults = battleResults[0];
-		String robotName = bmbResults.getTeamLeaderName();
+		BattleResults blbResults = battleResults[0];
+		String robotName = blbResults.getTeamLeaderName();
 		assertEquals("Check that BasicMeleeBot is at the expected position in the results array",
 				"se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*", robotName);
-		assertEquals("Check that BMD in total did 1000 damage to SittingDuck", 1000, bmbResults.getBulletDamage());
 	}
 
 	/**

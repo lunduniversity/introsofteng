@@ -27,7 +27,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ ST_BeatSittingDuck.class })
+@SuiteClasses({ ST_BeatSittingDuck.class, ST_BeatSpinBot.class })
 public class BMBSystemTestSuite {
 
 }
