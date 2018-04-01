@@ -1,5 +1,5 @@
 /**	
-Copyright (c) 2017 Markus Borg
+Copyright (c) 2018 Markus Borg
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,14 +20,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package se.lth.cs.etsa02.basicleaderbot.test;
+package se.lth.cs.etsa02.basicmeleebot.test;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ LoseAgainstSpinBot_SystemTest.class, SurviveSittingDuck_SystemTest.class })
-public class AllSystemTests {
+@SuiteClasses({ MathUtilsTest.class, PositioningSystemTest.class, EnemyTrackerTest.class, TargetingSystemTest.class, MovementSystemTest.class })
+public class BMBUnitTestSuite {
 
 }

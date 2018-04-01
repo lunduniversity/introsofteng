@@ -23,7 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package se.lth.cs.etsa02.basicleaderbot.test;
+package se.lth.cs.etsa02.basicmeleebot.test;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.runner.RunWith;
@@ -36,11 +36,11 @@ import robocode.control.testing.RobotTestBed;
 /**
  * Test class for the BasicLeaderBot.
  *
- * @author Keone Hiraide
+ * @author Markus Borg
  *
  */
 @RunWith(JUnit4.class)
-public class LoseAgainstSpinBot_SystemTest extends RobotTestBed {
+public class ST_BeatSittingDuck extends RobotTestBed {
 	/**
 	 * The names of the robots that want battling is specified.
 	 * 
@@ -62,7 +62,7 @@ public class LoseAgainstSpinBot_SystemTest extends RobotTestBed {
 	}
 
 	/**
-	 * Tests to see if our robot won most rounds.
+	 * Tests to see that BLB robot did not take any bullet damage from rounds.
 	 * 
 	 * @param event
 	 *            Holds information about the battle has been completed.
@@ -75,7 +75,7 @@ public class LoseAgainstSpinBot_SystemTest extends RobotTestBed {
 		String robotName = blbResults.getTeamLeaderName();
 		assertEquals("Check that BasicLeaderBot is at the expected position in the results array",
 				"se.lth.cs.etsa02.basicleaderbot.BasicLeaderBot*", robotName);
-		assertEquals("Check that BLD didn't do any damage against SpinBot", 0, blbResults.getBulletDamage());
+		assertEquals("Check that BLD didn't do any damage against SittingDuck", 0, blbResults.getBulletDamage());
 	}
 
 	/**
