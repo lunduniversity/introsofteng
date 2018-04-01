@@ -48,7 +48,7 @@ public class ST_LoseAgainstSpinBot extends RobotTestBed {
 	 */
 	@Override
 	public String getRobotNames() {
-		return "se.lth.cs.etsa02.basicleaderbot.BasicLeaderBot*,sample.SittingDuck";
+		return "se.lth.cs.etsa02.basicleaderbot.BasicLeaderBot*,sample.SpinBot";
 	}
 
 	/**
