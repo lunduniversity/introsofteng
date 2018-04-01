@@ -1,5 +1,5 @@
 %
-% Copyright 2017 Markus Borg, Lund University
+% Copyright 2018 Markus Borg, Lund University
 %
 % This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 % See http://creativecommons.org/licenses/by-sa/4.0/
@@ -8,6 +8,7 @@
 % https://github.com/jpeisenbarth/SRS-Tex
 %
 \documentclass{scrreprt}
+\usepackage{graphicx}
 \usepackage{listings}
 \usepackage{underscore}
 \usepackage[bookmarks=true]{hyperref}
@@ -66,6 +67,8 @@
         \hline
 	    Markus Borg & 2018-03-21 & Initial draft. & 0.1\\
         \hline
+        Markus Borg & 2018-04-01 & First instructions for the RobotTestBed. & 0.2\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -74,6 +77,16 @@ System testing.\\
 Testing of quality requirements.
 
 \chapter{Before the lab}
+Just like for Lab 2 you will find the code required for this lab on GitHub: https://github.com/lunduniversity/introsofteng
+If you have already cloned the repository, pull the latest source code to make sure you work with the latest version. If you prefer downloading the code, instead click the button presented in Figure~\ref{fig:github} and choose ``Download ZIP''. For Lab 3, you need the files located in introsofteng-master/project/rumble/labs/lab3/src, including its subfolder: `test'. Rewatch the video ``Lab2_download.avi'' on Google Drive (ETSA02 Everyuone/Labs) if you need support.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.99\textwidth]{figures/GitHub.png}
+\caption{introsofteng repository on GitHub. The arrow shows the ``Clone or download'' button.}
+\label{fig:github}
+\end{figure}
+
 %Download the latest Robot testing plugin (1.9.3.0) from http://robo-code.blogspot.se/\\
 %Add robocode.testing.jar to the Java build path in Eclipse\\
 %Create a run configuration for JUnit in Eclipse\\
@@ -82,6 +95,7 @@ Testing of quality requirements.
 %Try running JUnit tests
 
 \chapter{At the lab}
+
 %Select your robot class in the Eclipse package explorer. Right-click and select new JUnit test case. Create the new test case. There are several naming conventions, e.g., using the same name as the class under test followed by the suffix `Test' and `Test' as prefix for all methods.
 %Software-under-test is the normal name for the object to test, here we use bot-under-test.\\
 %Introduce test driven development.
