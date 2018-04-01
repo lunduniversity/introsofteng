@@ -1,6 +1,14 @@
 # introsofteng
 Teaching material for "Introduction to Software Engineering" at Lund University, LTH. http://cs.lth.se/etsa02/
 
+## Contents of this repo
+
+The main directories are:
+* `exercises` with course material for the exercise sessions
+* `labs` with instructions and source code for the lab sessions
+* `lectures` with slides
+* `project-rumble` with instructions, templates, and examples for the Robocode project
+
 ## How to contribute to this repo
 
 ### Fork and clone
