@@ -27,7 +27,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ BLB_LoseAgainstSpinBot_SystemTest.class, BLB_SurviveSittingDuck_SystemTest.class })
-public class AllBasicBotsTests {
+@SuiteClasses({ LoseAgainstSpinBot_SystemTest.class, SurviveSittingDuck_SystemTest.class })
+public class AllSystemTests {
 
 }

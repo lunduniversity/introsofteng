@@ -36,11 +36,11 @@ import robocode.control.testing.RobotTestBed;
 /**
  * Test class for the BasicLeaderBot.
  *
- * @author Markus Borg
+ * @author Keone Hiraide
  *
  */
 @RunWith(JUnit4.class)
-public class BLB_SurviveSittingDuck_SystemTest extends RobotTestBed {
+public class LoseAgainstSpinBot_SystemTest extends RobotTestBed {
 	/**
 	 * The names of the robots that want battling is specified.
 	 * 
@@ -48,7 +48,7 @@ public class BLB_SurviveSittingDuck_SystemTest extends RobotTestBed {
 	 */
 	@Override
 	public String getRobotNames() {
-		return "etsa02_basicbots.BasicLeaderBot*,sample.SittingDuck";
+		return "se.lth.cs.etsa02.basicleaderbot.BasicLeaderBot*,sample.SittingDuck";
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class BLB_SurviveSittingDuck_SystemTest extends RobotTestBed {
 	}
 
 	/**
-	 * Tests to see that BLB robot did not take any bullet damage from rounds.
+	 * Tests to see if our robot won most rounds.
 	 * 
 	 * @param event
 	 *            Holds information about the battle has been completed.
@@ -74,8 +74,8 @@ public class BLB_SurviveSittingDuck_SystemTest extends RobotTestBed {
 		BattleResults blbResults = battleResults[0];
 		String robotName = blbResults.getTeamLeaderName();
 		assertEquals("Check that BasicLeaderBot is at the expected position in the results array",
-				"etsa02_basicbots.BasicLeaderBot*", robotName);
-		assertEquals("Check that BLD didn't do any damage against SittingDuck", 0, blbResults.getBulletDamage());
+				"se.lth.cs.etsa02.basicleaderbot.BasicLeaderBot*", robotName);
+		assertEquals("Check that BLD didn't do any damage against SpinBot", 0, blbResults.getBulletDamage());
 	}
 
 	/**
