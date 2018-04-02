@@ -1,6 +1,50 @@
 # introsofteng
 Teaching material for "Introduction to Software Engineering" at Lund University, LTH. http://cs.lth.se/etsa02/
 
+## Contents of this repo
+
+The main directories are:
+* `exercises` with course material for the exercise sessions
+* `labs` with instructions and source code for the lab sessions
+* `lectures` with slides
+* `project-rumble` with instructions, templates, and examples for the Robocode project
+
+## How to contribute to this repo
+
+### Fork and clone
+
+* Learn the basics about git, especially the "Getting Started" and "Git Basics" sections in this book: https://git-scm.com/book/en/v2
+
+* Get an account at github if you don't have one already. Recommended user name if in doubt: `firstnamefamilyname` with no capital letters and no hyphens.
+
+* Install git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
+* Make a **fork** of lunduniversity/introprog in GitHub to your own GitHub account: https://help.github.com/articles/fork-a-repo/
+
+* **Clone** your fork to your local computer: https://help.github.com/articles/cloning-a-repository/
+
+### Keeping your fork in synch
+
+* If you install the GitHub client (avaliable for Win and Mac but not Linux) called "GitHub desktop" https://desktop.github.com/ you can keep your fork in synch with the upstream repo by a single click in the GUI.
+
+* Otherwise, this is how to pull changes from upstream to your fork with git commands: https://help.github.com/articles/syncing-a-fork/
+
+### Making contributions
+
+* If you find a typo or minor issue that is straight-forward to fix you are very welcome to create a pull request directly as explained below. But if your contribution is more significant you should open an issue first and start a discussion about your proposal. In the latter case, click the issue tab at the top of this page.
+
+* Before you change locally, make sure your fork is in synch (see above). Frequently do `git pull` or press the synch button in the GitHub desktop GUI.
+
+* You must check that your fix compiles (to LaTeX or bytecode) before you commit.
+
+* Whenever you are ready with an incremental change, run `git commit -m "msg"` and then `git push`, or commit in the GUI and press the synch button. Write a useful commit message.
+
+* When you are ready with a contribution that is good enough to be incorporated in upstream, then create a pull request: https://help.github.com/articles/creating-a-pull-request/
+
+* Keep your pull requests minimal and coherent to create a small change sets that will be easy to merge as a single unit. Don't pack a lot of unrelated changes in the same pull request.
+
+* Don't include pdf:s or binaries in the pull request. The maintainers will recompile the repo after your pull request has been merged. You can then checkout your pdf:s before you synch with upstream.
+
 ## License
 
 Copyright © 2018. Dept. of Computer Science at Lund University, Lund, Sweden.
