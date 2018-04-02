@@ -1,0 +1,303 @@
+%
+% Copyright 2018 Markus Borg, Lund University
+%
+% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+% See http://creativecommons.org/licenses/by-sa/4.0/
+%
+% The dodument is based on a LaTeX template that respects IEEE Standards developed by Jean-Philippe Eisenbarth
+% https://github.com/jpeisenbarth/SRS-Tex
+%
+% Originally based on:
+% 1) Code by Yiannis Lazarides
+% http://tex.stackexchange.com/questions/42602/software-requirements-specification-with-latex
+% http://tex.stackexchange.com/users/963/yiannis-lazarides
+% 2) A template by Karl E. Wiegers
+% http://www.se.rit.edu/~emad/teaching/slides/srs_template_sep14.pdf
+% http://karlwiegers.com
+%
+\documentclass{scrreprt}
+\usepackage{listings}
+\usepackage{underscore}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\hypersetup{
+    bookmarks=false,    % show bookmarks bar?
+    pdftitle={Software Requirement Specification},    % title
+    pdfauthor={Markus Borg},                     % author
+    pdfsubject={TeX and LaTeX},                        % subject of the document
+    pdfkeywords={TeX, LaTeX, graphics, images}, % list of keywords
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,       % color of internal links
+    citecolor=black,       % color of links to bibliography
+    filecolor=black,        % color of file links
+    urlcolor=purple,        % color of external links
+    linktoc=page            % only page is linked
+}%
+\def\myversion{0.1 }
+\date{}
+%\title{%
+
+%}
+\usepackage{hyperref}
+\begin{document}
+
+\begin{flushright}
+    \rule{16cm}{5pt}\vskip1cm
+    \begin{bfseries}
+    	\LARGE{ETSA02-SRS-BLB}\\
+    	\vspace{1.5cm}
+        \Huge{SOFTWARE REQUIREMENTS\\ SPECIFICATION}\\
+        \vspace{0.5cm}
+        for\\
+        \vspace{0.5cm}
+        Basic Melee Bot\\
+        \vspace{1.5cm}
+        \LARGE{Version \myversion approved}\\
+        \vspace{1.5cm}
+        Prepared by Markus Borg\\
+        %\vspace{1.5cm}
+        Dept. of Computer Science, Lund University\\
+        \vspace{1.5cm}
+        \today\\
+    \end{bfseries}
+\end{flushright}
+
+\tableofcontents
+
+
+\chapter*{Revision History}
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+	    Name & Date & Reason For Changes & Version\\
+        \hline
+	    Markus Borg & 2018-04-02 & Initial draft. & 0.1\\
+        \hline
+    \end{tabular}
+\end{center}
+
+\chapter{Introduction}
+
+\section{Purpose}
+\textit{To be written...}\\
+
+Basic Melee Bot describes a robot that can be a part of team matches in RoboCode.\\\\
+
+$<$Identify the product whose software requirements are specified in this 
+document, including the revision or release number. Describe the scope of the 
+product that is covered by this SRS, particularly if this SRS describes only 
+part of the system or a single subsystem.$>$
+
+\section{Document Conventions}
+\textit{To be written...}\\
+
+In the remainder of this document, we refer to Basic Melee Bot as ``the robot''.
+
+This document is organized according to the ISO/IEC/IEEE template X...
+
+This document uses the term ``quality requirements'' to specify operational requirements on system behavior. Other synonymous terms include ``non-functional requirements'' and ``extra-functional requirements''.
+
+Section 4, System Features, constitutes the backbone of this document. The section is organized around high-level features that are briefly described and complemented with their respective stimuli, i.e., the event that triggers the execution of the feature. Each feature is further refined into detailed requirements of one or more of the following types: 1) use cases, 2) functional requirements or 3) quality requirements. 
+
+Use cases are used when the robot shall conduct a sequence of steps, and there are explicit exception cases that needs to be specified.
+
+All quality requirements are explicitly categorized according to ISO/IEC 25010, specified with capital letters in brackets. Moreover, each detailed requirement has a unique identifier according to the below formats: 
+
+\begin{itemize}
+\item UC-$<$Feature Number$>$-$<$Running number$>$ for use cases
+\item FREQ-$<$Feature Number$>$-$<$Running Number$>$ for functional requirements
+\item QREQ-$<$Feature Number$>$-$<$Running Number$>$ for quality requirements
+\end{itemize}
+
+
+Using the identifiers, each detailed requirement can be traced both to the implementation in Java source code and the test specification
+
+In the document, text in bold font is used to indicate the priority of a feature. Unless otherwise stated, the priority of a feature is inherited by the detailed requirements. 
+
+Terms expressed in italic font carry a particular meaning. All terms in italic font are defined in the Glossary in Appendix A. 
+
+$<$Describe any standards or typographical conventions that were followed when 
+writing this SRS, such as fonts or highlighting that have special significance.  
+For example, state whether priorities  for higher-level requirements are assumed 
+to be inherited by detailed requirements, or whether every requirement statement 
+is to have its own priority.$>$
+
+\section{Intended Audience and Reading Suggestions}
+The document constitutes an example of a software requirements specification for RoboCode robots. The primary readership is ETSA02 teams from two perspectives: 1) developing their own robots to offer on the RobotMarket, and 2) designing a robot team for the LU Rumble. In particular:
+
+\begin{itemize}
+\item ETSA02 Requirements engineers (learn what a SRS could look like)
+\item ETSA02 Domain experts ()
+\end{itemize}
+
+Secondary stakeholders include:
+\begin{itemize}
+\item ETSA02 Test managers (studying what testable requirements can look like)
+\item ETSA02 Project Supervisors
+\end{itemize}
+
+Tertiary stakeholders include:
+\begin{itemize}
+\item ETSA02 Sales engineers
+\item ETSA02 Project managers
+\item ETSA02 Development leads
+\item The general population of Robocode users
+\item University teachers (to find inspiration for software engineering teaching)
+\end{itemize}
+
+\begin{table}[]
+\centering
+\caption{Intended readers of ETSA02-SRS-BLB.}
+\label{tab:readers}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Stakeholder type}     & \textbf{Goal when reading document}                                                                               & \textbf{\begin{tabular}[c]{@{}l@{}}Recommended\\ sections\end{tabular}} \\ \hline
+ETSA02 Requirements engineers & Learn from an archetypical Robot SRS                                                                              & All document                                                            \\ \hline
+ETSA02 Domain experts         & Considering robot purchase for own team                                                                           &                                                                         \\ \hline
+ETSA02 Test managers          & \begin{tabular}[c]{@{}l@{}}Learn from examples what testable\\ requirements could look like\end{tabular}          & Section 4                                                               \\ \hline
+ETSA02 Project supervisors    & \begin{tabular}[c]{@{}l@{}}Support project grading by studying \\ an archetypical Robot SRS\end{tabular}          & All document                                                            \\ \hline
+ETSA02 Sales engineers        & \begin{tabular}[c]{@{}l@{}}Adapt marketing strategy based \\ on basic robots available on the market\end{tabular} &                                                                         \\ \hline
+ETSA02 Project managers       & \begin{tabular}[c]{@{}l@{}}Obtaining a general understanding \\ of an available basicrobot\end{tabular}           &                                                                         \\ \hline
+ETSA02 Development leads      & \begin{tabular}[c]{@{}l@{}}Preparing development activities \\ based on an archetypical robot SRS\end{tabular}    &                                                                         \\ \hline
+Robocode users                &                                                                                                                   &                                                                         \\ \hline
+University teachers           &                                                                                                                   &                                                                         \\ \hline
+\end{tabular}
+\end{table}
+
+$<$Describe the different types of reader that the document is intended for, 
+such as developers, project managers, marketing staff, users, testers, and 
+documentation writers. Describe what the rest of this SRS contains and how it is 
+organized. Suggest a sequence for reading the document, beginning with the 
+overview sections and proceeding through the sections that are most pertinent to 
+each reader type.$>$
+
+\section{Project Scope}
+\textit{To be written...}\\
+
+$<$Provide a short description of the software being specified and its purpose, 
+including relevant benefits, objectives, and goals. Relate the software to 
+corporate goals or business strategies. If a separate vision and scope document 
+is available, refer to it rather than duplicating its contents here.$>$
+
+\section{References}
+\textit{To be written...}\\
+
+ISO/IEC/IEEE Template\\
+ISO/IEC 25010\\
+ETSA02 RoboTalk Protocol\\\\
+$<$List any other documents or Web addresses to which this SRS refers. These may 
+include user interface style guides, contracts, standards, system requirements 
+specifications, use case documents, or a vision and scope document. Provide 
+enough information so that the reader could access a copy of each reference, 
+including title, author, version number, date, and source or location.$>$
+
+\chapter{Overall Description}
+This section presents a high-level description of the robot.
+
+\section{Product Perspective}
+\textit{To be written...}\\
+
+Basic Melee Bot constitutes a normal robot that can be purchased to compete in robot teams in the LU Rumble. The robot is stronger than several of the example robots.
+
+\section{Product Functions}
+\textit{To be written...}\\
+
+$<$Summarize the major functions the product must perform or must let the user 
+perform. Details will be provided in Section 3, so only a high level summary 
+(such as a bullet list) is needed here. Organize the functions to make them 
+understandable to any reader of the SRS. A picture of the major groups of 
+related requirements and how they relate, such as a top level data flow diagram 
+or object class diagram, is often effective.$>$
+
+\chapter{External Interface Requirements}
+This section describes all communication between the robot and its environment.
+
+\section{Robocode Interface}
+\textit{To be written...}\\
+$<$Describe the characteristics of the interface between the robot and the hardware components of the system. List all events that your Robot intercepts from Robocode, e.g., onScannedRobot() and on RobotDeath(), and describe the purpose of each. Refer to the Robocode application programming interface.$>$
+
+\section{Communications Interfaces}
+Basic Leader Bot adheres to the ETSA02 RoboTalk protocol [REF] for message broadcasting. The communication is restricted to setting a robot color as requested by a leader robot.\\\\
+
+TBD
+
+\chapter{System Features}
+The Basic Melee Bot has four primary features: 1) Radar system, 2) Offensive firepower, 3) Anti-gravity movement, 4) Wall avoidance.
+
+\section{Feature 1 -- Radar system}
+
+\subsection{Description and Priority}
+
+\subsection{Functional Requirements}
+\begin{itemize}
+\item[REQ-F1-1] 
+\item[REQ-F1-2] The radar action shall distinguish between friendly targets and enemy targets.
+\item[REQ-F1-3] If an enemy target is located, the robot shall calculate the position of the enemy based on the robot's own bearing and the distance to the enemy target. 
+\end{itemize}
+
+\section{Feature 2 -- Offensive firepower}
+
+\subsection{Description and Priority}
+
+\subsection{Functional Requirements}
+\begin{itemize}
+\item[REQ-F2-1]
+\end{itemize}
+
+\section{Feature 3 -- Anti-gravity movement}
+	
+\subsection{Description and Priority}
+
+\subsection{Functional Requirements}
+\begin{itemize}
+\item[REQ-F3-1]
+\end{itemize}
+
+\section{Feature 4 -- Wall avoidance}
+
+\subsection{Description and Priority}
+
+\subsection{Functional Requirements}
+\begin{itemize}
+\item[REQ-F4-1]
+\end{itemize}
+
+\chapter{Quality Requirements}
+This section describes quality requirements for Basic Melee Bot.
+
+\section{1-vs-1 Battle Performance Requirements}
+$<$Specify performance requirements for how your robot shall perform in 1-vs-1 battles against standard robots to help the developers understand the intent and make suitable design choices. Make such requirements as specific as possible to allow later verification work, i.e., specify quantitative targets such as ``65\% win rate against SpinBot.''$>$
+
+\section{Melee Battle Performance Requirements}
+$<$Specify performance requirements for how your robot shall perform in melee battles against standard robots to help the developers understand the intent and make suitable design choices. Make such requirements as specific as possible to allow later verification work, i.e., specify quantitative targets such as ``65\% win rate in melee battles with one SpinBot, one CrazyBot, and two TargetBots.''$>$
+
+\section{Team Battle Performance Requirements}
+$<$Specify performance requirements for how your robot shall perform in team battles against standard robots to help the developers understand the intent and make suitable design choices. Make such requirements as specific as possible to allow later verification work. This might be useful if you want to state requirements on how multiple copies of your robot work together.$>$
+
+\section{Software Quality Attributes}
+\textit{To be written...}\\
+$<$Specify any additional quality characteristics for the product that will be important to either the customers or the developers. Some to consider are: maintainability, testability, source code size, and adherence to Java code conventions.$>$
+
+\chapter{Other Requirements}
+\textit{To be written...}\\
+$<$Define any other requirements not covered elsewhere in the SRS. This might include database requirements, internationalization requirements, legal requirements, reuse objectives for the project, and so on. Add any new sections that are pertinent to the project.$>$
+
+\section*{Appendix A: Glossary}
+%see https://en.wikibooks.org/wiki/LaTeX/Glossary
+
+\begin{description}
+\item[BMB] Basic Melee Bot, i.e., the robot whose requirements are specified in this document.
+\item[Radar action] A robot action that explicitly scans the battleground for enemy targets.
+\item[SRS] Software Requirements Specification.
+\item[TBD] To be determined. These items are described in Appendix B.
+\end{description}
+
+\section*{Appendix B: To Be Determined List}
+This list describes all TBDs that remain in the SRS.
+\begin{enumerate}
+\item The implementation of color according to ETSA02 RoboTalk.
+\end{enumerate}
+
+\end{document}
