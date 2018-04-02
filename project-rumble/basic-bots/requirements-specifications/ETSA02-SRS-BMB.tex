@@ -186,6 +186,7 @@ is available, refer to it rather than duplicating its contents here.$>$
 
 ISO/IEC/IEEE Template\\
 ISO/IEC 25010\\
+RoboWiki\\
 ETSA02 RoboTalk Protocol\\\\
 $<$List any other documents or Web addresses to which this SRS refers. These may 
 include user interface style guides, contracts, standards, system requirements 
@@ -227,14 +228,15 @@ TBD
 The Basic Melee Bot has four primary features: 1) Radar system, 2) Offensive firepower, 3) Anti-gravity movement, 4) Wall avoidance.
 
 \section{Feature 1 -- Radar system}
+BMB shall implement a spinning radar.
 
 \subsection{Description and Priority}
+The generic spinning radar is a simple radar that continuously scans the entire battlefield. Refer to http://robowiki.net/wiki/Melee_Radar for further details. Radar system is a high priority feature with a low implementation risk.
 
 \subsection{Functional Requirements}
 \begin{itemize}
-\item[REQ-F1-1] 
-\item[REQ-F1-2] The radar action shall distinguish between friendly targets and enemy targets.
-\item[REQ-F1-3] If an enemy target is located, the robot shall calculate the position of the enemy based on the robot's own bearing and the distance to the enemy target. 
+\item[REQ-F1-1] The radar shall scan the battlefield clockwise as long as BMB is operational and the battle is ongoing.
+\item[REQ-F1-2] Detected enemy robots shall be stored in an internal data structure. 
 \end{itemize}
 
 \section{Feature 2 -- Offensive firepower}
