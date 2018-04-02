@@ -24,7 +24,7 @@ SOFTWARE.
 
 package se.lth.cs.etsa02.basicmeleebot;
 
-import robocode.AdvancedRobot;
+import robocode.TeamRobot;
 import robocode.RobotDeathEvent;
 import robocode.ScannedRobotEvent;
 
@@ -33,7 +33,7 @@ import robocode.ScannedRobotEvent;
  * 
  * Example robot for ETSA02. A melee bot implemented following an object oriented design.
  */
-public class BasicMeleeBot extends AdvancedRobot {
+public class BasicMeleeBot extends TeamRobot {
 
 	private EnemyTracker enemyTracker;
 	private PositioningSystem positioningSystem;
@@ -72,6 +72,10 @@ public class BasicMeleeBot extends AdvancedRobot {
 	 */
 	@Override
 	public void onScannedRobot(ScannedRobotEvent event) {
+		if (isTeammate(event.getName())) {
+			return;
+		}
+		
 		enemyTracker.addEnemy(event);
 	}
 	
