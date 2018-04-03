@@ -39,7 +39,7 @@ import robocode.control.snapshot.IRobotSnapshot;
 import robocode.control.testing.RobotTestBed;
 
 /**
- * Test class for Feature 1 - Radar system in BasicMeleeBot.
+ * Test class for Feature 3 - Anti-gravity movement in BasicMeleeBot.
  *
  * @author Markus Borg
  *
@@ -58,7 +58,7 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	 */
 	@Override
 	public String getRobotNames() {
-		// Battle between BMB and one SittingDucks
+		// Battle between BMB and one SittingDuck
 		return "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*,"
 				+ "sample.SittingDuck";
 	}
@@ -134,6 +134,7 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	 */
 	@Override
 	public String getInitialPositions() {
+		// Position BMB 50 distance units left of a SittingDuck 
 		int xBMB = 550;
 		int yBMB = 300;
 		int xDuck = 600;
