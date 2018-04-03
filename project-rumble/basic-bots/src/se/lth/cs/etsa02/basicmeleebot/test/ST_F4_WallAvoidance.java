@@ -48,6 +48,10 @@ import robocode.control.testing.RobotTestBed;
 @RunWith(JUnit4.class)
 public class ST_F4_WallAvoidance extends RobotTestBed {
 	
+	// constants used to configure this system test case
+	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
+	private String ENEMY_ROBOTS = "sample.SittingDuck,sample.SittingDuck";
+	private int NBR_ROUNDS = 5;
 	private int SIZE_X = 800;
 	private int SIZE_Y = 600;
 	private boolean PRINT_DEBUG = false;
@@ -71,8 +75,7 @@ public class ST_F4_WallAvoidance extends RobotTestBed {
 	 */
 	@Override
 	public int getNumRounds() {
-		// Five rounds is enough for testing anti-gravity movement
-		return 5;
+		return NBR_ROUNDS;
 	}
 
 	/**
@@ -103,10 +106,10 @@ public class ST_F4_WallAvoidance extends RobotTestBed {
 			System.out.println("BMB pos: " + xBMB + ", " + yBMB);
 		}
 		
-		assertTrue("Check that BMB stays away from the top border", yBMB > 5);
-		assertTrue("Check that BMB stays away from the down border", yBMB < (SIZE_Y - 5));
-		assertTrue("Check that BMB stays away from the left border", xBMB > 5);
-		assertTrue("Check that BMB stays away from the right border", xBMB < (SIZE_X - 5));
+		assertTrue("Distance from top should be more than 20, but was only " + yBMB, yBMB > 20);
+		assertTrue("Distance from bottom should be more than 20, but was only " + (SIZE_Y - yBMB), yBMB < (SIZE_Y - 20));
+		assertTrue("Distance from left should be more than 20, but was only " + xBMB, xBMB > 20);
+		assertTrue("Distance from right should be more than 20, but was only " + (SIZE_X - xBMB), xBMB < (SIZE_X - 20));
 	}
 
 	/**
