@@ -34,6 +34,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import robocode.BattleResults;
 import robocode.control.events.BattleCompletedEvent;
+import robocode.control.events.RoundEndedEvent;
+import robocode.control.events.RoundStartedEvent;
 import robocode.control.events.TurnEndedEvent;
 import robocode.control.snapshot.IRobotSnapshot;
 import robocode.control.snapshot.ITurnSnapshot;
@@ -51,10 +53,17 @@ public class ST_F4_WallAvoidance extends RobotTestBed {
 	// constants used to configure this system test case
 	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
 	private String ENEMY_ROBOTS = "sample.SittingDuck,sample.SittingDuck";
-	private int NBR_ROUNDS = 5;
+	private int NBR_ROUNDS = 500;
+	private double THRESHOLD = 0.95;
+	private double PERCENT_AT_WALLS = 0.10;
 	private int SIZE_X = 800;
 	private int SIZE_Y = 600;
 	private boolean PRINT_DEBUG = false;
+	
+	// attributes used in the system test case
+	private int turnCounter;
+	private int closeToWallCounter;
+	private int roundsPassed;
 	
 	/**
 	 * The names of the robots that want battling is specified.
@@ -86,8 +95,40 @@ public class ST_F4_WallAvoidance extends RobotTestBed {
 	 */
 	@Override
 	public void onBattleCompleted(BattleCompletedEvent event) {
+		assertTrue("BMB spent too much time close to walls. It succeeded only in " + ((double) roundsPassed / NBR_ROUNDS) +
+				" rounds.", ((double) roundsPassed / NBR_ROUNDS) > THRESHOLD);
 	}
 
+	/**
+	 * Called before each round. Used to to reset all distance calculations.
+	 * 
+	 * @param event
+	 *            The RoundStartedEvent.
+	 */
+	@Override
+	public void onRoundStarted(RoundStartedEvent event) {
+		turnCounter = 0;
+		closeToWallCounter = 0;
+	}
+	
+	/**
+	 * Tests to see that BMB was mostly more than 20 distance units from the walls.
+	 * 
+	 * @param event
+	 *            The RoundEndedEvent.
+	 */
+	@Override
+	public void onRoundEnded(RoundEndedEvent event) {
+		if (PRINT_DEBUG) {
+			System.out.println("closecounter: " + closeToWallCounter +
+							   " turns: " + turnCounter);
+		}
+		
+		if (closeToWallCounter <= ((double) PERCENT_AT_WALLS * turnCounter)) {
+			roundsPassed++;
+		}
+	}
+	
 	/**
 	 * Called after each turn. Provided here to show that you could use this
 	 * method as part of your testing.
@@ -97,6 +138,7 @@ public class ST_F4_WallAvoidance extends RobotTestBed {
 	 */
 	@Override
 	public void onTurnEnded(TurnEndedEvent event) {
+		turnCounter++;
 		ITurnSnapshot turnSnap = event.getTurnSnapshot();
 		IRobotSnapshot bmb = turnSnap.getRobots()[0];
 		double xBMB = bmb.getX();
@@ -106,10 +148,11 @@ public class ST_F4_WallAvoidance extends RobotTestBed {
 			System.out.println("BMB pos: " + xBMB + ", " + yBMB);
 		}
 		
-		assertTrue("Distance from top should be more than 20, but was only " + yBMB, yBMB > 20);
-		assertTrue("Distance from bottom should be more than 20, but was only " + (SIZE_Y - yBMB), yBMB < (SIZE_Y - 20));
-		assertTrue("Distance from left should be more than 20, but was only " + xBMB, xBMB > 20);
-		assertTrue("Distance from right should be more than 20, but was only " + (SIZE_X - xBMB), xBMB < (SIZE_X - 20));
+		// check if close to any walls
+		if (yBMB < 20 ||  yBMB > (SIZE_Y - 20)
+			|| xBMB < 20 || xBMB > (SIZE_X - 20)) {
+			closeToWallCounter++;
+		}
 	}
 
 	/**
@@ -164,6 +207,7 @@ public class ST_F4_WallAvoidance extends RobotTestBed {
 	 */
 	@Override
 	protected void runSetup() {
+		roundsPassed = 0;
 	}
 
 	/**
