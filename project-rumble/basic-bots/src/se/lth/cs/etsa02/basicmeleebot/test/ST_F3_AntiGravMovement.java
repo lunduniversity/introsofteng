@@ -28,12 +28,12 @@ package se.lth.cs.etsa02.basicmeleebot.test;
 import static org.junit.Assert.assertTrue;
 
 import java.util.LinkedList;
-import java.util.Random;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import robocode.BattleResults;
 import robocode.control.events.BattleCompletedEvent;
+import robocode.control.events.RoundEndedEvent;
+import robocode.control.events.RoundStartedEvent;
 import robocode.control.events.TurnEndedEvent;
 import robocode.control.snapshot.IRobotSnapshot;
 import robocode.control.testing.RobotTestBed;
@@ -47,9 +47,18 @@ import robocode.control.testing.RobotTestBed;
 @RunWith(JUnit4.class)
 public class ST_F3_AntiGravMovement extends RobotTestBed {
 	
+	// Constants used to configure this system test case
+	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
+	private String ENEMY_ROBOTS = "sample.SittingDuck";
+	private int NBR_ROUNDS = 500;
+	private double THRESHOLD = 0.60;
+	private boolean PRINT_DEBUG = false;
+			
+	// attributes used in the system test case
 	private double startDistance;
 	private double avgDistance;
-	private LinkedList<Double> allDistances; 
+	private LinkedList<Double> allDistances;
+	private int nbrPassed;
 	
 	/**
 	 * The names of the robots that want battling is specified.
@@ -58,9 +67,7 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	 */
 	@Override
 	public String getRobotNames() {
-		// Battle between BMB and one SittingDuck
-		return "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*,"
-				+ "sample.SittingDuck";
+		return ROBOT_UNDER_TEST + "," + ENEMY_ROBOTS;
 	}
 
 	/**
@@ -70,30 +77,20 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	 */
 	@Override
 	public int getNumRounds() {
-		// One rounds is enough for testing anti-gravity movement
-		return 1;
+		return NBR_ROUNDS;
 	}
 
 	/**
-	 * Tests to see that BMB robot beat SittingDuck and did maximum damage.
+	 * Check that the average distance is larger than the start distance in most cases.
 	 * 
 	 * @param event
 	 *            Holds information about the battle has been completed.
 	 */
 	@Override
 	public void onBattleCompleted(BattleCompletedEvent event) {
-		// calculate average distance across all turns during the battle
-		double totalDistances = 0;
-	    for (double i: allDistances) {
-	    	totalDistances += i;
-	    }		
-		avgDistance = totalDistances / allDistances.size();
-		
-		System.out.println("Start distance: " + startDistance +
-						   " Average distance: " + avgDistance);
-		
-		assertTrue("Check that the averageDistance is lower than the initial distance",
-					avgDistance > startDistance);
+		assertTrue("Average distance should be larger than start distance in " + THRESHOLD + 
+				" of the rounds, but it was true in only " + ((double) nbrPassed / NBR_ROUNDS) +
+				" rounds.", ((double) nbrPassed / NBR_ROUNDS) > THRESHOLD);
 	}
 
 	/**
@@ -115,6 +112,52 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 		double distance = Math.hypot(xBMB-xDuck, yBMB-yDuck);
 		allDistances.add(distance);
 	}
+	
+	/**
+	 * Called before each round. Used to to reset all distance calculations.
+	 * 
+	 * @param event
+	 *            The RoundStartedEvent.
+	 */
+	@Override
+	public void onRoundStarted(RoundStartedEvent event) {
+		IRobotSnapshot bmb = event.getStartSnapshot().getRobots()[0];
+		double xBMB = bmb.getX();
+		double yBMB = bmb.getY();
+		IRobotSnapshot duck = event.getStartSnapshot().getRobots()[1];
+		double xDuck = duck.getX();
+		double yDuck = duck.getY();
+		
+		startDistance = Math.hypot(xBMB-xDuck, yBMB-yDuck);
+		avgDistance = 0;
+		allDistances = new LinkedList<Double>();
+	}
+	
+	/**
+	 * Tests to see that BMB moves away from the SittingDuck, i.e., average 
+	 * distance is larger than the start distance.
+	 * 
+	 * @param event
+	 *            The RoundEndedEvent.
+	 */
+	@Override
+	public void onRoundEnded(RoundEndedEvent event) {
+		// calculate average distance across all turns during the battle
+		double totalDistances = 0;
+		for (double i: allDistances) {
+			totalDistances += i;
+		}		
+		avgDistance = totalDistances / allDistances.size();
+				
+		if (PRINT_DEBUG) {
+			System.out.println("Start distance: " + startDistance +
+						   	   " Average distance: " + avgDistance);
+		}
+				
+		if (avgDistance > startDistance) {
+			nbrPassed++;
+		}
+	}
 
 	/**
 	 * Returns a comma or space separated list like: x1,y1,heading1,
@@ -134,14 +177,7 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	 */
 	@Override
 	public String getInitialPositions() {
-		// Position BMB 50 distance units left of a SittingDuck 
-		int xBMB = 550;
-		int yBMB = 300;
-		int xDuck = 600;
-		int yDuck = 300;
-		startDistance = Math.hypot(xBMB-xDuck, yBMB-yDuck);
-		return xBMB + "," + yBMB + ",0," +
-			   xDuck + "," + yDuck + ",0";
+		return null;
 	}
 
 	/**
@@ -175,9 +211,7 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	 */
 	@Override
 	protected void runSetup() {
-		startDistance = 0;
-		avgDistance = 0;
-		allDistances = new LinkedList<Double>();
+		nbrPassed = 0;
 	}
 
 	/**
