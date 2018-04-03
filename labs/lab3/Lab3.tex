@@ -87,6 +87,62 @@ If you have already cloned the repository, pull the latest source code to make s
 \label{fig:github}
 \end{figure}
 
+
+During the lab, you will work on creating test cases to verify the four primary features of Basic Melee Bot: 1) Spinning radar, 2) Closest enemy targeting, 3) Non-stop anti-gravity movement, and 4) Wall avoidance.
+
+\chapter{Basic Melee Bot Features}
+
+\section{Feature 1 -- Spinning radar}
+BMB shall feature a spinning radar.
+
+\subsection{Description and Priority}
+The spinning radar is a simple solution to detect enemy robots by continuously scanning the entire battlefield.\\\\Business priority: \textbf{high}\\
+Implementation risk: \textbf{very low}
+
+\subsection{Functional Requirements}
+\begin{itemize}
+\item[REQ-F1-1] The radar shall scan the battlefield clockwise as long as BMB is operational and the battle is ongoing.
+\item[REQ-F1-2] Detected enemy robots shall be stored in an internal data structure. 
+\end{itemize}
+
+\section{Feature 2 -- Closest enemy targeting}
+BMB shall target and shoot at the closest enemy robot.
+
+\subsection{Description and Priority}
+The rationale behind targeting and shooting at the closest enemy is that nearby robots are easier to hit. The solution is simple but useful.\\\\Business priority: \textbf{high}\\
+Implementation risk: \textbf{low}
+
+\subsection{Functional Requirements}
+\begin{itemize}
+\item[REQ-F2-1] BMB shall fire at the closest enemy robot as long as the battle is ongoing.
+\item[REQ-F2-2] BMB shall use a constant fire power of 1.
+\end{itemize}
+
+\section{Feature 3 -- Non-stop anti-gravity movement}
+BMB shall use anti-gravity movement.
+	
+\subsection{Description and Priority}
+Anti-gravity movement is used to keep a distance to certain points on the battlefield. BMB shall use this movement to stay away from enemy robots. Furthermore, BMB shall never stay at one position.\\\\Business priority: \textbf{medium}\\
+Implementation risk: \textbf{medium}
+
+\subsection{Functional Requirements}
+\begin{itemize}
+\item[REQ-F3-1] BMB shall continuously move away from enemy robots.
+\item[REQ-F3-2] BMB shall never stay in the same position for more than 10 consecutive turns.
+\end{itemize}
+
+\section{Feature 4 -- Wall avoidance}
+BMB shall avoid driving into walls.
+
+\subsection{Description and Priority}
+Crashing into walls damages robots and forces them into a stop. BMB shall not end up in walls, even when the anti-gravity movement suggests such positions.\\\\Business priority: \textbf{medium}\\
+Implementation risk: \textbf{medium}
+
+\subsection{Functional Requirements}
+\begin{itemize}
+\item[REQ-F4-1] When closer than 40 distance units to a wall, BMB shall alter its course to avoid collision.
+\end{itemize}
+
 %Download the latest Robot testing plugin (1.9.3.0) from http://robo-code.blogspot.se/\\
 %Add robocode.testing.jar to the Java build path in Eclipse\\
 %Create a run configuration for JUnit in Eclipse\\
