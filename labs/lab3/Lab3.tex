@@ -75,16 +75,16 @@
 \end{center}
 
 \chapter{Introduction}
-During Lab 3 you will continue working with automated testing of Basic Melee Bot. You will still use the JUnit framework to drive the test automation, but your test design will leave the unit level to instead target robot behavior on the system level. To enable such testing, you will work with Robocode's RobotTestBed. Furthermore, you will design test cases to verify quality requirements regard the battle performance of Basic Melee Bot. More specifically, Lab 3 covers:
+During Lab 3 you will continue working with automated testing of Basic Melee Bot. You will still use the JUnit framework to drive the test automation, but your test design will leave the unit level to instead target robot behavior on the system level. To enable such testing, you will work with the Robocode plug-in RobotTestBed. Furthermore, you will design test cases to verify quality requirements regarding the battle performance of Basic Melee Bot. More specifically, Lab 3 covers:
 
 \begin{itemize}
-\item Working with RobotTestBed.
+\item Working with the RobotTestBed plugin.
 \item Designing JUnit test cases for system testing.
 \item Designing JUnit test cases for testing quality requirements.
 \end{itemize}
 
 \chapter{Before the lab}
-Just like for Lab 2 you will find the code required for this lab on GitHub:\\https://github.com/lunduniversity/introsofteng
+The source code required for Lab 3 is available on GitHub:\\https://github.com/lunduniversity/introsofteng\\\\
 If you have already cloned the repository, pull the latest source code to make sure you work with the latest version. If you prefer downloading the code, instead click the button presented in Figure~\ref{fig:github} and choose ``Download ZIP''. For Lab 3, you need the files located in introsofteng-master/project/rumble/labs/lab3/src, including its subfolder: `test'. Rewatch the video ``Lab2_download.avi'' on Google Drive (ETSA02 Everyone/Labs) if you need support.
 
 \begin{figure}
@@ -94,10 +94,132 @@ If you have already cloned the repository, pull the latest source code to make s
 \label{fig:github}
 \end{figure}
 
+Follow these instructions to install the Robocode testing plugin:
 
-During the lab, you will work on creating test cases to verify the four primary features of Basic Melee Bot: 1) Spinning radar, 2) Closest enemy targeting, 3) Non-stop anti-gravity movement, and 4) Wall avoidance.
+\begin{enumerate}
+\item Download the latest Robot testing plugin (1.9.3.1) from\\https://sourceforge.net/projects/robocode/files/robocode/1.9.3.1/
+\item Add robocode.testing.jar to the Java build path of the project you created in Eclipse. Do this in the same way as when you added robocode.jar.
+\item Create a new run configuration for JUnit with RobotTestBed. Do this in the same way as when creating a normal JUnit run configuration, but you must also add -Drobocode.home=$<$PATH TO ROBOCODE$>$ as an argument to the VM.
+\end{enumerate}
 
-\chapter{Basic Melee Bot Features}
+To get an initial understanding of RobotTestBed, study the simple example TestWallBehavior that follows. The test case verifies that the corresponding robot visits all four corners of the battlefield. RobotTestBed introduces several methods that you can override to add JUnit assertions for testing robot behavior, most importantly:
+\begin{itemize}
+\item public void onBattleCompleted(BattleCompletedEvent event)
+\item public void onRoundStarted(RoundStartedEvent event)
+\item public void onRoundEnded(RoundEndedEvent event)
+\item public void onTurnEnded(TurnEndedEvent event)
+\end{itemize}
+
+During the lab, you will work on designing test cases to verify the four primary features of Basic Melee Bot: 1) Spinning radar, 2) Closest enemy targeting, 3) Non-stop anti-gravity movement, and 4) Wall avoidance. Study the features and the corresponding detailed requirements of Basic Melee Bot in Section~\ref{sec:features}. Also study the quality requirements related to 1-vs-1 battle performance and melee battle performance.
+
+\newpage
+\begin{verbatim}
+/**
+ * Copyright (c) 2001-2018 Mathew A. Nelson and Robocode contributors
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://robocode.sourceforge.net/license/epl-v10.html
+ */
+package sample;
+
+import static org.junit.Assert.assertTrue;
+import robocode.control.events.BattleCompletedEvent;
+import robocode.control.events.TurnEndedEvent;
+import robocode.control.snapshot.IRobotSnapshot;
+import robocode.control.testing.RobotTestBed;
+
+/**
+ * Tests that sample.Walls moves to all four corners.
+ *
+ * @author Philip Johnson (original)
+ * @author Pavel Savara (contributor)
+ */
+public class TestWallBehavior extends RobotTestBed {
+
+	/**
+	 * True if the robot visited this corner during the test case.
+	 */
+	boolean visitedUpperLeft = false;
+
+	/**
+	 * True if the robot visited this corner during the test case.
+	 */
+	boolean visitedUpperRight = false;
+
+	/**
+	 * True if the robot visited this corner during the test case.
+	 */
+	boolean visitedLowerLeft = false;
+
+	/**
+	 * True if the robot visited this corner during the test case.
+	 */
+	boolean visitedLowerRight = false;
+
+	/**
+	 * Specifies that SittingDuck and DaCruzer are to be matched up in this test case.
+	 *
+	 * @return The comma-delimited list of robots in this match.
+	 */
+	@Override
+	public String getRobotNames() {
+      return "sample.SittingDuck,sample.Walls";
+	}
+
+	/**
+	 * This test runs for 1 round.
+	 *
+	 * @return The number of rounds.
+	 */
+	@Override
+	public int getNumRounds() {
+      return 1;
+	}
+
+	/**
+	 * After each turn, check to see if we're at a corner.
+	 * If so, set the corresponding flag.
+	 *
+	 * @param event Info about the current state of the battle.
+	 */
+	@Override
+	public void onTurnEnded(TurnEndedEvent event) {
+      IRobotSnapshot robot = event.getTurnSnapshot().getRobots()[1];
+      double xPos = robot.getX();
+      double yPos = robot.getY();
+
+      if ((xPos < 40) && (yPos < 40)) {
+        visitedUpperLeft = true;
+      }
+      if ((xPos < 40 && (yPos > (height - 40)))) {
+        visitedLowerLeft = true;
+      }
+      if ((xPos > (width - 40)) && (yPos < 40)) {
+        visitedUpperRight = true;
+      }
+      if ((xPos > (width - 40) && (yPos > (height - 40)))) {
+        visitedLowerRight = true;
+      }
+	}
+
+	/**
+	 * After the battle, check to see that we've visited the corners.
+	 *
+	 * @param event Details about the completed battle.
+	 */
+	@Override
+	public void onBattleCompleted(BattleCompletedEvent
+			event) {
+      assertTrue("Check UpperLeft", visitedUpperLeft);
+      assertTrue("Check LowerLeft", visitedLowerLeft);
+      assertTrue("Check UpperRight", visitedUpperRight);
+      assertTrue("Check LowerRight", visitedLowerRight);
+  }
+}
+\end{verbatim}
+
+\chapter{Basic Melee Bot Features and Quality Requirements} \label{sec:features}
 
 \section{Feature 1 -- Spinning radar}
 BMB shall feature a spinning radar.
@@ -150,12 +272,12 @@ Implementation risk: \textbf{medium}
 \item[REQ-F4-1] When closer than 40 distance units to a wall, BMB shall alter its course to avoid collision.
 \end{itemize}
 
-%Download the latest Robot testing plugin (1.9.3.0) from http://robo-code.blogspot.se/\\
-%Add robocode.testing.jar to the Java build path in Eclipse\\
-%Create a run configuration for JUnit in Eclipse\\
-%Add -Drobocode.home=$<$PATH TO ROBOCODE$>$ as an argument to the VM\\
-%Might need to configure Eclipse project: Properties -> Java Build Path -> Libraries -> Add Library -> JUnit -> Junit 5\\
-%Try running JUnit tests
+\section{Quality requirements}
+TBD
+
+\subsection{1-vs-1 battle performance}
+
+\subsection{Melee battle performance}
 
 \chapter{At the lab}
 
