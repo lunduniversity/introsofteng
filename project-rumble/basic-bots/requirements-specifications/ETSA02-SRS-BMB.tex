@@ -293,10 +293,11 @@ When Basic Melee Bot battles against a single enemy robot, it will continuously 
 \end{itemize}
 
 \section{Melee Battle Performance Requirements}
-$<$Specify performance requirements for how your robot shall perform in melee battles against standard robots to help the developers understand the intent and make suitable design choices. Make such requirements as specific as possible to allow later verification work, i.e., specify quantitative targets such as ``65\% win rate in melee battles with one SpinBot, one CrazyBot, and two TargetBots.''$>$
+When Basic Melee Bot battles against multiple enemy robot, it will try to stay away from enemy robots by using its non-stop anti-gravity movement. Basic Melee Bot shall perform well in melee battles against the Robocode sample robots.
 
-\section{Team Battle Performance Requirements}
-$<$Specify performance requirements for how your robot shall perform in team battles against standard robots to help the developers understand the intent and make suitable design choices. Make such requirements as specific as possible to allow later verification work. This might be useful if you want to state requirements on how multiple copies of your robot work together.$>$
+\begin{itemize}
+\item[REQ-Q2] Basic Melee Bot shall have at least 33\% win rate in melee battles against three enemy SpinBots.
+\end{itemize}
 
 \section{Software Quality Attributes}
 \textit{To be written...}\\
