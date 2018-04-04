@@ -27,7 +27,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.2 }
+\def\myversion{0.3 }
 \date{}
 %\title{%
 
@@ -38,7 +38,7 @@
 \begin{flushright}
     \rule{16cm}{5pt}\vskip1cm
     \begin{bfseries}
-    	\LARGE{ETSA02-ADM-LAB2}\\
+    	\LARGE{ETSA02-ADM-LAB3}\\
     	\vspace{1.5cm}
         \Huge{Lab 3}\\
         \vspace{0.5cm}
@@ -102,7 +102,7 @@ Follow these instructions to install the Robocode testing plugin:
 \item Create a new run configuration for JUnit with RobotTestBed. Do this in the same way as when creating a normal JUnit run configuration, but you must also add -Drobocode.home=$<$PATH TO ROBOCODE$>$ as an argument to the VM.
 \end{enumerate}
 
-To get an initial understanding of RobotTestBed, study the simple example TestWallBehavior that follows. The test case verifies that the corresponding robot visits all four corners of the battlefield. RobotTestBed introduces several methods that you can override to add JUnit assertions for testing robot behavior, most importantly:
+To get an initial understanding of RobotTestBed, study the simple example TestWallBehavior that follows. The test case verifies that the corresponding robot visits all four corners of the battlefield. RobotTestBed lets you override methods in Robocode's BattleAdaptor to add JUnit assertions for testing robot behavior. The complete list is available in the Robocode API, but a handful of methods should be enough for Lab 3:
 \begin{itemize}
 \item public void onBattleCompleted(BattleCompletedEvent event)
 \item public void onRoundStarted(RoundStartedEvent event)
