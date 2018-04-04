@@ -26,21 +26,30 @@ SOFTWARE.
 package se.lth.cs.etsa02.basicmeleebot.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import robocode.BattleResults;
 import robocode.control.events.BattleCompletedEvent;
-import robocode.control.events.TurnEndedEvent;
 import robocode.control.testing.RobotTestBed;
 
 /**
- * Test class for the BasicLeaderBot.
+ * Test class for the BasicMeleeBot.
  *
- * @author Keone Hiraide
+ * @author Markus Borg
  *
  */
 @RunWith(JUnit4.class)
 public class ST_Q_BeatSpinBot extends RobotTestBed {
+	
+	// constants used to configure this system test case
+	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
+	private String ENEMY_ROBOTS = "sample.SpinBot";
+	private int NBR_ROUNDS = 100;
+	private double THRESHOLD = 0.75; // win rate against SpinBot
+	private boolean PRINT_DEBUG = true;
+		
 	/**
 	 * The names of the robots that want battling is specified.
 	 * 
@@ -48,7 +57,7 @@ public class ST_Q_BeatSpinBot extends RobotTestBed {
 	 */
 	@Override
 	public String getRobotNames() {
-		return "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*,sample.SpinBot";
+		return ROBOT_UNDER_TEST + "," + ENEMY_ROBOTS;
 	}
 
 	/**
@@ -58,35 +67,7 @@ public class ST_Q_BeatSpinBot extends RobotTestBed {
 	 */
 	@Override
 	public int getNumRounds() {
-		return 100;
-	}
-
-	/**
-	 * Tests to see if our robot won most rounds.
-	 * 
-	 * @param event
-	 *            Holds information about the battle has been completed.
-	 */
-	@Override
-	public void onBattleCompleted(BattleCompletedEvent event) {
-		// Return the results in order of getRobotNames.
-		BattleResults[] battleResults = event.getIndexedResults();
-		BattleResults blbResults = battleResults[0];
-		String robotName = blbResults.getTeamLeaderName();
-		assertEquals("Check that BasicMeleeBot is at the expected position in the results array",
-				"se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*", robotName);
-	}
-
-	/**
-	 * Called after each turn. Provided here to show that you could use this
-	 * method as part of your testing.
-	 * 
-	 * @param event
-	 *            The TurnEndedEvent.
-	 */
-	@Override
-	public void onTurnEnded(TurnEndedEvent event) {
-		// Default does nothing.
+		return NBR_ROUNDS;
 	}
 
 	/**
@@ -153,5 +134,32 @@ public class ST_Q_BeatSpinBot extends RobotTestBed {
 	protected void runTeardown() {
 		// Default does nothing.
 	}
-
+	
+	/**
+	 * Tests to see if our robot won most rounds.
+	 * 
+	 * @param event
+	 *            Holds information about the battle has been completed.
+	 */
+	@Override
+	public void onBattleCompleted(BattleCompletedEvent event) {
+		// all battle results
+		BattleResults[] battleResults = event.getIndexedResults();
+		// BMB results
+		BattleResults bmbResults = battleResults[0];
+		
+		// check that BMB won the overall battle
+		String robotName = bmbResults.getTeamLeaderName();		
+		assertEquals("Basic Melee Bot should be first in the results array",
+				"se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*", robotName);
+		
+		// check that the required win rate has been reached
+		double bmbWinRate = (((double) bmbResults.getFirsts()) / NBR_ROUNDS);
+		if (PRINT_DEBUG) {
+			System.out.println("BMB won " + bmbResults.getFirsts() + " out of " + NBR_ROUNDS + 
+					" rounds (win rate = " + bmbWinRate + ")");
+		}
+		assertTrue("Basic Melee Bot should have a win rate of at least 75% against SpinBot",
+				bmbWinRate >= THRESHOLD);
+	}
 }

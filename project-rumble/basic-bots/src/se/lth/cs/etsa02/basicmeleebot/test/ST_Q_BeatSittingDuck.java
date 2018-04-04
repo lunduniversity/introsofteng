@@ -41,6 +41,7 @@ import robocode.control.testing.RobotTestBed;
  */
 @RunWith(JUnit4.class)
 public class ST_Q_BeatSittingDuck extends RobotTestBed {
+	
 	/**
 	 * The names of the robots that want battling is specified.
 	 * 

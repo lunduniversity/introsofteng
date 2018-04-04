@@ -77,6 +77,8 @@
         \hline
         Markus Borg & 2018-04-03 & Complete draft of four features. & 0.2\\
         \hline
+        Markus Borg & 2018-04-04 & Added two quality requirements. & 0.3\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -281,10 +283,14 @@ Implementation risk: \textbf{medium}
 \end{itemize}
 
 \chapter{Quality Requirements}
-This section describes quality requirements for Basic Melee Bot.
+This section describes quality requirements for Basic Melee Bot. The robot is primarily intended for use in the LU Rumble, but it shall also be competitive in 1-vs-1 battles and melee battles.
 
 \section{1-vs-1 Battle Performance Requirements}
-$<$Specify performance requirements for how your robot shall perform in 1-vs-1 battles against standard robots to help the developers understand the intent and make suitable design choices. Make such requirements as specific as possible to allow later verification work, i.e., specify quantitative targets such as ``65\% win rate against SpinBot.''$>$
+When Basic Melee Bot battles against a single enemy robot, it will continuously change its position on the battlefield and stay away from the enemy robot by using its non-stop anti-gravity movement. Basic Melee Bot shall perform well against the Robocode sample robots.
+
+\begin{itemize}
+\item[REQ-Q1] Basic Melee Bot shall have at least 75\% win rate against SpinBot.
+\end{itemize}
 
 \section{Melee Battle Performance Requirements}
 $<$Specify performance requirements for how your robot shall perform in melee battles against standard robots to help the developers understand the intent and make suitable design choices. Make such requirements as specific as possible to allow later verification work, i.e., specify quantitative targets such as ``65\% win rate in melee battles with one SpinBot, one CrazyBot, and two TargetBots.''$>$

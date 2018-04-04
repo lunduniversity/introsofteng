@@ -51,7 +51,7 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
 	private String ENEMY_ROBOTS = "sample.SittingDuck";
 	private int NBR_ROUNDS = 500;
-	private double THRESHOLD = 0.60;
+	private double THRESHOLD = 0.60; // percentage of rounds with average distance > start distance
 	private boolean PRINT_DEBUG = false;
 			
 	// attributes used in the system test case
@@ -78,85 +78,6 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	@Override
 	public int getNumRounds() {
 		return NBR_ROUNDS;
-	}
-
-	/**
-	 * Check that the average distance is larger than the start distance in most cases.
-	 * 
-	 * @param event
-	 *            Holds information about the battle has been completed.
-	 */
-	@Override
-	public void onBattleCompleted(BattleCompletedEvent event) {
-		assertTrue("Average distance should be larger than start distance in " + THRESHOLD + 
-				" of the rounds, but it was true in only " + ((double) nbrPassed / NBR_ROUNDS) +
-				" rounds.", ((double) nbrPassed / NBR_ROUNDS) > THRESHOLD);
-	}
-
-	/**
-	 * Called after each turn. Provided here to show that you could use this
-	 * method as part of your testing.
-	 * 
-	 * @param event
-	 *            The TurnEndedEvent.
-	 */
-	@Override
-	public void onTurnEnded(TurnEndedEvent event) {
-		IRobotSnapshot bmb = event.getTurnSnapshot().getRobots()[0];
-		double xBMB = bmb.getX();
-		double yBMB = bmb.getY();
-		IRobotSnapshot duck = event.getTurnSnapshot().getRobots()[1];
-		double xDuck = duck.getX();
-		double yDuck = duck.getY();
-		
-		double distance = Math.hypot(xBMB-xDuck, yBMB-yDuck);
-		allDistances.add(distance);
-	}
-	
-	/**
-	 * Called before each round. Used to to reset all distance calculations.
-	 * 
-	 * @param event
-	 *            The RoundStartedEvent.
-	 */
-	@Override
-	public void onRoundStarted(RoundStartedEvent event) {
-		IRobotSnapshot bmb = event.getStartSnapshot().getRobots()[0];
-		double xBMB = bmb.getX();
-		double yBMB = bmb.getY();
-		IRobotSnapshot duck = event.getStartSnapshot().getRobots()[1];
-		double xDuck = duck.getX();
-		double yDuck = duck.getY();
-		
-		startDistance = Math.hypot(xBMB-xDuck, yBMB-yDuck);
-		avgDistance = 0;
-		allDistances = new LinkedList<Double>();
-	}
-	
-	/**
-	 * Tests to see that BMB moves away from the SittingDuck, i.e., average 
-	 * distance is larger than the start distance.
-	 * 
-	 * @param event
-	 *            The RoundEndedEvent.
-	 */
-	@Override
-	public void onRoundEnded(RoundEndedEvent event) {
-		// calculate average distance across all turns during the battle
-		double totalDistances = 0;
-		for (double i: allDistances) {
-			totalDistances += i;
-		}		
-		avgDistance = totalDistances / allDistances.size();
-				
-		if (PRINT_DEBUG) {
-			System.out.println("Start distance: " + startDistance +
-						   	   " Average distance: " + avgDistance);
-		}
-				
-		if (avgDistance > startDistance) {
-			nbrPassed++;
-		}
 	}
 
 	/**
@@ -222,5 +143,83 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	@Override
 	protected void runTeardown() {
 	}
-
+	
+	/**
+	 * Check that the average distance is larger than the start distance in most cases.
+	 * 
+	 * @param event
+	 *            Holds information about the battle has been completed.
+	 */
+	@Override
+	public void onBattleCompleted(BattleCompletedEvent event) {
+		assertTrue("Average distance should be larger than start distance in " + THRESHOLD + 
+				" of the rounds, but it was true in only " + ((double) nbrPassed / NBR_ROUNDS) +
+				" rounds.", ((double) nbrPassed / NBR_ROUNDS) > THRESHOLD);
+	}
+	
+	/**
+	 * Called before each round. Used to to reset all distance calculations.
+	 * 
+	 * @param event
+	 *            The RoundStartedEvent.
+	 */
+	@Override
+	public void onRoundStarted(RoundStartedEvent event) {
+		IRobotSnapshot bmb = event.getStartSnapshot().getRobots()[0];
+		double xBMB = bmb.getX();
+		double yBMB = bmb.getY();
+		IRobotSnapshot duck = event.getStartSnapshot().getRobots()[1];
+		double xDuck = duck.getX();
+		double yDuck = duck.getY();
+		
+		startDistance = Math.hypot(xBMB-xDuck, yBMB-yDuck);
+		avgDistance = 0;
+		allDistances = new LinkedList<Double>();
+	}
+	
+	/**
+	 * Tests to see that BMB moves away from the SittingDuck, i.e., average 
+	 * distance is larger than the start distance.
+	 * 
+	 * @param event
+	 *            The RoundEndedEvent.
+	 */
+	@Override
+	public void onRoundEnded(RoundEndedEvent event) {
+		// calculate average distance across all turns during the battle
+		double totalDistances = 0;
+		for (double i: allDistances) {
+			totalDistances += i;
+		}		
+		avgDistance = totalDistances / allDistances.size();
+				
+		if (PRINT_DEBUG) {
+			System.out.println("Start distance: " + startDistance +
+						   	   " Average distance: " + avgDistance);
+		}
+				
+		if (avgDistance > startDistance) {
+			nbrPassed++;
+		}
+	}
+	
+	/**
+	 * Called after each turn. Provided here to show that you could use this
+	 * method as part of your testing.
+	 * 
+	 * @param event
+	 *            The TurnEndedEvent.
+	 */
+	@Override
+	public void onTurnEnded(TurnEndedEvent event) {
+		IRobotSnapshot bmb = event.getTurnSnapshot().getRobots()[0];
+		double xBMB = bmb.getX();
+		double yBMB = bmb.getY();
+		IRobotSnapshot duck = event.getTurnSnapshot().getRobots()[1];
+		double xDuck = duck.getX();
+		double yDuck = duck.getY();
+		
+		double distance = Math.hypot(xBMB-xDuck, yBMB-yDuck);
+		allDistances.add(distance);
+	}
 }
