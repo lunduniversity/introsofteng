@@ -272,12 +272,22 @@ Implementation risk: \textbf{medium}
 \item[REQ-F4-1] When closer than 40 distance units to a wall, BMB shall alter its course to avoid collision.
 \end{itemize}
 
-\section{Quality requirements}
-TBD
+\section{Quality Requirements}
+This section describes quality requirements for Basic Melee Bot. The robot is primarily intended for use in the LU Rumble, but it shall also be competitive in 1-vs-1 battles and melee battles.
 
-\subsection{1-vs-1 battle performance}
+\subsection{1-vs-1 Battle Performance Requirements}
+When Basic Melee Bot battles against a single enemy robot, it will continuously change its position on the battlefield and stay away from the enemy robot by using its non-stop anti-gravity movement. Basic Melee Bot shall perform well against the Robocode sample robots.
 
-\subsection{Melee battle performance}
+\begin{itemize}
+\item[REQ-Q1] Basic Melee Bot shall have at least 75\% win rate against SpinBot.
+\end{itemize}
+
+\subsection{Melee Battle Performance Requirements}
+When Basic Melee Bot battles against multiple enemy robot, it will try to stay away from enemy robots by using its non-stop anti-gravity movement. Basic Melee Bot shall perform well in melee battles against the Robocode sample robots.
+
+\begin{itemize}
+\item[REQ-Q2] Basic Melee Bot shall have at least 33\% win rate in melee battles against three enemy SpinBots.
+\end{itemize}
 
 \chapter{At the lab}
 
