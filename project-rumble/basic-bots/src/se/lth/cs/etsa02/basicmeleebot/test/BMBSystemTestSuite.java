@@ -27,7 +27,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ ST_F3_AntiGravMovement.class, ST_F4_WallAvoidance.class, ST_Q_BeatSittingDuck.class, ST_Q_BeatSpinBot.class })
+@SuiteClasses({ ST_F3_AntiGravMovement.class, ST_F4_WallAvoidance.class, 
+	 			ST_Q_1vs1SpinBot.class, ST_Q_MeleeSpinBots.class })
 public class BMBSystemTestSuite {
 
 }
