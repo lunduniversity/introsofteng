@@ -53,6 +53,7 @@ public class BasicMeleeBot extends TeamRobot {
 		setAdjustGunForRobotTurn(true);
 		setAdjustRadarForGunTurn(true);
 		
+		setTurnRadarRight(Double.POSITIVE_INFINITY);
 		targetingSystem.update();
 		movementSystem.update();
 		execute();
