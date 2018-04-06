@@ -23,16 +23,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package etsa02_lab3;
+package etsa02_lab3.test;
 
 import static org.junit.Assert.assertTrue;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import robocode.control.events.BattleCompletedEvent;
 import robocode.control.events.RoundEndedEvent;
 import robocode.control.events.RoundStartedEvent;
 import robocode.control.events.TurnEndedEvent;
-import robocode.control.snapshot.IRobotSnapshot;
 import robocode.control.testing.RobotTestBed;
 
 /**
@@ -48,9 +48,6 @@ public class ST_F1_RadarSystem extends RobotTestBed {
 	private String ROBOT_UNDER_TEST = "etsa02_lab3.BasicMeleeBot*";
 	private String ENEMY_ROBOTS = "sample.SittingDuck";
 	private int NBR_ROUNDS = 1;
-	
-	private double previousHeading;
-	private boolean clockwise;
 	
 	/**
 	 * The names of the robots that want battling is specified.

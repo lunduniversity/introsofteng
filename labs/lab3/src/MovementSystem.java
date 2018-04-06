@@ -28,7 +28,7 @@ import java.awt.geom.Point2D;
 
 import robocode.AdvancedRobot;
 import robocode.util.Utils;
-import se.lth.cs.etsa02.basicmeleebot.PositioningSystem.Wall;
+import etsa02_lab3.PositioningSystem.Wall;
 
 /**
  * Handles the computation for a type of movement called Anti-gravity and is based on

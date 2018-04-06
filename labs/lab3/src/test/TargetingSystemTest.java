@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package etsa02_lab3;
+package etsa02_lab3.test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -30,8 +30,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import se.lth.cs.etsa02.basicmeleebot.EnemyTracker;
-import se.lth.cs.etsa02.basicmeleebot.TargetingSystem;
+import etsa02_lab3.EnemyTracker;
+import etsa02_lab3.TargetingSystem;
 
 public class TargetingSystemTest {
 	

@@ -22,13 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package etsa02_lab3;
+package etsa02_lab3.test;
 
 import java.awt.geom.Point2D.Double;
 
-import se.lth.cs.etsa02.basicmeleebot.PositioningSystem;
+import etsa02_lab3.PositioningSystem;
 
-public class MockPositioningSystem extends PositioningSystem{
+public class MockPositioningSystem extends PositioningSystem {
 
 	public MockPositioningSystem(double width, double height) {
 		super(width, height);

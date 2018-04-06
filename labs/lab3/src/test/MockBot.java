@@ -22,7 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package etsa02_lab3;
+package etsa02_lab3.test;
+
+import etsa02_lab3.BasicMeleeBot;
 
 /**
  * MockBot - a mock robot to enable unit testing for ETSA02.

@@ -22,13 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package etsa02_lab3;
+package etsa02_lab3.test;
 
 import static org.junit.Assert.assertEquals;
 import java.awt.geom.Point2D;
 import org.junit.Test;
 
-import se.lth.cs.etsa02.basicmeleebot.MathUtils;
+import etsa02_lab3.MathUtils;
 
 public class MathUtilsTest {
 
