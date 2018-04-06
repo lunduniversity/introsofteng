@@ -26,30 +26,36 @@ SOFTWARE.
 package etsa02_lab3;
 
 import static org.junit.Assert.assertTrue;
+
 import java.util.LinkedList;
+import java.util.Random;
+
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import robocode.BattleResults;
 import robocode.control.events.BattleCompletedEvent;
 import robocode.control.events.RoundEndedEvent;
 import robocode.control.events.RoundStartedEvent;
 import robocode.control.events.TurnEndedEvent;
 import robocode.control.snapshot.IRobotSnapshot;
+import robocode.control.snapshot.ITurnSnapshot;
 import robocode.control.testing.RobotTestBed;
 
 /**
- * Test class for Feature 3 - Anti-gravity movement in BasicMeleeBot.
+ * Test class for Feature 4 - Wall avoidance in BasicMeleeBot.
  *
  * @author Markus Borg
  *
  */
 @RunWith(JUnit4.class)
-public class ST_F3_AntiGravMovement extends RobotTestBed {
+public class ST_F4_WallAvoidance extends RobotTestBed {
 	
 	// constants used to configure this system test case
 	private String ROBOT_UNDER_TEST = "etsa02_lab3.BasicMeleeBot*";
-	private String ENEMY_ROBOTS = "sample.SittingDuck";
+	private String ENEMY_ROBOTS = "sample.SittingDuck,sample.SittingDuck";
 	private int NBR_ROUNDS = 500;
-	private double THRESHOLD = 0.60; // percentage of rounds with average distance > start distance
+	private int SIZE_X = 800;
+	private int SIZE_Y = 600;
 	private boolean PRINT_DEBUG = false;
 	
 	/**
@@ -59,6 +65,7 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	 */
 	@Override
 	public String getRobotNames() {
+		// Battle between BMB and two SittingDucks
 		return ROBOT_UNDER_TEST + "," + ENEMY_ROBOTS;
 	}
 
