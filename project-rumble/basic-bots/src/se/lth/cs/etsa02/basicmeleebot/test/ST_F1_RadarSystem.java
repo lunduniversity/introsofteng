@@ -24,13 +24,14 @@ SOFTWARE.
 */
 
 package se.lth.cs.etsa02.basicmeleebot.test;
-
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import robocode.BattleResults;
-import robocode.control.events.BattleCompletedEvent;
+
+import robocode.control.events.RoundEndedEvent;
+import robocode.control.events.RoundStartedEvent;
 import robocode.control.events.TurnEndedEvent;
+import robocode.control.snapshot.IRobotSnapshot;
 import robocode.control.testing.RobotTestBed;
 
 /**
@@ -41,9 +42,13 @@ import robocode.control.testing.RobotTestBed;
  */
 @RunWith(JUnit4.class)
 public class ST_F1_RadarSystem extends RobotTestBed {
+	// constants used to configure this system test case
+	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
+	private String ENEMY_ROBOTS = "sample.SittingDuck";
+	private int NBR_ROUNDS = 1;
 	
-	private boolean firstDuckFound = false;
-	private boolean secondDuckFound = false;
+	private double previousHeading;
+	private boolean clockwise;
 	
 	/**
 	 * The names of the robots that want battling is specified.
@@ -52,10 +57,7 @@ public class ST_F1_RadarSystem extends RobotTestBed {
 	 */
 	@Override
 	public String getRobotNames() {
-		// Battle between BMB and two SittingDucks
-		return "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*,"
-				+ "sample.SittingDuck,"
-				+ "sample.SittingDuck";
+		return ROBOT_UNDER_TEST + "," + ENEMY_ROBOTS;
 	}
 
 	/**
@@ -65,40 +67,43 @@ public class ST_F1_RadarSystem extends RobotTestBed {
 	 */
 	@Override
 	public int getNumRounds() {
-		// One round is enough for testing the Radar system
-		return 1;
+		return NBR_ROUNDS;
 	}
 
 	/**
-	 * Tests to see that BMB robot beat SittingDuck and did maximum damage.
-	 * 
-	 * @param event
-	 *            Holds information about the battle has been completed.
-	 */
-	@Override
-	public void onBattleCompleted(BattleCompletedEvent event) {
-		// Return the results in order of getRobotNames.
-		
-		/*BattleResults[] battleResults = event.getIndexedResults();
-		BattleResults bmbResults = battleResults[0];
-		String robotName = bmbResults.getTeamLeaderName();
-		assertEquals("Check that BasicMeleeBot is at the expected position in the results array",
-				"se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*", robotName);
-		assertEquals("Check that BMD in total did 1000 damage to SittingDuck", 1000, bmbResults.getBulletDamage());
-		*/
-	}
-
-	/**
-	 * Called after each turn. Provided here to show that you could use this
-	 * method as part of your testing.
-	 * 
-	 * @param event
-	 *            The TurnEndedEvent.
+	 * Called after every turn. Used to check whether the radar spins clockwise or not by
+	 * comparing current radar heading with radar heading in the previous turn.
 	 */
 	@Override
 	public void onTurnEnded(TurnEndedEvent event) {
-		
-		// Default does nothing.
+		IRobotSnapshot bmb = event.getTurnSnapshot().getRobots()[0];
+		double radarHeading = Math.toDegrees(bmb.getRadarHeading());
+		//We base our test on the fact that the radar cannot turn more than 75 degrees per turn.
+		if (previousHeading + 75 >= 360 && radarHeading < 75) {
+			radarHeading += 360;
+		}
+		if (radarHeading - previousHeading <= 0 || radarHeading - previousHeading > 75) {
+			clockwise = false;
+		}
+		previousHeading = Math.toDegrees(bmb.getRadarHeading());
+	}
+	
+	/**
+	 * Called before each round. Used to set initial values of variables.
+	 */
+	@Override
+	public void onRoundStarted(RoundStartedEvent event) {
+		IRobotSnapshot bmb = event.getStartSnapshot().getRobots()[0];
+		previousHeading = Math.toDegrees(bmb.getRadarHeading());
+		clockwise = true;
+	}
+	
+	/**
+	 * Called after each round. Used to assert that the radar has been spinning correctly the whole round.
+	 */
+	@Override
+	public void onRoundEnded(RoundEndedEvent event) {
+		assertTrue("Check that the radar spins clockwise all the time", clockwise);
 	}
 
 	/**
@@ -121,7 +126,7 @@ public class ST_F1_RadarSystem extends RobotTestBed {
 	public String getInitialPositions() {
 		// Put BMB in top left corner facing right
 		// Put one SittingDuck in lower right corner and one in bottom left
-		return "100,500,90,700,300,180,100,100,0";
+		return null;
 	}
 
 	/**
@@ -134,7 +139,7 @@ public class ST_F1_RadarSystem extends RobotTestBed {
 	 */
 	@Override
 	public boolean isDeterministic() {
-		return true;
+		return false;
 	}
 
 	/**
