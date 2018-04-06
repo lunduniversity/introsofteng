@@ -26,12 +26,9 @@ SOFTWARE.
 package etsa02_lab3;
 
 import static org.junit.Assert.assertTrue;
-
-import java.util.LinkedList;
-import java.util.Random;
-
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
 import robocode.BattleResults;
 import robocode.control.events.BattleCompletedEvent;
 import robocode.control.events.RoundEndedEvent;
