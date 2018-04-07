@@ -27,6 +27,7 @@ package se.lth.cs.etsa02.basicmeleebot.test;
 
 import static org.junit.Assert.assertTrue;
 
+import java.awt.geom.Point2D;
 import java.util.LinkedList;
 
 import org.junit.runner.RunWith;
@@ -36,6 +37,7 @@ import robocode.control.events.RoundEndedEvent;
 import robocode.control.events.RoundStartedEvent;
 import robocode.control.events.TurnEndedEvent;
 import robocode.control.snapshot.IRobotSnapshot;
+import robocode.control.snapshot.RobotState;
 import robocode.control.testing.RobotTestBed;
 
 /**
@@ -50,14 +52,16 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	// constants used to configure this system test case
 	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
 	private String ENEMY_ROBOTS = "sample.SittingDuck";
-	private int NBR_ROUNDS = 500;
+	private int NBR_ROUNDS = 100;
 	private double THRESHOLD = 0.60; // percentage of rounds with average distance > start distance
-	private boolean PRINT_DEBUG = false;
+	private double IMMOBILE_TURNS_LIMIT = 25; // maximum turns without moving
+	private boolean PRINT_DEBUG = true;
 			
 	// attributes used in the system test case
 	private double startDistance;
 	private double avgDistance;
 	private LinkedList<Double> allDistances;
+	private LinkedList<Point2D> prevPos;
 	private int nbrPassed;
 	
 	/**
@@ -133,6 +137,7 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	@Override
 	protected void runSetup() {
 		nbrPassed = 0;
+		prevPos = new LinkedList<Point2D>();
 	}
 
 	/**
@@ -204,14 +209,14 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 	}
 	
 	/**
-	 * Called after each turn. Provided here to show that you could use this
-	 * method as part of your testing.
+	 * Check distance to SittingDuck. Also store current BMB position.
 	 * 
 	 * @param event
 	 *            The TurnEndedEvent.
 	 */
 	@Override
 	public void onTurnEnded(TurnEndedEvent event) {
+		// verify increasing distance
 		IRobotSnapshot bmb = event.getTurnSnapshot().getRobots()[0];
 		double xBMB = bmb.getX();
 		double yBMB = bmb.getY();
@@ -221,5 +226,26 @@ public class ST_F3_AntiGravMovement extends RobotTestBed {
 		
 		double distance = Math.hypot(xBMB-xDuck, yBMB-yDuck);
 		allDistances.add(distance);
+		
+		// verify unique positions from turn IMMOBILE_TURNS_LIMIT as long as SittingDuck is active
+		if (event.getTurnSnapshot().getTurn() >= IMMOBILE_TURNS_LIMIT && duck.getState() == RobotState.ACTIVE) {
+			boolean uniquePos = false;
+			int count = 0;
+			for (int i = 0; !uniquePos && i < prevPos.size(); i++) {
+				for (int j = i+1; !uniquePos && j < prevPos.size(); j++) {
+					if (!prevPos.get(i).equals(prevPos.get(j))) {
+						uniquePos = true;
+					}
+					count++;
+				}
+			}
+			assertTrue("BMB did not move for " + IMMOBILE_TURNS_LIMIT + " turns (turn " + event.getTurnSnapshot().getTurn() + ")", uniquePos);
+		}
+		
+		// store last IMMOBILE_TURNS_LIMIT positions
+		if (prevPos.size() == IMMOBILE_TURNS_LIMIT) {
+			prevPos.poll();
+		}
+		prevPos.add(new Point2D.Double(xBMB, yBMB));	
 	}
 }

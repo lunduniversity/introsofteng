@@ -1,5 +1,5 @@
 /**	
-Copyright (c) 2017 Markus Borg
+Copyright (c) 2018 Markus Borg
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ ST_F3_AntiGravMovement.class, ST_F4_WallAvoidance.class, 
+@SuiteClasses({ ST_F1_RadarSystem.class, ST_F2_ClosestEnemyTargeting.class, 
+				ST_F3_AntiGravMovement.class, ST_F4_WallAvoidance.class, 
 	 			ST_Q_1vs1SpinBot.class, ST_Q_MeleeSpinBots.class })
 public class BMBSystemTestSuite {
 
