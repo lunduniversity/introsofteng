@@ -50,9 +50,12 @@ public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
 	private String ENEMY_ROBOTS = "sample.SittingDuck,sample.SittingDuck";
 	private int NBR_ROUNDS = 1; //the battle will be deterministic and we will set initial positions so one round is enough.
+	private boolean PRINT_DEBUG = false;
 	
-	private int turnFirstDuckDied;
-	private int turnSecondDuckDied;
+	private int turnDuck1Died;
+	private int turnDuck2Died;
+	private double prevDuck1Energy;
+	private double prevDuck2Energy;
 		
 	/**
 	 * The names of the robots that want battling is specified.
@@ -149,13 +152,31 @@ public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 		IRobotSnapshot duck1 = event.getTurnSnapshot().getRobots()[1];
 		IRobotSnapshot duck2 = event.getTurnSnapshot().getRobots()[2];
 		
-		if (turnFirstDuckDied == -1 && duck1.getState() == RobotState.DEAD) {
-			turnFirstDuckDied = event.getTurnSnapshot().getTurn();
+		// test constant firepower
+		if (PRINT_DEBUG) {
+			System.out.println("Energy diff for duck 1: " + (duck1.getEnergy() - prevDuck1Energy));
+			System.out.println("Energy diff for duck 2: " + (duck2.getEnergy() - prevDuck2Energy));
 		}
 		
-		if (turnSecondDuckDied == -1 && duck2.getState() == RobotState.DEAD) {
-			turnSecondDuckDied = event.getTurnSnapshot().getTurn();
+		if (duck1.getState() == RobotState.ACTIVE && duck1.getEnergy() != prevDuck1Energy) {
+			assertTrue("BMB firepower not constant! SittingDuck 1 did not lose expected energy", duck1.getEnergy() == prevDuck1Energy - 4);
 		}
+		
+		if (duck2.getState() == RobotState.ACTIVE && duck2.getEnergy() != prevDuck2Energy) {
+			assertTrue("BMB firepower not constant! SittingDuck 2 did not lose expected energy", duck2.getEnergy() == prevDuck2Energy - 4);
+		}
+		
+		// test order of kills
+		if (turnDuck1Died == -1 && duck1.getState() == RobotState.DEAD) {
+			turnDuck1Died = event.getTurnSnapshot().getTurn();
+		}
+		
+		if (turnDuck2Died == -1 && duck2.getState() == RobotState.DEAD) {
+			turnDuck2Died = event.getTurnSnapshot().getTurn();
+		}
+		
+		prevDuck1Energy = duck1.getEnergy();
+		prevDuck2Energy = duck2.getEnergy();
 	}
 	
 	/**
@@ -163,8 +184,10 @@ public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 	 */
 	@Override
 	public void onRoundStarted(RoundStartedEvent event) {
-		turnFirstDuckDied = -1;
-		turnSecondDuckDied = -1;
+		turnDuck1Died = -1;
+		turnDuck2Died = -1;
+		prevDuck1Energy = event.getStartSnapshot().getRobots()[1].getEnergy();
+		prevDuck2Energy = event.getStartSnapshot().getRobots()[2].getEnergy();
 	}
 	
 	/**
@@ -172,6 +195,6 @@ public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 	 */
 	@Override
 	public void onRoundEnded(RoundEndedEvent event) {
-		assertTrue("Check that the closest SittingDuck dies first", turnFirstDuckDied < turnSecondDuckDied);
+		assertTrue("Check that the closest SittingDuck dies first", turnDuck1Died < turnDuck2Died);
 	}
 }
