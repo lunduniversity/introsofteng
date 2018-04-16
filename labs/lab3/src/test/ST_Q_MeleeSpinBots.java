@@ -145,6 +145,8 @@ public class ST_Q_MeleeSpinBots extends RobotTestBed {
 	 */
 	@Override
 	public void onBattleCompleted(BattleCompletedEvent event) {
+		// ETSA02 Lab 3: Remove this assertion and implement a proper test case.
+		assertTrue("ST_Q_MeleeSpinBots not implemented yet", false);
 	}
 	
 	/**

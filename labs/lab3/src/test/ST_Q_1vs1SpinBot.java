@@ -144,6 +144,8 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	 */
 	@Override
 	public void onBattleCompleted(BattleCompletedEvent event) {
+		// ETSA02 Lab 3: Remove this assertion and implement a proper test case.
+		assertTrue("ST_Q_1vs1SpinBot not implemented yet", false);
 	}
 	
 	/**

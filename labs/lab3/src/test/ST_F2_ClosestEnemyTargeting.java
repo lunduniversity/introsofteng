@@ -143,6 +143,8 @@ public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 	 */
 	@Override
 	public void onBattleCompleted(BattleCompletedEvent event) {
+		// ETSA02 Lab 3: Remove this assertion and implement a proper test case.
+		assertTrue("ST_F2_ClosestEnemyTargeting not implemented yet", false);
 	}
 	
 	/**
