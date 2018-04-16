@@ -47,7 +47,7 @@ import robocode.control.testing.RobotTestBed;
 public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 	
 	// constants used to configure this system test case
-	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
+	private String ROBOT_UNDER_TEST = "etsa02_lab3.BasicMeleeBot*";
 	private String ENEMY_ROBOTS = "sample.SittingDuck,sample.SittingDuck";
 	private int NBR_ROUNDS = 1; //the battle will be deterministic and we will set initial positions so one round is enough.
 	
