@@ -27,7 +27,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.4 }
+\def\myversion{0.5 }
 \date{}
 %\title{%
 
@@ -73,6 +73,8 @@
         \hline
         Markus Borg & 2018-04-07 & Complete draft, ready for internal review. & 0.4\\
         \hline
+        Markus Borg & 2018-04-16 & Updated after internal review. & 0.5\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -87,7 +89,7 @@ During Lab 3 you will continue working with automated testing of Basic Melee Bot
 
 \chapter{Before the lab}
 The source code required for Lab 3 is available on GitHub:\\https://github.com/lunduniversity/introsofteng\\\\
-If you have already cloned the repository, pull the latest source code to make sure you work with the latest version. If you prefer downloading the code, instead click the button presented in Figure~\ref{fig:github} and choose ``Download ZIP''. For Lab 3, you need the files located in introsofteng-master/project/rumble/labs/lab3/src, including its subfolder: `test'. Rewatch the video ``Lab2_download.avi'' on Google Drive (ETSA02 Everyone/Labs) if you need support.
+If you have already cloned the repository, pull the latest source code to make sure you work with the latest version. If you prefer downloading the code, instead click the button presented in Figure~\ref{fig:github} and choose ``Download ZIP''. Once downloaded, locate the files you need for Lab 3. The files are in the folder introsofteng-master/labs/lab3/src, and its subfolder: `test'. Rewatch the video ``Lab2_download.avi'' on Google Drive (ETSA02 Everyone/Labs) if you need support.
 
 \begin{figure}
 \centering
@@ -96,13 +98,26 @@ If you have already cloned the repository, pull the latest source code to make s
 \label{fig:github}
 \end{figure}
 
-Follow these instructions to install the Robocode testing plugin:
+Follow these instructions to install the Robocode testing plugin and setup JUnit for system testing robots:
 
 \begin{enumerate}
-\item Download the latest Robot testing plugin (1.9.3.1) from\\https://sourceforge.net/projects/robocode/files/robocode/1.9.3.1/
+\item \textbf{Download Robot testing plugin}. Download the latest Robot testing plugin (1.9.3.2) from https://sourceforge.net/projects/robocode/files/robocode/1.9.3.2/
+\item \textbf{Install Robot testing plugin}. Install the Robot testing plugin. The default option is to install the plugin in the existing Robocode folder -- this is fine.
+\item \textbf{Create a new Java project for Lab3 in your Eclipse workplace.} As in Lab 1 and Lab 2, add the robocode.jar as an ``External JAR'' in the Libraries tab, either when creating the project or afterwards in the project properties.
+\item \textbf{Create a new package called etsa02_lab3}. In the ``Package Explorer'' pane, right click ``src'' and create a new ``Package'' called ``etsa02_lab3''.
+\item \textbf{Import the source files required for lab3}, either from the cloned repository or the zip archive. In the ``Package Explorer'' pane, right click the newly created package and run ``Import...''. Click ``General'' and then choose ``File system'' and select all downloaded files in both the ``src'' folder and the ``src/test'' folder. The content in the Package Explorer should resemble Figure~\ref{fig:afterImport}.
+\item \textbf{Add JUnit as a library}. As in Lab 2, right click the Java project and select ``Build Path'' and click ``Add Libraries...'' and select JUnit. Click ``Next >'' followed by ``Finish'' to accept the default settings. 
 \item Add robocode.testing.jar to the Java build path of the project you created in Eclipse. Do this in the same way as when you added robocode.jar.
-\item Create a new run configuration for JUnit with RobotTestBed. Do this in the same way as when creating a normal JUnit run configuration, but you must also add -Drobocode.home=$<$PATH TO ROBOCODE$>$ as an argument to the VM.
+%\item \textbf{Create a JUnit run configuration}. Right click ``AllBasicMeleeBotUnitTests.java'' and choose ``Run as..'' and create a new JUnit run configuration. Give the configuration a descriptive name, such as ``Lab2 unit tests''.
+\item Create a new run configuration for JUnit with RobotTestBed. FORTYDLIGA. Do this in the same way as when creating a normal JUnit run configuration, but you must also add -Drobocode.home=PATH TO ROBOCODE as an argument to the VM.
 \end{enumerate}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{figures/packageExplorerAfterImport.png}
+\caption{The Package Explorer in Eclipse after importing the Lab 3 source code. You should recognize BasicMeleeBot from Lab 2, including its unit tests -- now organized in the test suite `BMBUnitTestSuite.java'. New for Lab 3 are the system tests (prefix `ST') and the system tests for the quality requirements (prefix `Q').}
+\label{fig:afterImport}
+\end{figure}
 
 To get an initial understanding of RobotTestBed, study the simple example TestWallBehavior that follows. The test case verifies that the corresponding robot visits all four corners of the battlefield. RobotTestBed lets you override methods in Robocode's BattleAdaptor to add JUnit assertions for testing robot behavior. The complete list is available in the Robocode API, but a handful of methods should be enough for Lab 3:
 \begin{itemize}
