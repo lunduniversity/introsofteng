@@ -1,0 +1,95 @@
+%
+% Copyright 2018 Markus Borg, Lund University
+%
+% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+% See http://creativecommons.org/licenses/by-sa/4.0/
+%
+% The dodument is based on a LaTeX template developed by Jean-Philippe Eisenbarth
+% https://github.com/jpeisenbarth/SRS-Tex
+%
+\documentclass{scrreprt}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{underscore}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\hypersetup{
+    bookmarks=false,    % show bookmarks bar?
+    pdftitle={Lab 4},    % title
+    pdfauthor={Markus Borg},                     % author
+    pdfsubject={TeX and LaTeX},                        % subject of the document
+    pdfkeywords={TeX, LaTeX, graphics, images}, % list of keywords
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,       % color of internal links
+    citecolor=black,       % color of links to bibliography
+    filecolor=black,        % color of file links
+    urlcolor=purple,        % color of external links
+    linktoc=page            % only page is linked
+}%
+\def\myversion{0.1 }
+\date{}
+%\title{%
+
+%}
+\usepackage{hyperref}
+\begin{document}
+
+\begin{flushright}
+    \rule{16cm}{5pt}\vskip1cm
+    \begin{bfseries}
+    	\LARGE{ETSA02-ADM-LAB4}\\
+    	\vspace{1.5cm}
+        \Huge{Lab 3}\\
+        \vspace{0.5cm}
+        Code coverage testing\\
+        \vspace{0.5cm}
+        and static code anaysis\\
+        \vspace{1.5cm}
+        \LARGE{Version \myversion approved}\\
+        \vspace{1.5cm}
+        Prepared by Markus Borg\\
+        %\vspace{1.5cm}
+        Dept. of Computer Science, Lund University\\
+        \vspace{1.5cm}
+        \today\\
+    \end{bfseries}
+\end{flushright}
+
+%\tableofcontents
+
+\chapter*{Revision History}
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+	    Name & Date & Reason For Changes & Version\\
+        \hline
+	    Markus Borg & 2018-04-18 & Initial structure. & 0.1\\
+        \hline
+    \end{tabular}
+\end{center}
+
+\chapter{Introduction}
+During Lab 4 you will continue working with automated testing of Basic Melee Bot. More specifically, Lab 4 covers:
+
+\begin{itemize}
+\item Code coverage testing with a tool
+\item Static code analysis
+\end{itemize}
+
+\chapter{Before the lab}
+The source code required for Lab 4 is available on GitHub:\\https://github.com/lunduniversity/introsofteng\\\\
+If you have already cloned the repository, pull the latest source code to make sure you work with the latest version. If you prefer downloading the code, instead click the button presented in Figure~\ref{fig:github} and choose ``Download ZIP''. Once downloaded, locate the files you need for Lab 4. The files are in the folder introsofteng-master/labs/lab3/src, and its subfolder: `test'. Rewatch the video ``Lab2_download.avi'' on Google Drive (ETSA02 Everyone/Labs) if you need support.
+
+\section{Install and run test cases with JUnit and a code coverage tool}
+
+\section{The fundamentals of code coverage tool}
+
+\section{The fundamentals of static code analysis tool}
+
+\chapter{At the lab} \label{sec:atlab}
+
+\chapter{After the lab}
+
+\end{document}
