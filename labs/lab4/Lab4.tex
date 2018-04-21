@@ -13,7 +13,7 @@
 \usepackage{underscore}
 \usepackage[bookmarks=true]{hyperref}
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+%\usepackage[english]{babel}
 \hypersetup{
     bookmarks=false,    % show bookmarks bar?
     pdftitle={Lab 4},    % title
@@ -27,7 +27,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.1 }
+\def\myversion{0.2 }
 \date{}
 %\title{%
 
@@ -67,28 +67,51 @@
         \hline
 	    Markus Borg & 2018-04-18 & Initial structure. & 0.1\\
         \hline
+        Markus Borg & 2018-04-21 & Added eclEmma, SpotBugs, and SonarLint. & 0.2\\
+        \hline
     \end{tabular}
 \end{center}
 
 \chapter{Introduction}
-During Lab 4 you will continue working with automated testing of Basic Melee Bot. More specifically, Lab 4 covers:
+During Lab 4 you will continue working with automated testing of Basic Melee Bot. More specifically, Lab 4 covers working with two open source tools:
 
 \begin{itemize}
-\item Code coverage testing with a tool
-\item Static code analysis
+\item Code coverage testing with eclEmma
+\item Static code analysis with SpotBugs
 \end{itemize}
+
+Furthermore, you will generate javadoc.
 
 \chapter{Before the lab}
 The source code required for Lab 4 is available on GitHub:\\https://github.com/lunduniversity/introsofteng\\\\
 If you have already cloned the repository, pull the latest source code to make sure you work with the latest version. If you prefer downloading the code, instead click the button presented in Figure~\ref{fig:github} and choose ``Download ZIP''. Once downloaded, locate the files you need for Lab 4. The files are in the folder introsofteng-master/labs/lab3/src, and its subfolder: `test'. Rewatch the video ``Lab2_download.avi'' on Google Drive (ETSA02 Everyone/Labs) if you need support.
 
+In Lab 4, you will learn to download tools from the big Eclipse ecosystem through Eclipse Marketplace. You reach Eclipse Marketplace directly into from your Eclipse installation. 
+
 \section{Install and run test cases with JUnit and a code coverage tool}
 
 \section{The fundamentals of code coverage tool}
 
+https://en.wikipedia.org/wiki/Code_coverage
+
+http://www.eclemma.org/jacoco/trunk/doc/counters.html
+
 \section{The fundamentals of static code analysis tool}
 
 \chapter{At the lab} \label{sec:atlab}
+
+eclEmma introduces a new run option in Eclipse, beyond ``Run as...'' and ``Debug as...''. The new run option is called ``Coverage as...''. The eclEmma ``Coverage view'' automatically appears when a new coverage session is added or can manually opened from the Window $\rightarrow$ Show View menu in the Java category. It shows code coverage summaries for the active session. 
+
+The Coverage view shows all analyzed Java elements. Individual columns contain the following numbers for the active session, always summarizing the child elements of the respective Java element:
+
+\begin{itemize}
+\item Coverage ratio
+\item Items covered
+\item Items not covered
+\item Total items
+\end{itemize}
+
+The elements may be sorted in ascending or descending order by clicking the respective column header. Double-clicking an element opens its declaration in an editor with highlighted source code. You can select between different metrics, see last section for details. 
 
 \chapter{After the lab}
 
