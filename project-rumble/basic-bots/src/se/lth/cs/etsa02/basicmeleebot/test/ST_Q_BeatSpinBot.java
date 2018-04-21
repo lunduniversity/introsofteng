@@ -151,7 +151,7 @@ public class ST_Q_BeatSpinBot extends RobotTestBed {
 		// check that BMB won the overall battle
 		String robotName = bmbResults.getTeamLeaderName();		
 		assertEquals("Basic Melee Bot should be first in the results array",
-				"se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*", robotName);
+				ROBOT_UNDER_TEST, robotName);
 		
 		// check that the required win rate has been reached
 		double bmbWinRate = (((double) bmbResults.getFirsts()) / NBR_ROUNDS);

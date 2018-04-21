@@ -73,8 +73,7 @@ public class ST_F4_WallAvoidance extends RobotTestBed {
 	@Override
 	public String getRobotNames() {
 		// Battle between BMB and two SittingDucks
-		return "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*,"
-				+ "sample.SittingDuck,sample.SittingDuck";
+		return ROBOT_UNDER_TEST + "," + ENEMY_ROBOTS;
 	}
 
 	/**
