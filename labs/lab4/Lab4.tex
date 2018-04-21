@@ -67,7 +67,7 @@
         \hline
 	    Markus Borg & 2018-04-18 & Initial structure. & 0.1\\
         \hline
-        Markus Borg & 2018-04-21 & Added eclEmma, SpotBugs, and SonarLint. & 0.2\\
+        Markus Borg & 2018-04-21 & Added EclEmma, SpotBugs, and SonarLint. & 0.2\\
         \hline
     \end{tabular}
 \end{center}
@@ -76,7 +76,7 @@
 Lab 4 focuses on source code quality assurance for Basic Melee Bot. High-quality source code is your best approach to decrease the chances of releasing a robot with bugs, and it also greatly improves the maintainability of the product. First, you will add code coverage measurements to your existing suite of unit tests. Second, you will explore two established tools for static code analysis. Finally, you will generate Javadoc for Basic Melee Bot, i.e., the de facto industry standard for documenting Java classes. More specifically, Lab 4 covers the following:
 
 \begin{itemize}
-\item Code coverage testing with eclEmma
+\item Code coverage testing with EclEmma
 \item Static code analysis with SpotBugs and SonarLint
 \item Generating Javadoc from Eclipse
 \end{itemize}
@@ -85,19 +85,19 @@ Lab 4 focuses on source code quality assurance for Basic Melee Bot. High-quality
 If you still have the Java project from either Lab 2 or Lab 3 in your workspace, then you have everything you need for Lab 4. The source code used in Lab 4 is Basic Melee Bot and its accompanying unit test suite (introduced in Lab 2, but available also in Lab 3). On the other hand, if you are now comfortable with downloading and importing source code from GitHub, you can of course download the latest version. If you want the latest code, Lab 4 has been prepared in the course repository on GitHub:\\https://github.com/lunduniversity/introsofteng\\\\
 The same instructions as from Lab 2 and Lab3 apply: if you have already cloned the repository, pull the latest source code to make sure you work with the latest version. If you prefer downloading the code, instead click the button presented in Figure~\ref{fig:github} and choose ``Download ZIP''. Once downloaded, locate the files you need for Lab 4. The files are in the folder introsofteng-master/labs/lab4/src, and its subfolder: `test'. Rewatch the video ``Lab2_download.avi'' on Google Drive (ETSA02 Everyone/Labs) if you need support.
 
-In Lab 4, you will learn to download tools from the big Eclipse ecosystem through Eclipse Marketplace. You reach Eclipse Marketplace directly into from your Eclipse installation. 
-
-\section{Install and run test cases with JUnit and a code coverage tool}
-
-\section{The fundamentals of code coverage tool}
-
-https://en.wikipedia.org/wiki/Code_coverage
-
-http://www.eclemma.org/jacoco/trunk/doc/counters.html
-
-\section{The fundamentals of static code analysis tool}
+To prepare for the lab session, please have a look at the following pages:
+\begin{itemize}
+\item Code coverage (skip ``Modified condition/decision coverage'' and onwards)\\-- https://en.wikipedia.org/wiki/Code_coverage
+\item EclEmma homepage (browse the page to get a high-level understanding) \\-- http://www.eclemma.org/
+\item Coverage counters in JaCoCo (library used by eclEmma) \\-- hhttp://www.eclemma.org/jacoco/trunk/doc/counters.html
+\item Static code analysis (skip ``Formal methods'') \\-- https://en.wikipedia.org/wiki/Static_program_analysis
+\item SpotBugs homepage (browse the page to get a high-level understanding) \\-- https://spotbugs.github.io/
+\item SonarLint homepage (browse the page to get a high-level understanding) \\-- https://www.sonarlint.org/
+\end{itemize}
 
 \chapter{At the lab} \label{sec:atlab}
+
+In Lab 4, you will learn to download open source tools from the big Eclipse ecosystem through Eclipse Marketplace. You reach Eclipse Marketplace directly from your Eclipse installation: Select ``Eclipse Marketplace...'' from the Help menu.
 
 eclEmma introduces a new run option in Eclipse, beyond ``Run as...'' and ``Debug as...''. The new run option is called ``Coverage as...''. The eclEmma ``Coverage view'' automatically appears when a new coverage session is added or can manually opened from the Window $\rightarrow$ Show View menu in the Java category. It shows code coverage summaries for the active session. 
 
