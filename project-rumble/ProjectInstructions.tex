@@ -28,7 +28,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.87 }
+\def\myversion{0.88 }
 \date{}
 %\title{%
 
@@ -89,7 +89,7 @@
         \hline
         Markus Borg & 2018-04-21 & Added the Lab4 tools, and details for Sprint 2 and the Beta Release. & 0.87\\
         \hline
-        Markus Borg & 2018-04-21 & Added details for the Beta Release. & 0.87\\
+        Markus Borg & 2018-04-21 & Added details for Sprint 3 and the Final Release. & 0.88\\
         \hline
     \end{tabular}
 \end{center}
@@ -470,6 +470,7 @@ Table~\ref{tab:sprint2} shows the resulting deliverables from Sprint 2, their re
 \textbf{Deliverable}           & \textbf{Receiver}   & \textbf{Responsible role} & \textbf{When?}     \\ \hline
 Lean canvas (latest version)   & Supervisor          & Project manager           & L5: Apr 27 - 23.59 \\ \hline
 SRS v0.9                       & Customer+ Supervisor & Requirements engineer     & L5: Apr 27 - 23.59 \\ \hline
+SRS review protocol            & Supervisor & Requirements engineer     & L5: Apr 27 - 23.59 \\ \hline
 Robot Beta version (MVP)       & Customer+ Supervisor & Development lead          & L5: Apr 27 - 23.59  \\ \hline
 STS v0.9        			   & Customer+ Supervisor & Test lead                 & L5: Apr 27 - 23.59  \\ \hline
 \end{tabular}
@@ -494,31 +495,49 @@ The sales department will keep active communications with the customer, to make 
 
 The purchasing department will keep a close eye on the engineering efforts of the supplier. After all, this is the supplier's last chance to deliver the robot that has been specified in the SRS. At the same time, your domain expert will analyze the Robot Market to make a final decision of your robot team composition, i.e., \textbf{optimizing the Rumble strategy}. 
 
-Sprint 3 shall result in the following deliverables to the following stakeholders. The responsible role is shown in parentheses.
-\begin{itemize}
-\item SRS v1.0 to the customer and the regulatory body (Requirements engineer)
-\item Robot Final release to the customer and the regulatory body (Development lead)
-\item STS v1.0 to the regulatory body and the customer (Test lead)
-\item Test report to the regulatory body and the customer (Test lead)
-\item A robot team composition to the regulatory body (Domain expert)
-\end{itemize}
+Table~\ref{tab:sprint3} shows the resulting deliverables from Sprint 3, their receivers, the responsible roles, and when they are due.
+
+\begin{table}[]
+\centering
+\caption{Deliverables due after Sprint 3, i.e., the Final Release.}
+\label{tab:sprint3}
+\begin{tabular}{|p{4cm}|p{2cm}|p{2.5cm}|p{4.5cm}|}
+\hline
+\textbf{Deliverable}           & \textbf{Receiver}   & \textbf{Responsible role} & \textbf{When?}     \\ \hline
+Lean canvas (final version)   & Supervisor          & Project manager           & L6: May 11 - 23.59 \\ \hline
+SRS v1.0                       & Customer+ Supervisor & Requirements engineer     & L6: May 11 - 23.59 \\ \hline
+Robot Final version        & Customer+ Supervisor & Development lead          & L6: May 11 - 23.59  \\ \hline
+STS v1.0        			   & Customer+ Supervisor & Test lead                 & L6: May 11 - 23.59  \\ \hline
+\end{tabular}
+\end{table}
 
 To support Sprint 3, the following sessions are scheduled:
 \begin{itemize}
-\item Lecture 4:
-\item 
-\item 
+\item Implementation support (``Kod-jour'')
+\item Lecture 5: Development processes
 \end{itemize}
 
 \section{Post release}
 The phase following the process model is referred to as post mortem. In this phase, your project group will perform acceptance testing of your supplier's Robot Final release. If the acceptance testing identifies flaws, you will file business claims to the regulatory body -- possibly deducting from the total payment. Furthermore, after settling the business claims, the domain expert will submit the final purchase orders to the regulatory body, i.e., the robot team composition for the LU Rumble will be finalized.
 
-The post mortem shall result in the following deliverables to the following stakeholders. The responsible role is shown in parentheses.
+Table~\ref{tab:postrelease} shows the resulting deliverables from the post release phase, their receivers, the responsible roles, and when they are due.
+
+\begin{table}[]
+\centering
+\caption{Deliverables due after Sprint 3, i.e., the Final Release.}
+\label{tab:postrelease}
+\begin{tabular}{|p{4cm}|p{2cm}|p{2.5cm}|p{4.5cm}|}
+\hline
+\textbf{Deliverable}           & \textbf{Receiver}   & \textbf{Responsible role} & \textbf{When?}     \\ \hline
+Acceptance test report   & Supervisor          & Domain expert           & L7: May 15 - 23.59 \\ \hline
+Business claims (optional)                       & Course responsible & Project manager     & L7: May 15 - 23.59 \\ \hline
+Purchase orders and team composition       & Course responsible & Domain expert         & L8: May 11 - 23.59  \\ \hline
+\end{tabular}
+\end{table}
+
+To support the post release phase, one session is scheduled:
 \begin{itemize}
-\item Acceptance test report (Domain expert)
-\item (Potentially) Business claims (Project manager)
-\item Purchase orders to the regulatory body (Domain expert)
-\item A robot team composition to the regulatory body (Domain expert)
+\item Lecture 6: Configuration management, software product lines
 \end{itemize}
 
 \section{LU Rumble}
@@ -613,6 +632,7 @@ The regulatory body release shall contain everything in the customer release, bu
 \item Robot packages as a jar-file -- including source files!
 \item Class diagram
 \item Javadoc
+\item A review protocol from the review meeting at Exercise 4 (only for the Beta release)
 \end{itemize}
 
 \chapter{Expectations per deliverable}
@@ -627,6 +647,7 @@ This section briefly explains what is expected of the various deliverables.
 \item[v0.9] The features shall be broken down into detailed requirements.
 \item[v1.0] A final SRS that provides a complete specification of the robot.
 \end{description}
+\item[SRS review protocol] The review meeting at Exercise 4 will result in a formal review protocol according to the provided template. The protocol shall report all issues that were identified during individual reviews, and also estimate the number of remaining issues based on the capture-recapture method.
 \item[The robot] The robot shall be released in three versions: Alpha, Beta, and Final. The lead developer shall each time package the robot as jar-files using the Robot Packager in Robocode, in two different versions per release: 1) without source files for the customer, and 2) including source files for the supervisor. The source code shall be maintainable, e.g., well-structured, commented, and using suitable variable names.
 \begin{description}
 \item[Alpha] An early prototype of the robot. No expectations regarding features, but the customer shall be able to field it in a Robocode battle.
