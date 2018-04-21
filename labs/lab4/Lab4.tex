@@ -85,7 +85,7 @@ Lab 4 focuses on source code quality assurance for Basic Melee Bot. High-quality
 If you still have the Java project from either Lab 2 or Lab 3 in your workspace, then you have everything you need for Lab 4. The source code used in Lab 4 is Basic Melee Bot and its accompanying unit test suite (introduced in Lab 2, but available also in Lab 3). On the other hand, if you are now comfortable with downloading and importing source code from GitHub, you can of course download the latest version. If you want the latest code, Lab 4 has been prepared in the course repository on GitHub:\\https://github.com/lunduniversity/introsofteng\\\\
 The same instructions as from Lab 2 and Lab3 apply: if you have already cloned the repository, pull the latest source code to make sure you work with the latest version. If you prefer downloading the code, instead click the button presented in Figure~\ref{fig:github} and choose ``Download ZIP''. Once downloaded, locate the files you need for Lab 4. The files are in the folder introsofteng-master/labs/lab4/src, and its subfolder: `test'. Rewatch the video ``Lab2_download.avi'' on Google Drive (ETSA02 Everyone/Labs) if you need support.
 
-To prepare for the lab session, please have a look at the following pages:
+To prepare for the lab session, please make sure you can execute a unit test suite for Basic Melee Bot. Then have a look at the following pages:
 \begin{itemize}
 \item Code coverage (skip ``Modified condition/decision coverage'' and onwards)\\-- https://en.wikipedia.org/wiki/Code_coverage
 \item EclEmma homepage (browse the page to get a high-level understanding) \\-- http://www.eclemma.org/
@@ -93,15 +93,16 @@ To prepare for the lab session, please have a look at the following pages:
 \item Static code analysis (skip ``Formal methods'') \\-- https://en.wikipedia.org/wiki/Static_program_analysis
 \item SpotBugs homepage (browse the page to get a high-level understanding) \\-- https://spotbugs.github.io/
 \item SonarLint homepage (browse the page to get a high-level understanding) \\-- https://www.sonarlint.org/
+\item Javadoc document generator \\-- https://en.wikipedia.org/wiki/Javadoc
 \end{itemize}
 
 \chapter{At the lab} \label{sec:atlab}
-
 In Lab 4, you will learn to download open source tools from the big Eclipse ecosystem through Eclipse Marketplace. You reach Eclipse Marketplace directly from your Eclipse installation: Select ``Eclipse Marketplace...'' from the Help menu.
 
-eclEmma introduces a new run option in Eclipse, beyond ``Run as...'' and ``Debug as...''. The new run option is called ``Coverage as...''. The eclEmma ``Coverage view'' automatically appears when a new coverage session is added or can manually opened from the Window $\rightarrow$ Show View menu in the Java category. It shows code coverage summaries for the active session. 
+\section{Code coverage with EclEmma}
+First, you will work with code coverage testing. Search for EclEmma on Eclipse Marketplace, and install the latest version: EclEmma Java Code Coverage 3.0.1. EclEmma introduces a new run option in Eclipse, beyond ``Run as...'' and ``Debug as...''. The new run option is called ``Coverage as...''. The eclEmma ``Coverage view'' automatically appears when a new coverage session is added or can manually be opened from the Window $\rightarrow$ Show View menu in the Java category. 
 
-The Coverage view shows all analyzed Java elements. Individual columns contain the following numbers for the active session, always summarizing the child elements of the respective Java element:
+The coverage view shows code coverage summaries for the active session. Individual columns in the view contain the following numbers for the active session, always summarizing the child elements of the respective Java element:
 
 \begin{itemize}
 \item Coverage ratio
@@ -110,8 +111,27 @@ The Coverage view shows all analyzed Java elements. Individual columns contain t
 \item Total items
 \end{itemize}
 
-The elements may be sorted in ascending or descending order by clicking the respective column header. Double-clicking an element opens its declaration in an editor with highlighted source code. You can select between different metrics, see last section for details. 
+The elements may be sorted in ascending or descending order by clicking the respective column header. Double-clicking an element opens its declaration in an editor with highlighted source code. Figure~\ref{fig:eclemma} shows an example of the coverage view, and how to switch between different coverage metrics, i.e., instruction counters, branch counters, line counters, method counters, type counters, and complexity.  
+
+\begin{figure}
+\centering
+\includegraphics[width=0.99\textwidth]{figures/EclEmma.png}
+\caption{The coverage view in EclEmma. The circle shows where to switch coverage metric.}
+\label{fig:eclemma}
+\end{figure}
+
+Time to perform a code coverage measurement of Basic Melee Bot to analyze to what extent the unit test suite covers the source code of the robot. In the ``Package Explorer'' in Eclipse, right click the unit test suite in your Java project (``AllBasicMeleeBotUnitTests.java'' if working with Lab 2, otherwise ``BMBUnitTestSuite.java'') and choose ``Coverage as'' $\rightarrow$ JUnit Test. The unit test suite will run as before, but you will also get coverage measurements. Explore the results in the EclEmma coverage view (skip coverage of the classes in the test package). Double click on elements in the coverage view to navigate to color coded source code, for which green = covered, yellow = partly covered, and red = not covered. Then try to answer the following questions:
+\begin{itemize}
+\item What is the total instruction coverage?
+\item Which classes have the highest instruction coverage? Why?
+\item Which classes have the lowest instruction coverage? Why?
+\item What do the other coverage metrics reveal?   
+\end{itemize}
 
 \chapter{After the lab}
+Your group shall state a code coverage target for your unit test suite in the STS, at least instruction coverage. For the Final Release of your robot, you shall measure code coverage using EclEmma and report the outcome in the test report. Any deviations from the coverage target shall be motivated.
+
+
+
 
 \end{document}
