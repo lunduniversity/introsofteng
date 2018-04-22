@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package se.lth.cs.etsa02.basicmeleebot;
+package etsa02_lab4;
 
 import robocode.TeamRobot;
 import robocode.RobotDeathEvent;
