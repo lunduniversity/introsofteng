@@ -23,7 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package se.lth.cs.etsa02.basicmeleebot.test;
+package etsa02_lab4.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -41,14 +41,14 @@ import robocode.control.testing.RobotTestBed;
  *
  */
 @RunWith(JUnit4.class)
-public class ST_Q_1vs1SpinBot extends RobotTestBed {
+public class ST_Q_MeleeSpinBots extends RobotTestBed {
 	
 	// constants used to configure this system test case
 	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
-	private String ENEMY_ROBOTS = "sample.SpinBot";
+	private String ENEMY_ROBOTS = "sample.SpinBot,sample.SpinBot,sample.SpinBot";
 	private int NBR_ROUNDS = 100;
-	private double THRESHOLD = 0.75; // win rate against SpinBot
-	private boolean PRINT_DEBUG = true;
+	private double THRESHOLD = 0.33; // win rate in melee battles against 3 SpinBots
+	private boolean PRINT_DEBUG = false;
 		
 	/**
 	 * The names of the robots that want battling is specified.
@@ -147,19 +147,20 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 		BattleResults[] battleResults = event.getIndexedResults();
 		// BMB results
 		BattleResults bmbResults = battleResults[0];
-		
+
 		// check that BMB won the overall battle
 		String robotName = bmbResults.getTeamLeaderName();		
 		assertEquals("Basic Melee Bot should be first in the results array",
-				ROBOT_UNDER_TEST, robotName);
+				"se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*", robotName);
 		
 		// check that the required win rate has been reached
 		double bmbWinRate = (((double) bmbResults.getFirsts()) / NBR_ROUNDS);
+		
 		if (PRINT_DEBUG) {
 			System.out.println("BMB won " + bmbResults.getFirsts() + " out of " + NBR_ROUNDS + 
 					" rounds (win rate = " + bmbWinRate + ")");
 		}
-		assertTrue("Basic Melee Bot should have a win rate of at least 75% against SpinBot",
+		assertTrue("Basic Melee Bot should have a win rate of at least 33% in this melee battle",
 				bmbWinRate >= THRESHOLD);
 	}
 }

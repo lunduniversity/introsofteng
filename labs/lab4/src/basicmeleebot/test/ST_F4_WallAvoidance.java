@@ -23,33 +23,48 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package se.lth.cs.etsa02.basicmeleebot.test;
+package etsa02_lab4.test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import java.util.LinkedList;
+import java.util.Random;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import robocode.BattleResults;
 import robocode.control.events.BattleCompletedEvent;
+import robocode.control.events.RoundEndedEvent;
+import robocode.control.events.RoundStartedEvent;
+import robocode.control.events.TurnEndedEvent;
+import robocode.control.snapshot.IRobotSnapshot;
+import robocode.control.snapshot.ITurnSnapshot;
 import robocode.control.testing.RobotTestBed;
 
 /**
- * Test class for the BasicMeleeBot.
+ * Test class for Feature 4 - Wall avoidance in BasicMeleeBot.
  *
  * @author Markus Borg
  *
  */
 @RunWith(JUnit4.class)
-public class ST_Q_1vs1SpinBot extends RobotTestBed {
+public class ST_F4_WallAvoidance extends RobotTestBed {
 	
 	// constants used to configure this system test case
 	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
-	private String ENEMY_ROBOTS = "sample.SpinBot";
-	private int NBR_ROUNDS = 100;
-	private double THRESHOLD = 0.75; // win rate against SpinBot
-	private boolean PRINT_DEBUG = true;
-		
+	private String ENEMY_ROBOTS = "sample.SittingDuck,sample.SittingDuck";
+	private int NBR_ROUNDS = 500;
+	private double THRESHOLD = 0.95;
+	private double PERCENT_AT_WALLS = 0.10;
+	private int SIZE_X = 800;
+	private int SIZE_Y = 600;
+	private boolean PRINT_DEBUG = false;
+	
+	// attributes used in the system test case
+	private int turnCounter;
+	private int closeToWallCounter;
+	private int roundsPassed;
+	
 	/**
 	 * The names of the robots that want battling is specified.
 	 * 
@@ -57,7 +72,9 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	 */
 	@Override
 	public String getRobotNames() {
-		return ROBOT_UNDER_TEST + "," + ENEMY_ROBOTS;
+		// Battle between BMB and two SittingDucks
+		return "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*,"
+				+ "sample.SittingDuck,sample.SittingDuck";
 	}
 
 	/**
@@ -101,7 +118,7 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	 */
 	@Override
 	public boolean isDeterministic() {
-		return true;
+		return false;
 	}
 
 	/**
@@ -122,7 +139,7 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	 */
 	@Override
 	protected void runSetup() {
-		// Default does nothing.
+		roundsPassed = 0;
 	}
 
 	/**
@@ -132,34 +149,74 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	 */
 	@Override
 	protected void runTeardown() {
-		// Default does nothing.
 	}
 	
 	/**
-	 * Tests to see if our robot won most rounds.
+	 * Tests to see that BMB robot beat SittingDuck and did maximum damage.
 	 * 
 	 * @param event
 	 *            Holds information about the battle has been completed.
 	 */
 	@Override
 	public void onBattleCompleted(BattleCompletedEvent event) {
-		// all battle results
-		BattleResults[] battleResults = event.getIndexedResults();
-		// BMB results
-		BattleResults bmbResults = battleResults[0];
-		
-		// check that BMB won the overall battle
-		String robotName = bmbResults.getTeamLeaderName();		
-		assertEquals("Basic Melee Bot should be first in the results array",
-				ROBOT_UNDER_TEST, robotName);
-		
-		// check that the required win rate has been reached
-		double bmbWinRate = (((double) bmbResults.getFirsts()) / NBR_ROUNDS);
-		if (PRINT_DEBUG) {
-			System.out.println("BMB won " + bmbResults.getFirsts() + " out of " + NBR_ROUNDS + 
-					" rounds (win rate = " + bmbWinRate + ")");
-		}
-		assertTrue("Basic Melee Bot should have a win rate of at least 75% against SpinBot",
-				bmbWinRate >= THRESHOLD);
+		assertTrue("BMB spent too much time close to walls. It succeeded only in " + ((double) roundsPassed / NBR_ROUNDS) +
+				" rounds.", ((double) roundsPassed / NBR_ROUNDS) > THRESHOLD);
 	}
+
+	/**
+	 * Called before each round. Used to to reset all distance calculations.
+	 * 
+	 * @param event
+	 *            The RoundStartedEvent.
+	 */
+	@Override
+	public void onRoundStarted(RoundStartedEvent event) {
+		turnCounter = 0;
+		closeToWallCounter = 0;
+	}
+	
+	/**
+	 * Tests to see that BMB was mostly more than 20 distance units from the walls.
+	 * 
+	 * @param event
+	 *            The RoundEndedEvent.
+	 */
+	@Override
+	public void onRoundEnded(RoundEndedEvent event) {
+		if (PRINT_DEBUG) {
+			System.out.println("closecounter: " + closeToWallCounter +
+							   " turns: " + turnCounter);
+		}
+		
+		if (closeToWallCounter <= ((double) PERCENT_AT_WALLS * turnCounter)) {
+			roundsPassed++;
+		}
+	}
+	
+	/**
+	 * Called after each turn. Provided here to show that you could use this
+	 * method as part of your testing.
+	 * 
+	 * @param event
+	 *            The TurnEndedEvent.
+	 */
+	@Override
+	public void onTurnEnded(TurnEndedEvent event) {
+		turnCounter++;
+		ITurnSnapshot turnSnap = event.getTurnSnapshot();
+		IRobotSnapshot bmb = turnSnap.getRobots()[0];
+		double xBMB = bmb.getX();
+		double yBMB = bmb.getY();
+		
+		if (PRINT_DEBUG) {
+			System.out.println("BMB pos: " + xBMB + ", " + yBMB);
+		}
+		
+		// check if close to any walls
+		if (yBMB < 20 ||  yBMB > (SIZE_Y - 20)
+			|| xBMB < 20 || xBMB > (SIZE_X - 20)) {
+			closeToWallCounter++;
+		}
+	}
+
 }

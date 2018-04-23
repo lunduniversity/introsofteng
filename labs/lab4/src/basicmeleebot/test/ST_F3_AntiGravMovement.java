@@ -23,33 +23,47 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package se.lth.cs.etsa02.basicmeleebot.test;
+package etsa02_lab4.test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import java.awt.geom.Point2D;
+import java.util.LinkedList;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import robocode.BattleResults;
 import robocode.control.events.BattleCompletedEvent;
+import robocode.control.events.RoundEndedEvent;
+import robocode.control.events.RoundStartedEvent;
+import robocode.control.events.TurnEndedEvent;
+import robocode.control.snapshot.IRobotSnapshot;
+import robocode.control.snapshot.RobotState;
 import robocode.control.testing.RobotTestBed;
 
 /**
- * Test class for the BasicMeleeBot.
+ * Test class for Feature 3 - Anti-gravity movement in BasicMeleeBot.
  *
  * @author Markus Borg
  *
  */
 @RunWith(JUnit4.class)
-public class ST_Q_1vs1SpinBot extends RobotTestBed {
+public class ST_F3_AntiGravMovement extends RobotTestBed {
 	
 	// constants used to configure this system test case
 	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
-	private String ENEMY_ROBOTS = "sample.SpinBot";
+	private String ENEMY_ROBOTS = "sample.SittingDuck";
 	private int NBR_ROUNDS = 100;
-	private double THRESHOLD = 0.75; // win rate against SpinBot
+	private double THRESHOLD = 0.60; // percentage of rounds with average distance > start distance
+	private double IMMOBILE_TURNS_LIMIT = 25; // maximum turns without moving
 	private boolean PRINT_DEBUG = true;
-		
+			
+	// attributes used in the system test case
+	private double startDistance;
+	private double avgDistance;
+	private LinkedList<Double> allDistances;
+	private LinkedList<Point2D> prevPos;
+	private int nbrPassed;
+	
 	/**
 	 * The names of the robots that want battling is specified.
 	 * 
@@ -101,7 +115,7 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	 */
 	@Override
 	public boolean isDeterministic() {
-		return true;
+		return false;
 	}
 
 	/**
@@ -122,7 +136,8 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	 */
 	@Override
 	protected void runSetup() {
-		// Default does nothing.
+		nbrPassed = 0;
+		prevPos = new LinkedList<Point2D>();
 	}
 
 	/**
@@ -132,34 +147,105 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	 */
 	@Override
 	protected void runTeardown() {
-		// Default does nothing.
 	}
 	
 	/**
-	 * Tests to see if our robot won most rounds.
+	 * Check that the average distance is larger than the start distance in most cases.
 	 * 
 	 * @param event
 	 *            Holds information about the battle has been completed.
 	 */
 	@Override
 	public void onBattleCompleted(BattleCompletedEvent event) {
-		// all battle results
-		BattleResults[] battleResults = event.getIndexedResults();
-		// BMB results
-		BattleResults bmbResults = battleResults[0];
+		assertTrue("Average distance should be larger than start distance in " + THRESHOLD + 
+				" of the rounds, but it was true in only " + ((double) nbrPassed / NBR_ROUNDS) +
+				" rounds.", ((double) nbrPassed / NBR_ROUNDS) > THRESHOLD);
+	}
+	
+	/**
+	 * Called before each round. Used to to reset all distance calculations.
+	 * 
+	 * @param event
+	 *            The RoundStartedEvent.
+	 */
+	@Override
+	public void onRoundStarted(RoundStartedEvent event) {
+		IRobotSnapshot bmb = event.getStartSnapshot().getRobots()[0];
+		double xBMB = bmb.getX();
+		double yBMB = bmb.getY();
+		IRobotSnapshot duck = event.getStartSnapshot().getRobots()[1];
+		double xDuck = duck.getX();
+		double yDuck = duck.getY();
 		
-		// check that BMB won the overall battle
-		String robotName = bmbResults.getTeamLeaderName();		
-		assertEquals("Basic Melee Bot should be first in the results array",
-				ROBOT_UNDER_TEST, robotName);
-		
-		// check that the required win rate has been reached
-		double bmbWinRate = (((double) bmbResults.getFirsts()) / NBR_ROUNDS);
+		startDistance = Math.hypot(xBMB-xDuck, yBMB-yDuck);
+		avgDistance = 0;
+		allDistances = new LinkedList<Double>();
+	}
+	
+	/**
+	 * Tests to see that BMB moves away from the SittingDuck, i.e., average 
+	 * distance is larger than the start distance.
+	 * 
+	 * @param event
+	 *            The RoundEndedEvent.
+	 */
+	@Override
+	public void onRoundEnded(RoundEndedEvent event) {
+		// calculate average distance across all turns during the battle
+		double totalDistances = 0;
+		for (double i: allDistances) {
+			totalDistances += i;
+		}		
+		avgDistance = totalDistances / allDistances.size();
+				
 		if (PRINT_DEBUG) {
-			System.out.println("BMB won " + bmbResults.getFirsts() + " out of " + NBR_ROUNDS + 
-					" rounds (win rate = " + bmbWinRate + ")");
+			System.out.println("Start distance: " + startDistance +
+						   	   " Average distance: " + avgDistance);
 		}
-		assertTrue("Basic Melee Bot should have a win rate of at least 75% against SpinBot",
-				bmbWinRate >= THRESHOLD);
+				
+		if (avgDistance > startDistance) {
+			nbrPassed++;
+		}
+	}
+	
+	/**
+	 * Check distance to SittingDuck. Also store current BMB position.
+	 * 
+	 * @param event
+	 *            The TurnEndedEvent.
+	 */
+	@Override
+	public void onTurnEnded(TurnEndedEvent event) {
+		// verify increasing distance
+		IRobotSnapshot bmb = event.getTurnSnapshot().getRobots()[0];
+		double xBMB = bmb.getX();
+		double yBMB = bmb.getY();
+		IRobotSnapshot duck = event.getTurnSnapshot().getRobots()[1];
+		double xDuck = duck.getX();
+		double yDuck = duck.getY();
+		
+		double distance = Math.hypot(xBMB-xDuck, yBMB-yDuck);
+		allDistances.add(distance);
+		
+		// verify unique positions from turn IMMOBILE_TURNS_LIMIT as long as SittingDuck is active
+		if (event.getTurnSnapshot().getTurn() >= IMMOBILE_TURNS_LIMIT && duck.getState() == RobotState.ACTIVE) {
+			boolean uniquePos = false;
+			int count = 0;
+			for (int i = 0; !uniquePos && i < prevPos.size(); i++) {
+				for (int j = i+1; !uniquePos && j < prevPos.size(); j++) {
+					if (!prevPos.get(i).equals(prevPos.get(j))) {
+						uniquePos = true;
+					}
+					count++;
+				}
+			}
+			assertTrue("BMB did not move for " + IMMOBILE_TURNS_LIMIT + " turns (turn " + event.getTurnSnapshot().getTurn() + ")", uniquePos);
+		}
+		
+		// store last IMMOBILE_TURNS_LIMIT positions
+		if (prevPos.size() == IMMOBILE_TURNS_LIMIT) {
+			prevPos.poll();
+		}
+		prevPos.add(new Point2D.Double(xBMB, yBMB));	
 	}
 }

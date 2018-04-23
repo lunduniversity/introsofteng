@@ -23,7 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package se.lth.cs.etsa02.basicmeleebot.test;
+package etsa02_lab4.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -151,7 +151,7 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 		// check that BMB won the overall battle
 		String robotName = bmbResults.getTeamLeaderName();		
 		assertEquals("Basic Melee Bot should be first in the results array",
-				ROBOT_UNDER_TEST, robotName);
+				"se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*", robotName);
 		
 		// check that the required win rate has been reached
 		double bmbWinRate = (((double) bmbResults.getFirsts()) / NBR_ROUNDS);

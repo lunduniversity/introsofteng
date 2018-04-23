@@ -1,5 +1,5 @@
 /**	
-Copyright (c) 2018 Markus Borg
+Copyright (c) 2018 David Phung
 
 Building on work by Philip Johnson and Keone Hiraide, University of Hawaii.
 https://ics613s13.wordpress.com/
@@ -23,32 +23,39 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package se.lth.cs.etsa02.basicmeleebot.test;
+package etsa02_lab4.test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import robocode.BattleResults;
-import robocode.control.events.BattleCompletedEvent;
+
+import robocode.control.events.RoundEndedEvent;
+import robocode.control.events.RoundStartedEvent;
+import robocode.control.events.TurnEndedEvent;
+import robocode.control.snapshot.IRobotSnapshot;
+import robocode.control.snapshot.RobotState;
 import robocode.control.testing.RobotTestBed;
 
 /**
- * Test class for the BasicMeleeBot.
+ * Test class for feature 2 - Closest enemy targeting of BasicMeleeBot.
  *
- * @author Markus Borg
+ * @author David Phung
  *
  */
 @RunWith(JUnit4.class)
-public class ST_Q_1vs1SpinBot extends RobotTestBed {
+public class ST_F2_ClosestEnemyTargeting extends RobotTestBed {
 	
 	// constants used to configure this system test case
 	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
-	private String ENEMY_ROBOTS = "sample.SpinBot";
-	private int NBR_ROUNDS = 100;
-	private double THRESHOLD = 0.75; // win rate against SpinBot
-	private boolean PRINT_DEBUG = true;
+	private String ENEMY_ROBOTS = "sample.SittingDuck,sample.SittingDuck";
+	private int NBR_ROUNDS = 1; //the battle will be deterministic and we will set initial positions so one round is enough.
+	private boolean PRINT_DEBUG = false;
+	
+	private int turnDuck1Died;
+	private int turnDuck2Died;
+	private double prevDuck1Energy;
+	private double prevDuck2Energy;
 		
 	/**
 	 * The names of the robots that want battling is specified.
@@ -88,7 +95,9 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	 */
 	@Override
 	public String getInitialPositions() {
-		return null;
+		//We place our robot in the lower left corner while the other two in the upper right corner.
+		//The last robot is placed farthest away. We then check that this robot always dies last.
+		return "25,25,0, 750,550,0 ,780,580,0";
 	}
 
 	/**
@@ -136,30 +145,56 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	}
 	
 	/**
-	 * Tests to see if our robot won most rounds.
-	 * 
-	 * @param event
-	 *            Holds information about the battle has been completed.
+	 * Called after every turn. Used to record the turn in which the robots were destroyed.
 	 */
 	@Override
-	public void onBattleCompleted(BattleCompletedEvent event) {
-		// all battle results
-		BattleResults[] battleResults = event.getIndexedResults();
-		// BMB results
-		BattleResults bmbResults = battleResults[0];
+	public void onTurnEnded(TurnEndedEvent event) {
+		IRobotSnapshot duck1 = event.getTurnSnapshot().getRobots()[1];
+		IRobotSnapshot duck2 = event.getTurnSnapshot().getRobots()[2];
 		
-		// check that BMB won the overall battle
-		String robotName = bmbResults.getTeamLeaderName();		
-		assertEquals("Basic Melee Bot should be first in the results array",
-				ROBOT_UNDER_TEST, robotName);
-		
-		// check that the required win rate has been reached
-		double bmbWinRate = (((double) bmbResults.getFirsts()) / NBR_ROUNDS);
+		// test constant firepower
 		if (PRINT_DEBUG) {
-			System.out.println("BMB won " + bmbResults.getFirsts() + " out of " + NBR_ROUNDS + 
-					" rounds (win rate = " + bmbWinRate + ")");
+			System.out.println("Energy diff for duck 1: " + (duck1.getEnergy() - prevDuck1Energy));
+			System.out.println("Energy diff for duck 2: " + (duck2.getEnergy() - prevDuck2Energy));
 		}
-		assertTrue("Basic Melee Bot should have a win rate of at least 75% against SpinBot",
-				bmbWinRate >= THRESHOLD);
+		
+		if (duck1.getState() == RobotState.ACTIVE && duck1.getEnergy() != prevDuck1Energy) {
+			assertTrue("BMB firepower not constant! SittingDuck 1 did not lose expected energy", duck1.getEnergy() == prevDuck1Energy - 4);
+		}
+		
+		if (duck2.getState() == RobotState.ACTIVE && duck2.getEnergy() != prevDuck2Energy) {
+			assertTrue("BMB firepower not constant! SittingDuck 2 did not lose expected energy", duck2.getEnergy() == prevDuck2Energy - 4);
+		}
+		
+		// test order of kills
+		if (turnDuck1Died == -1 && duck1.getState() == RobotState.DEAD) {
+			turnDuck1Died = event.getTurnSnapshot().getTurn();
+		}
+		
+		if (turnDuck2Died == -1 && duck2.getState() == RobotState.DEAD) {
+			turnDuck2Died = event.getTurnSnapshot().getTurn();
+		}
+		
+		prevDuck1Energy = duck1.getEnergy();
+		prevDuck2Energy = duck2.getEnergy();
+	}
+	
+	/**
+	 * Called before each round. Used to reset turn variables.
+	 */
+	@Override
+	public void onRoundStarted(RoundStartedEvent event) {
+		turnDuck1Died = -1;
+		turnDuck2Died = -1;
+		prevDuck1Energy = event.getStartSnapshot().getRobots()[1].getEnergy();
+		prevDuck2Energy = event.getStartSnapshot().getRobots()[2].getEnergy();
+	}
+	
+	/**
+	 * Called after each round. Used to assert the order in which the robots were destroyed.
+	 */
+	@Override
+	public void onRoundEnded(RoundEndedEvent event) {
+		assertTrue("Check that the closest SittingDuck dies first", turnDuck1Died < turnDuck2Died);
 	}
 }

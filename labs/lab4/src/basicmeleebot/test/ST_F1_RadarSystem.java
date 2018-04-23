@@ -23,33 +23,34 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package se.lth.cs.etsa02.basicmeleebot.test;
+package etsa02_lab4.test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import robocode.BattleResults;
-import robocode.control.events.BattleCompletedEvent;
+
+import robocode.control.events.RoundEndedEvent;
+import robocode.control.events.RoundStartedEvent;
+import robocode.control.events.TurnEndedEvent;
+import robocode.control.snapshot.IRobotSnapshot;
 import robocode.control.testing.RobotTestBed;
 
 /**
- * Test class for the BasicMeleeBot.
+ * Test class for Feature 1 - Radar system in BasicMeleeBot.
  *
  * @author Markus Borg
  *
  */
 @RunWith(JUnit4.class)
-public class ST_Q_1vs1SpinBot extends RobotTestBed {
-	
+public class ST_F1_RadarSystem extends RobotTestBed {
 	// constants used to configure this system test case
 	private String ROBOT_UNDER_TEST = "se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*";
-	private String ENEMY_ROBOTS = "sample.SpinBot";
-	private int NBR_ROUNDS = 100;
-	private double THRESHOLD = 0.75; // win rate against SpinBot
-	private boolean PRINT_DEBUG = true;
-		
+	private String ENEMY_ROBOTS = "sample.SittingDuck";
+	private int NBR_ROUNDS = 1;
+	
+	private double previousHeading;
+	private boolean clockwise;
+	
 	/**
 	 * The names of the robots that want battling is specified.
 	 * 
@@ -71,6 +72,42 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	}
 
 	/**
+	 * Called after every turn. Used to check whether the radar spins clockwise or not by
+	 * comparing current radar heading with radar heading in the previous turn.
+	 */
+	@Override
+	public void onTurnEnded(TurnEndedEvent event) {
+		IRobotSnapshot bmb = event.getTurnSnapshot().getRobots()[0];
+		double radarHeading = Math.toDegrees(bmb.getRadarHeading());
+		//We base our test on the fact that the radar cannot turn more than 75 degrees per turn.
+		if (previousHeading + 75 >= 360 && radarHeading < 75) {
+			radarHeading += 360;
+		}
+		if (radarHeading - previousHeading <= 0 || radarHeading - previousHeading > 75) {
+			clockwise = false;
+		}
+		previousHeading = Math.toDegrees(bmb.getRadarHeading());
+	}
+	
+	/**
+	 * Called before each round. Used to set initial values of variables.
+	 */
+	@Override
+	public void onRoundStarted(RoundStartedEvent event) {
+		IRobotSnapshot bmb = event.getStartSnapshot().getRobots()[0];
+		previousHeading = Math.toDegrees(bmb.getRadarHeading());
+		clockwise = true;
+	}
+	
+	/**
+	 * Called after each round. Used to assert that the radar has been spinning correctly the whole round.
+	 */
+	@Override
+	public void onRoundEnded(RoundEndedEvent event) {
+		assertTrue("Check that the radar spins clockwise all the time", clockwise);
+	}
+
+	/**
 	 * Returns a comma or space separated list like: x1,y1,heading1,
 	 * x2,y2,heading2, which are the coordinates and heading of robot #1 and #2.
 	 * So "0,0,180, 50,80,270" means that robot #1 has position (0,0) and
@@ -88,6 +125,8 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	 */
 	@Override
 	public String getInitialPositions() {
+		// Put BMB in top left corner facing right
+		// Put one SittingDuck in lower right corner and one in bottom left
 		return null;
 	}
 
@@ -101,7 +140,7 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	 */
 	@Override
 	public boolean isDeterministic() {
-		return true;
+		return false;
 	}
 
 	/**
@@ -134,32 +173,5 @@ public class ST_Q_1vs1SpinBot extends RobotTestBed {
 	protected void runTeardown() {
 		// Default does nothing.
 	}
-	
-	/**
-	 * Tests to see if our robot won most rounds.
-	 * 
-	 * @param event
-	 *            Holds information about the battle has been completed.
-	 */
-	@Override
-	public void onBattleCompleted(BattleCompletedEvent event) {
-		// all battle results
-		BattleResults[] battleResults = event.getIndexedResults();
-		// BMB results
-		BattleResults bmbResults = battleResults[0];
-		
-		// check that BMB won the overall battle
-		String robotName = bmbResults.getTeamLeaderName();		
-		assertEquals("Basic Melee Bot should be first in the results array",
-				ROBOT_UNDER_TEST, robotName);
-		
-		// check that the required win rate has been reached
-		double bmbWinRate = (((double) bmbResults.getFirsts()) / NBR_ROUNDS);
-		if (PRINT_DEBUG) {
-			System.out.println("BMB won " + bmbResults.getFirsts() + " out of " + NBR_ROUNDS + 
-					" rounds (win rate = " + bmbWinRate + ")");
-		}
-		assertTrue("Basic Melee Bot should have a win rate of at least 75% against SpinBot",
-				bmbWinRate >= THRESHOLD);
-	}
+
 }

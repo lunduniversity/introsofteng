@@ -28,7 +28,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.86 }
+\def\myversion{0.88 }
 \date{}
 %\title{%
 
@@ -85,7 +85,11 @@
         \hline
         Markus Borg & 2018-03-29 & Replaced test specification with STS. Fixed L4 dates. Introduced RoboTalk. & 0.85\\
         \hline
-        Markus Borg & 2018-04-18 & Clarified the discount rule for Robot Market & 0.86\\
+        Markus Borg & 2018-04-18 & Clarified the discount rule for Robot Market. & 0.86\\
+        \hline
+        Markus Borg & 2018-04-21 & Added the Lab4 tools, and details for Sprint 2 and the Beta Release. & 0.87\\
+        \hline
+        Markus Borg & 2018-04-21 & Added details for Sprint 3 and the Final Release. & 0.88\\
         \hline
     \end{tabular}
 \end{center}
@@ -254,19 +258,19 @@ As a result from the construction activities, each project group shall produce t
 \end{description}
 
 \subsection{Verification}
-The first two computer exercises will introduce working with the JUnit framework for automated testing. Project groups will work with unit testing as a natural companion to the programming during development. While JUnit is designed for automated execution of unit test cases, groups will also use JUnit for system testing of both functional and non-functional (quality) aspects of the robot under development. Finally, groups will learn to use measure code coverage and use static code analysis tools to support software quality assurance.
+All computer labs but the first one will involve working with the JUnit framework for automated testing. Project groups will work with unit testing as a natural companion to the programming during development. While JUnit is designed for automated execution of unit test cases, groups will also use JUnit for system testing of both functional and non-functional (quality) aspects of the robot under development. Finally, groups will learn to use measure code coverage and use static code analysis tools to support software quality assurance.
 
-The test lead is responsible for delivering three growing development artifacts during the projects, as well as a final test report at the final release. First, a suite of automated unit test cases shall evolve during the project. At sprint 1, an initial version shall simply be executable, but at the final release all source code shall be exercised by unit tests. Second, a suite of automated system test cases shall be developed -- an initial version at sprint 2, and the complete suite with the final release. Third, a Software Test Specification (STS) that describes the project group's test and quality activities. At sprint 3, all requirements in the SRS shall be verified either by automated test cases or targeted by a convincing argumentation that the requirement has been verified through inspection.
+The test lead is responsible for delivering three growing development artifacts during the projects, as well as a final test report at the final release. First, a suite of automated unit test cases shall evolve during the project. At sprint 1, an initial version shall simply be executable, but at the final release all source code shall be exercised by unit tests. Second, a suite of automated system test cases shall be developed -- an initial version at sprint 2, and the complete suite with the final release. Third, a Software Test Specification (STS) that describes the project group's test and quality activities. At sprint 3, all requirements in the SRS shall be verified either by test cases or targeted by a convincing argumentation that the requirement has been verified through inspection.
 
-Verification activities are naturally supported by tools. Apart from the JUnit framework, the project groups will use Eclipse plugins to measure code coverage and a set of static analysis tools to automatically analyze the source code from different quality perspectives. TODO: describe the tools to use.
+Verification activities are naturally supported by tools. Apart from the JUnit framework, the project groups will use the Robocode framework RobotTestBed to automate system testing, and EclEmma to measure code coverage. Furthermore, the project groups will learn about source code quality assurance by running two static code analysis tools: SpotBugs and SonarLint. The tools automatically analyze the source code from complementary quality perspectives.
 
 The final robot release shall be accompanied with a test report, signed by the test lead, showing that all test cases have been executed -- and all corresponding test verdicts. The customer will surely expect that all test cases passed, i.e., that you provide evidence that the entire SRS has been fulfilled by the final robot. In addition to the test verdicts, the test report shall contain appendices with extracted report from the code coverage tool as well as the static code analysis tools.
 
 As a result from the verification activities, each project group shall produce the following deliverables, further described in Section~\ref{sec:process}:
 \begin{description}
-\item[Sprint 1] STS v0.5 -- Initial plan, especially regarding unit testing
-\item[Sprint 2] STS v0.9 -- System testing specified
-\item[Sprint 3] STS v1.0 and a signed test report
+\item[Sprint 1] STS v0.5 -- Initial document structure
+\item[Sprint 2] STS v0.9 -- Unit testing and system testing partly specified
+\item[Sprint 3] STS v1.0 -- A complete specification (complemented by a signed test report)
 \end{description}
 
 \subsection{Robot communication}
@@ -416,19 +420,19 @@ A central part of the engineering in Sprint 1 is the \textbf{robot prototyping},
 
 The marketing concept is the strategy that an organization implements to satisfy customers needs, increase sales, maximize profit, and beat the competition. The customers' focus and values are the routes to achieve sales and maximize profits. In the project, the marketing concept is a customer-centered ``sense and responds'' philosophy. Your project group's job is not to find the right customers for your robot, but rather to find the right robot for your customers -- first for the long-lasting supplier-customer relationship, and later through the Robot Market. At the end of Sprint 1, the course will organize a Robot Fair. Each group will get a 2 minute slot to \textbf{pitch} their product through a video. All project groups will also have a folder to showcase promotion material on a ``Display window'' Google Drive folder shared with all groups.
 
-Sprint 1 shall result in the following deliverables to the following stakeholders. The responsible role is shown in parentheses.
+Table~\ref{tab:sprint1} shows the resulting deliverables from Sprint 1, their receivers, the responsible roles, and when they are due.
 
 \begin{table}[]
 \centering
-\caption{Deliverables due after Sprint 1.}
+\caption{Deliverables due after Sprint 1, i.e., the Alpha Release.}
 \label{tab:sprint1}
 \begin{tabular}{|p{4cm}|p{2cm}|p{2.5cm}|p{4.5cm}|}
 \hline
 \textbf{Deliverable}           & \textbf{Receiver}   & \textbf{Responsible role} & \textbf{When?}     \\ \hline
 Lean canvas (latest version)   & Supervisor          & Project manager           & L3: Apr 16 - 12.00 \\ \hline
 SRS v0.5                       & Customer+ Supervisor & Requirements engineer     & L3: Apr 16 - 12.00 \\ \hline
-Robot Alpha version            & Customer+ Supervisor & Development lead          & L3:Apr 16 - 12.00  \\ \hline
-STS v0.5        			   & Customer+ Supervisor & Test lead                 & L3:Apr 16 - 12.00  \\ \hline
+Robot Alpha version            & Customer+ Supervisor & Development lead          & L3: Apr 16 - 12.00  \\ \hline
+STS v0.5        			   & Customer+ Supervisor & Test lead                 & L3: Apr 16 - 12.00  \\ \hline
 Sales pitch + promotion folder & Course responsible  & Sales engineer            & L2: Apr 12 - 23.59 \textbf{(before Robot Fair!)}\\ \hline
 Purchase array                 & ``Grå skåpet''      & Domain expert             & L4: Apr 17 - 23.59 \textbf{(after Robot Fair!)} \\ \hline
 \end{tabular}
@@ -455,19 +459,31 @@ Based on your customer's feedback, your own vision -- and possibly some negotiat
 
 Finally, you will develop a first draft of your \textbf{Rumble strategy}. The cornerstone of your robot team will be the robot you pre-ordered. Your domain expert will be responsible for communication with your supplier's sales engineer. Just like your project group should be responsive to your customer, your supplier should respond to your requests.
 
-Sprint 2 shall result in the following deliverables to the following stakeholders. The responsible role is shown in parentheses.
-\begin{itemize}
-\item The latest version of the lean canvas (Project manager)
-\item SRS v0.9 to the customer and the regulatory body (Requirements engineer)
-\item Robot Beta release to the customer (Development lead)
-\item STS v0.9 to the regulatory body (Test lead)
-\end{itemize}
+Table~\ref{tab:sprint2} shows the resulting deliverables from Sprint 2, their receivers, the responsible roles, and when they are due.
+
+\begin{table}[]
+\centering
+\caption{Deliverables due after Sprint 2, i.e., the Beta Release.}
+\label{tab:sprint2}
+\begin{tabular}{|p{4cm}|p{2cm}|p{2.5cm}|p{4.5cm}|}
+\hline
+\textbf{Deliverable}           & \textbf{Receiver}   & \textbf{Responsible role} & \textbf{When?}     \\ \hline
+Lean canvas (latest version)   & Supervisor          & Project manager           & L5: Apr 27 - 23.59 \\ \hline
+SRS v0.9                       & Customer+ Supervisor & Requirements engineer     & L5: Apr 27 - 23.59 \\ \hline
+SRS review protocol            & Supervisor & Requirements engineer     & L5: Apr 27 - 23.59 \\ \hline
+Robot Beta version (MVP)       & Customer+ Supervisor & Development lead          & L5: Apr 27 - 23.59  \\ \hline
+STS v0.9        			   & Customer+ Supervisor & Test lead                 & L5: Apr 27 - 23.59  \\ \hline
+\end{tabular}
+\end{table}
 
 To support Sprint 2, the following sessions are scheduled:
 \begin{itemize}
-\item Lecture 3:
-\item 
-\item
+\item Lecture 3: Black-box testing, software architecture 
+\item Lab 3: Automated system testing with RobotTestBed
+\item Exercise 3: Requirements specification
+\item Lecture 4: Project planning, document reviews
+\item Lab 4: Code coverage, static code analysis, Javadoc
+\item Exercise 4: Individual SRS review, review meeting
 \end{itemize}
 
 \subsection{Sprint 3}
@@ -479,31 +495,49 @@ The sales department will keep active communications with the customer, to make 
 
 The purchasing department will keep a close eye on the engineering efforts of the supplier. After all, this is the supplier's last chance to deliver the robot that has been specified in the SRS. At the same time, your domain expert will analyze the Robot Market to make a final decision of your robot team composition, i.e., \textbf{optimizing the Rumble strategy}. 
 
-Sprint 3 shall result in the following deliverables to the following stakeholders. The responsible role is shown in parentheses.
-\begin{itemize}
-\item SRS v1.0 to the customer and the regulatory body (Requirements engineer)
-\item Robot Final release to the customer and the regulatory body (Development lead)
-\item STS v1.0 to the regulatory body and the customer (Test lead)
-\item Test report to the regulatory body and the customer (Test lead)
-\item A robot team composition to the regulatory body (Domain expert)
-\end{itemize}
+Table~\ref{tab:sprint3} shows the resulting deliverables from Sprint 3, their receivers, the responsible roles, and when they are due.
+
+\begin{table}[]
+\centering
+\caption{Deliverables due after Sprint 3, i.e., the Final Release.}
+\label{tab:sprint3}
+\begin{tabular}{|p{4cm}|p{2cm}|p{2.5cm}|p{4.5cm}|}
+\hline
+\textbf{Deliverable}           & \textbf{Receiver}   & \textbf{Responsible role} & \textbf{When?}     \\ \hline
+Lean canvas (final version)   & Supervisor          & Project manager           & L6: May 11 - 23.59 \\ \hline
+SRS v1.0                       & Customer+ Supervisor & Requirements engineer     & L6: May 11 - 23.59 \\ \hline
+Robot Final version        & Customer+ Supervisor & Development lead          & L6: May 11 - 23.59  \\ \hline
+STS v1.0        			   & Customer+ Supervisor & Test lead                 & L6: May 11 - 23.59  \\ \hline
+\end{tabular}
+\end{table}
 
 To support Sprint 3, the following sessions are scheduled:
 \begin{itemize}
-\item Lecture 4:
-\item 
-\item 
+\item Implementation support (``Kod-jour'')
+\item Lecture 5: Development processes
 \end{itemize}
 
 \section{Post release}
 The phase following the process model is referred to as post mortem. In this phase, your project group will perform acceptance testing of your supplier's Robot Final release. If the acceptance testing identifies flaws, you will file business claims to the regulatory body -- possibly deducting from the total payment. Furthermore, after settling the business claims, the domain expert will submit the final purchase orders to the regulatory body, i.e., the robot team composition for the LU Rumble will be finalized.
 
-The post mortem shall result in the following deliverables to the following stakeholders. The responsible role is shown in parentheses.
+Table~\ref{tab:postrelease} shows the resulting deliverables from the post release phase, their receivers, the responsible roles, and when they are due.
+
+\begin{table}[]
+\centering
+\caption{Deliverables due after Sprint 3, i.e., the Final Release.}
+\label{tab:postrelease}
+\begin{tabular}{|p{4cm}|p{2cm}|p{2.5cm}|p{4.5cm}|}
+\hline
+\textbf{Deliverable}           & \textbf{Receiver}   & \textbf{Responsible role} & \textbf{When?}     \\ \hline
+Acceptance test report   & Supervisor          & Domain expert           & L7: May 15 - 23.59 \\ \hline
+Business claims (optional)                       & Course responsible & Project manager     & L7: May 15 - 23.59 \\ \hline
+Purchase orders and team composition       & Course responsible & Domain expert         & L8: May 11 - 23.59  \\ \hline
+\end{tabular}
+\end{table}
+
+To support the post release phase, one session is scheduled:
 \begin{itemize}
-\item Acceptance test report (Domain expert)
-\item (Potentially) Business claims (Project manager)
-\item Purchase orders to the regulatory body (Domain expert)
-\item A robot team composition to the regulatory body (Domain expert)
+\item Lecture 6: Configuration management, software product lines
 \end{itemize}
 
 \section{LU Rumble}
@@ -598,6 +632,7 @@ The regulatory body release shall contain everything in the customer release, bu
 \item Robot packages as a jar-file -- including source files!
 \item Class diagram
 \item Javadoc
+\item A review protocol from the review meeting at Exercise 4 (only for the Beta release)
 \end{itemize}
 
 \chapter{Expectations per deliverable}
@@ -612,24 +647,25 @@ This section briefly explains what is expected of the various deliverables.
 \item[v0.9] The features shall be broken down into detailed requirements.
 \item[v1.0] A final SRS that provides a complete specification of the robot.
 \end{description}
+\item[SRS review protocol] The review meeting at Exercise 4 will result in a formal review protocol according to the provided template. The protocol shall report all issues that were identified during individual reviews, and also estimate the number of remaining issues based on the capture-recapture method.
 \item[The robot] The robot shall be released in three versions: Alpha, Beta, and Final. The lead developer shall each time package the robot as jar-files using the Robot Packager in Robocode, in two different versions per release: 1) without source files for the customer, and 2) including source files for the supervisor. The source code shall be maintainable, e.g., well-structured, commented, and using suitable variable names.
 \begin{description}
 \item[Alpha] An early prototype of the robot. No expectations regarding features, but the customer shall be able to field it in a Robocode battle.
-\item[Beta] TBD
-\item[Final] TBD
+\item[Beta] A minimum viable product (MVP), i.e., a robot with just enough features to satisfy your customers.
+\item[Final] A polished robot, ready for LU Rumble.
 \end{description}
 \item[Class diagram] The object-oriented design shall be documented in a UML class diagram. You can use any tool to create the diagram, either a tailored UML tool or a standard drawing tool -- you can even scan a pen and paper sketch or take a picture of a whiteboard drawing.
 \item[Javadoc] The robot source code shall be documented and packaged using the standard Javadoc tool.
 \item[STS] The document shall describe how the group uses testing to increase the quality of the robot, i.e., what measures are taken to decrease the risk of releasing a product with bugs. Furthermore, system test cases used to verify that the SRS is completed shall be specified.
 \begin{description}
-\item[v0.5] A first draft of an STS adhering to the provided template.
-\item[v0.9] TBD.
-\item[v1.0] TBD.
+\item[v0.5] An initial STS skeleton adhering to the provided template.
+\item[v0.9] A fairly complete draft of the STS, partly specifying unit testing and system testing.
+\item[v1.0] A final STS that specifies a trustworthy verification of the SRS.
 \end{description}
-\item[Test report] The final release shall be accompanied by a test report that shows that all system test cases have been executed. Each system test case shall be listed, and you shall report the date when it was executed and its result.
+\item[Test report] The final release shall be accompanied by a test report that shows the result of executing the STS. The test report shall follow the structure in the STS Appendix.
 \item[Purchase array] The purchase array shall specify valid offers for all other groups robots and be signed by the domain expert.
-\item[Acceptance test report] When the final release of another group's robot has been received, you shall test it to see if it complies with its SRS. You shall write an acceptance test report clearly stating how you tested the robot and what the results were. You are free to choose a format for the document.
-\item[Business claims] This is an optional deliverable that you can send to the regulatory body. If you are not satisfied with the final release you received from another group, you can argue for your case in a written business claim. You are free to choose a format for the document. 
+\item[Acceptance test report] When the final release of another group's robot has been received, you shall test it to see if it complies with its SRS. You shall write an acceptance test report clearly stating how you tested the robot and what the results were. You are free to choose any format for this deliverable.
+\item[Business claims] This is an optional deliverable that you can send to the regulatory body. If you are not satisfied with the final release you received from another group, you can argue for your case in a written business claim. You are free to choose any format for the deliverable. 
 \end{description}
 
 \section{Project infrastructure}
