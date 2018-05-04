@@ -28,7 +28,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.89 }
+\def\myversion{0.90 }
 \date{}
 %\title{%
 
@@ -58,7 +58,6 @@
 \end{flushright}
 
 \tableofcontents
-
 
 \chapter*{Revision History}
 
@@ -92,6 +91,8 @@
         Markus Borg & 2018-04-21 & Added details for Sprint 3 and the Final Release. & 0.88\\
         \hline
         Markus Borg & 2018-04-24 & Added review protocol in the process figure. & 0.89\\
+        \hline
+                Markus Borg & 2018-05-05 & Clarified Robot Market. & 0.90\\
         \hline
     \end{tabular}
 \end{center}
@@ -238,7 +239,7 @@ As a result from the specification activities, each project group shall produce 
 \subsection{Construction} \label{sec:constr}
 The first two computer labs will help project groups set up Robocode development in Eclipse and source code control in git. Moreover, the second computer lab will initiate automated unit testing, an activity that overlaps construction and verification.
 
-An early construction activity is software design. In this project, the design is limited to object-oriented design -- the robot development is too restricted to address any considerations on the software architecture level and there is also no user interaction design. Each project group will present the Object-Oriented Design (OOD) using a Unified Modeling Language (UML) class diagram. As the project in inspired by agile development methodologies, there will be no big design activity upfront. Instead, the OOD will evolve as the construction phase proceeds. The development lead is responsible to complement the final source code delivery with a class diagram to describe the OOD after-the-fact. Any project group that recognizes a value in using class diagrams in their robot sales pitch are of course welcome to do so. Furthermore, the final source code deliverable shall be complemented by Javadoc documentation.  
+An early construction activity is software design. In this project, the design is limited to object-oriented design -- the robot development is too restricted to address any considerations on the software architecture level and there is also no user interaction design. Each project group will present the Object-Oriented Design (OOD) using a Unified Modeling Language (UML) class diagram. As the project in inspired by agile development methodologies, there will be no big design activity upfront. Instead, the OOD will evolve as the construction phase proceeds. The development lead is responsible to complement the final source code delivery with a class diagram to describe the OOD after-the-fact. Any project group that recognizes a value in using class diagrams in their robot sales pitch are of course welcome to do so. Furthermore, the final source code deliverable shall be complemented by Javadoc documentation (excluding the test code).  
 
 As most practical construction work will be done outside of scheduled sessions, how the backbone of the programming will be conducted must be decided by the individual project groups. Still, for this project, we recommend groups to follow a handful of well-known agile development practices, originally proposed as part of Extreme Programming (XP) [REF]. Below we list five that we believe are particularly suitable for the process model, along with their Wikipedia definitions:
 
@@ -632,8 +633,8 @@ The regulatory body release shall contain everything in the customer release, bu
 \begin{itemize}
 \item Lean canvas
 \item Robot packages as a jar-file -- including source files!
-\item Class diagram
-\item Javadoc
+\item Class diagram (excluding test code)
+\item Javadoc (excluding test code)
 \item A review protocol from the review meeting at Exercise 4 (only for the Beta release)
 \end{itemize}
 
