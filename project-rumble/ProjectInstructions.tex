@@ -28,7 +28,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.91 }
+\def\myversion{0.92 }
 \date{}
 %\title{%
 
@@ -95,6 +95,8 @@
         Markus Borg & 2018-05-05 & Updated ETSA02 RoboTalk to v1.3. & 0.90\\
         \hline
         Markus Borg & 2018-05-05 & Clarified Monetization in two parts, updated Strategizing. & 0.91\\
+        \hline
+        Markus Borg & 2018-05-05 & Updated LU Rumble rules and awards. & 0.92\\
         \hline
     \end{tabular}
 \end{center}
@@ -373,7 +375,7 @@ Once robots have been pre-ordered, 25\% of their costs will be transferred from 
 \subsection{Selling robots on Robot Market}
 In the Post release phase (cf. Fig.~\ref{fig:overview}, each project group will also offer their robot on the Robot Market. Simultaneously, all project groups will seek to complement the pre-ordered (by now hopefully delivered) robot with additional robots to build a competitive robot team for the LU Rumble. Throughout Sprints 2 and 3, the sales engineer is responsible for promoting sales of the robot on Robot Market. Each group will also set a price for its robot -- a group must at least ask for as much as what the bespoke customer has paid. Furthermore, project groups can (but are not required to) offer robot bundles to with discounts for buyers that purchase more than one robot, i.e., bundles of two, three, or four robots. The total cost of each larger bundle most exceed the smaller bundles. Note that the bundle options are not available for suppliers of leader bots, as each team can field only one leader robot. 
 
-Figure~\ref{fig:bundles} shows an example of robot prices on Robot Market. Groups A and C develop leader bots and are not allowed to offer any bundle deals. Group E, highlighted in the white row, offers a single robot for \euro40 supplier of Robot E and the following bundle deals: 2 robots for \euro60, 3 robots for \euro65, and four robots for \euro70. Group F creates a bundle deal for two robots, but decides not to offer special prices for three or four robots. No bundle deals are available for the three ETSA02 basic bots.
+Figure~\ref{fig:bundles} shows an example of robot prices on Robot Market. Groups A and C develop leader bots and are not allowed to offer any bundle deals. Group E, highlighted in the white row, offers a single robot for \euro40 supplier of Robot E and the following bundle deals: 2 robots for \euro60, 3 robots for \euro65, and four robots for \euro70. Group F creates a bundle deal for two robots, but decides not to offer special prices for three or four robots. No bundle deals are available for the three ETSA02 basic bots. All groups must set their prices on Robot Market no later than at L7 -- no subsequent price updates are allowed.
 
 \begin{figure}
 \centering
@@ -560,6 +562,7 @@ Table~\ref{tab:postrelease} shows the resulting deliverables from the post relea
 \begin{tabular}{|p{4cm}|p{2cm}|p{2.5cm}|p{4.5cm}|}
 \hline
 \textbf{Deliverable}           & \textbf{Receiver}   & \textbf{Responsible role} & \textbf{When?}     \\ \hline
+Fixed Robot Market prices   & Robot Market          & Sales engineer           & L7: May 15 - 23.59 \\ \hline
 Acceptance test report   & Supervisor          & Domain expert           & L7: May 15 - 23.59 \\ \hline
 Business claims (optional)                       & Course responsible & Project manager     & L7: May 15 - 23.59 \\ \hline
 Purchase orders and team composition       & Course responsible & Domain expert         & L8: May 11 - 23.59  \\ \hline
@@ -572,17 +575,22 @@ To support the post release phase, one session is scheduled:
 \end{itemize}
 
 \section{LU Rumble} \label{sec:rumble}
-The final phase consists of one single event: the LU Rumble. The LU Rumble will take place during the final lecture of the course on May 21, 2018.
+The final phase consists of one single event: the LU Rumble. The LU Rumble will take place during the final lecture of the course on May 21, 2018. LU Rumble will follow a cup pairing according to single elimination knockout rules, see Figure~\ref{fig:bracket}. All robot teams will enter the bracket at random. LU Rumble will also have a third place playoff match. Each match in the LU Rumble will be played in a best-of-five format, and displayed live at reasonable speed for the entertainment of the spectators. Standard rules for Robocode team matches will apply on a 1200x1200 battlefield. 
 
-%Prior to the event, the regulatory body will run a qualification session, inspired by the format used in Formula one racing. The purpose of the qualification session is twofold. First, it assures that all robot teams are functional on the Robocode arena. Second, it will let a number of robot teams get ``pole positions'', i.e., seeds for the LU Rumble main tournament. The qualification session entails a large number of simulations between all teams. Note that while the qualification session will indicate some robot teams as favourites, they might be good on average, but have weaknesses against certain team strategies. No matter the results of the qualification session, all robot teams can still win the LU Rumble.  
+%Prior to the event, the regulatory body will run a qualification session, inspired by the format used in Formula one racing. The purpose of the qualification session is twofold. First, it assures that all robot teams are functional on the Robocode arena. Second, it will let a number of robot teams get ``pole positions'', i.e., seeds for the LU Rumble main tournament. The qualification session entails a large number of simulations between all teams. Note that while the qualification session will indicate some robot teams as favourites, they might be good on average, but have weaknesses against certain team strategies. No matter the results of the qualification session, all robot teams can still win the LU Rumble. The four robot teams performing the best during the qualification session will be seeded into the tournament bracket.
 
-The main tournament, i.e., the playoff, will follow a cup pairing according to single elimination knockout rules. The four robot teams performing the best during the qualification session will be seeded into the tournament bracket. All remaining robot teams will enter the bracket at random. Each match in the LU Rumble will be played in best-of-five format, and displayed live at reasonable speed for the entertainment of the spectators.
+\begin{figure}
+\centering
+\includegraphics[width=0.80\textwidth]{figures/bracket.png}
+\caption{The LU Rumble bracket. In addition, there will be a third place playoff match.}
+\label{fig:bracket}
+\end{figure}
 
 Immediately after the LU Rumble, three awards will be given:
 \begin{itemize}
-\item The Strategizer Award goes to the winner of the LU Rumble.
-\item The Monetizer Award goes to the most profitable group.
-\item The Engineering Award goes to the most valuable robot during LU Rumble.
+\item The Strategizer Award goes to the student group that won the LU Rumble.
+\item The Monetizer Award goes to the most profitable student group. The profit is calculated as income from robot sales plus any money left from the initial \euro100 budget. 
+\item The Engineering Award goes to the most valuable robot during LU Rumble. The robot's value will be calculated as the total score of all robot instances during the LU Rumble, divided by the (non-zero) number of robot appearances (each round a robot instance enters the battle is counter as one appearance).
 \end{itemize}
 
 \chapter{Inter-group communication}
@@ -641,7 +649,7 @@ As the project progresses through phases and sprints, different roles with have 
 \item[Test lead] Test strategy, unit testing, system testing. Suitable for an individual with an eye for details. -- Unit tests, STS v1.0 (incl. test code), test results
 \end{description}
 
-\section{Time reporting and reflections} \label{sec:time}
+\section{Time reporting} \label{sec:time}
 \emph{To be written...}\\\\
 Report time per role on a weekly basis. Reflect on the figures after each sprint. Plan changes if needed to better balance the work load.
 
@@ -695,6 +703,7 @@ This section briefly explains what is expected of the various deliverables.
 \end{description}
 \item[Test report] The final release shall be accompanied by a test report that shows the result of executing the STS. The test report shall follow the structure in the STS Appendix.
 \item[Purchase array] The purchase array shall specify valid offers for all other groups robots and be signed by the domain expert.
+\item[Robot Market prices] The groups shall specify the price of their robot on Robot Market, and also any bundle deals.
 \item[Acceptance test report] When the final release of another group's robot has been received, you shall test it to see if it complies with its SRS. You shall write an acceptance test report clearly stating how you tested the robot and what the results were. You are free to choose any format for this deliverable.
 \item[Business claims] This is an optional deliverable that you can send to the regulatory body. If you are not satisfied with the final release you received from another group, you can argue for your case in a written business claim. You are free to choose any format for the deliverable. 
 \end{description}
