@@ -92,7 +92,7 @@
         \hline
         Markus Borg & 2018-04-24 & Added review protocol in the process figure. & 0.89\\
         \hline
-                Markus Borg & 2018-05-05 & Clarified Robot Market. & 0.90\\
+        Markus Borg & 2018-05-05 & Updated ETSA02 RoboTalk to v1.3. & 0.90\\
         \hline
     \end{tabular}
 \end{center}
@@ -276,12 +276,8 @@ As a result from the verification activities, each project group shall produce t
 \item[Sprint 3] STS v1.0 -- A complete specification (complemented by a signed test report)
 \end{description}
 
-\subsection{Robot communication}
-Your student group might want to implement communication between robots. To allow communication between robots developed by different suppliers, in practice creating a system-of-systems [REF], the ETSA02 Regulatory Body has standardized a communication protocol: ETSA02 RoboTalk. All messages transmitted between robots developed in the course should be transmitted as plain text strings, with one command per line. ETSA02 RoboTalk is version controlled, and groups that decide to implement communication should carefully specify in their SRS which version of the protocol is implemented.
-
-ETSA02 RoboTalk will evolve during the course, i.e., the Regulatory Body will release new versions. All groups are welcome to provide feedback and requests to the standardization work done by the Regulatory Body. To do so, the project manager should submit a ``Change Request'' to the Regulatory Body. The Change Request should carefully describe what changes are proposed, and motivate why this request should be considered.
-
-In short, robots that extend TeamRobot can communicate with their team members. If you want to implement this feature, please study the Robocode API:\\http://robocode.sourceforge.net/docs/robocode/robocode/TeamRobot.html\\Note that the MessageEvent always contains the name of the sending robot and a specific message.\\
+\subsection{Robot-to-Robot communication}
+Robots that extend TeamRobot can communicate with team members, as specified in the Robocode API: http://robocode.sourceforge.net/docs/robocode/robocode/TeamRobot.html Serializable objects can be sent between robots, e.g., point objects containing coordinates, color objects to set uniform team colors, and message strings with orders from the leader. The following three methods represent the backbone of robot communication.\\
 
 Broadcasting message to all team members:
 \begin{verbatim}
@@ -298,14 +294,25 @@ When a robot receives a message, the following method is called:
 onMessageReceived(MessageEvent)
 \end{verbatim}
 
-A message string should have the following overall structure, including the new lines.
+The MessageEvent always contains the name of the sending robot and a specific message. As stated above, the message can be instances of various classes. Please refer to the Robocode Sample Team to see an example implementation, or refer to the ETSA02 GitHub repository.
+
+The only type of communication that must be implemented by the robots entering LU Rumble is team color -- this is mandated by the Regulatory Body. During the LU Rumble, all robots of the same team must share the same color scheme. With 10 robots battling at the same time, it is critical to help spectators understand the action on the battlefield. This introduces one of the following regulatory requirements to all robots: 
+
+\begin{itemize}
+\item For normal robots and droids:\\``The robot shall set its color scheme upon request by a leader bot according to ETSA02 RoboTalk v1.X.''
+\item For leader bots:\\``The robot shall set its color scheme at the start of the battle, and request the other team robots to follow suit according to ETSA02 RoboTalk v1.X.''
+\end{itemize}
+
+ETSA02 RoboTalk also specifies a string-based communication protocol. Teams are free to implement as much of the communication protocol as they find useful. While it is completely optional, it might be expected by potential customers on Robot Market. Please refer to the classes MessageReader and Message Writer on the ETSA02 GitHub repository for an implementation suggestion. A message string should have the following overall structure, including the new lines.
 
 \begin{verbatim}
 [0-1] leadership;[followMe|leadMe]
 [0-1] teamMode;[offensive|defensive]
 [0-1] myPos;x;y
-[0-*] friendPos;x;y
-[0-*] enemyPos;x;y
+[0-*] friendPos;name;x;y
+[0-*] enemyPos;name;x;y
+[0-*] enemyDetails;name;x;y;velocity;energy;heading;gunHeading
+[0-1] bullet;x;y;absBearing;bulletPower
 [0-1] targetEnemy;name
 [0-1] targetPos;x;y
 [0-1] moveTo;x;y
@@ -316,23 +323,29 @@ Example message:
 \begin{verbatim}
 teamMode;offensive
 myPos;100;100
-enemyPos;50;50
-enemyPos;200;150
+enemyPos;bot1;50;50
+enemyPos;bot2;200;150
 targetPos;50;50
 \end{verbatim}
 
 The commands shall have the following meaning:
 
 \begin{description}
-\item[leadership] Tells the receiving robot(s) that the sender takes on leadership (followMe) or reports as a follower (leadMe)
-\item[teamMode] Tells the receiving robot(s) that the team shall enter offensive mode (offensive) or defensive mode (defensive)
-\item[myPos] Tells the receiving robot(s) its current position on the 2D battlefield
-\item[friendPos] Tells the receiving robot(s) the position of an identified robot in the same team
-\item[enemyPos] Tells the receiving robot(s) the position of an identified enemy robot
-\item[targetPos] Tells the receiving robot(s) to fire at a specific position on the 2D battlefield
-\item[targetEnemy] Tells the receiving robot(s) to target a specific enemy robot
-\item[moveTo] Tells the receiving robot(s) to move to a specific position on the 2D battlefield
+\item[leadership] Tells the receiving robot(s) that the sender takes on leadership (followMe) or reports as a follower (leadMe).
+\item[teamMode] Tells the receiving robot(s) that the team shall enter offensive mode (offensive) or defensive mode (defensive).
+\item[myPos] Tells the receiving robot(s) its current position on the 2D battlefield.
+\item[friendPos] Tells the receiving robot(s) the position of an identified robot in the same team.
+\item[enemyPos] Tells the receiving robot(s) the position of an identified enemy robot.
+\item[enemtDetails] Tells the receiving robot(s) detailed information about an enemy robot.
+\item[bullet] Tells the receiving robot(s) that a bullet has been fired and details its trajectory.
+\item[targetPos] Tells the receiving robot(s) to fire at a specific position on the 2D battlefield.
+\item[targetEnemy] Tells the receiving robot(s) to target a specific enemy robot.
+\item[moveTo] Tells the receiving robot(s) to move to a specific position on the 2D battlefield.
 \end{description}
+
+ETSA02 RoboTalk will evolve during the course, i.e., the Regulatory Body will release new versions. All groups are welcome to provide feedback and requests to the standardization work done by the Regulatory Body. To do so, the project manager should submit a ``Change Request'' to the Regulatory Body. The Change Request should carefully describe what changes are proposed, and motivate why this request should be considered.
+
+ETSA02 RoboTalk is version controlled, and student groups that decide to implement communication should carefully specify in their SRS which version of the protocol is implemented. For further details and a formal specification, including both communication of color and string commands, refer to the latest version of ETSA02 RoboTalk on Google Drive.
 
 \section{Monetizing the robot}
 One of the primary goals of the project is to maximize the profit of the group, i.e., monetizing the robot. The business aspects of the project involves a combination of bespoke software engineering and software engineering for an open market. All project groups will offer their robot on a highly competitive market -- consisting of the other groups, each with a \euro 100 budget to invest in a robot team for the LU Rumble.
