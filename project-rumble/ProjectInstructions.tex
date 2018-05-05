@@ -28,7 +28,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.90 }
+\def\myversion{0.91 }
 \date{}
 %\title{%
 
@@ -93,6 +93,8 @@
         Markus Borg & 2018-04-24 & Added review protocol in the process figure. & 0.89\\
         \hline
         Markus Borg & 2018-05-05 & Updated ETSA02 RoboTalk to v1.3. & 0.90\\
+        \hline
+        Markus Borg & 2018-05-05 & Clarified Monetization in two parts. & 0.91\\
         \hline
     \end{tabular}
 \end{center}
@@ -348,8 +350,9 @@ ETSA02 RoboTalk will evolve during the course, i.e., the Regulatory Body will re
 ETSA02 RoboTalk is version controlled, and student groups that decide to implement communication should carefully specify in their SRS which version of the protocol is implemented. For further details and a formal specification, including both communication of color and string commands, refer to the latest version of ETSA02 RoboTalk on Google Drive.
 
 \section{Monetizing the robot}
-One of the primary goals of the project is to maximize the profit of the group, i.e., monetizing the robot. The business aspects of the project involves a combination of bespoke software engineering and software engineering for an open market. All project groups will offer their robot on a highly competitive market -- consisting of the other groups, each with a \euro 100 budget to invest in a robot team for the LU Rumble.
+One of the primary goals of the project is to maximize the profit of the group, i.e., monetizing the robot. The business aspects of the project involves a combination of bespoke software engineering and software engineering for an open market. All project groups will offer their robot on a highly competitive market -- consisting of the other groups, each with a \euro 100 budget to invest in a robot team for the LU Rumble. The monetization is split in two parts: 1) bespoke supplier-customer relationships and 2) selling robots on Robot Market.
 
+\subsection{Bespoke supplier-customer relationships}
 The project groups will market their Robot already at a robot fair already after Sprint 1. At this early point in time, only an Alpha release of the robot will be available and an initial version of the SRS -- still, the sales engineer is responsible for developing a convincing sales pitch. All groups will get the chance to pitch their robot through a two minute video at the robot fair, and also present it online on the Robot Market, complemented by the most recent SRS.
 
 After the robot fair, all project groups will submit a ``purchase array'' to the regulatory body. The purchase array consists of one element per group, and each element should contain an integer representing how much your group is willing to pay for the corresponding robot. You are not allowed to make an offer for your own robot, and you are not allowed to offer less than \euro 10 for any other robot. The purchase array should be signed by the domain expert and delivered as a physical copy to the regulatory body through the mailbox in ``grå skåpet''.
@@ -367,9 +370,19 @@ When all project groups have provided their purchase arrays, the regulatory body
 
 Once robots have been pre-ordered, 25\% of their costs will be transferred from the customer to the supplier. This amount will not be refunded in any case -- it represents the risks of purchasing a robot from an external organization. The remainder of the cost will be transferred at the delivery of the final robot. After the final delivery, the domain expert of the purchasing project group conducts acceptance testing of the robot. If the acceptance testing shows that the delivered robot does not fully comply with the SRS, the project manager of the purchasing group is entitled to file a business claim to the regulatory body, further described in Section~\ref{sec:regbody}.
 
-In the Post release phase (cf. Fig.~\ref{fig:overview}, each project group will also offer their robot on the Robot Market. Simultaneously, all project groups will seek to complement the pre-ordered (by now hopefully delivered) robot with additional robots to build a competitive robot team for the LU Rumble. Throughout Sprints 2 and 3, the sales engineer is responsible for promoting sales of the robot on Robot Market. Each group will also set a price for its robot -- a group must at least ask for as much as what the bespoke customer has paid. However, it is allowed for groups to offer discounts to buyers that purchase more than one robot, i.e., bundles of two, three, or four robots -- but the total cost of each larger bundle most exceed smaller bundles. Note that the bundle options are not available for suppliers of leader bots, as each team can field only one leader bot. Before the LU Rumble, the domain expert of each project group will sign purchase orders and deliver to the regulatory body through ``grå skåpet''. 
+\subsection{Selling robots on Robot Market}
+In the Post release phase (cf. Fig.~\ref{fig:overview}, each project group will also offer their robot on the Robot Market. Simultaneously, all project groups will seek to complement the pre-ordered (by now hopefully delivered) robot with additional robots to build a competitive robot team for the LU Rumble. Throughout Sprints 2 and 3, the sales engineer is responsible for promoting sales of the robot on Robot Market. Each group will also set a price for its robot -- a group must at least ask for as much as what the bespoke customer has paid. Furthermore, project groups can (but are not required to) offer robot bundles to with discounts for buyers that purchase more than one robot, i.e., bundles of two, three, or four robots. The total cost of each larger bundle most exceed the smaller bundles. Note that the bundle options are not available for suppliers of leader bots, as each team can field only one leader robot. 
 
-Figure~\ref{fig:market} shows an example of how two project groups purchase robots. After the robot fair, Group A strikes a deal with Group C. As Robot C was quite costly, Group A complements it with two cheaper droids from Robot B to create a robot team. On the other hand, Robot B resulted from bespoke development for Group C -- and they liked the result enough to buy two more at a later stage. Furthermore, Group C complements the cheap droids by two basic bots: a Basic Leader Bot and a Basic Bot. Both Groups A and C spend \euro95 of their budgets.
+Figure~\ref{fig:bundles} shows an example of robot prices on Robot Market. Groups A and C develop leader bots and are not allowed to offer any bundle deals. Group E, highlighted in the white row, offers a single robot for \euro40 supplier of Robot E and the following bundle deals: 2 robots for \euro60, 3 robots for \euro65, and four robots for \euro70. Group F creates a bundle deal for two robots, but decides not to offer special prices for three or four robots. No bundle deals are available for the three ETSA02 basic bots.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.80\textwidth]{figures/bundleDeals.png}
+\caption{Example of robot prices on the Robot Market, including bundle deals.}
+\label{fig:bundles}
+\end{figure}
+
+Figure~\ref{fig:market} shows an example of how two project groups purchase robots. After the robot fair, Group A strikes a deal with Group C for \euro55. As Robot C was quite costly, Group A complements it with two cheaper Robot B droids in a \euro38 bundle deal to create a team of three robots for LU Rumble. Robot B resulted from bespoke development for Group C -- and they liked the result enough to buy two additional robots in a bundle deal at the later Robot Market stage. Furthermore, Group C complements the cheap droids by two basic bots: a Basic Leader Bot and a Basic Bot. Both Groups A and C spend \euro93 of their budgets. The remaining \euro7 is counted towards the teams' profits, increasing their chances to win the Most Profitable Team award (see Section~\ref{sec:rumble}).
 
 \begin{figure}
 \centering
@@ -387,7 +400,7 @@ Apart from the standard robots, there are two special types of robots. The leade
 
 At the end of Sprint 1, your project group will have established a relationship with a robot supplier by pre-ordering either a leader robot, a normal robot, or a droid. The supplier will provide you with a final robot at the end of Sprint 3, but your group will have a chance to influence the evolution of the robot during Sprints 2 and 3. The domain expert in your group is responsible for developing a strategy around the robot you have pre-ordered -- to guide your feedback, you will receive two prototypes for evaluation: an Alpha release after Sprint 1, and a Beta release after Sprint 2.
 
-At the end of Sprint 3, you will complement the robot you have ordered with other robots from the Robot Market. The goal of your strategizing is to identify and purchase additional robots that can successfully cooperate with the robot from your supplier. It is important to keep an eye on the Robot Market during Sprints 2 and 3, both to find the best robots to purchase, and to understand what type of features you should provide through your own robot under development. Note that three robots are always available at fixed prices: 1) BasicLeaderBot \euro 20, 2) BasicBot \euro 15, and 3) BasicDroid \euro 10.
+At the end of Sprint 3, you will complement the robot you have ordered with other robots from the Robot Market. The goal of your strategizing is to identify and purchase additional robots that can successfully cooperate with the robot from your supplier. It is important to keep an eye on the Robot Market during Sprints 2 and 3, both to find the best robots to purchase, and to understand what type of features you should provide through your own robot under development. Note that three robots are always available at fixed prices: 1) Basic Leader Bot \euro20, 2) Basic Bot \euro15, and 3) Basic Droid \euro10.
 
 Each robot team must adhere to two strict constraints: 
 
@@ -396,6 +409,8 @@ Each robot team must adhere to two strict constraints:
 \item Each team must not exceed a total cost of more than \euro 100 worth of robots.
 %\item The final team must be submitted as a jar-file to the LU Rumble on Friday morning before the event. 
 \end{enumerate}
+
+
 
 \chapter{Project phases}
 
@@ -556,18 +571,18 @@ To support the post release phase, one session is scheduled:
 \item Lecture 6: Configuration management, software product lines
 \end{itemize}
 
-\section{LU Rumble}
+\section{LU Rumble} \label{sec:rumble}
 The final phase consists of one single event: the LU Rumble. The LU Rumble will take place during the final lecture of the course on May 21, 2018.
 
-Prior to the event, the regulatory body will run a qualification session, inspired by the format used in Formula one racing. The purpose of the qualification session is twofold. First, it assures that all robot teams are functional on the Robocode arena. Second, it will let a number of robot teams get ``pole positions'', i.e., seeds for the LU Rumble main tournament. The qualification session entails a large number of simulations between all teams. Note that while the qualification session will indicate some robot teams as favourites, they might be good on average, but have weaknesses against certain team strategies. No matter the results of the qualification session, all robot teams can still win the LU Rumble.  
+%Prior to the event, the regulatory body will run a qualification session, inspired by the format used in Formula one racing. The purpose of the qualification session is twofold. First, it assures that all robot teams are functional on the Robocode arena. Second, it will let a number of robot teams get ``pole positions'', i.e., seeds for the LU Rumble main tournament. The qualification session entails a large number of simulations between all teams. Note that while the qualification session will indicate some robot teams as favourites, they might be good on average, but have weaknesses against certain team strategies. No matter the results of the qualification session, all robot teams can still win the LU Rumble.  
 
 The main tournament, i.e., the playoff, will follow a cup pairing according to single elimination knockout rules. The four robot teams performing the best during the qualification session will be seeded into the tournament bracket. All remaining robot teams will enter the bracket at random. Each match in the LU Rumble will be played in best-of-five format, and displayed live at reasonable speed for the entertainment of the spectators.
 
 Immediately after the LU Rumble, three awards will be given:
 \begin{itemize}
 \item The Strategizer Award goes to the winner of the LU Rumble.
-\item The Monetizer Award goes to the most profitable project group.
-\item The Engineering Award is a people's choice with voting during the LU Rumble (or a jury in the regulatory body?).
+\item The Monetizer Award goes to the most profitable group.
+\item The Engineering Award goes to the most valuable robot during LU Rumble.
 \end{itemize}
 
 \chapter{Inter-group communication}
