@@ -24,9 +24,11 @@ SOFTWARE.
 
 package se.lth.cs.etsa02.basicmeleebot;
 
-import robocode.TeamRobot;
+import robocode.MessageEvent;
 import robocode.RobotDeathEvent;
 import robocode.ScannedRobotEvent;
+import robocode.TeamRobot;
+import se.lth.cs.etsa02.RobotColors;
 
 /**
  * @author David Phung
@@ -63,6 +65,21 @@ public class BasicMeleeBot extends TeamRobot {
 			targetingSystem.update();
 			movementSystem.update();
 			execute();
+		}
+	}
+	
+	/**
+	 * onMessageReceived:  What to do when our leader sends a message
+	 */
+	public void onMessageReceived(MessageEvent e) {
+		// Set our colors
+		if (e.getMessage() instanceof RobotColors) {
+			RobotColors c = (RobotColors) e.getMessage();
+			setBodyColor(c.bodyColor);
+			setGunColor(c.gunColor);
+			setRadarColor(c.radarColor);
+			setScanColor(c.scanColor);
+			setBulletColor(c.bulletColor);
 		}
 	}
 	
