@@ -49,11 +49,11 @@ public class BasicLeaderBot extends TeamRobot {
 	public void run() {
 		// Prepare RobotColors object with LU colors
 		RobotColors c = new RobotColors();
-		c.bodyColor = Color.darkGray;
-		c.gunColor = Color.blue;
-		c.radarColor = Color.blue;
-		c.scanColor = Color.darkGray;
-		c.bulletColor = Color.darkGray;
+		c.bodyColor = Color.white;
+		c.gunColor = Color.white;
+		c.radarColor = Color.white;
+		c.scanColor = Color.white;
+		c.bulletColor = Color.white;
 
 		// Set the color of BLB
 		setBodyColor(c.bodyColor);
@@ -61,12 +61,10 @@ public class BasicLeaderBot extends TeamRobot {
 		setRadarColor(c.radarColor);
 		setScanColor(c.scanColor);
 		setBulletColor(c.bulletColor);
-		/* Temporarily commented out since the communication protocol currently does not support color commands.
 		try {
 			// Send RobotColors object to the entire team
 			broadcastMessage(c);
 		} catch (IOException ignored) {}
-		*/
 		
 		// Default behavior - BLB's standard sequence
 		while (true) {
