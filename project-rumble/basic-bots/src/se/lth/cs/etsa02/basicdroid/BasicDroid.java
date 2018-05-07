@@ -51,22 +51,19 @@ public class BasicDroid extends TeamRobot implements Droid {
 	 * onMessageReceived:  What to do when our leader sends a message
 	 */
 	public void onMessageReceived(MessageEvent e) {
-		
-		MessageReader reader = new MessageReader((String)e.getMessage());
-		if (reader.getTargetPos() != null) fireAtPoint(reader.getTargetPos());
-		if (reader.getMoveTo() != null) goTo(reader.getMoveTo());
-		
-		/* Temporarily commented out since the communication protocol currently does not support color commands.
 		// Set our colors
-		else if (e.getMessage() instanceof RobotColors) {
+		if (e.getMessage() instanceof RobotColors) {
 			RobotColors c = (RobotColors) e.getMessage();
-
 			setBodyColor(c.bodyColor);
 			setGunColor(c.gunColor);
 			setRadarColor(c.radarColor);
 			setScanColor(c.scanColor);
 			setBulletColor(c.bulletColor);
-		}*/
+		}else {
+			MessageReader reader = new MessageReader((String)e.getMessage());
+			if (reader.getTargetPos() != null) fireAtPoint(reader.getTargetPos());
+			if (reader.getMoveTo() != null) goTo(reader.getMoveTo());
+		}
 	}
 	
 	private void fireAtPoint(Point p) {
