@@ -110,7 +110,7 @@ public class ST_F1_RadarSystem extends RobotTestBed {
 	/**
 	 * Returns a comma or space separated list like: x1,y1,heading1,
 	 * x2,y2,heading2, which are the coordinates and heading of robot #1 and #2.
-	 * So "0,0,180, 50,80,270" means that robot #1 has position (0,0) and
+	 * So "(0,0,180), (50,80,270)" means that robot #1 has position (0,0) and
 	 * heading 180, and robot #2 has position (50,80) and heading 270.
 	 * 
 	 * Override this method to explicitly specify the initial positions for your
