@@ -28,7 +28,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.93 }
+\def\myversion{0.94 }
 \date{}
 %\title{%
 
@@ -56,6 +56,8 @@
         \today\\
     \end{bfseries}
 \end{flushright}
+
+\hyphenation{every-body accep-tance engi-neer-ing perfor-mance cycling because}
 
 \tableofcontents
 
@@ -100,6 +102,8 @@
         \hline
         Markus Borg & 2018-05-07 & Clarified bundle deals. & 0.93\\
         \hline
+        Markus Borg & 2018-05-10 & Corrected L8 date, fixed typos. & 0.94\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -117,15 +121,15 @@ The project complements the theoretical concepts introduced during the lectures 
 
 On top of your skills with traditional software engineering concepts and the tool chain, you will address aspects of market-driven software engineering. Each project group will practice making critical business and engineering decisions in a controlled fashion. The course introduces several important activities in software business, including analyzing the business ecosystem, finding a niche market, marketing a product, competitive pricing strategies, and customer negotiations.
 
-More formally, the project is primarily designed to meet the practical requirements of the ETSA02 course description, i.e., the ``Competencies and skills''. However, the project will also reinforce the theoretical concepts listed under ``Knowledge and understanding'' and it contributes to the ``Judgment and approach'' section.
+More formally, the project is primarily designed to meet the practical requirements of the ETSA02 course description, i.e., the ``Competencies and Skills''. However, the project will also reinforce the theoretical concepts listed under ``Knowledge and Understanding'' and it contributes to the ``Judgment and Approach'' section.
 \begin{itemize}
-\item Competencies and skills
+\item Competencies and Skills
 \begin{itemize}
 \item Be able to develop a project plan, requirements specification and test plan for a small project.
 \item Be able to review a project plan, requirements specification and test plan for a small project.
 \item Be able to formulate text for project documentation.
 \end{itemize}
-\item Knowledge and understanding
+\item Knowledge and Understanding
 \begin{itemize}
 \item Be able to define basic terms and definitions in software engineering.
 \item Be able to describe the most common software development processes.
@@ -135,7 +139,7 @@ More formally, the project is primarily designed to meet the practical requireme
 \item Be able to describe the most important steps in project planning and project tracking.
 \item Be able to describe how an organization plan and manage a series of projects.
 \end{itemize}
-\item Judgment and approach
+\item Judgment and Approach
 \begin{itemize}
 \item Understand the complexity involved in developing software systems
 \item Have an understanding of the professional role of the engineer
@@ -169,7 +173,7 @@ Figure~\ref{fig:overview} shows the four main phases of the project. First, duri
 \label{fig:overview}
 \end{figure}
 
-Figure~\ref{fig:context} shows the context of each individual group during the project. Organizationally, your group has three divisions: 1) engineering, 2) purchasing, and 3) sales. Your group will assign the following roles: 1) project manager, 2) requirements engineer, 3) development lead, 4) test lead, 5) domain expert, and 6) sales engineer. Each role is described in detail in Section~\ref{sec:roles}.
+Figure~\ref{fig:context} shows the context of each individual group during the project. Organizationally, your group has three divisions: 1) Engineering, 2) Purchasing, and 3) Sales. Your group will assign the following roles: 1) project manager, 2) requirements engineer, 3) development lead, 4) test lead, 5) domain expert, and 6) sales engineer. Each role is described in detail in Section~\ref{sec:roles}.
 
 Project groups do not exist in isolation, instead they act in a business ecosystem. During engineering of the robot, each project group will be part of two supplier-customer relationships. First, your sales engineer will be responsible for promoting sales of the robot under development. The domain expert of another project group will sign a contract of sale, establishing a formal relationship. Your sales engineer will be the primary communication point for the purchasing group's domain expert, i.e., a supplier-customer relationship involving feedback, feature requests, and negotiations. Second, analogously, your domain expert will act as the customer in a supplier-customer relationship with another project group. Note that, in some cases, project groups might buy from and sell to the same other group -- this is not regulated in the ecosystem.
 
@@ -207,7 +211,7 @@ The project consists of three main activities, interconnected as presented in Fi
 \end{figure}
 
 \section{Engineering the robot}
-Each project group will develop a robot (see Figure~\ref{fig:robot}) according to established engineering principles. These principles include product prototyping, integrated requirements engineering, and automated testing. The process model is organized in three development sprints, further described in Section~\ref{sec:process}. The engineering process is dominated by three core activities: \textit{specification}, \textit{construction}, and \textit{verification}. In line with agile development methodologies, all sprints consist of a mix of these three activities. Still, the groups' focus during the project will progress from specification, through construction, to verification -- also reflected by the order of the lectures.
+Each project group will develop a robot (see Figure~\ref{fig:robot}) according to established engineering principles. These principles include product prototyping, integrated requirements engineering, and automated testing. The process model is organized in three development sprints, further described in Section~\ref{sec:process}. The engineering process is dominated by three core activities: \textit{specification}, \textit{construction}, and \textit{verification}. In line with Agile development methodologies, all sprints consist of a mix of these three activities. Still, the groups' focus during the project will progress from specification, through construction, to verification -- also reflected by the order of the lectures.
 
 \begin{figure}
 \centering
@@ -245,9 +249,9 @@ As a result from the specification activities, each project group shall produce 
 \subsection{Construction} \label{sec:constr}
 The first two computer labs will help project groups set up Robocode development in Eclipse and source code control in git. Moreover, the second computer lab will initiate automated unit testing, an activity that overlaps construction and verification.
 
-An early construction activity is software design. In this project, the design is limited to object-oriented design -- the robot development is too restricted to address any considerations on the software architecture level and there is also no user interaction design. Each project group will present the Object-Oriented Design (OOD) using a Unified Modeling Language (UML) class diagram. As the project in inspired by agile development methodologies, there will be no big design activity upfront. Instead, the OOD will evolve as the construction phase proceeds. The development lead is responsible to complement the final source code delivery with a class diagram to describe the OOD after-the-fact. Any project group that recognizes a value in using class diagrams in their robot sales pitch are of course welcome to do so. Furthermore, the final source code deliverable shall be complemented by Javadoc documentation (excluding the test code).  
+An early construction activity is software design. In this project, the design is limited to object-oriented design -- the robot development is too restricted to address any considerations on the software architecture level and there is also no user interaction design. Each project group will present the Object-Oriented Design (OOD) using a Unified Modeling Language (UML) class diagram. As the project is inspired by Agile development methodologies, there will be no big design activity upfront. Instead, the OOD will evolve as the construction phase proceeds. The development lead is responsible to complement the final source code delivery with a class diagram to describe the OOD after-the-fact. Any project group that recognizes a value in using class diagrams in their robot sales pitch are of course welcome to do so. Furthermore, the final source code deliverable shall be complemented by Javadoc documentation (excluding the test code).  
 
-As most practical construction work will be done outside of scheduled sessions, how the backbone of the programming will be conducted must be decided by the individual project groups. Still, for this project, we recommend groups to follow a handful of well-known agile development practices, originally proposed as part of Extreme Programming (XP) [REF]. Below we list five that we believe are particularly suitable for the process model, along with their Wikipedia definitions:
+As most practical construction work will be done outside of scheduled sessions, how the backbone of the programming will be conducted must be decided by the individual project groups. Still, for this project, we recommend groups to follow a handful of well-known Agile development practices, originally proposed as part of Extreme Programming (XP) [REF]. Below we list five that we believe are particularly suitable for the process model, along with their Wikipedia definitions:
 
 \begin{description}
 \item[Pair programming] All code is produced by two people programming  on one workstation. One programmer has control over the workstation and is thinking mostly about the coding in detail. The other programmer is more focused on the big picture, and is continually reviewing the code that is being produced by the first programmer. Programmers trade roles after minute to hour periods. The pairs are not fixed; programmers switch partners frequently, so that everyone knows what everyone is doing, and everybody remains familiar with the whole system, even the parts outside their skill set. This way, pair programming also can enhance team-wide communication and goes hand-in-hand with the concept of Collective Code Ownership.
@@ -567,7 +571,7 @@ Table~\ref{tab:postrelease} shows the resulting deliverables from the post relea
 Fixed Robot Market prices   & Robot Market          & Sales engineer           & L7: May 15 - 23.59 \\ \hline
 Acceptance test report   & Supervisor          & Domain expert           & L7: May 15 - 23.59 \\ \hline
 Business claims (optional)                       & Course responsible & Project manager     & L7: May 15 - 23.59 \\ \hline
-Purchase orders and team composition       & Course responsible & Domain expert         & L8: May 11 - 23.59  \\ \hline
+Purchase orders and team composition       & Course responsible & Domain expert         & L8: May 17 - 23.59  \\ \hline
 \end{tabular}
 \end{table}
 
