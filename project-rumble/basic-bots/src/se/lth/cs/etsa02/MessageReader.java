@@ -157,9 +157,11 @@ public class MessageReader {
 			}
 		}
 		String[] values = new String[count];
+		int k = 0;
 		for (int i = 0; i < lines.length; i++) {
 			if (lines[i].startsWith(prefix)) {
-				values[i] = lines[i].substring(prefix.length());
+				values[k] = lines[i].substring(prefix.length());
+				k++;
 			}
 		}
 		return values;
