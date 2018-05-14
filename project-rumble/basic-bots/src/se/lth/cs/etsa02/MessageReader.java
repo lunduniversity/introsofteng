@@ -139,8 +139,8 @@ public class MessageReader {
 	}
 	
 	/**
-	 * Get the values of a line. E.g. if we have the following line: "enemyPos;12.34;56.78"
-	 * Then the values of this line will be the string "12.34;56.78"
+	 * Get the values of a line. E.g. if we have the following line: "enemyPos;12;56"
+	 * Then the values of this line will be the string "12;56"
 	 * Since there can be multiple lines that starts with same name (e.g. multiple enemyPos lines), 
 	 * the method returns an array of the values of all these lines.
 	 * @param lineName the name of the line
