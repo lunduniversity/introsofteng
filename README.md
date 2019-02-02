@@ -15,11 +15,11 @@ The main directories are:
 
 * Learn the basics about git, especially the "Getting Started" and "Git Basics" sections in this book: https://git-scm.com/book/en/v2
 
-* Get an account at github if you don't have one already. Recommended user name if in doubt: `firstnamefamilyname` with no capital letters and no hyphens.
+* Get a GitHub account if you don't have one already. Recommended user name if in doubt: `firstnamefamilyname` with no capital letters and no hyphens.
 
 * Install git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
-* Make a **fork** of lunduniversity/introprog in GitHub to your own GitHub account: https://help.github.com/articles/fork-a-repo/
+* Make a **fork** of lunduniversity/introsofteng in GitHub to your own GitHub account: https://help.github.com/articles/fork-a-repo/
 
 * **Clone** your fork to your local computer: https://help.github.com/articles/cloning-a-repository/
 
