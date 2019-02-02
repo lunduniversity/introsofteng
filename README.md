@@ -1,6 +1,8 @@
 # introsofteng
 Teaching material for "Introduction to Software Engineering" at Lund University, LTH. http://cs.lth.se/etsa02/
 
+GitHub releases are used to manage versions of the teaching material for different course sessions, e.g., the final version from [2018](https://github.com/lunduniversity/introsofteng/releases/tag/v1.5-final2018)
+
 ## Contents of this repo
 
 The main directories are:
