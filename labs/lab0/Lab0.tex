@@ -1,0 +1,92 @@
+%
+% Copyright 2019 Markus Borg, Lund University
+%
+% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+% See http://creativecommons.org/licenses/by-sa/4.0/
+%
+% The dodument is based on a LaTeX template developed by Jean-Philippe Eisenbarth
+% https://github.com/jpeisenbarth/SRS-Tex
+%
+\documentclass{scrreprt}
+\usepackage{listings}
+\usepackage{underscore}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\hypersetup{
+    bookmarks=false,    % show bookmarks bar?
+    pdftitle={Lab 0},    % title
+    pdfauthor={Markus Borg},                     % author
+    pdfsubject={TeX and LaTeX},                        % subject of the document
+    pdfkeywords={TeX, LaTeX, graphics, images}, % list of keywords
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,       % color of internal links
+    citecolor=black,       % color of links to bibliography
+    filecolor=black,        % color of file links
+    urlcolor=purple,        % color of external links
+    linktoc=page            % only page is linked
+}%
+\def\myversion{0.1 }
+\date{}
+%\title{%
+
+%}
+\usepackage{hyperref}
+\begin{document}
+
+\begin{flushright}
+    \rule{16cm}{5pt}\vskip1cm
+    \begin{bfseries}
+    	\LARGE{ETSA02-ADM-LAB0}\\
+    	\vspace{1.5cm}
+        \Huge{Lab 0}\\
+        \vspace{0.5cm}
+        Basic development skills\\
+        \vspace{0.5cm}
+        required for ETSA02\\
+        \vspace{1.5cm}
+        \LARGE{Version \myversion}\\
+        %\LARGE{Version \myversion approved}\\
+        \vspace{1.5cm}
+        Prepared by Markus Borg\\
+        %\vspace{1.5cm}
+        Dept. of Computer Science, Lund University\\
+        \vspace{1.5cm}
+        \today\\
+    \end{bfseries}
+\end{flushright}
+
+%\tableofcontents
+
+\chapter*{Revision History}
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+	    Name & Date & Reason For Changes & Version\\
+        \hline
+	    Markus Borg & 2019-02-02 & Initial skeleton. & 0.1\\
+        \hline
+    \end{tabular}
+\end{center}
+
+\chapter{Introduction}
+Lab 0 will introduce some core concepts that you will work with extensively throughout this course. This introductory lab has been added to ensure that everyone gets a chance to practice some fundamental development skills -- the students following the course often represent a wide range of backgrounds. Some of you will wonder why it covers elementary concepts, but from experience we know that the content in this pre-lab is not obvious to everyone. You may certainly skip all exercises related to topics you already know well, but be prepared to answer some questions about Lab 0 during the Lab 1 session.
+
+Lab 0 covers the following topics:
+\begin{itemize}
+ \item Fundamentals of file systems
+ \item Command line interfaces
+ \item Version control software
+ \item Test automation
+\end{itemize} 
+
+\chapter{Fundamentals of file systems}
+
+\chapter{Command line interfaces}
+
+\chapter{Version control software}
+
+\chapter{Test automation}
+
+\end{document}
