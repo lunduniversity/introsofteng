@@ -3,7 +3,8 @@ Teaching material for "Introduction to Software Engineering" at Lund University,
 
 GitHub releases are used to manage versions of the teaching material for different course sessions. Course history:
 * <2018 - Not on GitHub. Project task related to bicycle garage management.
-* [2018](https://github.com/lunduniversity/introsofteng/releases/tag/v1.5-final2018) - Introduced RoboCode projects and the LU Rumble. 16 teams with 6 students, each fielding up to 5 bots. 
+* [2018](https://github.com/lunduniversity/introsofteng/releases/tag/v1.5-final2018) - Introduced RoboCode projects and the LU Rumble. 16 teams with 6 students, each fielding up to 5 bots.
+* 2019 - Under development.
 
 ## Contents of this repo
 
