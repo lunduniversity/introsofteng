@@ -9,7 +9,7 @@
 %
 \documentclass{scrreprt}
 \usepackage{listings}
-\usepackage{underscore}
+%\usepackage{underscore}
 \usepackage[bookmarks=true]{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -82,6 +82,15 @@ Lab 0 covers the following topics:
 \end{itemize} 
 
 \chapter{Fundamentals of file systems}
+A file system is the way in which files are named and where they are placed logically for storage and retrieval, typically on your computer's hard drive. Without a file system, stored information would be practically impossible  to identify and retrieve. A file system can be considered a type of index for all the data stored on your hard drive. With ever-increasing storage space, the organization and accessibility of individual files are becoming more important than ever.
+
+File systems differ between operating systems, such as Microsoft Windows, macOS and Linux-based systems. Different file systems specify different conventions for naming files, e.g., the maximum number of characters in a file name and which characters are valid in the name. Whether or not file names are case sensitive varies as well. File systems also contain metadata about all files, including file size and attributes. 
+
+Digital file systems and files is a metaphor for the paper-based filing systems using the same logic-based method of storing and retrieving documents: files. Microsoft Windows takes the analogy further by also using folders as part of the terminology, equivalent to the general term: directory.
+
+An important feature of a file system is that they introduce a format to specify the path to a file through the structure of directories. Each file is placed in a directory or subdirectory at the desired place in the tree structure, see Figure~\ref{fig:tree}.
+
+\textbf{Task:} If you never have browsed the file system of your computer, do it now. Identify the default location of downloaded files and where you have stored work in various courses. Where do you plan to install Robocode? Where do you plan to clone the repositories related to the labs and to the project work? 
 
 \chapter{Command line interfaces}
 
