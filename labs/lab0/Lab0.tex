@@ -10,6 +10,7 @@
 \documentclass{scrreprt}
 \usepackage{listings}
 %\usepackage{underscore}
+\usepackage{graphicx}
 \usepackage[bookmarks=true]{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -26,7 +27,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.3 }
+\def\myversion{0.4 }
 \date{}
 %\title{%
 
@@ -71,6 +72,8 @@
         \hline
         Markus Borg & 2019-03-04 & Draft of command-line interfaces. & 0.3\\
         \hline
+        Markus Borg & 2019-03-04 & Added figure of file system tree. & 0.4\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -93,6 +96,13 @@ File systems differ between operating systems, such as Microsoft Windows, macOS 
 Digital file systems and files is a metaphor for the paper-based filing systems using the same logic-based method of storing and retrieving documents: files. Microsoft Windows takes the analogy further by also using folders as part of the terminology, equivalent to the general term: directory.
 
 An important feature of a file system is that they introduce a format to specify the path to a file through the structure of directories. Each file is placed in a directory or subdirectory at the desired place in the tree structure, see Figure~\ref{fig:tree}.\\
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{figures/GNU-Linux_directory_tree.png}
+\caption{Part of a GNU/Linux directory tree. (CC BY-SA 3.0, Wikimedia Commons: And1mu).}
+\label{fig:tree}
+\end{figure}
 
 \textbf{Tasks:} If you have never browsed the file system of your computer, do it now. Identify the default location of downloaded files and where you have stored work in various courses. Where do you plan to install Robocode? Where do you plan to clone the repositories related to the labs and to the project work? 
 
