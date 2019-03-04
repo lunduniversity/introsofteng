@@ -92,54 +92,81 @@ File systems differ between operating systems, such as Microsoft Windows, macOS 
 
 Digital file systems and files is a metaphor for the paper-based filing systems using the same logic-based method of storing and retrieving documents: files. Microsoft Windows takes the analogy further by also using folders as part of the terminology, equivalent to the general term: directory.
 
-An important feature of a file system is that they introduce a format to specify the path to a file through the structure of directories. Each file is placed in a directory or subdirectory at the desired place in the tree structure, see Figure~\ref{fig:tree}.
+An important feature of a file system is that they introduce a format to specify the path to a file through the structure of directories. Each file is placed in a directory or subdirectory at the desired place in the tree structure, see Figure~\ref{fig:tree}.\\
 
-\textbf{Task:} If you have never browsed the file system of your computer, do it now. Identify the default location of downloaded files and where you have stored work in various courses. Where do you plan to install Robocode? Where do you plan to clone the repositories related to the labs and to the project work? 
+\textbf{Tasks:} If you have never browsed the file system of your computer, do it now. Identify the default location of downloaded files and where you have stored work in various courses. Where do you plan to install Robocode? Where do you plan to clone the repositories related to the labs and to the project work? 
 
 \chapter{Command-line interfaces}
 A command-line interface is a way to interact with a computer program through  commands to the program in the form of successive lines of text, i.e., command lines. A program which handles this interface is referred to as a command language interpreter or shell. Command-line interfaces were the primary means of interaction with most computer systems from the 1960s to the 1980s. Today, most users rarely, if ever, use command-line interfaces and instead rely entirely on graphical user interfaces -- but advanced users often rely on this traditional approach to interaction.
 
 Software engineers must be able to master command-line interfaces. Textual commands allows engineers to perform tasks more efficiently, configure their development environments, or access program features that are not available through graphical user interfaces. Command lines are much more powerful and versatile than the (by design) restricted graphical counterparts! Using command-lines, options to commands can be given in a few characters -- much appreciated by advanced users. Command-lines also allow automation of repetitive tasks through \textit{scripting} sequences of command lines.
 
-Operating systems come with their specific command-line interfaces. The ETSA02 lab sessions will be conducted in rooms equipped with computers running the open source software operating system Ubuntu, a Linux distribution based on Debian. The deafult shell in Ubuntu is called Bash (The Bourne Again SHell). If you plan to use your own Apple MacBook during the course, you will find that the macOS command-line interface \textit{terminal} is a result from its unix heritage -- the fundamental commands presented below will work both for Bash and terminal. If you plan to use a laptop running Microsoft Windows, however, you will need to run slightly different command-lines in its interpreter \textit{Command Prompt}.
+Operating systems come with their specific command-line interfaces. The ETSA02 lab sessions will be conducted in rooms equipped with computers running the open source software operating system Ubuntu, a Linux distribution based on Debian. The deafult shell in Ubuntu is called Bash (The Bourne Again SHell). If you plan to use your own Apple MacBook during the course, you will find that the macOS command-line interface \textit{terminal} is a result from its unix heritage -- the fundamental commands presented below will work both for Bash and terminal. If you plan to use a laptop running Microsoft Windows, however, you will need to run slightly different command-lines in its interpreter \textit{Command Prompt}.\\
 
-\textbf{Task:} If you have never used the command-line interface before, it is now time to do so. 
+\textbf{Tasks:} If you have never used the command-line interface before, it is now time to do so. 
+
 \begin{enumerate}
-\item Start the command-line interface. 
+\item \textbf{Start the command-line interface.} 
 \begin{itemize}
 \item[Ubuntu] Launch the command-line interpretor directly from the GUI.
 \item[macOS] Launch Terminal by using Spotlight search, searching for ``terminal''. Add Terminal to your dock as you will open it every time you work with the course.
 \item[Windows] Launch Command Prompt by opening the start menu and typing \texttt{cmd}.
 \end{itemize}
 \item You will find the command-line interpretor in a separate window. It  provides some contextual information of where in the file system you are currently located and possibly who you are. You will find a cursor highlighting where you can input command-lines -- this is referred to as the prompt.
-\item Show your current position in the file system (if you got lost). Input the corresponding command below:
+\end{enumerate}
+
+\section{Basic file system navigation}
+\begin{enumerate}
+\item \textbf{Show your current position} in the file system (useful if you get lost). Input the corresponding command below:
 \begin{itemize}
 \item[unix] \texttt{pwd} (print working directory) 
 \item[Windows] \texttt{cd} (current directory)
 \end{itemize}
-\item Now list every file and directory in your current directory. Input the following:
+\item Now \textbf{list every file and directory in your current directory}. Input the following:
 \begin{itemize}
 \item[unix] \texttt{ls} (list) 
 \item[Windows] \texttt{dir}
 \end{itemize}
-\item Sometimes you need to also list the metadata of the files. Input the command again, but now with an additional option:
+\item Sometimes you need to also \textbf{list the metadata of the files}. Input the command again, but now with an additional option:
 \begin{itemize}
 \item[unix] \texttt{ls -l}
 \item[Windows] \texttt{dir /a}
 \end{itemize}
-\item You can now continue navigating the tree structure of your file system. Move into a subdirectory by typing:
+\item You can now continue \textbf{navigating the tree structure of your file system}. Move into a subdirectory by typing:
 \begin{itemize}
 \item[unix] \texttt{cd <Name of directory>} (change directory) 
 \item[Windows] Same as above.
 \end{itemize}
-\item To navigate one level up in the tree structure, type the following:
+\item To \textbf{navigate one level up in the tree structure}, type the following:
 \begin{itemize}
 \item[unix] \texttt{cd ..}
 \item[Windows] Same as above.
 \end{itemize}
+\item To \textbf{navigate to your home directory}, type the following:
+\begin{itemize}
+\item[unix] \texttt{cd \textasciitilde}
+\item[Windows] Not available. But you can navigate to the root directory using \texttt{cd \textbackslash}
+\end{itemize}
 \end{enumerate}
 
- 
+\section{Basic file management}
+\begin{enumerate}
+\item \textbf{Copy a file} from one location to another, i.e., from the first argument to the second. If the source and target are not in the current directory, both arguments can be both absolute paths (a full path specifying  the root directory followed by all subdirectories to the location where the file is contained) or relative paths (path from the current directory to the location of the file.
+\begin{itemize}
+\item[unix]d \texttt{cp <SOURCE FILE> <TARGET FILE>}
+\item[Windows] d\texttt{copy <SOURCE FILE> <TARGET FILE>}
+\end{itemize}
+\item \textbf{Move a file} from one location to another, i.e., from the first argument to the second. Just like when copying a file, the arguments can also be expressed using absolute or relative paths.
+\begin{itemize}
+\item[unix] \texttt{mv <SOURCE FILE> <TARGET FILE>}
+\item[Windows] \texttt{move <SOURCE FILE> <TARGET FILE>}
+\end{itemize}
+\item \textbf{Remove a file} specified in the argument. Just like when copying and moving files, the argument can be expressed using absolute or relative paths. Be careful when using this command!
+\begin{itemize}
+\item[unix] \texttt{rm <TARGET FILE>}
+\item[Windows] \texttt{del <TARGET FILE>}
+\end{itemize}
+\end{enumerate}
 
 \chapter{Version control software}
 
