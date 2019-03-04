@@ -27,7 +27,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.4 }
+\def\myversion{0.5 }
 \date{}
 %\title{%
 
@@ -74,6 +74,8 @@
         \hline
         Markus Borg & 2019-03-04 & Added figure of file system tree. & 0.4\\
         \hline
+        Markus Borg & 2019-03-04 & Draft of pointers to version control and JUnit. & 0.5\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -84,8 +86,8 @@ Lab 0 covers the following topics:
 \begin{itemize}
  \item Fundamentals of file systems
  \item Command-line interfaces
- \item Version control software
- \item Test automation
+ \item Version control
+ \item Test automation with JUnit
 \end{itemize} 
 
 \chapter{Fundamentals of file systems}
@@ -178,8 +180,14 @@ Operating systems come with their specific command-line interfaces. The ETSA02 l
 \end{itemize}
 \end{enumerate}
 
-\chapter{Version control software}
+\chapter{Version control}
+One of the fundamental concepts when collaborating in a software engineering project is version control. In ETSA02, you will work with git -- currently the dominant version control solution. We will discuss it both in lectures and lab sessions, but to make sure the concepts are introduced in a smooth way, please read the following short guide prior to the course.\\
 
-\chapter{Test automation}
+\textbf{Task:} Read the introduction: http://guides.beanstalkapp.com/version-control/intro-to-version-control.html
+
+\chapter{Test automation with JUnit}
+Another key concept in successful software engineering is test automation. Without testing your system, it is very hard to confidently argue that the requirements have been correctly implemented in source code. Test automation brings many benefits that modern development projects cannot disregard. In the course we will discuss both automated unit testing and system testing using the JUnit framework. If you have not worked with JUnit in previous courses, please read the following short introduction to get a heads-up before Lab 2.\\
+
+\textbf{Task:} Read the introduction: https://kodejava.org/introduction-to-junit/
 
 \end{document}
