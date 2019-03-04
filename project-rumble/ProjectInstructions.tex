@@ -160,8 +160,8 @@ The goal of Robocode is to implement the behavior of a robot to compete against 
 \label{fig:screenshot}
 \end{figure}
 
-\textit{From http://robocode.sourceforge.net/docs/ReadMe.html}:
-Robocode offers a complete development environment, and comes with its own installer, built-in robot editor and Java compiler. Robocode only pre-requires that a JVM (Java Virtual Machine) to exist already on the system where Robocode is going to be installed. Hence, everything a robot developer needs to get started is provided with the main Robocode distribution file (robocode-xxx-setup.jar). Robocode also supports developing robots using external IDEs like Eclipse.
+From \texttt{http://robocode.sourceforge.net/docs/ReadMe.html}:
+Robocode offers a complete development environment, and comes with its own installer, built-in robot editor and Java compiler. Robocode only pre-requires that a JVM (Java Virtual Machine) to exist already on the system where Robocode is going to be installed. Hence, everything a robot developer needs to get started is provided with the main Robocode distribution file (\texttt{robocode-xxx-setup.jar}). Robocode also supports developing robots using external IDEs like Eclipse.
 
 Robocode is an Open Source project, which means that all sources are open to everybody. In addition, Robocode is provided under the terms of EPL (Eclipse Public License). The Robocode game was originally started by Mathew A. Nelson as a personal endeavor in late 2000 and became a professional one when he brought it to IBM in July 2001. In the beginning of 2005, Mathew convinced IBM to release Robocode as Open Source on SourceForge. Eventually, Flemming N. Larsen took over the Robocode project at SourceForge as administrator and developer in July 2006 to continue the original Robocode game -- which now is hosted on GitHub.
 
@@ -181,17 +181,17 @@ Figure~\ref{fig:context} shows the context of each individual group during the p
 
 Project groups do not exist in isolation, instead they act in a business ecosystem. During engineering of the robot, each project group will be part of two supplier-customer relationships. First, your sales engineer will be responsible for promoting sales of the robot under development. The domain expert of another project group will sign a contract of sale, establishing a formal relationship. Your sales engineer will be the primary communication point for the purchasing group's domain expert, i.e., a supplier-customer relationship involving feedback, feature requests, and negotiations. Second, analogously, your domain expert will act as the customer in a supplier-customer relationship with another project group. Note that, in some cases, project groups might buy from and sell to the same other group -- this is not regulated in the ecosystem.
 
-On top of the two supplier-customer relationships, your project group will also communicate with the regulatory body (represented by your project supervisor). Your project group will hand in various signed contracts to the regulatory body, turn to it if to get support during supplier-customer negotiations, and to report the results from your acceptance testing. The regulatory body might also contact you with regulatory changes during the course of the project. Finally, you will practice one-way communication with the Robot Market, i.e., the open market where you will sell your Robot. All project groups will complement their robot teams with additional robots during the last week of the project -- and your sales engineer will be responsible for maximizing sales of your robot. 
+On top of the two supplier-customer relationships, your project group will also communicate with the regulatory body (represented by your project supervisor). Your project group will hand in various signed contracts to the regulatory body, turn to it to get support during supplier-customer negotiations, and to report the results from your acceptance testing. The regulatory body might also contact you with regulatory changes during the course of the project. Finally, you will practice one-way communication with the Robot Market, i.e., the open market where you will sell your Robot. All project groups will complement their robot teams with additional robots during the last week of the project -- and your sales engineer will be responsible for maximizing sales of your robot. 
 
 \begin{figure}
 \centering
 \includegraphics[width=0.99\textwidth]{figures/projectContext.png}
-\caption{The project context. Your project group will interact with your supplier's sales engineer, your customer's domain expert, the open Robot Market, and the regulatory body.}
+\caption{The project context. Your project group will interact with your supplier's sales engineer, your customer's domain expert, the open Robot Market, and the regulatory body.} // TODO: Update
 \label{fig:context}
 \end{figure}
 
 \section{Project grading}
-\textit{To be written...}\\\\
+\textit{To be extended...}\\\\
 The project will be graded as 3, 4, 5 or UG.
 
 The project supervisors' overall grading guidelines include the following:
@@ -255,7 +255,7 @@ The first two computer labs will help project groups set up Robocode development
 
 An early construction activity is software design. In this project, the design is limited to object-oriented design -- the robot development is too restricted to address any considerations on the software architecture level and there is also no user interaction design. Each project group will present the Object-Oriented Design (OOD) using a Unified Modeling Language (UML) class diagram. As the project is inspired by Agile development methodologies, there will be no big design activity upfront. Instead, the OOD will evolve as the construction phase proceeds. The development lead is responsible to complement the final source code delivery with a class diagram to describe the OOD after-the-fact. Any project group that recognizes a value in using class diagrams in their robot sales pitch are of course welcome to do so. Furthermore, the final source code deliverable shall be complemented by Javadoc documentation (excluding the test code).  
 
-As most practical construction work will be done outside of scheduled sessions, how the backbone of the programming will be conducted must be decided by the individual project groups. Still, for this project, we recommend groups to follow a handful of well-known Agile development practices, originally proposed as part of Extreme Programming (XP) [REF]. Below we list five that we believe are particularly suitable for the process model, along with their Wikipedia definitions:
+As most practical construction work will be done outside of scheduled sessions, how the backbone of the programming will be conducted must be decided by the individual project groups. Still, for this project, we recommend groups to follow a handful of well-known Agile development practices, originally proposed as part of Extreme Programming (XP). Below we list five that we believe are particularly suitable for the process model, along with their Wikipedia definitions:
 
 \begin{description}
 \item[Pair programming] All code is produced by two people programming  on one workstation. One programmer has control over the workstation and is thinking mostly about the coding in detail. The other programmer is more focused on the big picture, and is continually reviewing the code that is being produced by the first programmer. Programmers trade roles after minute to hour periods. The pairs are not fixed; programmers switch partners frequently, so that everyone knows what everyone is doing, and everybody remains familiar with the whole system, even the parts outside their skill set. This way, pair programming also can enhance team-wide communication and goes hand-in-hand with the concept of Collective Code Ownership.
@@ -265,7 +265,7 @@ As most practical construction work will be done outside of scheduled sessions, 
 \item[Collective code ownership] Everyone is responsible for all the code; therefore, everybody is allowed to change any part of the code. Collective code ownership is not only an organizational policy but also an attitude. Pair programming, especially overlapping pair rotation, contributes to this practice: by working in different pairs, programmers better understand the system context and contribute to more areas of the code base. Collective code ownership may accelerate development because a developer who spots an error can fix it immediately, which can reduce bugs overall. However, programmers may also introduce bugs when changing code that they do not understand well. Sufficiently well-defined unit tests should mitigate this problem: if unforeseen dependencies create errors, then when unit tests are run, they will show failures.
 \end{description}
 
-The construction phase involves prototyping to quickly create a working robot. Prototyping supports specification activities by enabling early executable software -- truly beneficial in contexts where the requirements are very unstable. Already at the end of sprint 1, around the LU Robot Fair, the project group shall deliver a first prototype of the robot. The prototype will help the purchaser to understand your product vision, and enable better feedback. The second deliverable shall be a Minimum Viable Product (MVP) inspired by lean software development practices [REF], i.e., a product with just enough features to satisfy early customers and to stimulate feedback for future robot evolution throughout Sprint 3. 
+The construction phase involves prototyping to quickly create a working robot. Prototyping supports specification activities by enabling early executable software -- truly beneficial in contexts where the requirements are very unstable. Already at the end of sprint 1, around the LU Robot Fair, the project group shall deliver a first prototype of the robot. The prototype will help the purchaser to understand your product vision, and enable better feedback. The second deliverable shall be a Minimum Viable Product (MVP) inspired by lean software development practices, i.e., a product with just enough features to satisfy early customers and to stimulate feedback for future robot evolution throughout Sprint 3. 
 
 As a result from the construction activities, each project group shall produce the following deliverables. Each release shall be prepared as two jar-files: 1) one jar-file for customers and 2) one jar-file with embedded source code for the regulatory body. As previously stated, the final release to the regulatory body shall be complemented by a class diagram and Javadoc documentation, as further described in Section~\ref{sec:process}:
 \begin{description}
@@ -291,7 +291,7 @@ As a result from the verification activities, each project group shall produce t
 \end{description}
 
 \subsection{Robot-to-Robot communication}
-Robots that extend TeamRobot can communicate with team members, as specified in the Robocode API: http://robocode.sourceforge.net/docs/robocode/robocode/TeamRobot.html Serializable objects can be sent between robots, e.g., point objects containing coordinates, color objects to set uniform team colors, and message strings with orders from the leader. The following three methods represent the backbone of robot communication.\\
+Robots that extend TeamRobot can communicate with team members, as specified in the Robocode API: \texttt{http://robocode.sourceforge.net/docs/robocode/robocode/TeamRobot.html} Serializable objects can be sent between robots, e.g., point objects containing coordinates, color objects to set uniform team colors, and message strings with orders from the leader. The following three methods represent the backbone of robot communication.\\
 
 Broadcasting message to all team members:
 \begin{verbatim}
@@ -317,7 +317,7 @@ The only type of communication that must be implemented by the robots entering L
 \item For leader bots:\\``The robot shall set its color scheme at the start of the battle, and request the other team robots to follow suit according to ETSA02 RoboTalk v1.X.''
 \end{itemize}
 
-ETSA02 RoboTalk also specifies a string-based communication protocol. Teams are free to implement as much of the communication protocol as they find useful. While it is completely optional, it might be expected by potential customers on Robot Market. Please refer to the classes MessageReader and Message Writer on the ETSA02 GitHub repository for an implementation suggestion. A message string should have the following overall structure, including the new lines.
+ETSA02 RoboTalk also specifies a string-based communication protocol. Teams are free to implement as much of the communication protocol as they find useful. While it is completely optional, it might be expected by potential customers on Robot Market. Please refer to the classes \texttt{MessageReader} and \texttt{MessageWriter} on the ETSA02 GitHub repository for an implementation suggestion. A message string should have the following overall structure, including the new lines.
 
 \begin{verbatim}
 [0-1] leadership;[followMe|leadMe]
@@ -357,7 +357,7 @@ The commands shall have the following meaning:
 \item[moveTo] Tells the receiving robot(s) to move to a specific position on the 2D battlefield.
 \end{description}
 
-ETSA02 RoboTalk will evolve during the course, i.e., the Regulatory Body will release new versions. All groups are welcome to provide feedback and requests to the standardization work done by the Regulatory Body. To do so, the project manager should submit a ``Change Request'' to the Regulatory Body. The Change Request should carefully describe what changes are proposed, and motivate why this request should be considered.
+ETSA02 RoboTalk might evolve during the course, i.e., the Regulatory Body will possibly release new versions. All groups are welcome to provide feedback and requests to the standardization work done by the Regulatory Body. To do so, the project manager should submit a ``Change Request'' to the Regulatory Body. The Change Request should carefully describe what changes are proposed, and motivate why this request should be considered.
 
 ETSA02 RoboTalk is version controlled, and student groups that decide to implement communication should carefully specify in their SRS which version of the protocol is implemented. For further details and a formal specification, including both communication of color and string commands, refer to the latest version of ETSA02 RoboTalk on Google Drive.
 
@@ -416,7 +416,7 @@ At the end of Sprint 3, you will complement the robot you have ordered with othe
 
 Each robot team must adhere to two strict constraints: 
 
-\begin{enumerate}
+\begin{enumerate} %TODO Update
 \item Each team must consist of between one and five robots, including one leader robot.
 \item Each team must not exceed a total cost of more than \euro 100 worth of robots.
 %\item The final team must be submitted as a jar-file to the LU Rumble on Friday morning before the event. 
@@ -429,7 +429,7 @@ After the acceptance testing, concluding with acceptance test reports and potent
 \section{Project inception}
 The first week of the project is referred to as the project inception. The project inception phase is dominated by project group development, i.e., forming groups, assigning roles, and aligning goals and expectations.
 
-According to a well-known model of group development, proposed by Tuckman in 1965 [REF], four distinct phases are all necessary and inevitable for a group of people to face up to challenges, collaborate successfully, and to  deliver results. Being aware of the four phases might accelerate the less productive phases and mitigate group conflicts:
+According to a well-known model of group development, proposed by Tuckman already in 1965, four distinct phases are all necessary and inevitable for a group of people to face up to challenges, collaborate successfully, and to  deliver results. Being aware of the four phases might accelerate the less productive phases and mitigate group conflicts:
 \begin{description}
 \item[1. Forming] The group meets and learns about the project and the required activities. In the beginning, individuals tend to behave quite independently -- all trying to comprehend what is about to happen. Individuals might be motivated and on their best behavior, but typically the understanding and expectations vary considerably. 
 
@@ -465,7 +465,7 @@ The marketing concept is the strategy that an organization implements to satisfy
 
 Table~\ref{tab:sprint1} shows the resulting deliverables from Sprint 1, their receivers, the responsible roles, and when they are due.
 
-\begin{table}[]
+\begin{table}[] %TODO Update dates
 \centering
 \caption{Deliverables due after Sprint 1, i.e., the Alpha Release.}
 \label{tab:sprint1}
@@ -506,7 +506,7 @@ Table~\ref{tab:sprint2} shows the resulting deliverables from Sprint 2, their re
 
 \begin{table}[]
 \centering
-\caption{Deliverables due after Sprint 2, i.e., the Beta Release.}
+\caption{Deliverables due after Sprint 2, i.e., the Beta Release.} %TODO Update dates
 \label{tab:sprint2}
 \begin{tabular}{|p{4cm}|p{2cm}|p{2.5cm}|p{4.5cm}|}
 \hline
@@ -542,7 +542,7 @@ Table~\ref{tab:sprint3} shows the resulting deliverables from Sprint 3, their re
 
 \begin{table}[]
 \centering
-\caption{Deliverables due after Sprint 3, i.e., the Final Release.}
+\caption{Deliverables due after Sprint 3, i.e., the Final Release.} %TODO Update dates
 \label{tab:sprint3}
 \begin{tabular}{|p{4cm}|p{2cm}|p{2.5cm}|p{4.5cm}|}
 \hline
@@ -565,7 +565,7 @@ The phase following the process model is referred to as post mortem. In this pha
 
 Table~\ref{tab:postrelease} shows the resulting deliverables from the post release phase, their receivers, the responsible roles, and when they are due.
 
-\begin{table}[]
+\begin{table}[] %TODO Update dates
 \centering
 \caption{Deliverables due after Sprint 3, i.e., the Final Release.}
 \label{tab:postrelease}
@@ -643,7 +643,7 @@ Guidelines for customers:
 \chapter{Detailed instructions}
 This section presents some aspects of the course in detail: 1) the roles you should assign within the project group, 2) expectations on the deliverables, and 3) the course infrastructure.
 
-\section{Role assignment} \label{sec:roles}
+\section{Role assignment} \label{sec:roles} %TODO Update the roles
 During the course, all students are expected to contribute to all activities. The purpose of the roles is not to isolate work tasks that could be individually completed. Software engineering is a collaborative effort, and completing work tasks in isolation is not part of a scalable methodology. Instead, we stress the value of ``collective ownership'' during the project, not only for the source code as described in Section~\ref{sec:constr}, but for all artifacts produced.
 
 The purpose of assigning roles in the project is to comply with the ETSA02 course description regarding ``judgment and approach'', i.e., understanding that software engineering is a complex endeavor involving several different roles, and that working as a software engineer might  result in a variety of roles in an organization. Second, all roles with be responsible for some deliverables. The regulatory body will use the group member with the corresponding role as the primary point of contact in case any deliverable is missing or critically incomplete.
@@ -666,16 +666,16 @@ Report time per role on a weekly basis. Reflect on the figures after each sprint
 \section{Software Releases: Alpha, Beta, and Final}
 The robot shall be released after each development sprint, each time constituting a more mature software product. In ETSA02, you shall create each software release in two variants: 1) a customer release and 2) a regulatory body release. Groups will upload their releases in designated folders on Google Drive.
 
-The customer release shall contain the latest versions of the following:
+The \textbf{customer release} shall contain the latest versions of the following:
 
 \begin{itemize}
 \item SRS
 \item Robot packaged as a jar-file -- without source code!
 \item STS
-\item Optional: Release notes -- if you want to clarify anything related to the release. Simply create a text file called ``ReleaseNotes_vX.txt'' and replace X with 0.5, 0.9, or 1.0.
+\item Optional: Release notes -- if you want to clarify anything related to the release. Simply create a text file called \texttt{ReleaseNotes_vX.txt} and replace X with 0.5, 0.9, or 1.0.
 \end{itemize}
 
-The regulatory body release shall contain everything in the customer release, but also the latest version of the following artifacts:
+The \textbf{regulatory body release} shall contain everything in the customer release, but also the latest version of the following artifacts:
 \begin{itemize}
 \item Lean canvas
 \item Robot packages as a jar-file -- including source files!
