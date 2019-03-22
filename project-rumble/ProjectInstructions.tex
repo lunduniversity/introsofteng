@@ -108,6 +108,8 @@
         \hline
         Markus Borg & 2019-03-04 & Detailed updates for 2019 edition. & 0.96\\
         \hline
+        Markus Borg & 2019-03-25 & Final touch for 2019 edition. & 0.97\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -177,7 +179,7 @@ Figure~\ref{fig:overview} shows the four main phases of the project. First, duri
 \label{fig:overview}
 \end{figure}
 
-Figure~\ref{fig:context} shows the context of each individual group during the project. Organizationally, your group has three divisions: 1) Engineering, 2) \textbf{TODO: UPDATE} Purchasing, and 3) Sales. Everyone in the group will shoulder several roles, as you all will be involved in the Engineering division as developers and testers -- supported by the mandatory lab sessions. Figure~\ref{fig:context} indicates this by the six small figures denoted ``Dev/Test''. On top of this, your group will also assign the following additional roles: 1) project manager (PM), 2) requirements engineer (RE), 3) software architect, 4) quality engineer (Q), 5) configuration manager (CM), and 6) sales engineer. Each role is described in detail in Section~\ref{sec:roles}. If there is only five people in a group, the role as configuration manager is left out.
+Figure~\ref{fig:context} shows the context of each individual group during the project. Organizationally, your group has three divisions: 1) Engineering, 2) \textbf{TODO: UPDATE} Purchasing, and 3) Sales. Everyone in the group will shoulder several roles, as you all will be involved in the Engineering division as developers and testers -- supported by the mandatory lab sessions. Figure~\ref{fig:context} indicates this by the six small figures denoted ``Dev/Test''. On top of this, your group will also assign the following additional roles: 1) project manager (PM), 2) requirements engineer (RE), 3) software architect, 4) quality engineer (Q), 5) configuration manager (CM), and 6) sales engineer. Each role is described in detail in Section~\ref{sec:roles}. If there are only five people in a group, the role as configuration manager is left out.
 
 Project groups do not exist in isolation, instead they act in a business ecosystem. During engineering of the robot, each project group will be part of two supplier-customer relationships. First, your sales engineer will be responsible for promoting sales of the robot under development. The project manager of another project group will sign a contract of sale, establishing a formal relationship. Your sales engineer will be the primary communication point for the purchasing group's project manager, i.e., a supplier-customer relationship involving feedback, feature requests, and negotiations. Second, analogously, your project manager will act as the customer in a supplier-customer relationship with another project group. Note that, in some cases, project groups might buy from and sell to the same other group -- this is not regulated in the ecosystem.
 
@@ -651,16 +653,18 @@ The purpose of assigning roles in the project is to comply with the ETSA02 cours
 As the project progresses through phases and sprints, different roles with have different responsibilities. The project group will track the individual efforts through weekly time reporting, submitted by the project manager to the regulatory body -- this enables identification of major deviations. The reported figures should be complemented by a qualitative analysis of the causes, and the project manager is responsible for balancing the workload to make sure the contributions are comparable, see~\ref{sec:time} for further information. Below are the different roles, ordered alphabetically, followed by the deliverables they are responsible for.
 
 \begin{description}
-\item[Software architect] Overall responsibility for the design and implementation of the software. Act as a development lead among the developers. Assign a group member comfortable with the art and science of programming, as well as an interest in object-oriented design. Responsible for source code and unit test cases. \\ \textbf{Deliverables:} source code and unit test cases \texttt{jar_v0.5}, \texttt{jar_v0.9}, \texttt{jar_v1.0}
-\item[Requirements engineer] Needs to focus on the end-user perspective and is responsible for feature scoping and specification of detailed requirements. A requirements engineer is a generalist that bridges engineering and business. Requirements should be crystal clear -- assigning your ``language police'' to this role might be wise.\\
-\textbf{Deliverables} SRS v0.5, SRS v0.9, SRS v1.0
-\item[Domain expert] Mastering Robocode, LU Rumble strategy, supplier communication, negotiations, acceptance testing. The domain expert needs to be willing to learn about the game aspects of Robocode, thus pick your gamer. -- Signed contract (as customer), acceptance test report, team jar-file
+
+\item[Configuration manager] Manages the version control of source code and documentation. Manages the the build and release processes. Ensures that all developers can access the source code repository, build and test the software locally, and commit changes. Responsible for packaging and delivering the Alpha, Beta, and Final releases. Identify a service minded member willing to become your git superuser and help others.\\
+\textbf{Deliverables: } Alfa release, Beta release, Final release, team jar-file
 \item[Project manager] Maintains a holistic picture of the project, should always be aware of where the current risks and bottlenecks are. Coordinates the group, ensures smooth communication, and keeps an eye on the coming deadlines. Furthermore, responsible for purchasing other robots. Main contact point for the regulatory body. Identify a group member with leadership skills that likes to maintain a sense of control.\\
 \textbf{Deliverables: } Weekly time reports, purchase array, acceptance test report (and potential business claims)
+\item[Quality engineer] Overall responsibility for testing the software. Develops a test strategy and documents the approach to unit testing and system testing in the Software Test Specification. Acts as a test lead among the testers to ensure that automated test cases are developed according to plan -- also responsible for the automated system test cases. The role is suited for a person with both strong development skills and careful technical writing.\\
+\textbf{Deliverables: } STS v0.5, STS v0.9, STS v1.0, automated system test cases
+\item[Requirements engineer] Needs to focus on the end-user perspective and is responsible for feature scoping and specification of detailed requirements. A requirements engineer is a generalist that bridges engineering and business. Requirements should be crystal clear -- assigning your ``language police'' to this role might be wise.\\
+\textbf{Deliverables} Lean canvas, SRS v0.5, SRS v0.9, SRS v1.0
 \item[Sales engineer] Responsible for marketing of the robot, the initial sales pitch, customer communication, and negotiations. During development, the sales engineer will also act as a proxy-customer if needed, i.e., steering development decisions in the interest of the real customer. Toward the end of the development project, the sales engineer is responsible for the concluding system testing. Identify your natural salesman, a person with excellent communication skills.\\
 \textbf{Deliverables: } Sales pitch video, test report. 
-\item[Quality engineer] Overall responsibility for testing the software. Develops a test strategy and documents the approach to unit testing and system testing in the Software Test Specification. Acts as a test lead among the testers to ensure that automated test cases are developed according to plan -- also responsible for the automated system test cases. The role is suited for a person with both strong development skills and careful technical writing.\\
-\textbf{Deliverables: } STS v0.5, STS v1.0, automated system test cases
+\item[Software architect] Overall responsibility for the design and implementation of the software. Act as a development lead among the developers. Assign a group member comfortable with the art and science of programming, as well as an interest in object-oriented design. Responsible for source code and unit test cases. \\ \textbf{Deliverables:} \texttt{jar_v0.5}, \texttt{jar_v0.9}, \texttt{jar_v1.0}
 \end{description}
 
 \section{Time reporting} \label{sec:time}
@@ -676,7 +680,7 @@ The \textbf{customer release} shall contain the latest versions of the following
 \item SRS
 \item Robot packaged as a jar-file -- without source code!
 \item STS
-\item Optional: Release notes -- if you want to clarify anything related to the release. Simply create a text file called \texttt{ReleaseNotes_vX.txt} and replace X with 0.5, 0.9, or 1.0.
+\item Optional: Release notes -- if you want to clarify anything related to the release. Simply create a text file called \texttt{ReleaseNotes_vX.txt} and replace X with 0_5, 0_9, or 1_0.
 \end{itemize}
 
 The \textbf{regulatory body release} shall contain everything in the customer release, but also the latest version of the following artifacts:
