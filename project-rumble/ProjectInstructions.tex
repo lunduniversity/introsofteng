@@ -28,7 +28,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.96 }
+\def\myversion{0.97 }
 \date{}
 %\title{%
 
@@ -231,7 +231,7 @@ Requirements engineering, i.e., a systematic approach to developing a product wi
 
 The IEEE SRS template provides a standard document structure: 1) an introduction section, 2) an overall description of the product under development, and 3) a list of product features further broken down into detailed requirements. Furthermore, the template supports engineers to specify quality requirements such as performance, maintainability, and memory footprint. Project groups are recommended to use a combination of traditional requirements of ``shall'' format and step-wise use case descriptions. While also user stories are covered in the lectures, it uses a narrative style that is less appropriate for development of autonomous robots.
 
-The SRS connects all roles in the project group. While the requirements engineer is responsible for the SRS, the sales engineer is responsible for developing a sales pitch based on its content. The SRS will be public on the Robot Market, i.e., when other project groups consider purchasing your robot, they will critically review your SRS. The domain expert, having the most chance to predict what features will be valued on the Robot Market, will provide important input to the SRS -- effectively acting as a proxy-customer until the supplier-customer relationship has been established. Finally, the development lead is responsible for implementing the SRS in source code and the test lead is responsible for verifying that the developed product fulfills the SRS.
+The SRS connects all roles in the project group. While the requirements engineer is responsible for the SRS, the sales engineer is responsible for developing a sales pitch based on its content. The SRS will be public on the Robot Market, i.e., when other project groups consider purchasing your robot, they will critically review your SRS. The project manager will double as a Robocode domain expert, thus having the best chance to predict what features will be valued on the Robot Market, and will provide important input to the SRS -- effectively acting as a proxy-customer until the supplier-customer relationship has been established. Finally, the software architect is responsible for implementing the SRS in source code and the quality engineer is responsible for verifying that the developed product fulfills the SRS.
 
 There are several quality attributes that a high-quality SRS should comply with. First, the SRS should be complete, i.e., if properly implemented, the developed product shall be a competitive robot. Just as importantly, the robot shall not offer any features that are not properly captured in the SRS -- the customer is not allowed any surprises. Second, the SRS should constitute a coherent document that is easy to follow. Furthermore, each individual requirement should be:
 
@@ -255,7 +255,7 @@ As a result from the specification activities, each project group shall produce 
 \subsection{Construction} \label{sec:constr}
 The first two computer labs will help project groups set up Robocode development in Eclipse and source code control in git. Moreover, the second computer lab will initiate automated unit testing, an activity that overlaps construction and verification.
 
-An early construction activity is software design. In this project, the design is limited to object-oriented design -- the robot development is too restricted to address any considerations on the software architecture level and there is also no user interaction design. Each project group will present the Object-Oriented Design (OOD) using a Unified Modeling Language (UML) class diagram. As the project is inspired by Agile development methodologies, there will be no big design activity upfront. Instead, the OOD will evolve as the construction phase proceeds. The development lead is responsible to complement the final source code delivery with a class diagram to describe the OOD after-the-fact. Any project group that recognizes a value in using class diagrams in their robot sales pitch are of course welcome to do so. Furthermore, the final source code deliverable shall be complemented by Javadoc documentation (excluding the test code).  
+An early construction activity is software design. In this project, the design is limited to object-oriented design -- the robot development is too restricted to address any considerations on the software architecture level and there is also no user interaction design. Each project group will present the Object-Oriented Design (OOD) using a Unified Modeling Language (UML) class diagram. As the project is inspired by Agile development methodologies, there will be no big design activity upfront. Instead, the OOD will evolve as the construction phase proceeds. The software architect is responsible to complement the final source code delivery with a class diagram to describe the OOD after-the-fact. Any project group that recognizes a value in using class diagrams in their robot sales pitch are of course welcome to do so. Furthermore, the final source code deliverable shall be complemented by Javadoc documentation (excluding the test code).  
 
 As most practical construction work will be done outside of scheduled sessions, how the backbone of the programming will be conducted must be decided by the individual project groups. Still, for this project, we recommend groups to follow a handful of well-known Agile development practices, originally proposed as part of Extreme Programming (XP). Below we list five that we believe are particularly suitable for the process model, along with their Wikipedia definitions:
 
@@ -279,11 +279,11 @@ As a result from the construction activities, each project group shall produce t
 \subsection{Verification}
 All computer labs but the first one will involve working with the JUnit framework for automated testing. Project groups will work with unit testing as a natural companion to the programming during development. While JUnit is designed for automated execution of unit test cases, groups will also use JUnit for system testing of both functional and non-functional (quality) aspects of the robot under development. Finally, groups will learn to use measure code coverage and use static code analysis tools to support software quality assurance.
 
-The test lead is responsible for delivering three growing development artifacts during the projects, as well as a final test report at the final release. First, a suite of automated unit test cases shall evolve during the project. At sprint 1, an initial version shall simply be executable, but at the final release all source code shall be exercised by unit tests. Second, a suite of automated system test cases shall be developed -- an initial version at sprint 2, and the complete suite with the final release. Third, a Software Test Specification (STS) that describes the project group's test and quality activities. At sprint 3, all requirements in the SRS shall be verified either by test cases or targeted by a convincing argumentation that the requirement has been verified through inspection.
+The quality engineer is responsible for delivering three growing development artifacts during the projects, as well as a final test report at the final release. First, a suite of automated unit test cases shall evolve during the project. At sprint 1, an initial version shall simply be executable, but at the final release all source code shall be exercised by unit tests (note that the software architect is responsible for the implementation of the unit test cases). Second, a suite of automated system test cases shall be developed -- an initial version at sprint 2, and the complete suite with the final release. Third, a Software Test Specification (STS) that describes the project group's test and quality activities. At sprint 3, all requirements in the SRS shall be verified either by test cases or targeted by a convincing argumentation that the requirement has been verified through inspection.
 
 Verification activities are naturally supported by tools. Apart from the JUnit framework, the project groups will use the Robocode framework RobotTestBed to automate system testing, and EclEmma to measure code coverage. Furthermore, the project groups will learn about source code quality assurance by running two static code analysis tools: SpotBugs and SonarLint. The tools automatically analyze the source code from complementary quality perspectives.
 
-The final robot release shall be accompanied with a test report, signed by the test lead, showing that all test cases have been executed -- and all corresponding test verdicts. The customer will surely expect that all test cases passed, i.e., that you provide evidence that the entire SRS has been fulfilled by the final robot. In addition to the test verdicts, the test report shall contain appendices with extracted report from the code coverage tool as well as the static code analysis tools.
+The final robot release shall be accompanied with a test report, signed by the quality engineer, showing that all test cases have been executed -- and all corresponding test verdicts. The customer will surely expect that all test cases passed, i.e., that you provide evidence that the entire SRS has been fulfilled by the final robot. In addition to the test verdicts, the test report shall contain appendices with extracted report from the code coverage tool as well as the static code analysis tools.
 
 As a result from the verification activities, each project group shall produce the following deliverables, further described in Section~\ref{sec:process}:
 \begin{description}
@@ -369,7 +369,7 @@ One of the primary goals of the project is to maximize the profit of the group, 
 \subsection{Bespoke supplier-customer relationships}
 The project groups will market their Robot already at a robot fair already after Sprint 1. At this early point in time, only an Alpha release of the robot will be available and an initial version of the SRS -- still, the sales engineer is responsible for developing a convincing sales pitch. All groups will get the chance to pitch their robot through a two minute video at the robot fair, and also present it online on the Robot Market, complemented by the most recent SRS.
 
-After the robot fair, all project groups will submit a ``purchase array'' to the regulatory body. The purchase array consists of one element per group, and each element should contain an integer representing how much your group is willing to pay for the corresponding robot. You are not allowed to make an offer for your own robot, and you are not allowed to offer less than \euro 10 for any other robot. The purchase array should be signed by the domain expert and delivered as a physical copy to the regulatory body through the mailbox in ``grå skåpet''.
+After the robot fair, all project groups will submit a ``purchase array'' to the regulatory body. The purchase array consists of one element per group, and each element should contain an integer representing how much your group is willing to pay for the corresponding robot. You are not allowed to make an offer for your own robot, and you are not allowed to offer less than \euro 10 for any other robot. The purchase array should be signed by the project manager and delivered as a physical copy to the regulatory body through the mailbox in ``grå skåpet''.
 
 Figure~\ref{fig:array} shows an example of purchase arrays submitted to the regulatory body. The purchase arrays are never disclosed, the regulatory body matches project groups into supplier-customer relationships. In the example, cells with bold text show winning bids. Group D, highlighted with a white row, was particularly interested in Robots E, F, and C -- but unfortunately, other project groups offered more. Group D instead got to buy Robot B for \euro 15. Note that the highest bid for a robot can be a tie, such as for Robot A and G. In the case of Robot A, no project group offered more than the minimum \euro 10, which resulted in a (possibly unexpected) bargain buy. 
 
@@ -382,7 +382,7 @@ Figure~\ref{fig:array} shows an example of purchase arrays submitted to the regu
 
 When all project groups have provided their purchase arrays, the regulatory body will commence its work to establish supplier-customer relationships. For each robot, the highest bidder turns into a customer of the group engineering the corresponding robot. If there is a tie, the customer relationship will be assigned randomly. In the end, all project groups will 1) pre-order a robot from a supplier, and 2) have a customer that offered at least \euro 10 to pre-order a robot (the price of the cheapest basic bot). Note that the decision of the regulatory body cannot be appealed. 
 
-Once robots have been pre-ordered, 25\% of their costs will be transferred from the customer to the supplier. This amount will not be refunded in any case -- it represents the risks of purchasing a robot from an external organization. The remainder of the cost will be transferred at the delivery of the final robot. After the final delivery, the domain expert of the purchasing project group conducts acceptance testing of the robot. If the acceptance testing shows that the delivered robot does not fully comply with the SRS, the project manager of the purchasing group is entitled to file a business claim to the regulatory body, further described in Section~\ref{sec:regbody}.
+Once robots have been pre-ordered, 25\% of their costs will be transferred from the customer to the supplier. This amount will not be refunded in any case -- it represents the risks of purchasing a robot from an external organization. The remainder of the cost will be transferred at the delivery of the final robot. After the final delivery, the project manager of the purchasing project group conducts acceptance testing of the robot. If the acceptance testing shows that the delivered robot does not fully comply with the SRS, the project manager of the purchasing group is entitled to file a business claim to the regulatory body, further described in Section~\ref{sec:regbody}.
 
 \subsection{Selling robots on Robot Market}
 In the Post release phase (cf. Fig.~\ref{fig:overview}, each project group will also offer their robot on the Robot Market. Simultaneously, all project groups will seek to complement the pre-ordered (by now hopefully delivered) robot with additional robots to build a competitive robot team for the LU Rumble. Throughout Sprints 2 and 3, the sales engineer is responsible for promoting sales of the robot on Robot Market. Each group will also set a price for its robot -- a group must at least ask for as much as what the bespoke customer has paid. Furthermore, project groups can (but are not required to) offer robot bundles to with discounts for buyers that purchase more than one robot, i.e., bundles of two, three, or four robots. The total cost of each larger bundle most exceed the smaller bundles. Note that the bundle options are not available for suppliers of leader bots, as each team can field only one leader robot. 
@@ -412,7 +412,7 @@ As in any rumble, the goal is to reduce the energy of enemy robots to 0. Team ro
 
 Apart from the standard robots, there are two special types of robots. The leader robot has an additional 100 energy compared the normal robot. Droids have an additional 20 energy, but are not equipped with radars.
 
-At the end of Sprint 1, your project group will have established a relationship with a robot supplier by pre-ordering either a leader robot, a normal robot, or a droid. The supplier will provide you with a final robot at the end of Sprint 3, but your group will have a chance to influence the evolution of the robot during Sprints 2 and 3. The domain expert in your group is responsible for developing a strategy around the robot you have pre-ordered -- to guide your feedback, you will receive two prototypes for evaluation: an Alpha release after Sprint 1, and a Beta release after Sprint 2.
+At the end of Sprint 1, your project group will have established a relationship with a robot supplier by pre-ordering either a leader robot, a normal robot, or a droid. The supplier will provide you with a final robot at the end of Sprint 3, but your group will have a chance to influence the evolution of the robot during Sprints 2 and 3. The project manager in your group is responsible for developing a strategy around the robot you have pre-ordered -- to guide your feedback, you will receive two prototypes for evaluation: an Alpha release after Sprint 1, and a Beta release after Sprint 2.
 
 At the end of Sprint 3, you will complement the robot you have ordered with other robots from the Robot Market. The goal of your strategizing is to identify and purchase additional robots that can successfully cooperate with the robot from your supplier. It is important to keep an eye on the Robot Market during Sprints 2 and 3, both to find the best robots to purchase, and to understand what type of features you should provide through your own robot under development. Note that three robots are always available at fixed prices: 1) Basic Leader Bot \euro20, 2) Basic Bot \euro15, and 3) Basic Droid \euro10.
 
@@ -424,7 +424,7 @@ Each robot team must adhere to three strict constraints:
 \item Each team must not exceed a total cost of more than \euro 100 worth of robots.
 \end{enumerate}
 
-After the acceptance testing, concluding with acceptance test reports and potential business claims at L7, the regulatory body will convene and decide if any bespoke customer should pay less than the total price initially agreed upon. Once all business claims have been settled, all groups will know if they receive any money back -- remember that even if no final robot is delivered, not more than 75\% of the initial price will be returned. Soon after the claims have been settled, the domain experts of all student groups shall hand in their final signed purchase order in ``grå skåpet'' at L8. Note that all groups must also immediately request the supplier of their leader robot which color scheme it should communicate to the rest of the team. Note that there is not much time between L8 and the LU Rumble -- this must be given the highest priority for both domain experts and development leads! Furthermore, if a team purchases the Basic Leader Bot, the requested color scheme must be requested from the course responsible. 
+After the acceptance testing, concluding with acceptance test reports and potential business claims at L7, the regulatory body will convene and decide if any bespoke customer should pay less than the total price initially agreed upon. Once all business claims have been settled, all groups will know if they receive any money back -- remember that even if no final robot is delivered, not more than 75\% of the initial price will be returned. Soon after the claims have been settled, the project managers of all student groups shall hand in their final signed purchase order in ``grå skåpet'' at L8. Note that all groups must also immediately request the supplier of their leader robot which color scheme it should communicate to the rest of the team. Note that there is not much time between L8 and the LU Rumble -- this must be given the highest priority for the engineering department! Furthermore, if a team purchases the Basic Leader Bot, the requested color scheme must be requested from the course responsible. 
 
 \chapter{Project phases}
 
@@ -457,9 +457,9 @@ The process model describing the product development encompasses three sprints, 
 \end{figure}
 
 \subsection{Sprint 1}
-The first sprint overlaps with the project inception as the groups will start working on robot development already at the first exercise sessions in the first week. The high-level goals of Sprint 1 are to successfully do: 1) feature scoping, 2) robot prototyping, and 3) developing a sales pitch. This means that the project group will be focused on engineering and monetizing during Sprint 1. Some strategizing will also occur, as the domain expert will purchase a robot from a supplier after the Robot Fair.
+The first sprint overlaps with the project inception as the groups will start working on robot development already at the first exercise sessions in the first week. The high-level goals of Sprint 1 are to successfully do: 1) feature scoping, 2) robot prototyping, and 3) developing a sales pitch. This means that the project group will be focused on engineering and monetizing during Sprint 1. Some strategizing will also occur, as the project manager will purchase a robot from a supplier after the Robot Fair.
 
-The first steps of the requirements engineering involves analyzing what type of robot would be in high demand by the other project groups. This type of market analysis is no easy task to conduct, and surely the requirements engineer will discuss intensively with the domain expert and the sales engineer. Engineering a software product means making a series of successful technology and business decisions, and already during Sprint 1 the project group needs to set the direction for the engineering department. High-level requirements are referred to as features, and the task of deciding which features to implement in the product is called \textbf{feature scoping}. At the end of Sprint 1, SRS v0.5 should specify the features the group intends to implement in their robot. The features should be promising enough to generate good offers by other project groups, but do not promise too much (aka. ``over scoping'') -- if you do not deliver a robot that fulfils the specification in the final release, your customer will most likely file business claims to the regulatory body! On the other hand, the SRS v0.5 is not carved in stone. There will be negotiations during Sprints 2 and 3, and if both the customer and the regulatory body accept your change requests, you can both modify and remove features later -- and adding new features is of course always possible.
+The first steps of the requirements engineering involves analyzing what type of robot would be in high demand by the other project groups. This type of market analysis is no easy task to conduct, and surely the requirements engineer will discuss intensively with the project manager and the sales engineer. Engineering a software product means making a series of successful technology and business decisions, and already during Sprint 1 the project group needs to set the direction for the engineering department. High-level requirements are referred to as features, and the task of deciding which features to implement in the product is called \textbf{feature scoping}. At the end of Sprint 1, SRS v0.5 should specify the features the group intends to implement in their robot. The features should be promising enough to generate good offers by other project groups, but do not promise too much (aka. ``over scoping'') -- if you do not deliver a robot that fulfils the specification in the final release, your customer will most likely file business claims to the regulatory body! On the other hand, the SRS v0.5 is not carved in stone. There will be negotiations during Sprints 2 and 3, and if both the customer and the regulatory body accept your change requests, you can both modify and remove features later -- and adding new features is of course always possible.
 
 A central part of the engineering in Sprint 1 is the \textbf{robot prototyping}, an activity that serves two main purposes. First, it helps your project group experiment with different candidate features for the robot under development. There is no better way to learn the Robocode domain than by practically implementing different approaches and evaluating them. Second, the prototyping will lead to an Alpha version of the Robot. The customer will obtain the Alpha release, which will enable much richer feedback than an SRS alone. To ensure that testing is part of the development process from the start, Sprint 1 will introduce unit testing in the second week.
 
@@ -476,10 +476,10 @@ Table~\ref{tab:sprint1} shows the resulting deliverables from Sprint 1, their re
 \textbf{Deliverable}           & \textbf{Receiver}   & \textbf{Responsible role} & \textbf{When?}     \\ \hline
 Lean canvas (latest version)   & Supervisor          & Project manager           & L3: Apr 8 - 12.00 \\ \hline
 SRS v0.5                       & Customer+ Supervisor & Requirements engineer     & L3: Apr 8 - 12.00 \\ \hline
-Robot Alpha version            & Customer+ Supervisor & Development lead          & L3: Apr 8 - 12.00  \\ \hline
-STS v0.5        			   & Customer+ Supervisor & Test lead                 & L3: Apr 8 - 12.00  \\ \hline
+Robot Alpha version            & Customer+ Supervisor & Software architect          & L3: Apr 8 - 12.00  \\ \hline
+STS v0.5        			   & Customer+ Supervisor & Quality engineer                 & L3: Apr 8 - 12.00  \\ \hline
 Sales pitch + promotion folder & Course responsible  & Sales engineer            & L2: Apr 5 - 23.59 \textbf{(before Robot Fair!)}\\ \hline
-Purchase array                 & ``Grå skåpet''      & Domain expert             & L4: Apr 9 - 23.59 \textbf{(after Robot Fair!)} \\ \hline
+Purchase array                 & ``Grå skåpet''      & Project manager             & L4: Apr 9 - 23.59 \textbf{(after Robot Fair!)} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -502,7 +502,7 @@ In Sprint 2, you will have an established customer who has received your Robot A
 
 Based on your customer's feedback, your own vision -- and possibly some negotiation in between -- you will \textbf{evolve the robot} during Sprint 2. The features will be broken down into detailed requirements, and the STS will be elaborated to also cover system testing. At the end of Sprint 2, you will deliver Robot Beta release to your customer, constituting an MVP, i.e., a minimal product that still brings some value. To be in a good position for the next sprint, the project group should try to let the lean canvas, SRS, source code, STS, and marketing concept co-evolve -- otherwise they might diverge considerably, increasing the risk of a dissatisfied customer, wasted effort within your group, and reduced sales on the Robot Market. Make sure that any changes you make to the SRS are traceable, i.e., make sure there is a ``paper trail'', in case the regulatory body needs to settle business claims from your customer at a later stage. Significant changes to the SRS must be done in agreement with the customer and documented. If the supplier organization does not store a chain of evidence, the regulatory body is likely to side with the customer in legal contentions.
 
-Finally, you will develop a first draft of your \textbf{Rumble strategy}. The cornerstone of your robot team will be the robot you pre-ordered. Your domain expert will be responsible for communication with your supplier's sales engineer. Just like your project group should be responsive to your customer, your supplier should respond to your requests.
+Finally, you will develop a first draft of your \textbf{Rumble strategy}. The cornerstone of your robot team will be the robot you pre-ordered. Your project manager will be responsible for communication with your supplier's sales engineer. Just like your project group should be responsive to your customer, your supplier should respond to your requests.
 
 Table~\ref{tab:sprint2} shows the resulting deliverables from Sprint 2, their receivers, the responsible roles, and when they are due.
 
@@ -514,9 +514,9 @@ Table~\ref{tab:sprint2} shows the resulting deliverables from Sprint 2, their re
 \hline
 \textbf{Deliverable}           & \textbf{Receiver}   & \textbf{Responsible role} & \textbf{When?}     \\ \hline
 Lean canvas (latest version)   & Supervisor          & Project manager           & L5: Apr 17 - 23.59 \\ \hline
-SRS v0.9                       & Customer+ Supervisor & Requirements engineer     & L5: Apr 17 - 23.59 \\ \hline
-Robot Beta version (MVP)       & Customer+ Supervisor & Development lead          & L5: Apr 17 - 23.59  \\ \hline
-STS v0.9        			   & Customer+ Supervisor & Test lead                 & L5: Apr 17 - 23.59  \\ \hline
+SRS v0.9                       & Customer+ Supervisor & Requirements engineer    & L5: Apr 17 - 23.59 \\ \hline
+Robot Beta version (MVP)       & Customer+ Supervisor & Software architect         & L5: Apr 17 - 23.59  \\ \hline
+STS v0.9        			   & Customer+ Supervisor & Quality engineer         & L5: Apr 17 - 23.59  \\ \hline
 \end{tabular}
 \end{table}
 
@@ -535,7 +535,7 @@ The engineering department will be busy implementing the remaining requirements 
  
 The sales department will keep active communications with the customer, to make sure the final engineering efforts adhere to their expectations. Close communication with the customer will reduce the risks of incoming business claims. However, the sales engineer will also focus considerable effort on the robot offering on Robot Market -- trying to make the robot as attractive as possible on the open market, i.e., the sales engineer will maintain the Robot webpage with the intention to \textbf{generate high-volume sales}.
 
-The executive department will keep a close eye on the engineering efforts of the supplier. After all, this is the supplier's last chance to deliver the robot that has been specified in the SRS. At the same time, your domain expert will analyze the Robot Market to make a final decision of your robot team composition, i.e., \textbf{optimizing the Rumble strategy}. 
+The executive department will keep a close eye on the engineering efforts of the supplier. After all, this is the supplier's last chance to deliver the robot that has been specified in the SRS. At the same time, your project manager will analyze the Robot Market to make a final decision of your robot team composition, i.e., \textbf{optimizing the Rumble strategy}. 
 
 Table~\ref{tab:sprint3} shows the resulting deliverables from Sprint 3, their receivers, the responsible roles, and when they are due.
 
@@ -549,8 +549,8 @@ Table~\ref{tab:sprint3} shows the resulting deliverables from Sprint 3, their re
 Lean canvas (final version)   & Supervisor          & Project manager           & L6: May 10 - 23.59 \\ \hline
 SRS review protocol            & Supervisor & Requirements engineer     & L6: Apr 10 - 23.59 \\ \hline
 SRS v1.0                       & Customer+ Supervisor & Requirements engineer     & L6: May 10 - 23.59 \\ \hline
-Robot Final version        & Customer+ Supervisor & Development lead          & L6: May 10 - 23.59  \\ \hline
-STS v1.0        			   & Customer+ Supervisor & Test lead                 & L6: May 10 - 23.59  \\ \hline
+Robot Final version        & Customer+ Supervisor & Software architect          & L6: May 10 - 23.59  \\ \hline
+STS v1.0        			   & Customer+ Supervisor & Quality engineer             & L6: May 10 - 23.59  \\ \hline
 \end{tabular}
 \end{table}
 
@@ -562,7 +562,7 @@ To support Sprint 3, the following sessions are scheduled:
 \end{itemize}
 
 \section{Post release}
-The phase following the process model is referred to as post mortem. In this phase, your project group will perform acceptance testing of your supplier's Robot Final release. If the acceptance testing identifies flaws, you will file business claims to the regulatory body -- possibly deducting from the total payment. Furthermore, after settling the business claims, the domain expert will submit the final purchase orders to the regulatory body, i.e., the robot team composition for the LU Rumble will be finalized.
+The phase following the process model is referred to as post mortem. In this phase, your project group will perform acceptance testing of your supplier's Robot Final release. If the acceptance testing identifies flaws, you will file business claims to the regulatory body -- possibly deducting from the total payment. Furthermore, after settling the business claims, the project manager will submit the final purchase orders to the regulatory body, i.e., the robot team composition for the LU Rumble will be finalized.
 
 Table~\ref{tab:postrelease} shows the resulting deliverables from the post release phase, their receivers, the responsible roles, and when they are due.
 
@@ -574,9 +574,9 @@ Table~\ref{tab:postrelease} shows the resulting deliverables from the post relea
 \hline
 \textbf{Deliverable}           & \textbf{Receiver}   & \textbf{Responsible role} & \textbf{When?}     \\ \hline
 Fixed Robot Market prices   & Robot Market          & Sales engineer           & L7: May 14 - 23.59 \\ \hline
-Acceptance test report   & Supervisor          & Domain expert           & L7: May 14 - 23.59 \\ \hline
+Acceptance test report   & Supervisor          & Project manager           & L7: May 14 - 23.59 \\ \hline
 Business claims (optional)                       & Course responsible & Project manager     & L7: May 14 - 23.59 \\ \hline
-Purchase orders and team composition       & Course responsible & Domain expert         & L8: May 16 - 23.59  \\ \hline
+Purchase orders and team composition       & Course responsible & Project manager         & L8: May 16 - 23.59  \\ \hline
 \end{tabular}
 \end{table}
 
@@ -719,7 +719,7 @@ This section briefly explains what is expected of the various deliverables.
 \item[v1.0] A final STS that specifies a trustworthy verification of the SRS.
 \end{description}
 \item[Test report] The final release shall be accompanied by a test report that shows the result of executing the STS. The test report shall follow the structure in the STS Appendix.
-\item[Purchase array] The purchase array shall specify valid offers for all other groups robots and be signed by the domain expert.
+\item[Purchase array] The purchase array shall specify valid offers for all other groups robots and be signed by the project manager.
 \item[Robot Market prices] The groups shall specify the price of their robot on Robot Market, and also any bundle deals.
 \item[Acceptance test report] When the final release of another group's robot has been received, you shall test it to see if it complies with its SRS. You shall write an acceptance test report clearly stating how you tested the robot and what the results were. You are free to choose any format for this deliverable.
 \item[Business claims] This is an optional deliverable that you can send to the regulatory body. If you are not satisfied with the final release you received from another group, you can argue for your case in a written business claim. You are free to choose any format for the deliverable. 
