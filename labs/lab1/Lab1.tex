@@ -26,7 +26,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{1.1 }
+\def\myversion{1.2 }
 \date{}
 %\title{%
 
@@ -74,6 +74,8 @@
         \hline
         Markus Borg & 2019-03-04 & Updated version for 2019. & 1.1\\
         \hline
+        Markus Borg & 2019-03-26 & Minor language improvements. & 1.2\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -93,7 +95,7 @@ The instructions for Lab 1 are almost exclusively copied from the ``ReadMe for R
 \chapter{Before the lab}
 To save time during the lab session, please read through this section and follow the instructions.
 
-Have a quick look at the API to get a general feeling of what all is about:\\ 
+Have a quick look at the API to get a general feeling of what it is all about:\\ 
 http://robocode.sourceforge.net/docs/robocode/
 
 \section{What is Robocode?}
@@ -150,6 +152,8 @@ Also note that it is important that these environment variables have been set up
     UNIX, Linux, macOS example: PATH=\${PATH}:\${JAVA_HOME}/bin
 \end{verbatim}
 
+Java is already installed and configured on the computers in E:Alfa and E:Beta, but you might want to double check the environment variables if you plan to work on a private laptop.
+
 \section{Understanding the basics}
 To quickly grasp the fundamentals of Robocode battles, please read the following sections on the RoboWiki's ``Beginner Guides''. 
 
@@ -171,7 +175,7 @@ First things first -- let's get Robocode up and running on your local machine.
 \item Locate Robocode version 1.9.3.5 on SourceForge:\\\texttt{https://sourceforge.net/projects/robocode/files/robocode}
 \item Download \texttt{robocode-1.9.3.5-setup.jar}
 \item Install Robocode by running the jar-file. If needed, follow detailed instructions on RoboWiki:\\\texttt{http://robowiki.net/wiki/Robocode/Download\_And\_Install}
-\item Start Robocode. In case limited permissions stop you from running the start scripts, execute the following from Robocode installation folder:\\
+\item Start Robocode by executing the following command in the Robocode installation folder:\\
 \texttt{java~-Xmx512M~-cp~libs/robocode.jar~robocode.Robocode}
 \item Explore Robocode by starting a few battles from the Battle menu. The robot SittingDuck is the standard robot used for the most basic target practice.
 \end{enumerate}
@@ -184,12 +188,12 @@ Creating a robot can be easy. Making your robot a winner is not. You can spend o
 Robocode comes with an internal code editor. It will not be used during the course, but it serves as a good way to get an first insight in robot implementation.
 
 \begin{enumerate}
-\item The first step is to open up the Robot Editor. From the main Robocode screen, click on the Robot menu, then select Source Editor.
+\item The first step is to open up the Robot Editor. From the main Robocode screen, click on the Robot menu, then select Source Editor. If Robocode detects that you already have a Java compiler installed on your system, accept using it.
 \item When the editor window comes up, click on the File menu, then select New Robot. 
 \item In the dialogs that follow, type in a name for your robot, and enter a unique package name. During the project, your group should use the package name \texttt{groupXX} -- you might just as well use it already now.
 \item Investigate the code. The robot main loop in the \texttt{run()} method tells the robot to move back and forth and turn the gun. Three different events describe behavior when another robot is found, the robot is hit by a bullet, and the robot collides with a wall, respectively.
 \item Save your robot by selecting the Save in the File menu. Follow the prompts to save your robot. 
-\item Compile the robot by selecting Compile in the Compiler menu.
+\item Compile the robot by selecting Compile in the Compiler menu. You will get to know the Codesize of your robot, and that it is categorized as a NanoBot. In some Robocode rumbles, the codesize is used the divide competing robots into weight classes. In the LU Rumble, you do not need to worry about this.
 \item Close the Robot Editor and start a battle with your new robot.
 \item Open the Robot Editor again and uncomment the parts about color (lines 3 and 21). Select some nice colors for your robot, save, and recompile your robot. Start a new battle and verify the new color scheme. 
 \item During the course, you will deliver robots packaged as jar-files using the Robot Packager. From the Robot menu, select Package robot or team. Add your new robot and click Next. In the next dialog, you can toggle whether or not to include source files -- check the box when delivering to your project supervisor, but do not check it when delivering to your future customers. Enter a reasonable version number and a short description, and click Package! Verify that you get a corresponding jar-file in your file system.
@@ -239,8 +243,13 @@ Note that text in bold font below matches specific headers under ``External Edit
 \begin{enumerate}
 \item \textbf{Creating a project in Eclipse}. Follow all instructions under this header.
 \item \textbf{Creating a Robot in Eclipse}. Follow the instructions, and eventually copy the source code from the robot you created in Robot Editor. Import the packages required to make it compile.
-\item Add the robot project into Robocode by following these instructions:\\\texttt{http://robowiki.net/wiki/Robocode/Add\_a\_Robot\_Project} Note: Add the path to the Eclipse project (with \texttt{/src} and \texttt{/bin} as sub-folders), not the Eclipse workspace.
-\item \textbf{Running your robot from Eclipse}. Follow all instructions under this header.
+\item \textbf{Adding an Eclipse project to Robocode} Add the robot project into Robocode by following these instructions:\\\texttt{http://robowiki.net/wiki/Robocode/Add\_a\_Robot\_Project} Note: Add the path to the Eclipse project (with \texttt{/src} and \texttt{/bin} as sub-folders), not the Eclipse workspace.
+\item \textbf{Running your robot from Eclipse}. Follow all instructions under this header. Note that ``Run As $\rightarrow$ Run...'' might be called ``Run As $\rightarrow$ Run Configurations'' in your version of Eclipse.
+
+\begin{center}
+------ REACH THIS POINT TO PASS LAB 1! ------
+\end{center}
+
 \item \textbf{Debugging your robot with Eclipse}. Follow all instructions under this header.
 \end{enumerate}
 
