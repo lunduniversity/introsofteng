@@ -27,7 +27,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{1.0 }
+\def\myversion{1.1 }
 \date{}
 %\title{%
 
@@ -77,6 +77,8 @@
         \hline
         Markus Borg & 2018-03-26 & Version ready for lab. & 1.0\\
         \hline
+        Markus Borg & 2019-03-29 & Updated to use the introsofteng-botexample repo. & 1.1\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -93,7 +95,7 @@ Lab 2 will inspire you to organize your robot implementation according to a a pr
 \chapter{Before the lab}
 To save time during the lab session, please read through this section and follow the instructions. Also, unless you are already familiar with it, please read how the Robocode coordinate system works. One source to understand navigation in Robocode is this link: http://mark.random-article.com/weber/java/robocode/lesson4.html
 
-Wikipedia is a great source to read up on software engineering topics. Software engineers appear to carefully monitor and describe their work practices. Perhaps they take pride in describing what they do for the masses? Good for us, Wikipedia (at least in English) is a free and accurate source of software engineering knowledge. Besides, reading from other sources than the course book is a good idea.
+Wikipedia is a great source to read up on software engineering topics. Software engineers appear to carefully monitor and describe their work practices. Perhaps they take pride in describing what they do for the masses? Good for us, Wikipedia (at least in English) is a free and often accurate source of software engineering knowledge. Besides, reading from other sources than the course book is a good idea.
 
 Prior to the lab, please browse the following Wikipedia articles:
 \begin{itemize}
@@ -103,18 +105,21 @@ Prior to the lab, please browse the following Wikipedia articles:
 \item Unit testing\\-- https://en.wikipedia.org/wiki/Unit_testing
 \end{itemize}
 
-The course material is under development under an open source license on GitHub. Have a look at: https://github.com/lunduniversity/introsofteng
-If you are already familiar with git, I strongly recommend that you clone the repository. If you don't know what this means, instead click the button presented in Figure~\ref{fig:github} and choose ``Download ZIP''. Your lab instructor can help you getting started with git, but simply extracting the Lab2 files from the zip archive works fine as well. For Lab 2, you need the files located in introsofteng-master/project/rumble/labs/lab2/src, including its subfolder: `test'. Watch the video ``Lab2_download.avi'' on Google Drive (ETSA02 Everyone/Labs) if you need support. Once you are comfortable with git, you are most welcome to create ``pull requests'' to improve the course material, e.g., clarifying descriptions or correcting typos!
+The course material is maintained under an open source license on GitHub. Have a look at: https://github.com/lunduniversity/introsofteng
+If you are already familiar with git, I strongly recommend that you clone the repository. If you don't know what this means, instead click the button presented 
+
+TODO: RERWITE
+in Figure~\ref{fig:github} and choose ``Download ZIP''. Your lab instructor can help you getting started with git, but simply extracting the Lab2 files from the zip archive works fine as well. For Lab 2, you need the files located in introsofteng-master/project/rumble/labs/lab2/src, including its subfolder: `test'. Watch the video ``Lab2_download.avi'' on Google Drive (ETSA02 Everyone/Labs) if you need support. Once you are comfortable with git, you are most welcome to create ``pull requests'' to improve the course material, e.g., clarifying descriptions or correcting typos!
 
 \begin{figure}
 \centering
 \includegraphics[width=0.99\textwidth]{figures/GitHub.png}
-\caption{introsofteng repository on GitHub. The arrow shows the ``Clone or download'' button.}
+\caption{TODO: UPDATE introsofteng repository on GitHub. The arrow shows the ``Clone or download'' button.}
 \label{fig:github}
 \end{figure}
 
 \chapter{At the lab}
-The first thing you need to do is to get started with automated testing using JUnit. Start by following the steps below. If you need more detailed instructions, watch the videos ``Lab2_createAndImport.avi'' to create a Java project and import the required files and ``Lab2_runJUnit.avi'' to create a JUnit run configuration. You can download both videos from Google Drive (ETSA02 Everyuone/Labs).
+The first thing you need to do is to get started with automated testing using JUnit. Start by following the steps below. If you need more detailed instructions, watch the videos ``Lab2_createAndImport.avi'' to create a Java project and import the required files and ``Lab2_runJUnit.avi'' to create a JUnit run configuration. You can download both videos from Google Drive (ETSA02 Everyone/Labs).
 \begin{enumerate}
 \item \textbf{Create a new Java project for Lab2 in your Eclipse workplace.} As in Lab 1, add the robocode.jar as an ``External JAR'' in the Libraries tab, either when creating the project or afterwards in the project properties.
 \item \textbf{Create a new package called etsa02_lab2}. In the ``Package Explorer'' pane, right click ``src'' and create a new ``Package'' called ``etsa02_lab2''.
@@ -157,8 +162,8 @@ Try to improve the behavior of BasicMeleeBot. As you might have noticed, the rob
 \chapter{After the lab}
 During the lab you have practiced several fairly advanced software engineering practices at the same time. You have refactored source code into a modular object-oriented design, guided by a UML class diagram, while adhering to a test-driven development approach supported by automated unit testing. Well done!
 
-When your project releases software, you are supposed to provide the regulatory body with a UML class diagram and source code complemented with a suite of JUnit test cases. Note that the group purchasing your robot should not receive anything of this, they get only the requirements specification, the test specification, and the actual robot as a .jar file.
+When your project releases software, you are supposed to provide the regulatory body with a UML class diagram and source code complemented with a suite of JUnit test cases. Note that the group purchasing your robot should not receive anything of this, they get only the requirements specification, the test specification, and the executable robot as a .jar file.
 
-We recommended that the group helps the development lead to maintain a class diagram of the most recent robot design. Also, the group should help the test lead to evolve a JUnit test suite as an approach to detect bugs early -- you should obviously run your test suite frequently. In industry, the developers are typically responsible for writing unit tests for all their source code, but in the ETSA02 project we expect the test lead to drive this task. 
+We recommend that the group helps the software architect to maintain a class diagram of the most recent robot design. Also, the group should together maintain a JUnit test suite as an approach to detect bugs early -- you should obviously run your test suite frequently. In industry, developers are typically responsible for writing unit tests for all their source code -- this is generally a good practice.
 
 \end{document}
