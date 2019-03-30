@@ -47,7 +47,7 @@ public class BasicLeaderBot extends TeamRobot {
 	 * run:  BLB's default behavior
 	 */
 	public void run() {
-		// Prepare RobotColors object with LU colors
+		// Prepare RobotColors object with white colors
 		RobotColors c = new RobotColors();
 		c.bodyColor = Color.white;
 		c.gunColor = Color.white;
@@ -75,7 +75,7 @@ public class BasicLeaderBot extends TeamRobot {
 	}
 
 	/**
-	 * onScannedRobot:  BLB has detected another robot. If hostile, share position with the team.
+	 * onScannedRobot: BLB has detected another robot. If hostile, share position with the team.
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
 		// No action if a teammate is detected 
