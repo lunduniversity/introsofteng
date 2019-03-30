@@ -101,6 +101,11 @@ public class MovementSystem {
 		}
 	}
 	
+	 /**
+	 * Compute the repulsive force based on BasicMeleeBot's position and a repulsive point.
+	 * @param robotPosition The position of BasicMeleeBot.
+	 * @param repulsivePoint The repulsive point.
+	 */
 	private void computeForce(Point2D.Double robotPosition, Point2D.Double repulsivePoint) {
 		double absBearing = Utils.normalAbsoluteAngle(MathUtils.calcAngle(robotPosition, repulsivePoint));
 		double distance = repulsivePoint.distance(robotPosition);

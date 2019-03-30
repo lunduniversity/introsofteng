@@ -77,7 +77,7 @@
         \hline
         Markus Borg & 2018-03-26 & Version ready for lab. & 1.0\\
         \hline
-        Markus Borg & 2019-03-29 & Updated to use the introsofteng-botexample repo. & 1.1\\
+        Markus Borg & 2019-03-30 & Updated to use the introsofteng-botexample repo. & 1.1\\
         \hline
     \end{tabular}
 \end{center}
@@ -105,45 +105,82 @@ Prior to the lab, please browse the following Wikipedia articles:
 \item Unit testing\\-- https://en.wikipedia.org/wiki/Unit_testing
 \end{itemize}
 
-The course material is maintained under an open source license on GitHub. Have a look at: https://github.com/lunduniversity/introsofteng
-If you are already familiar with git, I strongly recommend that you clone the repository. If you don't know what this means, instead click the button presented 
+The course material is maintained under an open source license on GitHub. Almost everything we will use in the course is stored in one of the following repositories:
+\begin{itemize}
+\item https://github.com/lunduniversity/introsofteng -- This is the backbone of the course, containing the project instructions, lectures, lab instructions like this document, and exercises.
+\item https://github.com/lunduniversity/introsofteng-botexample -- This is the skeleton of Basic Melee Bot that you will implement in Lab~2. To support you, the repository contains a suite of unit test cases. In Lab~3, you will implement automated system test cases for Basic Melee Bot. Furthermore, the repository contains all dependencies needed for the project. Your group is encouraged to use this repository as a template when creating the robot for the project.
+\end{itemize}
 
-TODO: RERWITE
-in Figure~\ref{fig:github} and choose ``Download ZIP''. Your lab instructor can help you getting started with git, but simply extracting the Lab2 files from the zip archive works fine as well. For Lab 2, you need the files located in introsofteng-master/project/rumble/labs/lab2/src, including its subfolder: `test'. Watch the video ``Lab2_download.avi'' on Google Drive (ETSA02 Everyone/Labs) if you need support. Once you are comfortable with git, you are most welcome to create ``pull requests'' to improve the course material, e.g., clarifying descriptions or correcting typos!
+You are all welcome to contribute to the repositories if you find errors or obvious improvements. Once you are comfortable with git, you are most welcome to create ``pull requests'' to improve the course material, e.g., clarifying descriptions or correcting typos!
+
+To ensure that you get the correct version of the source code for Lab~2, we recommend that you download the latest \textit{release}, i.e., a container of one or more assets, associated to a git annotated tag. GitHub uses releases to package software versions to users. Open a web browser and go to https://github.com/lunduniversity/introsofteng-botexample. Figure~\ref{fig:github-release} shows where you find the releases created for this repository -- click on it. Figure~\ref{fig:github-zip} should appear and list all available releases. For Lab~2, download the source code for v1.0.1 as a zip file as indicated by the arrow.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.99\textwidth]{figures/GitHub.png}
-\caption{TODO: UPDATE introsofteng repository on GitHub. The arrow shows the ``Clone or download'' button.}
-\label{fig:github}
+\includegraphics[width=0.99\textwidth]{figures/GitHub-release.png}
+\caption{Finding the releases of introsofteng-botexample on GitHub.}
+\label{fig:github-release}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.99\textwidth]{figures/GitHub-zip.png}
+\caption{Downloading the source code corresponding to a release on GitHub. The arrow shows the zip archive.}
+\label{fig:github-zip}
 \end{figure}
 
 \chapter{At the lab}
-The first thing you need to do is to get started with automated testing using JUnit. Start by following the steps below. If you need more detailed instructions, watch the videos ``Lab2_createAndImport.avi'' to create a Java project and import the required files and ``Lab2_runJUnit.avi'' to create a JUnit run configuration. You can download both videos from Google Drive (ETSA02 Everyone/Labs).
+The first thing you need to do is to import the Lab~2 source code, then it is time to get started with automated testing using JUnit. Follow the steps below.\\
+
+\textbf{Import the source code:}
 \begin{enumerate}
-\item \textbf{Create a new Java project for Lab2 in your Eclipse workplace.} As in Lab 1, add the robocode.jar as an ``External JAR'' in the Libraries tab, either when creating the project or afterwards in the project properties.
-\item \textbf{Create a new package called etsa02_lab2}. In the ``Package Explorer'' pane, right click ``src'' and create a new ``Package'' called ``etsa02_lab2''.
-\item \textbf{Import the source files required for lab2}, either from the cloned repository or the zip archive. In the ``Package Explorer'' pane, right click the newly created package and run ``Import...''. Click ``General'' and then choose ``File system'' and select all downloaded files in both the ``src'' folder and the ``src/test'' folder. The content in the Package Explorer should resemble Figure~\ref{fig:afterImport}.
-\item \textbf{Add JUnit as a library}. To make the etsa02_lab2.test package build, you must configure JUnit. Right click the Java project and select ``Build Path'' and click ``Add Libraries...'' and select JUnit. Click ``Next $>$'' followed by ``Finish'' to accept the default settings. You should now see JUnit in the Package Explorer in Eclipse. (In the video, I did this at the same time as I added the robocode.jar)
-\item \textbf{Create a JUnit run configuration}. Right click ``AllBasicMeleeBotUnitTests.java'' and choose ``Run as..'' and create a new JUnit run configuration. Give the configuration a descriptive name, such as ``Lab2 unit tests''.
-\item \textbf{Perform unit testing}. Run the unit tests. All of them are supposed to fail!
+\item Start Eclipse.
+\item Run ``Import...'' from the File menu.
+\item Under ``General'' choose ``Projects from Folder or Archive'' and click ``Next''.
+\item Import the project as shown in Figure~\ref{fig:eclipse-import}. First, click ``Archive..'' and select the zip file you downloaded. Second, select only the checkbox for the Eclipse project. Third, click ``Finish''.
+\item Verify that the content in the Package Explorer resembles Figure~\ref{fig:afterImport}.
+\end{enumerate}
+
+\textbf{Configure and run the JUnit unit test suite:}
+\begin{enumerate}
+\item Right click on BMBUnitTestSuite.java in the Package Explorer. Select ``Run Configurations...'' under ``Run As''.
+\item In the dialog that appears, create a new JUnit configuration. Enter the information presented in Figure~\ref{fig:runConfig}.
+\item Click ``Run''. All units tests in the test suite shall now run. All of them are supposed to fail!
 \end{enumerate}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{figures/packageExplorerAfterImport.png}
-\caption{The Package Explorer in Eclipse after importing the Lab 2 source code.}
+\includegraphics[width=0.99\textwidth]{figures/Eclipse-import.png}
+\caption{Downloading the source code corresponding to a release on GitHub. The arrow shows the zip archive.}
+\label{fig:eclipse-import}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{figures/packageExplorerAfterImport.png}
+\caption{The Package Explorer in Eclipse after importing the source code from introsofteng-examplebot.}
 \label{fig:afterImport}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.99\textwidth]{figures/JUnit-runConfig.png}
+\caption{Creating a new JUnit run configuration for BMBUnitTestSuite.}
+\label{fig:runConfig}
 \end{figure}
 
 \newpage
 
-Now it is time to start the refactoring task. 
+\textbf{Complete the refactoring task:}
 \begin{enumerate}
 \item First, you should study the implementation of the robot in ``BasicMeleeBot_AntiPattern''. The robot implements ``anti gravity movement'', i.e., it moves away from other robots. 
-\item Try the robot in Robocode to verify the anti gravity movement.
+\item Try the robot in Robocode to verify the anti gravity movement. For Robocode to find Basic Melee Bot, you first need to set the path to the root directory of the BasicMeleeBot project in the ``Development Options'' under ``Options$\rightarrow$Preferences'' in Robocode. Revisit the instructions for Lab~1 if you do not remember how to do this.
 \item BasicMeleeBot_AntiPattern does not comply with good object oriented design practices, instead all functionality is collected in one big class. A modular robot design would greatly increase the evolvability of the product. Figure~\ref{fig:classDiagram} shows a more feasible object oriented design. Perhaps you can use something similar in your project?
-\item Your task is now to refactor BasicMeleeBot_AntiPattern into the structure presented in the provided class diagram. BasicMeleeBot is already implemented for you, but you should complete the missing code in the other classes. A suggested implementation order is: 1) MathUtils, 2) PositioningSystem, 3) EnemyTracker, 4) TargetingSystem, and 5) MovementSystem. The unit tests are there to guide you in the process. Study the test cases to understand the intention behind the different methods. Most importantly, run them frequently to verify that you are on the right track -- when all test cases are green, you have completed Lab 2!
+\item Your task is now to refactor BasicMeleeBot_AntiPattern into the structure presented in the provided class diagram. BasicMeleeBot.java is already implemented for you, but you should complete the missing code in the other classes. A suggested implementation order is: 1) MathUtils, 2) PositioningSystem, 3) EnemyTracker, 4) TargetingSystem, and 5) MovementSystem. The unit tests are there to guide you in the process. Study the test cases to understand the intention behind the different methods. Most importantly, run them frequently to verify that you are on the right track -- when all test cases are green, you have completed Lab 2!
+\begin{center}
+------ REACH THIS POINT TO PASS LAB 2! ------
+\end{center}
+\item If time permits during Lab~2, uncomment the code snippet for ``wall avoidance'' in MovementSystem.java and move it according to the instructions. If you did not reach this point during the lab session, please do it before Lab~3 -- it is required to proceed with the automated system testing.
 \end{enumerate}
 
 \begin{figure}
@@ -155,15 +192,11 @@ Now it is time to start the refactoring task.
 
 \newpage
 
-The following instructions are optional, in case you finish the refactoring task quickly. If you complete this task, you will have something similar to the BasicMeleeBot that will be offered as an ETSA02 basic bot on Robot Market. If you don't complete this task during the lab session, you will anyway get the corresponding source code.
-
-Try to improve the behavior of BasicMeleeBot. As you might have noticed, the robot gets stuck in walls when it performs the anti gravity movement. A standard approach to solve this is to implement some form of ``wall avoidance'' strategy. Add wall avoidance to the update() method in the class MovementSystem, and use the methods in PositioningSystem to implement this improvement. Is it possible to add any unit tests for this behavior? If so, add new unit tests to the test suite in MovementSystemTest. If not, try to explain why.
-
 \chapter{After the lab}
 During the lab you have practiced several fairly advanced software engineering practices at the same time. You have refactored source code into a modular object-oriented design, guided by a UML class diagram, while adhering to a test-driven development approach supported by automated unit testing. Well done!
 
-When your project releases software, you are supposed to provide the regulatory body with a UML class diagram and source code complemented with a suite of JUnit test cases. Note that the group purchasing your robot should not receive anything of this, they get only the requirements specification, the test specification, and the executable robot as a .jar file.
+When your project releases software, you are supposed to provide the regulatory body with a UML class diagram and source code complemented with a suite of JUnit test cases. Note that the group purchasing your robot shall not receive anything of this, they get only the requirements specification, the test specification, and the executable robot as a .jar file.
 
-We recommend that the group helps the software architect to maintain a class diagram of the most recent robot design. Also, the group should together maintain a JUnit test suite as an approach to detect bugs early -- you should obviously run your test suite frequently. In industry, developers are typically responsible for writing unit tests for all their source code -- this is generally a good practice.
+We recommend that the group helps the software architect to maintain a class diagram of the most recent robot design. Also, the group shall together maintain a JUnit test suite as an approach to detect bugs early -- you should obviously run your test suite frequently. In industry, developers are typically responsible for writing unit tests for all their source code -- this is generally a good practice. The test cases would then run every time there is a commit as part of a continuous integration pipeline.
 
 \end{document}
