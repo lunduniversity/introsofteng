@@ -28,7 +28,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.97 }
+\def\myversion{0.98 }
 \date{}
 %\title{%
 
@@ -109,6 +109,8 @@
         Markus Borg & 2019-03-04 & Detailed updates for 2019 edition. & 0.96\\
         \hline
         Markus Borg & 2019-03-25 & Final touch for 2019 edition. & 0.97\\
+        \hline
+        Markus Borg & 2019-03-30 & Added instructions for time reporting. & 0.98\\
         \hline
     \end{tabular}
 \end{center}
@@ -642,7 +644,7 @@ Guidelines for customers:
 \emph{To be written...}\\\\
 
 \chapter{Detailed instructions}
-This section presents some aspects of the course in detail: 1) the roles you should assign within the project group, 2) expectations on the deliverables, and 3) the course infrastructure.
+This section presents some aspects of the project in detail: 1) the roles you should assign within the project group, 2) the time reporting, and 3) the course infrastructure.
 
 \section{Role assignment} \label{sec:roles}
 During the course, all students are expected to contribute to all activities. The purpose of the roles is not to isolate work tasks that could be individually completed. Software engineering is a collaborative effort, and completing work tasks in isolation is not part of a scalable methodology. Instead, we stress the value of ``collective ownership'' during the project, not only for the source code as described in Section~\ref{sec:constr}, but for all artifacts produced. To ensure that all group members can contribute to the technical parts of the project, the lab sessions are mandatory -- to further highlight this, all group members are assigned the roles of developer and tester. However, all group members will also be assigned a third role.
@@ -667,8 +669,21 @@ As the project progresses through phases and sprints, different roles with have 
 \end{description}
 
 \section{Time reporting} \label{sec:time}
-\emph{To be written...}\\\\
-Report time per role on a weekly basis. Reflect on the figures after each sprint. Plan changes if needed to better balance the work load.
+All groups shall report how much effort they spend during the second phase of the project, i.e., the three development sprints. The project manager is responsible for collecting how many hours each member of the team works on the project on a weekly basis. In the end of each week, the regulatory body will collect the information and present an overview during the Monday lectures. Note that the reported hours shall \textbf{not} include the scheduled time for lectures, computer labs, or exercises -- even if they are directly connected to work in the projects. This rule is based on the 3 ECTS that are provided for completing the project, whereas the remaining 3 ECTS of the course cover the scheduled teaching and the written exam.
+
+Project managers report hours in the dedicated spreadsheet on Google Drive. Each group has a separate tab in the document, as presented in Figure~\ref{fig:time}. All numbers shall be entered in the white cells. After each development sprint, it is a good practice to do a sprint retrospective, i.e., reflect on how the group worked during the sprint and what could be improved. Typical questions that can drive a retrospective discussion are:
+\begin{itemize}
+\item What went well in the Sprint? This question might identify what the group should \textbf{continue doing} in the next sprint.
+\item What could be improved? Based on this question, you might identify things the group should \textbf{start doing} and/or things the group should \textbf{stop doing}.
+\item Did the group \textbf{balance the work load} among the roles reasonably well? Do any of the roles need to delegate tasks to others? 
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.99\textwidth]{figures/timeReporting.png}
+\caption{Example of time reporting table.}
+\label{fig:time}
+\end{figure}
 
 \section{Software Releases: Alpha, Beta, and Final}
 The robot shall be released after each development sprint, each time constituting a more mature software product. In ETSA02, you shall create each software release in two variants: 1) a customer release and 2) a regulatory body release. Groups will upload their releases in designated folders on Google Drive.
