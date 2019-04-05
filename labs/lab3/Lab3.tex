@@ -77,7 +77,7 @@
         \hline
         Markus Borg & 2018-04-17 & Ready for lab. & 1.0\\
         \hline
-        Markus Borg & 2019-04-05 & Updated for introsofteng-botexample. & 1.1\\
+        Markus Borg & 2019-04-05 & Updated for introsofteng-botexample. Simplified. & 1.1\\
         \hline
     \end{tabular}
 \end{center}
@@ -126,6 +126,8 @@ install the Robot testing plugin. The default option is to install the plugin in
 \label{fig:runConfig}
 \end{figure}
 
+\newpage
+
 \section{The fundamentals of RobotTestBed}
 To get an initial understanding of RobotTestBed, study the simple example TestWallBehavior that follows. The test case verifies that the corresponding robot visits all four corners of the battlefield. RobotTestBed lets you override methods in Robocode's BattleAdaptor to add JUnit assertions for testing robot behavior. The complete list is available in the Robocode API, but a handful of methods should be enough for Lab 3:
 \begin{itemize}
@@ -135,7 +137,7 @@ To get an initial understanding of RobotTestBed, study the simple example TestWa
 \item public void onTurnEnded(TurnEndedEvent event)
 \end{itemize}
 
-During the lab, you will work on designing test cases to verify the four primary features of Basic Melee Bot: 1) Spinning radar, 2) Closest enemy targeting, 3) Non-stop anti-gravity movement, and 4) Wall avoidance. You can study the features and requirements of Basic Melee Bot in Section~\ref{sec:atlab}.
+During the lab, you will work on designing test cases to verify the three primary features of Basic Melee Bot: 1) Spinning radar, 2) Closest enemy targeting,  and 3) Wall avoidance. You will also design a test case to verify a quality requirement related to 1-vs-1 battle performance. To support this, you will get examples of how you could test the feature ``Non-stop anti-gravity movement'' and the quality requirement related to Melee battle performance. You can study the features and requirements of Basic Melee Bot in Section~\ref{sec:atlab}. 
 
 \newpage
 \begin{verbatim}
@@ -249,14 +251,14 @@ In Lab 3, your task is to design automated test cases that verify features and d
 
 Below you will find the four features of Basic Melee Bot and two quality requirements, listed in the recommended implementation order. All items listed below have a corresponding test case in the test src/test folder. Implement the test cases in the prepared files (ST_FX or ST_Q prefixes) and make sure they all pass in JUnit. We suggest that you complete Lab 3 in the following order:
 
-\begin{itemize}
-\item Feature 3: Non-stop anti-gravity movement
-\item Feature 4: Wall avoidance 
-\item Quality requirement: 1-vs-1 battle performance
-\item Quality requirement: Melee battle performance
-\item Feature 2: Closest enemy targeting
-\item Feautre 1: Spinning radar
-\end{itemize}
+\begin{enumerate}
+\item Study how Feature 3 ``Non-stop anti-gravity movement'' is tested in\\ \texttt{ST_F3_AntiGravMovement.java}.
+\item Implement a test case for Feature 4: ``Wall avoidance'' in\\ \texttt{ST_F4_WallAvoidance.java}.
+\item Study how the Quality requirement ``Melee battle performance'' is tested in\\ \texttt{ST_Q_MeleeSpinBots.java}.
+\item Implement a test case for the Quality requirement ``1-vs-1 battle performance'' in \texttt{ST_Q_1vs1SpinBot.java}.
+\item Implement a test case for Feature 2: ``Closest enemy targeting'' in\\ \texttt{ST_F2_ClosestEnemyTargeting.java}.
+\item (Optional) Try to implement a test case for ``Feature 1: Spinning radar'' in\\ \texttt{ST_F1_RadarSystem.java}.
+\end{enumerate}
 
 \section{Feature 3 -- Non-stop anti-gravity movement}
 BMB shall use anti-gravity movement.
@@ -280,7 +282,7 @@ Implementation risk: \textbf{medium}
 
 \subsection{Functional Requirements}
 \begin{itemize}
-\item[REQ-F4-1] When closer than 40 distance units to a wall, BMB shall alter its course to avoid collision.
+\item[REQ-F4-1] When closer than 20 distance units to a wall, BMB shall alter its course to avoid collision.
 \end{itemize}
 
 \section{Quality Requirements}
@@ -290,27 +292,14 @@ This section describes quality requirements for Basic Melee Bot. The robot is pr
 When Basic Melee Bot battles against a single enemy robot, it will continuously change its position on the battlefield and stay away from the enemy robot by using its non-stop anti-gravity movement. Basic Melee Bot shall perform well against the Robocode sample robots.
 
 \begin{itemize}
-\item[REQ-Q1] Basic Melee Bot shall have at least 75\% win rate against SpinBot in battles over 100 rounds on the standard Robocode battlefield size.
+\item[REQ-Q1] Basic Melee Bot shall have at least 75\% win rate against SpinBot in battles over 100 rounds on a 800x600 battlefield (standard Robocode size for 1-vs-1 battles).
 \end{itemize}
 
 \subsection{Melee Battle Performance Requirements}
 When Basic Melee Bot battles against multiple enemy robot, it will try to stay away from enemy robots by using its non-stop anti-gravity movement. Basic Melee Bot shall perform well in melee battles against the Robocode sample robots.
 
 \begin{itemize}
-\item[REQ-Q2] Basic Melee Bot shall have at least 33\% win rate in melee battles against three enemy SpinBots in battles over 100 rounds on the standard Robocode battlefield size.
-\end{itemize}
-
-\section{Feature 1 -- Spinning radar}
-BMB shall feature a spinning radar.
-
-\subsection{Description and Priority}
-The spinning radar is a simple solution to detect enemy robots by continuously scanning the entire battlefield.\\\\Business priority: \textbf{high}\\
-Implementation risk: \textbf{very low}
-
-\subsection{Functional Requirements}
-\begin{itemize}
-\item[REQ-F1-1] The radar shall scan the battlefield clockwise as long as BMB is operational and the battle is ongoing.
-\item[REQ-F1-2] Detected enemy robots shall be stored in an internal data structure. 
+\item[REQ-Q2] Basic Melee Bot shall have at least 33\% win rate in melee battles against three enemy SpinBots in battles over 100 rounds on a 1000x1000 battlefield (standard Robocode size for melee battles).
 \end{itemize}
 
 \section{Feature 2 -- Closest enemy targeting}
@@ -324,6 +313,23 @@ Implementation risk: \textbf{low}
 \begin{itemize}
 \item[REQ-F2-1] BMB shall fire at the closest enemy robot as long as the battle is ongoing.
 \item[REQ-F2-2] BMB shall use a constant fire power of 1.
+\end{itemize}
+
+\begin{center}
+\textbf{------ REACH THIS POINT TO PASS LAB 3! ------}
+\end{center}
+
+\section{Feature 1 -- Spinning radar}
+BMB shall feature a spinning radar.
+
+\subsection{Description and Priority}
+The spinning radar is a simple solution to detect enemy robots by continuously scanning the entire battlefield.\\\\Business priority: \textbf{high}\\
+Implementation risk: \textbf{very low}
+
+\subsection{Functional Requirements}
+\begin{itemize}
+\item[REQ-F1-1] The radar shall scan the battlefield clockwise as long as BMB is operational and the battle is ongoing.
+\item[REQ-F1-2] Detected enemy robots shall be stored in an internal data structure. 
 \end{itemize}
 
 \chapter{After the lab}
