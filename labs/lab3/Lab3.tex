@@ -27,7 +27,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{1.0 }
+\def\myversion{1.1 }
 \date{}
 %\title{%
 
@@ -77,6 +77,8 @@
         \hline
         Markus Borg & 2018-04-17 & Ready for lab. & 1.0\\
         \hline
+        Markus Borg & 2019-04-05 & Updated for introsofteng-botexample. & 1.1\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -90,50 +92,41 @@ During Lab 3 you will continue working with automated testing of Basic Melee Bot
 \end{itemize}
 
 \chapter{Before the lab}
-The source code required for Lab 3 is available on GitHub:\\https://github.com/lunduniversity/introsofteng\\\\
-If you have already cloned the repository, pull the latest source code to make sure you work with the latest version. If you prefer downloading the code, instead click the button presented in Figure~\ref{fig:github} and choose ``Download ZIP''. Once downloaded, locate the files you need for Lab 3. The files are in the folder introsofteng-master/labs/lab3/src, and its subfolder: `test'. Rewatch the video ``Lab2_download.avi'' on Google Drive (ETSA02 Everyone/Labs) if you need support.
+You shall continue on the source code you developed for Lab~2. If you have not yet completed the code to make ``wall avoidance'' work for the Lab~2 robot, please do so now. Before continuing with Lab~3, start Robocode and verify that Basic Melee Bot does not get stuck in any walls. The content in the Package Explorer should resemble Figure~\ref{fig:packageExplorer}.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.99\textwidth]{figures/GitHub.png}
-\caption{introsofteng repository on GitHub. The arrow shows the ``Clone or download'' button.}
-\label{fig:github}
+\includegraphics[width=0.75\textwidth]{figures/packageExplorerAfterLab2.png}
+\caption{The Package Explorer in Eclipse after completing Lab 2. In Lab 3 you will implement the system test cases with the prefix `ST'. `F1-F4' refers to the four features of Basic Melee Bot, and `Q' indicates that a quality requirement is under test. You will now work with the unit test suite in Lab 3, but all unit test cases should of course still pass.}
+\label{fig:packageExplorer}
 \end{figure}
 
 \section{Install, setup, and run test cases with RobotTestBed and JUnit}
-Importing the Lab 3 source code and configuring RobotTestBed are not trivial tasks, but most steps are similar to what you did for Lab 1 and Lab 2, e.g., creating a Java project, importing source files, adding external libraries in Eclipse, adding the path to the Eclipse Java project to Robocode, and creating a JUnit run configuration.  You might need to revisit instructions from previous labs if you get lost. 
-
-Follow the instructions below to install the Robocode testing plugin and setup JUnit for system testing of robots. Figure~\ref{fig:overview} shows an overview of the setup we will use in Lab 3.
+Follow the instructions below to install the Robocode testing plugin and setup JUnit for system testing of robots. Figure~\ref{fig:overview} shows an overview of the setup we will use in Lab~3.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.75\textwidth]{figures/overview.png}
-\caption{The three main elements in the Lab 3 setup, and the key links A-E. To the left, your local Robocode installation with the new Robot testing plugin. The link from Robocode to the Lab 3 Java project (cf. D) is configured in the Robocode options menu. In the middle, your Lab 3 Java project containing BasicMeleeBot (BMB) and its test cases. The references to Robocode (cf. B) and to Robot testing plugin (cf. C) are configured in the ``Java build path'' in Eclipse. To the right, the JUnit framework. The Lab 3 Java project in Eclipse needs a reference to the JUnit library (cf. A). Finally, the test cases contain a string to explicitly specify which Robocode robot is under test (cf. E) -- this should for all test cases be ``etsa02_lab3.BasicMeleeBot*''.}
+\includegraphics[width=0.85\textwidth]{figures/overview.png}
+\caption{The three main elements in the Lab 3 setup, and the key links A-E. To the left, your local Robocode installation with the new Robot testing plugin. The link from Robocode to the Lab 3 Java project (cf. D) is configured in the Robocode options menu. In the middle, your Java project containing BasicMeleeBot (BMB) and its test cases. The references to Robocode (cf. B) and to Robot testing plugin (cf. C) are configured in the ``Java build path'' in Eclipse. To the right, the JUnit framework. The Java project in Eclipse needs a reference to the JUnit library (cf. A). Finally, the test cases contain a string to explicitly specify which Robocode robot is under test (cf. E) -- this should for all test cases be ``se.lth.cs.etsa02.BasicMeleeBot.BasicMeleeBot*'' (unless you have renamed your project or robot).}
 \label{fig:overview}
 \end{figure}
 
 
 \begin{enumerate}
-\item \textbf{Download Robot testing plugin}. Download the latest Robot testing plugin (1.9.3.2) from https://sourceforge.net/projects/robocode/files/robocode/1.9.3.2/
-\item \textbf{Install Robot testing plugin}. Install the Robot testing plugin. The default option is to install the plugin in the existing Robocode folder -- this is fine.
-\item \textbf{Create a new Java project for Lab3 in your Eclipse workplace.} As in Lab 1 and Lab 2, add the robocode.jar as an ``External JAR'' in the Libraries tab, either when creating the project or afterwards in the project properties.
-\item \textbf{Create a new package called etsa02_lab3}. In the ``Package Explorer'' pane, right click ``src'' and create a new ``Package'' called ``etsa02_lab3''.
-\item \textbf{Import the source files required for lab3}, either from the cloned repository or the zip archive. In the ``Package Explorer'' pane, right click the newly created package and run ``Import...''. Click ``General'' and then choose ``File system'' and select all downloaded files in both the ``src'' folder and the ``src/test'' folder. The content in the Package Explorer should resemble Figure~\ref{fig:afterImport}.
-\item \textbf{Add JUnit as a library}. As in Lab 2, right click the Java project and select ``Build Path'' and click ``Add Libraries...'' and select JUnit. Click ``Next $>$'' followed by ``Finish'' to accept the default settings. This step creates the A link in Fig.~\ref{fig:overview}.
-\item \textbf{Add references to robocode libraries}. Add robocode.jar (cf. B in Fig.~\ref{fig:overview}) and robocode.testing.jar (cf. C in Fig.~\ref{fig:overview}) to the Java build path. If you don't remember the steps, have a look at:\\http://robowiki.net/wiki/Robocode/Eclipse/Create_a_Project\\(Same as for Lab 1, but add also robocode.testing.jar this time).
-\item \textbf{Create a JUnit run configuration}. Right click ``BMBSystemTestSuite.java'' and choose ``Run as..'' and create a new JUnit run configuration. Give the configuration a descriptive name, such as ``Lab3 system tests''. Do this in the same way as when creating a normal JUnit run configuration (i.e., Lab 2), but you must also add -Drobocode.home=PATH TO ROBOCODE as an argument to the VM (in the second tab, in the second text field).
-\item \textbf{Add path to BMB from Robocode}. Robocode must find the ``etsa02_lab3.BasicMeleeBot*'' specified in the test cases (cf. E in Fig.~\ref{fig:overview}). To do this, start Robocode and add a path to the new Lab 3 Java project (from the Options menu $\rightarrow$ Preferences in the ``Development Options'' tab). This step creates the D link in Fig.~\ref{fig:overview}.
+\item \textbf{Download Robot testing plugin}. Download the latest Robot testing plugin (1.9.3.5) from https://sourceforge.net/projects/robocode/files/robocode/1.9.3.5/ -- The file is called ``robocode.testing-1.9.3.5-setup.jar''
+\item \textbf{Install Robot testing plugin}. Run the downloaded jar file and 
+install the Robot testing plugin. The default option is to install the plugin in the existing Robocode folder -- this is correct.
+\item \textbf{Create a JUnit run configuration}. Right click ``BMBSystemTestSuite.java'' and choose ``Run as..'' and create a new JUnit run configuration. Give the configuration a descriptive name, such as ``Lab3 system tests''. Do this in the same way as when creating a normal JUnit run configuration (i.e., Lab 2), but you must also add -Drobocode.home=PATH\_TO\_ROBOCODE as an argument to the VM (in the second tab, in the second text field).\\\\Note: You must replace PATH\_TO\_ROBOCODE with the installation path of Robocode on your computer. Please refer to Figure~\ref{fig:runConfig} for an example.
 \end{enumerate}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{figures/packageExplorerAfterImport.png}
-\caption{The Package Explorer in Eclipse after importing the Lab 3 source code. You should recognize BasicMeleeBot from Lab 2, including its unit tests -- now organized in the test suite `BMBUnitTestSuite.java'. New for Lab 3 are the system tests (prefix `ST') and the system tests for the quality requirements (prefix `Q').}
-\label{fig:afterImport}
+\includegraphics[width=0.85\textwidth]{figures/runConfig.png}
+\caption{Example of arguments for a JUnit run configuration corresponding to Robocode being installed in ``C:\textbackslash robocode\_1.9.3.5''}
+\label{fig:runConfig}
 \end{figure}
 
 \section{The fundamentals of RobotTestBed}
-
 To get an initial understanding of RobotTestBed, study the simple example TestWallBehavior that follows. The test case verifies that the corresponding robot visits all four corners of the battlefield. RobotTestBed lets you override methods in Robocode's BattleAdaptor to add JUnit assertions for testing robot behavior. The complete list is available in the Robocode API, but a handful of methods should be enough for Lab 3:
 \begin{itemize}
 \item public void onBattleCompleted(BattleCompletedEvent event)
@@ -269,7 +262,7 @@ Below you will find the four features of Basic Melee Bot and two quality require
 BMB shall use anti-gravity movement.
 	
 \subsection{Description and Priority}
-Anti-gravity movement is used to keep a distance to certain points on the battlefield. BMB shall use this movement to stay away from enemy robots. Furthermore, BMB shall never stay at one position.\\\\Business priority: \textbf{medium}\\
+Anti-gravity movement is used to keep a distance to certain points on the battlefield. BMB shall use this movement to stay away from enemy robots. Furthermore, to avoid becoming an easy target, BMB shall never stay still in one position for too long.\\\\Business priority: \textbf{medium}\\
 Implementation risk: \textbf{medium}
 
 \subsection{Functional Requirements}
