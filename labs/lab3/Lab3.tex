@@ -20,14 +20,14 @@
     pdfauthor={Markus Borg},                     % author
     pdfsubject={TeX and LaTeX},                        % subject of the document
     pdfkeywords={TeX, LaTeX, graphics, images}, % list of keywords
-    colorlinks=true,       % false: boxed links; true: colored links
-    linkcolor=blue,       % color of internal links
-    citecolor=black,       % color of links to bibliography
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=blue,         % color of internal links
+    citecolor=black,        % color of links to bibliography
     filecolor=black,        % color of file links
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{1.1 }
+\def\myversion{1.2 }
 \date{}
 %\title{%
 
@@ -79,6 +79,8 @@
         \hline
         Markus Borg & 2019-04-07 & Updated for introsofteng-botexample. Simplified. & 1.1\\
         \hline
+        Markus Borg & 2019-04-09 & Corrected the string to the robot under test. & 1.2\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -107,7 +109,7 @@ Follow the instructions below to install the Robocode testing plugin and setup J
 \begin{figure}
 \centering
 \includegraphics[width=0.85\textwidth]{figures/overview.png}
-\caption{The three main elements in the Lab 3 setup, and the key links A-E. To the left, your local Robocode installation with the new Robot testing plugin. The link from Robocode to the Lab 3 Java project (cf. D) is configured in the Robocode options menu. In the middle, your Java project containing BasicMeleeBot (BMB) and its test cases. The references to Robocode (cf. B) and to Robot testing plugin (cf. C) are configured in the ``Java build path'' in Eclipse. To the right, the JUnit framework. The Java project in Eclipse needs a reference to the JUnit library (cf. A). Finally, the test cases contain a string to explicitly specify which Robocode robot is under test (cf. E) -- this should for all test cases be ``se.lth.cs.etsa02.BasicMeleeBot.BasicMeleeBot*'' (unless you have renamed your project or robot).}
+\caption{The three main elements in the Lab 3 setup, and the key links A-E. To the left, your local Robocode installation with the new Robot testing plugin. The link from Robocode to the Lab 3 Java project (cf. D) is configured in the Robocode options menu. In the middle, your Java project containing BasicMeleeBot (BMB) and its test cases. The references to Robocode (cf. B) and to Robot testing plugin (cf. C) are configured in the ``Java build path'' in Eclipse. To the right, the JUnit framework. The Java project in Eclipse needs a reference to the JUnit library (cf. A). Finally, the test cases contain a string to explicitly specify which Robocode robot is under test (cf. E) -- this should for all test cases be ``se.lth.cs.etsa02.basicmeleebot.BasicMeleeBot*'' (unless you have renamed your project or robot).}
 \label{fig:overview}
 \end{figure}
 
