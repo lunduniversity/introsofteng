@@ -113,7 +113,6 @@ Follow the instructions below to install the Robocode testing plugin and setup J
 \label{fig:overview}
 \end{figure}
 
-
 \begin{enumerate}
 \item \textbf{Download Robot testing plugin}. Download the latest Robot testing plugin (1.9.3.5) from https://sourceforge.net/projects/robocode/files/robocode/1.9.3.5/ -- The file is called ``robocode.testing-1.9.3.5-setup.jar''
 \item \textbf{Install Robot testing plugin}. Run the downloaded jar file and 
@@ -127,6 +126,13 @@ install the Robot testing plugin. The default option is to install the plugin in
 \caption{Example of arguments for a JUnit run configuration corresponding to Robocode being installed in ``C:\textbackslash robocode\_1.9.3.5''}
 \label{fig:runConfig}
 \end{figure}
+
+\vspace{1em}
+\fbox{\begin{minipage}{0.99\textwidth}
+\textbf{Note!} Previous students have reported that there is a bug in RobotTestBed that manifests in some operational environments. If RobotTestBed cannot find your robots, i.e., if you get a NullPointerException from the RepositoryManager in Robocode, try adding \texttt{-DNOSECURITY=true} as a parameter to the VM.
+\end{minipage}}
+\vspace{1em}
+
 
 \newpage
 
