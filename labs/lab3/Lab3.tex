@@ -27,7 +27,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{1.2 }
+\def\myversion{1.3 }
 \date{}
 %\title{%
 
@@ -81,6 +81,8 @@
         \hline
         Markus Borg & 2019-04-09 & Corrected the string to the robot under test. & 1.2\\
         \hline
+        Markus Borg & 2019-04-16 & Clarify that teams are not supported by RobotTestBed. & 1.3\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -92,6 +94,12 @@ During Lab 3 you will continue working with automated testing of Basic Melee Bot
 \item Designing JUnit test cases for system testing.
 \item Designing JUnit test cases for testing quality requirements.
 \end{itemize}
+
+\vspace{1em}
+\fbox{\begin{minipage}{0.99\textwidth}
+\textbf{Note!} Robot teams are not supported by RobotTestBed. Any attempt to field a team of robots directly from a system test case will fail. If you have specified corresponding quality requirements for your robot under development, you will have to design \textit{manual} test cases to verify them, i.e., start a new battle in Robocode and verify that the intended behavior can be observed.
+\end{minipage}}
+\vspace{1em}
 
 \chapter{Before the lab}
 You shall continue on the source code you developed for Lab~2. If you have not yet completed the code to make ``wall avoidance'' work for the Lab~2 robot, please do so now. Before continuing with Lab~3, start Robocode and verify that Basic Melee Bot does not get stuck in any walls. The content in the Package Explorer should resemble Figure~\ref{fig:packageExplorer}.
@@ -132,7 +140,6 @@ install the Robot testing plugin. The default option is to install the plugin in
 \textbf{Note!} Previous students have reported that there is a bug in RobotTestBed that manifests in some operational environments. If RobotTestBed cannot find your robots, i.e., if you get a NullPointerException from the RepositoryManager in Robocode, try adding \texttt{-DNOSECURITY=true} as a parameter to the VM.
 \end{minipage}}
 \vspace{1em}
-
 
 \newpage
 
