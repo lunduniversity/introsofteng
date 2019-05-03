@@ -27,7 +27,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{1.3 }
+\def\myversion{1.4 }
 \date{}
 %\title{%
 
@@ -81,7 +81,9 @@
         \hline
         Markus Borg & 2019-04-09 & Corrected the string to the robot under test. & 1.2\\
         \hline
-        Markus Borg & 2019-04-16 & Clarify that teams are not supported by RobotTestBed. & 1.3\\
+        Markus Borg & 2019-04-16 & Clarified that teams are not supported by RobotTestBed. & 1.3\\
+        \hline
+        Markus Borg & 2019-05-03 & Relaxed some requirements to simplify testing. & 1.4\\
         \hline
     \end{tabular}
 \end{center}
@@ -102,7 +104,7 @@ During Lab 3 you will continue working with automated testing of Basic Melee Bot
 \vspace{1em}
 
 \chapter{Before the lab}
-You shall continue on the source code you developed for Lab~2. If you have not yet completed the code to make ``wall avoidance'' work for the Lab~2 robot, please do so now. Before continuing with Lab~3, start Robocode and verify that Basic Melee Bot does not get stuck in any walls. The content in the Package Explorer should resemble Figure~\ref{fig:packageExplorer}.
+You shall continue working on the source code you developed for Lab~2. If you have not yet completed the code to make ``wall avoidance'' work for the Lab~2 robot, please do so now. Before continuing with Lab~3, start Robocode and verify that Basic Melee Bot does not get stuck in any walls. The content in the Package Explorer should resemble Figure~\ref{fig:packageExplorer}.
 
 \begin{figure}
 \centering
@@ -285,7 +287,7 @@ Implementation risk: \textbf{medium}
 \subsection{Functional Requirements}
 \begin{itemize}
 \item[REQ-F3-1] BMB shall continuously move away from enemy robots.
-\item[REQ-F3-2] BMB shall never stay in the same position for more than 25 consecutive turns.
+\item[REQ-F3-2] BMB shall never stay in the same position for more than 40 consecutive turns.
 \end{itemize}
 
 \section{Feature 4 -- Wall avoidance}
@@ -297,7 +299,7 @@ Implementation risk: \textbf{medium}
 
 \subsection{Functional Requirements}
 \begin{itemize}
-\item[REQ-F4-1] When closer than 20 distance units to a wall, BMB shall alter its course to avoid collision.
+\item[REQ-F4-1] When closer than 15 distance units to a wall, BMB shall alter its course to avoid collision.
 \end{itemize}
 
 \section{Quality Requirements}
@@ -307,15 +309,21 @@ This section describes quality requirements for Basic Melee Bot. The robot is pr
 When Basic Melee Bot battles against a single enemy robot, it will continuously change its position on the battlefield and stay away from the enemy robot by using its non-stop anti-gravity movement. Basic Melee Bot shall perform well against the Robocode sample robots.
 
 \begin{itemize}
-\item[REQ-Q1] Basic Melee Bot shall have at least 75\% win rate against SpinBot in battles over 100 rounds on a 800x600 battlefield (standard Robocode size for 1-vs-1 battles).
+\item[REQ-Q1] Basic Melee Bot shall have at least 51\% win rate against SpinBot in battles over 100 rounds on a 800x600 battlefield (standard Robocode size for 1-vs-1 battles).
 \end{itemize}
 
 \subsection{Melee Battle Performance Requirements}
 When Basic Melee Bot battles against multiple enemy robot, it will try to stay away from enemy robots by using its non-stop anti-gravity movement. Basic Melee Bot shall perform well in melee battles against the Robocode sample robots.
 
 \begin{itemize}
-\item[REQ-Q2] Basic Melee Bot shall have at least 33\% win rate in melee battles against three enemy SpinBots in battles over 100 rounds on a 1000x1000 battlefield (standard Robocode size for melee battles).
+\item[REQ-Q2] Basic Melee Bot shall have at least 26\% win rate in melee battles against three enemy SpinBots in battles over 100 rounds on a 1000x1000 battlefield (standard Robocode size for melee battles).
 \end{itemize}
+
+\vspace{1em}
+\fbox{\begin{minipage}{0.99\textwidth}
+\textbf{Note!} Minor differences in the implementation of Basic Melee Bot might result in considerably weaker battle performance. If your related test cases do not pass, try relaxing the win rates until they pass. Discuss the situation with your lab assistant.
+\end{minipage}}
+\vspace{1em}
 
 \section{Feature 2 -- Closest enemy targeting}
 BMB shall target and shoot at the closest enemy robot.
