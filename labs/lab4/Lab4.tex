@@ -27,7 +27,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{1.0 }
+\def\myversion{1.1 }
 \date{}
 %\title{%
 
@@ -75,6 +75,8 @@
         \hline
         Markus Borg & 2018-04-24 & Updated after internal review, ready for lab. & 1.0\\
         \hline
+        Markus Borg & 2019-05-03 & Updated for 2019. & 1.1\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -88,10 +90,8 @@ Lab 4 focuses on source code quality assurance for Basic Melee Bot. High-quality
 \end{itemize}
 
 \chapter{Before the lab}
-If you still have the Java project from either Lab 2 or Lab 3 in your workspace, then you have everything you need for Lab 4. The source code used in Lab 4 is Basic Melee Bot and its accompanying unit test suite (introduced in Lab 2, but available also in Lab 3). On the other hand, if you are now comfortable with downloading and importing source code from GitHub, you can of course download the latest version. If you want the latest code, Lab 4 has been prepared in the course repository on GitHub:\\https://github.com/lunduniversity/introsofteng\\\\
-The same instructions as from Lab 2 and Lab3 apply: if you have already cloned the repository, pull the latest source code to make sure you work with the latest version. If you prefer downloading the code, instead click the button presented in Figure~\ref{fig:github} and choose ``Download ZIP''. Once downloaded, locate the files you need for Lab 4. The files are in the folder introsofteng-master/labs/lab4/src, and its subfolder: `test'. Rewatch the video ``Lab2_download.avi'' on Google Drive (ETSA02 Everyone/Labs) if you need support.
-
-To prepare for the lab session, please make sure you can execute a unit test suite for Basic Melee Bot. Then have a look at the following pages:
+You shall continue working on the source code you developed for Lab~3, but we will focus on the parts completed already during Lab~2. The source code used in Lab 4 is Basic Melee Bot and its accompanying unit test suite.\\\\
+To prepare for the lab session, please make sure you can execute the unit test suite for Basic Melee Bot. Then have a look at the following pages:
 \begin{itemize}
 \item Code coverage (skip ``Modified condition/decision coverage'' and onwards)\\-- https://en.wikipedia.org/wiki/Code_coverage
 \item EclEmma homepage (browse the page to get a high-level understanding) \\-- http://www.eclemma.org/
@@ -106,7 +106,7 @@ To prepare for the lab session, please make sure you can execute a unit test sui
 In Lab 4, you will learn to download open source tools from the big Eclipse ecosystem through Eclipse Marketplace. You reach Eclipse Marketplace directly from your Eclipse installation: Select ``Eclipse Marketplace...'' from the Help menu.
 
 \section{Code coverage with EclEmma}
-First, you will work with code coverage testing. Search for EclEmma on Eclipse Marketplace, and install the latest version: EclEmma Java Code Coverage 3.0.1. EclEmma introduces a new run option in Eclipse, beyond ``Run as...'' and ``Debug as...''. The new run option is called ``Coverage as...''. The eclEmma ``Coverage view'' automatically appears when a new coverage session is added or can manually be opened from the Window $\rightarrow$ Show View menu in the Java category. 
+First, you will work with code coverage testing. Search for EclEmma on Eclipse Marketplace, and install the latest version (unless it is already installed): EclEmma Java Code Coverage 3.1.2. EclEmma introduces a new run option in Eclipse, beyond ``Run as...'' and ``Debug as...''. The new run option is called ``Coverage as...''. The eclEmma ``Coverage view'' automatically appears when a new coverage session is added or can manually be opened from the Window $\rightarrow$ Show View menu in the Java category. 
 
 The coverage view shows code coverage summaries for the active session. Individual columns in the view contain the following numbers for the active session, always summarizing the child elements of the respective Java element:
 
@@ -126,7 +126,7 @@ The elements may be sorted in ascending or descending order by clicking the resp
 \label{fig:eclemma}
 \end{figure}
 
-Now it is time to perform a code coverage measurement of Basic Melee Bot to analyze to what extent the unit test suite covers the source code of the robot. In the ``Package Explorer'' in Eclipse, right click the unit test suite in your Java project (``AllBasicMeleeBotUnitTests.java'' if working with Lab 2, otherwise ``BMBUnitTestSuite.java'') and choose ``Coverage as'' $\rightarrow$ JUnit Test. The unit test suite will run as before, but you will also get coverage measurements. Explore the results in the EclEmma coverage view (skip coverage of the classes in the test package). Double click on elements in the coverage view to navigate to color coded source code, for which green = covered, yellow = partly covered, and red = not covered. Then try to answer the following questions:
+Now it is time to perform a code coverage measurement of Basic Melee Bot to analyze to what extent the unit test suite covers the source code of the robot. In the ``Package Explorer'' in Eclipse, right click the unit test suite in your Java project (``BMBUnitTestSuite.java'') and choose ``Coverage as'' $\rightarrow$ JUnit Test. The unit test suite will run as before, but you will also get coverage measurements. Explore the results in the EclEmma coverage view (skip coverage of the classes in the test package). Double click on elements in the coverage view to navigate to color coded source code, for which green = covered, yellow = partly covered, and red = not covered. Then try to answer the following questions:
 \begin{itemize}
 \item What is the total instruction coverage?
 \item Which classes have the highest instruction coverage? Why?
@@ -136,7 +136,7 @@ Now it is time to perform a code coverage measurement of Basic Melee Bot to anal
 \end{itemize}
 
 \section{Static code analysis with SpotBugs and SonarLint}
-The second part of Lab 4 is about static code analysis tools. Search for SpotBugs on Eclipse Marketplace, and install the latest version: SpotBugs Eclipse plugin 3.1.2. While you are at it, search also for SonarLint, and install the latest version: SonarLint 3.4.
+The second part of Lab 4 is about static code analysis tools. Search for SpotBugs on Eclipse Marketplace, and install the latest version: SpotBugs Eclipse plugin 3.1.5. While you are at it, search also for SonarLint, and install the latest version: SonarLint 4.1.
 
 Run SpotBugs by right clicking your Java project in Package Explorer and select SpotBugs $\rightarrow$ Find Bugs as shown in Figure~\ref{fig:spotbugs}. SpotBugs comes with its own Eclipse ``Perspective'' (a set and layout of views in the Workbench window). If the perspective has not opened yet, open it in the Window menu $\rightarrow$ Perspective $\rightarrow$ Open Perspective $\rightarrow$ Other... and select ``SpotBugs'' in the resulting dialog window.
 
@@ -175,5 +175,5 @@ Your group shall state a code coverage target for your unit test suite in the ST
 
 In the project, your group shall run the two static code analysis tools SpotBugs and SonarLint. The latest version of the STS template specifies that you shall resolve all issues identified by SpotBugs running with the default settings, but not necessarily for the test code. Your group shall report the number of issues identified by SpotBugs in the test report that is part of the Final Release. Note that any remaining SpotBugs issues shall be explained and motivated in the test report. Your group shall also run SonarLint on your source code. As specified by the STS template, the final version of the source code shall not have any remaining SonarLint rule violations of severity major or higher. Any such remaining rule violations shall be explained and motivated in the test report.
 
-All non-customer releases in the project shall be complemented by documentation generated by Javadoc. Make sure you provide this information for the Beta Release and the Final Release. The class diagram and the Javadoc is what helps external stakeholders get an overview of your source code!
+All non-customer releases in the project shall be complemented by documentation generated by Javadoc. Make sure you provide this information for the Final Release. The class diagram and the Javadoc is what helps external stakeholders get an overview of your source code!
 \end{document}
