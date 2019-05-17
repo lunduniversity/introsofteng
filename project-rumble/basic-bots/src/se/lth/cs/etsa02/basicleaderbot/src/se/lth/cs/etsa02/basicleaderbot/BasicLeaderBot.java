@@ -1,5 +1,5 @@
 /**	
-Copyright (c) 2017 Markus Borg
+Copyright (c) 2017-2019 Markus Borg
 
 Building on work by Mathew A. Nelson and Robocode contributors.
 
@@ -31,13 +31,11 @@ import se.lth.cs.etsa02.RobotColors;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.LinkedList;
-
 /**
  * BasicLeaderBot (BLB) - a sample team robot for ETSA02.
  * 
- * Looks around for enemies, and orders teammates to fire.
- * If an enemy is close, it sometimes changes its position.
+ * Looks around for enemies, and orders team mates to fire.
+ * If hit by a bullet, it sometimes changes its motvement.
  *
  * @author Markus Borg
  */
@@ -102,7 +100,7 @@ public class BasicLeaderBot extends TeamRobot {
 	}
 
 	/**
-	 * onHitByBullet:  BLB has been hit by a bullet. Turn perpendicular to path of the bullet.
+	 * onHitByBullet: BLB has been hit by a bullet. Turn perpendicular to path of the bullet.
 	 */
 	public void onHitByBullet(HitByBulletEvent e) {
 		turnLeft(90 - e.getBearing());
