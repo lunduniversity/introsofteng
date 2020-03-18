@@ -242,7 +242,8 @@ Note that text in bold font below matches specific headers under ``External Edit
 
 \begin{enumerate}
 \item \textbf{Creating a project in Eclipse}. Follow all instructions under this header.
-\item \textbf{Creating a Robot in Eclipse}. Follow the instructions, and eventually copy the source code from the robot you created in Robot Editor. Import the packages required to make it compile.
+\item \textbf{Creating a Robot in Eclipse}. Follow the instructions, and eventually copy the source code from the robot you created in Robot Editor. Import the packages required to make it compile.\footnote{Please note that the newest versions of Eclipse will ask if you want to create a module-info.java file. If you get this question, you should select "Don't create". 
+If you by mistake create a module-info.java, then you should make sure to delete it to avoid compiler and classpath issues. The module-info.java is not used for Robocode packages.}\footnote{In the Libraries tab, when adding robocode.jar as an external jar, there may be a choice to place it in modulepath or classpath. This is selected by clicking on respective path before clicking the add external jar button. Please make sure robocode.jar is placed below classpath.}
 \item \textbf{Adding an Eclipse project to Robocode} Add the robot project into Robocode by following these instructions:\\\texttt{http://robowiki.net/wiki/Robocode/Add\_a\_Robot\_Project} Note: Add the path to the Eclipse project (with \texttt{/src} and \texttt{/bin} as sub-folders), not the Eclipse workspace.
 \item \textbf{Running your robot from Eclipse}. Follow all instructions under this header. Note that ``Run As $\rightarrow$ Run...'' might be called ``Run As $\rightarrow$ Run Configurations'' in your version of Eclipse.
 
@@ -250,7 +251,7 @@ Note that text in bold font below matches specific headers under ``External Edit
 \textbf{------ REACH THIS POINT TO PASS LAB 1! ------}
 \end{center}
 
-\item \textbf{Debugging your robot with Eclipse}. Follow all instructions under this header.
+\item \textbf{Debugging your robot with Eclipse}. Follow all instructions under this header.\footnote{This is needed for the rest of the labs. If you do not do it now you need to do it before next lab session.}
 \end{enumerate}
 
 \chapter{After the lab}
