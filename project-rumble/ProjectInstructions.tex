@@ -39,7 +39,7 @@
 \begin{flushright}
     \rule{16cm}{5pt}\vskip1cm
     \begin{bfseries}
-    	\LARGE{ETSA02-ADM-INS}\\
+    	\LARGE{ETSA03-ADM-INS}\\
     	\vspace{1.5cm}
         \Huge{Project\\ Instructions}\\
         \vspace{0.5cm}
@@ -120,15 +120,17 @@
         \hline
         Markus Borg & 2019-05-09 & Clarified bundle deals for Droids. & 0.984\\
         \hline
+        Markus Borg & 2020-03-21 & Updates for the 2020 online edition. & 0.985\\
+        \hline
     \end{tabular}
 \end{center}
 
 \chapter{Introduction}
-This document describes the project in ETSA02 Introduction to Software Engineering -- Methodology. Together with other students, you will work together to engineer a robot for competition in LU Rumble -- a local instance of team battles in Robocode, a programming game in which robots compete in battles without human intervention by executing their programs.
+This document describes the project in ETSA03 Introduction to Software Engineering -- Methodology. Together with other students, you will work together to engineer a robot for competition in LU Rumble -- a local instance of team battles in Robocode, a programming game in which robots compete in battles without human intervention by executing their programs.
 
 In the remainder of this document, we use the term ``group'' to refer to the students working together during the project. While the student constellations would better be described as teams, i.e., groups of people working together toward a common goal, we reserve the term ``team'' to robots competing together in Robocode.
 
-This document is organized as follows: Section~\ref{sec:goals} presents the learning goals of the project in relation to the ETSA02 formal course description.
+This document is organized as follows: Section~\ref{sec:goals} presents the learning goals of the project in relation to the ETSA03 formal course description.
 
 \section{Learning goals} \label{sec:goals}
 The project primarily aims to increase your ability to develop high quality software systems using established software engineering best practices. Moreover, basic software business concepts will be introduced as each project group will offer their product on a highly competitive market.
@@ -137,7 +139,7 @@ The project complements the theoretical concepts introduced during the lectures 
 
 On top of your skills with traditional software engineering concepts and the tool chain, you will address aspects of market-driven software engineering. Each project group will practice making critical business and engineering decisions in a controlled fashion. The course introduces several important activities in software business, including analyzing the business ecosystem, finding a niche market, marketing a product, competitive pricing strategies, and customer negotiations.
 
-More formally, the project is primarily designed to meet the practical requirements of the ETSA02 course description, i.e., the ``Competencies and Skills''. However, the project will also reinforce the theoretical concepts listed under ``Knowledge and Understanding'' and it contributes to the ``Judgment and Approach'' section.
+More formally, the project is primarily designed to meet the practical requirements of the ETSA03 course description, i.e., the ``Competencies and Skills''. However, the project will also reinforce the theoretical concepts listed under ``Knowledge and Understanding'' and it contributes to the ``Judgment and Approach'' section.
 \begin{itemize}
 \item Competencies and Skills
 \begin{itemize}
@@ -320,16 +322,16 @@ When a robot receives a message, the following method is called:
 onMessageReceived(MessageEvent)
 \end{verbatim}
 
-The MessageEvent always contains the name of the sending robot and a specific message. As stated above, the message can be instances of various classes. Please refer to the Robocode Sample Team to see an example implementation, or refer to the ETSA02 GitHub repository.
+The MessageEvent always contains the name of the sending robot and a specific message. As stated above, the message can be instances of various classes. Please refer to the Robocode Sample Team to see an example implementation, or refer to the ETSA03 GitHub repository.
 
 The only type of communication that must be implemented by the robots entering LU Rumble is team color -- this is mandated by the Regulatory Body. During the LU Rumble, all robots of the same team must share the same color scheme. With 10 robots battling at the same time, it is critical to help spectators understand the action on the battlefield. This introduces one of the following regulatory requirements to all robots: 
 
 \begin{itemize}
-\item For normal robots and droids:\\``The robot shall set its color scheme upon request by a leader bot according to ETSA02 RoboTalk v1.X.''
-\item For leader bots:\\``The robot shall set its color scheme at the start of the battle, and request the other team robots to follow suit according to ETSA02 RoboTalk v1.X.''
+\item For normal robots and droids:\\``The robot shall set its color scheme upon request by a leader bot according to ETSA03 RoboTalk v1.X.''
+\item For leader bots:\\``The robot shall set its color scheme at the start of the battle, and request the other team robots to follow suit according to ETSA03 RoboTalk v1.X.''
 \end{itemize}
 
-ETSA02 RoboTalk also specifies a string-based communication protocol. Teams are free to implement as much of the communication protocol as they find useful. While it is completely optional, it might be expected by potential customers on Robot Market. Please refer to the classes \texttt{MessageReader} and \texttt{MessageWriter} on the ETSA02 GitHub repository for an implementation suggestion. A message string should have the following overall structure, including the new lines.
+ETSA03 RoboTalk also specifies a string-based communication protocol. Teams are free to implement as much of the communication protocol as they find useful. While it is completely optional, it might be expected by potential customers on Robot Market. Please refer to the classes \texttt{MessageReader} and \texttt{MessageWriter} on the ETSA03 GitHub repository for an implementation suggestion. A message string should have the following overall structure, including the new lines.
 
 \begin{verbatim}
 [0-1] leadership;[followMe|leadMe]
@@ -369,9 +371,9 @@ The commands shall have the following meaning:
 \item[moveTo] Tells the receiving robot(s) to move to a specific position on the 2D battlefield.
 \end{description}
 
-ETSA02 RoboTalk might evolve during the course, i.e., the Regulatory Body will possibly release new versions. All groups are welcome to provide feedback and requests to the standardization work done by the Regulatory Body. To do so, the project manager should submit a ``Change Request'' to the Regulatory Body. The Change Request should carefully describe what changes are proposed, and motivate why this request should be considered.
+ETSA03 RoboTalk might evolve during the course, i.e., the Regulatory Body will possibly release new versions. All groups are welcome to provide feedback and requests to the standardization work done by the Regulatory Body. To do so, the project manager should submit a ``Change Request'' to the Regulatory Body. The Change Request should carefully describe what changes are proposed, and motivate why this request should be considered.
 
-ETSA02 RoboTalk is version controlled, and student groups that decide to implement communication should carefully specify in their SRS which version of the protocol is implemented. For further details and a formal specification, including both communication of color and string commands, refer to the latest version of ETSA02 RoboTalk on Google Drive.
+ETSA03 RoboTalk is version controlled, and student groups that decide to implement communication should carefully specify in their SRS which version of the protocol is implemented. For further details and a formal specification, including both communication of color and string commands, refer to the latest version of ETSA03 RoboTalk on Google Drive.
 
 \section{Monetizing the robot}
 One of the primary goals of the project is to maximize the profit of the group, i.e., monetizing the robot. The business aspects of the project involves a combination of bespoke software engineering and software engineering for an open market. All project groups will offer their robot on a highly competitive market -- consisting of the other groups, each with a \euro 100 budget to invest in a robot team for the LU Rumble. The monetization is split in two parts: 1) bespoke supplier-customer relationships and 2) selling robots on Robot Market.
@@ -399,7 +401,7 @@ In the Post release phase (cf. Fig.~\ref{fig:overview}, each project group will 
 
 The regulatory body highlights that the bundle options are not possible for suppliers of leader bots, as each team can field only one leader robot. Also note that suppliers of droids cannot offer bundle options beyond four robots, even though droids do not count toward the team limit of five robots. Buying more than four droids is allowed, but five droids will cost the bundle deal for four robots plus the price of a single droid (or as many additional droids that are requested).
 
-Figure~\ref{fig:bundles} shows an example of robot prices on Robot Market. Groups A and C develop leader bots and are not allowed to offer any bundle deals. Group E, highlighted in the white row, offers a single robot for \euro40 supplier of Robot E and the following bundle deals: 2 robots for \euro60, 3 robots for \euro65, and four robots for \euro70. Group F creates a bundle deal for two robots, but decides not to offer special prices for three or four robots. No bundle deals are available for the three ETSA02 basic bots. All groups must set their prices on Robot Market no later than at L7 -- no subsequent price updates are allowed.
+Figure~\ref{fig:bundles} shows an example of robot prices on Robot Market. Groups A and C develop leader bots and are not allowed to offer any bundle deals. Group E, highlighted in the white row, offers a single robot for \euro40 supplier of Robot E and the following bundle deals: 2 robots for \euro60, 3 robots for \euro65, and four robots for \euro70. Group F creates a bundle deal for two robots, but decides not to offer special prices for three or four robots. No bundle deals are available for the three ETSA03 basic bots. All groups must set their prices on Robot Market no later than at L7 -- no subsequent price updates are allowed.
 
 \begin{figure}
 \centering
@@ -464,7 +466,7 @@ The process model describing the product development encompasses three sprints, 
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/processModel.png}
-\caption{The ETSA02 process model, organized in three sprints.}
+\caption{The ETSA03 process model, organized in three sprints.}
 \label{fig:overview}
 \end{figure}
 
@@ -659,7 +661,7 @@ This section presents some aspects of the project in detail: 1) the roles you sh
 \section{Role assignment} \label{sec:roles}
 During the course, all students are expected to contribute to all activities. The purpose of the roles is not to isolate work tasks that could be individually completed. Software engineering is a collaborative effort, and completing work tasks in isolation is not part of a scalable methodology. Instead, we stress the value of ``collective ownership'' during the project, not only for the source code as described in Section~\ref{sec:constr}, but for all artifacts produced. To ensure that all group members can contribute to the technical parts of the project, the lab sessions are mandatory -- to further highlight this, all group members are assigned the roles of developer and tester. However, all group members will also be assigned a third role.
 
-The purpose of assigning roles in the project is to comply with the ETSA02 course description regarding ``judgment and approach'', i.e., understanding that software engineering is a complex endeavor involving several different roles, and that working as a software engineer might mean shouldering rather different roles in an organization. Second, all roles with be responsible for some deliverables. The regulatory body will use the group member with the corresponding role as the primary point of contact in case any deliverable is missing or critically incomplete.
+The purpose of assigning roles in the project is to comply with the ETSA03 course description regarding ``judgment and approach'', i.e., understanding that software engineering is a complex endeavor involving several different roles, and that working as a software engineer might mean shouldering rather different roles in an organization. Second, all roles with be responsible for some deliverables. The regulatory body will use the group member with the corresponding role as the primary point of contact in case any deliverable is missing or critically incomplete.
 
 As the project progresses through phases and sprints, different roles with have different responsibilities. The project group will track the individual efforts through weekly time reporting, submitted by the project manager to the regulatory body -- this enables identification of major deviations. The reported figures should be complemented by a qualitative analysis of the causes, and the project manager is responsible for balancing the workload to make sure the contributions are comparable, see~\ref{sec:time} for further information. Below are the different roles, ordered alphabetically, followed by the deliverables they are responsible for.
 
@@ -696,7 +698,7 @@ Project managers report hours in the dedicated spreadsheet on Google Drive. Each
 \end{figure}
 
 \section{Software Releases: Alpha, Beta, and Final}
-The robot shall be released after each development sprint, each time constituting a more mature software product. In ETSA02, you shall create each software release in two variants: 1) a customer release and 2) a regulatory body release. Groups will upload their releases in designated folders on Google Drive.
+The robot shall be released after each development sprint, each time constituting a more mature software product. In ETSA03, you shall create each software release in two variants: 1) a customer release and 2) a regulatory body release. Groups will upload their releases in designated folders on Google Drive.
 
 The \textbf{customer release} shall contain the latest versions of the following:
 
