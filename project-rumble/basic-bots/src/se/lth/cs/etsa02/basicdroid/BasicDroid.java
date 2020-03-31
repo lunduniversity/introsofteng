@@ -32,11 +32,16 @@ import robocode.util.Utils;
 
 import static robocode.util.Utils.normalRelativeAngleDegrees;
 
+import java.io.IOException;
+
+import robocode.BulletHitEvent;
+
 
 /**
  *  BasicDroid - a simple droid that fires based on leader bot's orders
  *
  * @author Markus Borg
+ * @author Teodor Ahlinder, improvements for LU Rumble (2020)
  */
 public class BasicDroid extends TeamRobot implements Droid {
 
@@ -59,10 +64,40 @@ public class BasicDroid extends TeamRobot implements Droid {
 			setRadarColor(c.radarColor);
 			setScanColor(c.scanColor);
 			setBulletColor(c.bulletColor);
-		}else {
+		} else {
 			MessageReader reader = new MessageReader((String)e.getMessage());
-			if (reader.getTargetPos() != null) fireAtPoint(reader.getTargetPos());
 			if (reader.getMoveTo() != null) goTo(reader.getMoveTo());
+			
+			// If enemy position, fire!
+			String[] values = reader.getEnemyDetails();
+			if (values.length > 0) {
+				String[] ss = values[0].split(";");
+				Point p = null;
+				try {
+					double energy = Double.parseDouble(ss[4]);
+					if (energy <= 0) {
+						return;
+					}
+					double x = Double.parseDouble(ss[1]);
+					double y = Double.parseDouble(ss[2]);
+					p = new Point(x,y);
+				} catch (RuntimeException err) {}
+				if (p != null) fireAtPoint(p);
+			}
+		}
+	}
+	
+	/**
+	 * onHitBullet:  What to do when out bullet hits a robot
+	 */
+	private void onHitBullet(BulletHitEvent e) {
+		if (e.getEnergy() <= 0) {
+			try {
+				// Message allies that enemy bot is dead
+				MessageWriter writer = new MessageWriter();
+				writer.addEnemyDetails(e.getName(), 0, 0, 0, e.getEnergy(), 0, 0);
+				broadcastMessage(writer.composeMessage());
+			} catch (IOException ignored) {}
 		}
 	}
 	

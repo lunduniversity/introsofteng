@@ -24,13 +24,16 @@ SOFTWARE.
 package se.lth.cs.etsa02.basicleaderbot;
 
 import robocode.HitByBulletEvent;
+import robocode.MessageEvent;
 import robocode.ScannedRobotEvent;
 import robocode.TeamRobot;
+import se.lth.cs.etsa02.MessageReader;
 import se.lth.cs.etsa02.MessageWriter;
 import se.lth.cs.etsa02.RobotColors;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 /**
  * BasicLeaderBot (BLB) - a sample team robot for ETSA02.
  * 
@@ -38,20 +41,44 @@ import java.io.IOException;
  * If hit by a bullet, it sometimes changes its motvement.
  *
  * @author Markus Borg
+ * @author Teodor Ahlinder, improvements for LU Rumble (2020)
  */
 public class BasicLeaderBot extends TeamRobot {
+	private static final Color BODYCOLOR = Color.white;
+	private static final Color GUNCOLOR = Color.white;
+	private static final Color RADARCOLOR = Color.white;
+	private static final Color SCANCOLOR = Color.white;
+	private static final Color BULLETCOLOR = Color.white;
+	
+	private ArrayList<DummyRobot> knownEnemyRobots;
+	private ArrayList<DummyRobot> knownAlliedRobots;
 	
 	/**
-	 * run:  BLB's default behavior
+	 * run:  BLB's new behavior, improved by Teodor Ahlinder (2020)
 	 */
 	public void run() {
-		// Prepare RobotColors object with white colors
+		// ----------------------------------------------
+		// ------------- Starting behavior --------------
+		// ----------------------------------------------
+		
+		// -------- Configuring list of enemies ---------
+		knownEnemyRobots = new ArrayList<DummyRobot>();
+		
+		// ---------- Asserting leader control ----------
+		try {
+			// Declare to team that this bot is the leader
+			MessageWriter writer = new MessageWriter();
+			writer.addLeadership("followMe");
+			broadcastMessage(writer.composeMessage());
+		} catch (IOException ignored) {}
+		
+		// ----------- Setting team colors --------------
 		RobotColors c = new RobotColors();
-		c.bodyColor = Color.white;
-		c.gunColor = Color.white;
-		c.radarColor = Color.white;
-		c.scanColor = Color.white;
-		c.bulletColor = Color.white;
+		c.bodyColor = BODYCOLOR;
+		c.gunColor = GUNCOLOR;
+		c.radarColor = RADARCOLOR;
+		c.scanColor = SCANCOLOR;
+		c.bulletColor = BULLETCOLOR;
 
 		// Set the color of BLB
 		setBodyColor(c.bodyColor);
@@ -62,7 +89,14 @@ public class BasicLeaderBot extends TeamRobot {
 		try {
 			// Send RobotColors object to the entire team
 			broadcastMessage(c);
-		} catch (IOException ignored) {}
+		} catch (IOException ignored) {
+			System.out.println("Could not broadcast team colors.");
+		}
+		
+		
+		// ----------------------------------------------
+		// ------------- Running Behavior ---------------
+		// ----------------------------------------------
 		
 		// Default behavior - BLB's standard sequence
 		while (true) {
@@ -73,25 +107,36 @@ public class BasicLeaderBot extends TeamRobot {
 	}
 
 	/**
-	 * onScannedRobot: BLB has detected another robot. If hostile, share position with the team.
+	 * onScannedRobot: BLB has detected another robot. Update internal lists and transmit them to team.
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
-		// No action if a teammate is detected 
-		if (isTeammate(e.getName())) {
-			return;
+		// Calculate robot bearing
+		double robotBearing = this.getHeading() + e.getBearing();
+		
+		// Calculate robot's position
+		double robotX = getX() + e.getDistance() * Math.sin(Math.toRadians(robotBearing));
+		double robotY = getY() + e.getDistance() * Math.cos(Math.toRadians(robotBearing));
+		
+		// Store robot in appropriate list
+		String scannedName = e.getName();
+		DummyRobot r = new DummyRobot(scannedName, robotX, robotY, e.getVelocity(), e.getEnergy(), e.getHeading(), 0);
+		if (isTeammate(scannedName)) {
+			updateList(r, knownAlliedRobots);
+		} else {
+			updateList(r, knownEnemyRobots);
 		}
 		
-		// Calculate enemy bearing
-		double enemyBearing = this.getHeading() + e.getBearing();
-		
-		// Calculate enemy's position
-		double enemyX = getX() + e.getDistance() * Math.sin(Math.toRadians(enemyBearing));
-		double enemyY = getY() + e.getDistance() * Math.cos(Math.toRadians(enemyBearing));
-		
 		try {
-			// Send enemy position to teammates
+			// Send positions of known allies to team
 			MessageWriter writer = new MessageWriter();
-			writer.addTargetPos(enemyX, enemyY);
+			writer.addMyPos(this.getX(), this.getY());
+			for (DummyRobot allies : knownAlliedRobots) {
+				writer.addFriendPos(allies.getX(), allies.getY());
+			}
+			// Send positions of known enemies to team
+			for (DummyRobot enemies : knownEnemyRobots) {
+				writer.addEnemyDetails(enemies.getName(), enemies.getX(), enemies.getY(), enemies.getVelocity(), enemies.getEnergy(), enemies.getHeading(), enemies.getGunHeading());
+			}
 			broadcastMessage(writer.composeMessage());
 		} catch (IOException ex) {
 			out.println("Unable to send order: ");
@@ -100,9 +145,77 @@ public class BasicLeaderBot extends TeamRobot {
 	}
 
 	/**
+	 * Adds a new robot to the list, or updates the robots values if it is already in the list
+	 * @param r robot to add or update
+	 * @return 0 if robot was already in list, 1 if it was added as a new robot, -1 if robot energy was <=0
+	 */
+	private int updateList(DummyRobot r, ArrayList<DummyRobot> list) {
+		for (int i = 0; i < list.size(); i++) {
+			DummyRobot robot = list.get(i);
+			if (r.getName() == robot.getName()) {
+				if (r.getEnergy() <= 0) {
+					list.remove(i);
+					return -1;
+				}
+				list.get(i).update(r.getX(), r.getY(), r.getVelocity(), r.getEnergy(), r.getHeading(), r.getGunHeading());
+				return 0;
+			}
+		}
+		for (DummyRobot robot : list) {
+			if (r.getName() == robot.getName()) {
+				robot = r;
+				return 0;
+			}
+		}
+		list.add(r);
+		return 1;
+	}
+
+	/**
 	 * onHitByBullet: BLB has been hit by a bullet. Turn perpendicular to path of the bullet.
 	 */
 	public void onHitByBullet(HitByBulletEvent e) {
 		turnLeft(90 - e.getBearing());
+	}
+	
+	/**
+	 * onDeath: Code executed when this robot dies.
+	 */
+	public void onDeath() {
+		try {
+			// Declare to team that this bot is dead and should not be followed anymore
+			MessageWriter writer = new MessageWriter();
+			writer.addLeadership("leadMe");
+			broadcastMessage(writer.composeMessage());
+		} catch (IOException ignored) {}
+	}
+	
+	public void onMessageReceived(MessageEvent e) {
+		MessageReader reader = new MessageReader((String)e.getMessage());
+		String[] enemies = reader.getEnemyDetails();
+		for (String values : enemies) {
+			String[] v = values.split(";");
+			if (v.length >= 7) {
+				try {
+					double x = Double.parseDouble(v[1]);
+					double y = Double.parseDouble(v[2]);
+					double velocity = Double.parseDouble(v[3]);
+					double energy = Double.parseDouble(v[4]);
+					double heading = Double.parseDouble(v[5]);
+					double gunHeading = Double.parseDouble(v[6]);
+					DummyRobot r = new DummyRobot(v[0], x, y, velocity, energy, heading, gunHeading);
+					updateList(r, knownEnemyRobots);
+				} catch (RuntimeException err) {}
+			}
+		}
+	}
+
+	
+	public ArrayList<DummyRobot> getKnownEnemyRobots() {
+		return knownEnemyRobots;
+	}
+
+	public ArrayList<DummyRobot> getKnownAlliedRobots() {
+		return knownAlliedRobots;
 	}
 }

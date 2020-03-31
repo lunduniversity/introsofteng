@@ -25,17 +25,21 @@ SOFTWARE.
 package se.lth.cs.etsa02;
 
 /**
- * A class to help with composing a message.
+ * A class to help composing ETSA02 RoboTalk messages.
  * @author DavidPhung
+ * @author Teodor Ahlinder, improvements for LU Rumble (2020)
  */
 public class MessageWriter {
 	
 	private String leaderShip;
 	private String teamMode;
 	private String myPos;
-	private String friendPos;
+	private String[] friendPos;
+	private int friendPosCount;
 	private String[] enemyPos;
 	private int enemyPosCount;
+	private String[] enemyDetails;
+	private int enemyDetailsCount;
 	private String targetEnemy;
 	private String targetPos;
 	private String moveTo;
@@ -47,7 +51,8 @@ public class MessageWriter {
 		leaderShip = new String();
 		teamMode = new String();
 		myPos = new String();
-		friendPos = new String();
+		friendPos = new String[10];
+		friendPosCount = 0;
 		enemyPos = new String[10];
 		enemyPosCount = 0;
 		targetEnemy = new String();
@@ -81,12 +86,13 @@ public class MessageWriter {
 	}
 	
 	/**
-	 * Add the friendPos line.
+	 * Add the friendPos line. Note: we can have multiple lines of this (at most 10).
 	 * @param x
 	 * @param y
 	 */
 	public void addFriendPos(double x, double y) {
-		friendPos = "friendPos;" + x + ";" + y; 
+		friendPos[friendPosCount] = "friendPos;" + x + ";" + y;
+		friendPosCount++;
 	}
 	
 	/**
@@ -99,6 +105,13 @@ public class MessageWriter {
 		enemyPosCount++;
 	}
 	
+	/**
+	 * Add an enemyPos line. Note: we can have multiple lines of this (at most 10).
+	 */
+	public void addEnemyDetails(String name, double x, double y, double velocity, double energy, double heading, double gunHeading) {
+		enemyDetails[enemyDetailsCount] = "enemyDetails;" + name + ";" + x + ";" + y + ";" + velocity + ";" + energy + ";" + heading + ";" + gunHeading;
+		enemyDetailsCount++;
+	}
 	/**
 	 * Add the targetEnemy line.
 	 * @param x
@@ -135,9 +148,14 @@ public class MessageWriter {
 		addLine(sb, leaderShip);
 		addLine(sb, teamMode);
 		addLine(sb, myPos);
-		addLine(sb, friendPos);
+		for (int i = 0; i < friendPosCount; i++) {
+			addLine(sb, friendPos[i]);
+		}
 		for (int i = 0; i < enemyPosCount; i++) {
 			addLine(sb, enemyPos[i]);
+		}
+		for (int i = 0; i < enemyDetailsCount; i++) {
+			addLine(sb, enemyDetails[i]);
 		}
 		addLine(sb, targetEnemy);
 		addLine(sb, targetPos);
