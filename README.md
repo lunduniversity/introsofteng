@@ -1,11 +1,11 @@
 # introsofteng
-Teaching material for "Introduction to Software Engineering" at Lund University, LTH. http://cs.lth.se/etsa02/
+Teaching material for "Introduction to Software Engineering" at Lund University, LTH. http://cs.lth.se/etsa03/
 
 GitHub releases are used to manage versions of the teaching material for different course sessions. Course history:
 * <2018 - Not on GitHub. Project task related to bicycle garage management.
 * [2018](https://github.com/lunduniversity/introsofteng/releases/tag/v1.5-final2018) - Introduced RoboCode projects and the LU Rumble. 16 teams with 6 students, each fielding up to 5 bots.
 * 2019 - Made the lab sessions mandatory. Updated roles, all students are now developers+testers and then has yet another role.
-* 2020 - Under development. Forced into an online format due to Covid-19.
+* 2020 - Under development. New course code ETSA03. Forced into an online format due to Covid-19.
 
 ## Contents of this repo
 
