@@ -1,0 +1,292 @@
+%Copyright 2014 Jean-Philippe Eisenbarth
+%This program is free software: you can 
+%redistribute it and/or modify it under the terms of the GNU General Public 
+%License as published by the Free Software Foundation, either version 3 of the 
+%License, or (at your option) any later version.
+%This program is distributed in the hope that it will be useful,but WITHOUT ANY 
+%WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+%PARTICULAR PURPOSE. See the GNU General Public License for more details.
+%You should have received a copy of the GNU General Public License along with 
+%this program.  If not, see <http://www.gnu.org/licenses/>.
+
+%Based on the code of Yiannis Lazarides
+%http://tex.stackexchange.com/questions/42602/software-requirements-specification-with-latex
+%http://tex.stackexchange.com/users/963/yiannis-lazarides
+%Also based on the template of Karl E. Wiegers
+%http://www.se.rit.edu/~emad/teaching/slides/srs_template_sep14.pdf
+%http://karlwiegers.com
+%Permission is granted to use, modify, and distribute the customization for Robocode development by Markus Borg (2018).
+\documentclass{scrreprt}
+\usepackage{listings}
+\usepackage{underscore}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\hypersetup{
+    bookmarks=false,    % show bookmarks bar?
+    pdftitle={Software Requirement Specification},    % title
+    pdfauthor={Jean-Philippe Eisenbarth},                     % author
+    pdfsubject={TeX and LaTeX},                        % subject of the document
+    pdfkeywords={TeX, LaTeX, graphics, images}, % list of keywords
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,       % color of internal links
+    citecolor=black,       % color of links to bibliography
+    filecolor=black,        % color of file links
+    urlcolor=purple,        % color of external links
+    linktoc=page            % only page is linked
+}%
+\def\myversion{0.5 }
+\usepackage{hyperref}
+\begin{document}
+
+\begin{flushright}
+    \rule{16cm}{5pt}\vskip1cm
+    \begin{bfseries}
+        \LARGE{ETSA03-STS}\\
+        \Huge{SOFTWARE TEST\\ SPECIFICATION}\\
+        \vspace{1.5cm}
+        for\\
+        $<$Project$>$\\
+        \vspace{1.5cm}
+        \LARGE{Version \myversion}\\
+        \vspace{1.5cm}
+        Prepared by $<$author(s)$>$\\
+        \vspace{1.5cm}
+        $<$Group X$>$\\
+        \vspace{1.5cm}
+        \today\\
+    \end{bfseries}
+\end{flushright}
+
+
+\chapter*{Revision History}
+$<$Note that you are might want to create intermediate versions between the releases. This is
+perfectly fine!$>$
+
+\begin{center}
+    \begin{tabular}{|c|c|p{8cm}|c|}
+        \hline
+	    Name & Date & Description & Version\\
+        \hline
+	    Author(s) &  &  Alpha release: First draft of STS. & 0.5\\
+        \hline
+	    Author(s) &  & Beta release: Unit testing and system testing drafted. & 0.9\\
+        \hline
+        Author(s) &  & Final release: A complete test specification. & 1.0\\
+        \hline
+    \end{tabular}
+\end{center}
+
+\tableofcontents
+
+\chapter{Introduction}
+
+\section{Purpose}
+$<$Describe the purpose of the document, i.e., to describe the plan for testing the robot and general goals regarding quality assurance. Furthermore, the document shall specify the test cases and test procedures necessary to demonstrate that the robot satisfies the SRS.$>$
+
+\section{Document Conventions}
+$<$Describe any standards or typographical conventions that were followed when writing this test specification, such as fonts or highlighting that have special significance.$>$
+
+\section{Intended Audience and Reading Suggestions}
+$<$Describe the different types of reader that the document is intended for, such as developers, testers, and customers. Describe what the rest of this STS contains and how it is organized. Suggest a sequence for reading the document, beginning with the overview sections and proceeding through the sections that are most pertinent to each reader type.$>$
+
+\section{References}
+$<$List any other documents or Web addresses to which this STS refers. The correct version of the SRS is the most important, but you might also need to reference ETSA03 RoboTalk. Provide enough information so that the reader could access a copy of each reference, including title, author, version number, date, and source or location.$>$
+
+\chapter{Test Plan Description}
+
+\section{Product Summary}
+$<$Describe the robot under development in the project. This section ensures that readers that do not read any other documents still understand the fundamentals of the product that should be tested. Do not write too much, a brief summary and a reference to the SRS is enough.$>$
+
+\section{Responsibilities}
+$<$Describe who will be responsible for the different activities in the remainder of the document. You already have a test lead, but you might want to distribute the work to balance the workload.$>$
+
+\section{Schedule}
+$<$Testing will be performed during the entire development project, but with increased effort prior to the Beta release and the Final release. Unit testing will be automated using JUnit, and the complete test suite will be executed by the individual developers before commiting source code to the shared repository. Before the Final release, all system tests will be conducted and reported as described in Section 2.4 using the test report template in Appendix A. The complete system testing is planned to performed, at the latest, during the morning hours of the announced release date: May 11.$>$
+
+\section{Test reporting}
+$<$The latest version of this STS and a complete test report will be part of the Final release. The test report will follow the test report template in Appendix A, and be complemented with reports from code coverage measurements and static code analysis. Both the STS and the test report will be uploaded to the corresponding release folder on Google Drive.$>$
+
+\chapter{Static Testing and Quality Assurance}
+During the robot development project, the group will apply static testing techniques to ensure a high quality software product. These techniques include both manual and automated activities, i.e., document reviews and code reviews, as well as using static code analysis tools.
+
+\section{Document reviews}
+$<$All documents will be reviewed by at least one project member beyond the original author. As the SRS is considered the foundation of software quality, it will receive particular attention. The SRS will be reviewed using perspective-based reading supported by a checklist at Exercise 4 on April 26. On that day, all reviewers will conduct an individual review of the latest version of the SRS. Our requirements engineer will then chair a review meeting and an assigned scribe will establish a formal review protocol. The review protocol will be part of the Beta Release to the regulatory body. The following roles and perspectives will be part of the SRS review: 
+
+\begin{itemize}
+\item Requirements engineer: author of the document and chair of the review meeting
+\item Test engineer: reviews with the purpose to ensure that the requirements can be verified
+\item Sales engineer: reviews to ensure that the SRS is in line with the customer's needs
+\item Development lead: reviews to ensure that the requirements are feasible to implement
+\item Project manager: reviews to balance the project's scope given the time until the deadline
+\item Configuration manager: reviews to validate that the resulting robot will be a useful in Robocode
+\end{itemize}
+$>$
+
+\section{Code reviews}
+$<$Describe how and when you will perform code reviews, e.g., ad hoc, before each commit, after each commit, in batches of commits, after completion of a class, before each release, before the final release... Also state who (or which role(s) will review the code. Finally, if you have a special approach to review source code for the purpose of requirements verification, explain it here.$>$
+
+\section{Static code analysis}
+$<$Two tools will be used to automatically assess the source code quality.
+\begin{itemize}
+\item SpotBugs is a static code analysis tool that analyses Java byte code to check for more than 400 bug patterns, such as null pointer dereferences, infinite recursive loops, bad uses of the Java libraries, and deadlocks. We will run SpotBugs using its default settings on the entire Java project.
+\begin{itemize}
+\item The source code in our Final Release shall not contain any SpotBugs issues (test classes excluded).
+\end{itemize}
+\begin{itemize}
+\item SonarLint is a static code analysis tool that reports common code smells and violations of established code conventions. We will run SonarLint using its default settings on the entire Java project.
+\end{itemize}
+\begin{itemize}
+\item The source code in our Final Release shall not contain any SonarLint rule violations of the following severity: major, critical, or blocker (test classes excluded).
+\end{itemize}
+\end{itemize}
+$>$
+
+\chapter{Test Design Specification}
+$<$Unit testing will be a continuous activity throughout the development process, and the developers will add new test cases as they develop the robot production code. The testing will be largely automated, using JUnit and the framework provided through RobotTestBed.$>$
+
+\section{Test Environment}
+$<$Describe the environment(s) that will be used for the dynamic testing in the project. Report the OS and hardware specification of the computer(s) used during the testing. Specify which version of Robocode will be used, and also the JUnit version.$>$
+
+\section{Unit testing}
+$<$All classes, if not listed under Section 4.6, will be tested by automated unit tests developed in JUnit. The target for this white-box testing activity is 80\% instruction coverage of the Java project as measured by EclEmma (excluding the test classes themselves).$>$
+
+\section{Integration testing (Optional)}
+$<$If applicable for your robot design, you can add a description of how you plan to do integration testing. Are there any classes that should be tested together? Describe it here, most likely as an automated white-box testing activity similar to the unit testing.$>$
+
+\section{System testing}
+$<$All requirements, if not listed under Section 4.6, will be verified by test cases developed using a black-box approach. RobotTestBed will be used to automate system testing when applicable, e.g., for the quality requirements related to battle performance.$>$
+
+\section{Acceptance testing}
+$<$The acceptance testing for this robot development project will be conducted by the customer. We have no influence of how the customer will proceed with this testing activity, thus it will not be further elaborated in this document.$>$
+
+\section{Static testing only}
+$<$Due to the nature of the product and the operating environment, all methods can not be tested by unit tests and all requirements can not be verified through system test cases. 
+
+The following source code units will not be exercised by automated unit tests, but instead they will be reviewed as described in Section 3.2:\\
+$<$Class, method$>$\\
+$<$Class, method$>$\\
+$<$Class, method$>$\\
+...
+
+The following requirements will not be verified through running system test cases, but will instead be addressed by code reviews and walkthroughs as described in Section 3.2.\\
+$<$Feature, Requirement ID$>$\\
+$<$Feature, Requirement ID$>$\\
+$<$Feature, Requirement ID$>$\\
+...
+
+Do your best to motivate why this approach is valid. Why should your customer trust the results from your analysis?$>$
+
+
+
+\chapter{Test Case Specification}
+This section specifies the test cases used in the project.
+
+\section{Automated unit tests}
+$<$The source code is tested by the following test suites:
+
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+	    Class & Test class & Numbers of test cases\\
+        \hline
+	     &  &  \\
+        \hline
+	     &  &  \\
+        \hline
+         &  &  \\
+        \hline
+    \end{tabular}
+\end{center}
+$>$
+
+\section{Automated integration tests (Optional)}
+$<$If you have any, describe the automated integration tests here, in line with the unit tests.$>$
+
+\section{Automated system tests}
+$<$Describe the test cases automated using RobotTestBed here$>$
+
+\section{Manual system tests (Optional)}
+$<$Describe any manual system test cases here. If you can come up with any! The only thing the Regulatory Body can think of would be to use the Interactive from the Robocode sample bots.$>$
+
+\chapter{Requirements Traceability}
+$<$Show a simple traceability matrix here to connect individual requirements and test cases$>$
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+         & TC1 & TC2 & TC3 & TC4& & & & \\
+        \hline
+	     Req1 & X & & & & & & & \\
+        \hline
+	     Req2 & & X & & & & & & \\
+        \hline
+        Req3 & & X & X & & & & & \\
+        \hline
+        Req4 & & & & X & & & & \\
+        \hline
+         & & & & & & & &\\
+         \hline
+          & & & & & & & &\\
+         \hline
+        
+    \end{tabular}
+\end{center}
+
+\appendix
+\chapter{Appendix A: Test Report Template}
+\textbf{\LARGE{ETSA03 Test Report for $<$RobotName$>$}}\\
+This document reports from testing and quality assurance activities conducted by $<$Group X$>$.
+\\
+\\
+All results in the report are approved by:
+\\
+$<$Signature$>$\\
+$<$Name$>$\\
+Test lead
+
+\section{System test results}
+Test cases executed by: $<$Name$>$\\
+Date: $<$Date$>$\\
+Robot version: $<$Version$>$\\
+Robocode version: $<$Version$>$\\
+Test environment: $<$OS$>$ running on a $<$Hardware Specification$>$
+
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+	    Test case ID & Pass/Fail & Comment\\
+        \hline
+	     &  &  \\
+        \hline
+	     &  &  \\
+        \hline
+         &  &  \\
+        \hline
+         &  &  \\
+        \hline
+         &  &  \\
+        \hline
+        
+    \end{tabular}
+\end{center}
+
+\section{Requirements verified through static testing}
+Report any requirements that were not dynamically tested here. Motivate why they have been sufficiently verified through static testing.
+
+\section{Coverage report from automated testing}
+Instruction coverage by unit test suite (see Section 5.1): XX\%
+$<$Report and motivate any deviation from target in Section 5.1$>$
+
+\section{Quality report from static code analysis}
+
+Number of SpotBugs issues: XX $<$date of analysis$>$\\
+\\
+$<$If not 0, list remaining issues here and explain why they have not been removed$>$\\
+\\
+Number of SonarLint rule violations of severity major or higher: XX $<$date of analysis$>$\\
+\\
+$<$If not 0, list remaining rule violations here and explain why they have not been removed.$>$\\
+\\
+
+\end{document}
