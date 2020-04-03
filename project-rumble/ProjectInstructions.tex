@@ -1,5 +1,5 @@
 %
-% Copyright 2017 Markus Borg, Lund University
+% Copyright 2017-2020 Markus Borg, Lund University
 %
 % This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 % See http://creativecommons.org/licenses/by-sa/4.0/
@@ -28,7 +28,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{0.985 }
+\def\myversion{1.0 }
 \date{}
 %\title{%
 
@@ -122,6 +122,8 @@
         \hline
         Markus Borg & 2020-03-21 & Updates for the 2020 online edition. & 0.985\\
         \hline
+        Markus Borg & 2020-04-03 & Updates reflecting new course code and CI. & 1.0\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -135,7 +137,7 @@ This document is organized as follows: Section~\ref{sec:goals} presents the lear
 \section{Learning goals} \label{sec:goals}
 The project primarily aims to increase your ability to develop high quality software systems using established software engineering best practices. Moreover, basic software business concepts will be introduced as each project group will offer their product on a highly competitive market.
 
-The project complements the theoretical concepts introduced during the lectures by taking a practical approach to the presentation of fundamental software engineering concepts such as specification, version control, testing, sprints, and releases. By the end of the course, you will have acquired new skills with essential components of the contemporary software engineering tool chain: the Java programming language, the Eclipse integrated development environment, the JUnit testing framework, the git configuration management system, GitHub cloud-based project hosting, the Maven build system (tentative), and the SonarQube automated quality assurance tool.
+The project complements the theoretical concepts introduced during the lectures by taking a practical approach to the presentation of fundamental software engineering concepts such as specification, version control, continuous integration, testing, sprints, and releases. By the end of the course, you will have acquired new skills with essential components of the contemporary software engineering tool chain: the Java programming language, the Eclipse integrated development environment, the JUnit testing framework, the git distributed version control system, GitHub cloud-based project hosting, the Gradle build system, Travis CI with modern code analysis tools such as CodeClimate and CodeScene.
 
 On top of your skills with traditional software engineering concepts and the tool chain, you will address aspects of market-driven software engineering. Each project group will practice making critical business and engineering decisions in a controlled fashion. The course introduces several important activities in software business, including analyzing the business ecosystem, finding a niche market, marketing a product, competitive pricing strategies, and customer negotiations.
 
@@ -143,19 +145,27 @@ More formally, the project is primarily designed to meet the practical requireme
 \begin{itemize}
 \item Competencies and Skills
 \begin{itemize}
-\item Be able to develop a project plan, requirements specification and test plan for a small project.
-\item Be able to review a project plan, requirements specification and test plan for a small project.
-\item Be able to formulate text for project documentation.
+\item Develop a basic business plan for a software product
+\item Market a software product
+\item Identify, analyse and specify requirement for a software product
+\item Manage a development environment for programmers
+\item Contribute to a development team's source code
+\item Develop basic automated tests
+\item Write technical documentation
+\item Perform reviews of technical documentation and source code
+\item Collaborate in a development team
 \end{itemize}
 \item Knowledge and Understanding
 \begin{itemize}
 \item Be able to define basic terms and definitions in software engineering.
 \item Be able to describe the most common software development processes.
 \item Be able to explain the most important steps in requirements engineering
-\item Be able to explain how testing is conducted.
+\item Be able to explain how software testing is conducted.
 \item Be able to describe what a software architecture design is.
 \item Be able to describe the most important steps in project planning and project tracking.
-\item Be able to describe how an organization plan and manage a series of projects.
+\item Be able to discuss software products from a life cycle perspective
+\item Be able to explain the most important parts of a business plan for software products
+\item Be able to explain why correct technical documentation is important
 \end{itemize}
 \item Judgment and Approach
 \begin{itemize}
@@ -203,20 +213,6 @@ On top of the two supplier-customer relationships, your project group will also 
 \caption{The project context. Your project group will interact with your supplier's sales engineer, your customer's project manager, the open Robot Market, and the regulatory body.}
 \label{fig:context}
 \end{figure}
-
-\section{Project grading}
-\textit{To be extended...}\\\\
-The project will be graded as 3, 4, 5 or UG.
-
-The project supervisors' overall grading guidelines include the following:
-\begin{itemize}
-\item The final release meets the final requirements specification. This is partly indicated by the customer's successful acceptance testing.
-\item The delivered robot is successful and non-trivial.
-\item All the robots behaviors are covered by the requirements specification.
-\item The test specification describes a comprehensive verification of the robot. Automated test cases and test reports are provided.
-\item The project group adhered to the process model and met all deadlines.
-\item All deliverables are of high quality. Appropriate technical language and a consistent look-and-feel across documents.
-\end{itemize}
 
 \chapter{The project from a bird's eye view}
 The project consists of three main activities, interconnected as presented in Figure~\ref{fig:components}. This section presents an overview of the three activities.
@@ -273,7 +269,7 @@ As most practical construction work will be done outside of scheduled sessions, 
 
 \begin{description}
 \item[Pair programming] All code is produced by two people programming  on one workstation. One programmer has control over the workstation and is thinking mostly about the coding in detail. The other programmer is more focused on the big picture, and is continually reviewing the code that is being produced by the first programmer. Programmers trade roles after minute to hour periods. The pairs are not fixed; programmers switch partners frequently, so that everyone knows what everyone is doing, and everybody remains familiar with the whole system, even the parts outside their skill set. This way, pair programming also can enhance team-wide communication and goes hand-in-hand with the concept of Collective Code Ownership.
-\item[Continuous integration] The development team should always be working on the latest version of the software. Since different team members may have versions saved locally with various changes and improvements, they should try to upload their current version to the code repository every few hours, or when a significant break presents itself. Continuous integration will avoid delays later on in the project cycle, caused by integration problems, aka. ``big bang integration''.
+\item[Continuous integration] The development team should always be working on the latest version of the software. Since different team members may have versions saved locally with various changes and improvements, they should try to upload their current version to the code repository every few hours, or when a significant break presents itself. Continuous integration will avoid delays later on in the project cycle, caused by integration problems, aka. ``big bang integration''. In the projects, you will use  a continuous integration service provided by Travis CI. 
 \item[Code refactoring] Restructuring existing code without changing its external behavior. Refactoring improves quality attributes of the software, e.g., code readability, performance, maintainability. Refactoring is often initiated when a so called ``code smell'' is identified, i.e., structures in the code that indicate violation of fundamental design principles and negatively impact design quality. 
 \item[Test-driven development] Create unit tests before the eventual code is written. This approach is intended to stimulate the programmer to think about conditions in which his or her code could fail. Test driven development proceeds by quickly cycling through the following steps: 1) write unit tests, 2) run tests, watch them fail, 3) write code, 4) run tests, watch them pass, and 5) refactor the code. Adhering to test-driven development leads to a large set of test cases that can be automatically executed, increasing developers' confidence when e.g. refactoring code.
 \item[Collective code ownership] Everyone is responsible for all the code; therefore, everybody is allowed to change any part of the code. Collective code ownership is not only an organizational policy but also an attitude. Pair programming, especially overlapping pair rotation, contributes to this practice: by working in different pairs, programmers better understand the system context and contribute to more areas of the code base. Collective code ownership may accelerate development because a developer who spots an error can fix it immediately, which can reduce bugs overall. However, programmers may also introduce bugs when changing code that they do not understand well. Sufficiently well-defined unit tests should mitigate this problem: if unforeseen dependencies create errors, then when unit tests are run, they will show failures.
@@ -430,15 +426,17 @@ At the end of Sprint 1, your project group will have established a relationship 
 
 At the end of Sprint 3, you will complement the robot you have ordered with other robots from the Robot Market. The goal of your strategizing is to identify and purchase additional robots that can successfully cooperate with the robot from your supplier. It is important to keep an eye on the Robot Market during Sprints 2 and 3, both to find the best robots to purchase, and to understand what type of features you should provide through your own robot under development. Note that three robots are always available at fixed prices: 1) Basic Leader Bot \euro20, 2) Basic Bot \euro15, and 3) Basic Droid \euro10.
 
-Each robot team must adhere to three strict constraints: 
+Each robot team must adhere to five strict constraints: 
 
 \begin{enumerate}
 \item Each team must have one leader robot.
+\item Each team must at least have three robots.
 \item Each team must not have more than four normal robots.
+\item Each team must not have more than ten robots (a Robocode constraint).
 \item Each team must not exceed a total cost of more than \euro 100 worth of robots.
 \end{enumerate}
 
-After the acceptance testing, concluding with acceptance test reports and potential business claims at L7, the regulatory body will convene and decide if any bespoke customer should pay less than the total price initially agreed upon. Once all business claims have been settled, all groups will know if they receive any money back -- remember that even if no final robot is delivered, not more than 75\% of the initial price will be returned. Soon after the claims have been settled, the project managers of all student groups shall hand in their final signed purchase order in ``grå skåpet'' at L8. Note that all groups must also immediately request the supplier of their leader robot which color scheme it should communicate to the rest of the team. Note that there is not much time between L8 and the LU Rumble -- this must be given the highest priority for the engineering department! Furthermore, if a team purchases the Basic Leader Bot, the requested color scheme must be requested from the course responsible. 
+After the acceptance testing, concluding with acceptance test reports and potential business claims at L7, the regulatory body will convene and decide if any bespoke customer should pay less than the total price initially agreed upon. Once all business claims have been settled, all groups will know if they receive any money back -- remember that even if no final robot is delivered, not more than 75\% of the initial price will be returned. Soon after the claims have been settled, the project managers of all student groups shall hand in their final signed purchase order in the department mailbox at L8. Note that all groups must also immediately request the supplier of their leader robot which color scheme it should communicate to the rest of the team. Note that there is not much time between L8 and the LU Rumble -- this must be given the highest priority for the engineering department! Furthermore, if a team purchases the Basic Leader Bot, the requested color scheme must be requested from the course responsible. 
 
 \chapter{Project phases}
 
@@ -456,7 +454,7 @@ In the project, the supervisors and the regulatory body will be particularly res
 
 \item[3. Norming] Resolved disagreements and personality clashes lead to a spirit of co-operation -- this typically happens when the group becomes aware of the external competition and share a common goal. In this stage, all group members take the responsibility and agree to work for the success of the common goal. The group members accept others as they are and make an effort to move on. 
 
-In the project, the first week concludes with assigning roles within the group, see Section~\ref{sec:roles}. All members of the group will also sign a collaboration contract, specifying the roles, and the intentions to collaborate successfully. The contract will be submitted to the regulatory body through ``grå skåpet''.
+In the project, the first week concludes with assigning roles within the group, see Section~\ref{sec:roles}. All members of the group will also sign a collaboration contract, specifying the roles, and the intentions to collaborate successfully. The contracts will be collected in the department mailbox.
 \item[4. Performing] When the group norms and roles have been established, focus is shifted to achieving common goals. However, groups might revert to earlier circumstances in certain circumstances, e.g., unexpected events, emerging personal conflicts, or changing leadership. In the project, the goal is of course to remain in the performing stage until the LU Rumble!
 \end{description}
 
@@ -483,17 +481,19 @@ Table~\ref{tab:sprint1} shows the resulting deliverables from Sprint 1, their re
 
 \begin{table}[]
 \centering
-\caption{Deliverables due after Sprint 1, i.e., the Alpha Release.}
+\caption{Deliverables due after Sprint 1, i.e., in relation to the Alpha Release. But why is the sales engineer responsible for the dource code comments!? This is primarily to balance the work effort in the project, but it also ensures that the sales engineer is somewhat connected to the source code of the project.}
 \label{tab:sprint1}
-\begin{tabular}{|p{4cm}|p{2cm}|p{2.5cm}|p{4.5cm}|}
+\begin{tabular}{|p{5cm}|p{2cm}|p{4cm}|p{1.5cm}|}
 \hline
 \textbf{Deliverable}           & \textbf{Receiver}   & \textbf{Responsible role} & \textbf{When?}     \\ \hline
-Lean canvas (latest version)   & Supervisor          & Project manager           & L3: see time plan \\ \hline
-SRS v0.5                       & Customer+ Supervisor & Requirements engineer     & L3: see time plan \\ \hline
-Robot Alpha version            & Customer+ Supervisor & Software architect          & L3: see time plan  \\ \hline
-STS v0.5        			   & Customer+ Supervisor & Quality engineer                 & L3: see time plan  \\ \hline
-Sales pitch + promotion folder & Course responsible  & Sales engineer            & L2: see time plan \textbf{(before Robot Fair!)}\\ \hline
-Purchase array                 & ``Grå skåpet''      & Project manager             & L4: see time plan \textbf{(after Robot Fair!)} \\ \hline
+Lean canvas (latest version)   & Supervisor          & Project manager           & L3 \\ \hline
+SRS v0.5                       & Customer+ Supervisor & Requirements engineer     & L3 \\ \hline
+Robot Alpha version (jar)      & Customer+ Supervisor & Software architect          & L3 \\ \hline
+Class diagram  				   & Supervisor & Software architect          & L3 \\ \hline
+Javadoc						   & Supervisor & Sales engineer	& L3 \\ \hline 
+STS v0.5        			   & Customer+ Supervisor & Quality engineer                 & L3 \\ \hline
+Sales pitch + promotion folder & Course responsible  & Sales engineer            & L2 \\ \hline
+Purchase array                 & Dept. mailbox      & Project manager             & L4 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -522,15 +522,17 @@ Table~\ref{tab:sprint2} shows the resulting deliverables from Sprint 2, their re
 
 \begin{table}[]
 \centering
-\caption{Deliverables due after Sprint 2, i.e., the Beta Release.}
+\caption{Deliverables due after Sprint 2, i.e., in relation to the Beta Release.}
 \label{tab:sprint2}
-\begin{tabular}{|p{4cm}|p{2cm}|p{2.5cm}|p{4.5cm}|}
+\begin{tabular}{|p{5cm}|p{2cm}|p{4cm}|p{1.5cm}|}
 \hline
 \textbf{Deliverable}           & \textbf{Receiver}   & \textbf{Responsible role} & \textbf{When?}     \\ \hline
-Lean canvas (latest version)   & Supervisor          & Project manager           & L5: see time plan \\ \hline
-SRS v0.9                       & Customer+ Supervisor & Requirements engineer    & L5: see time plan \\ \hline
-Robot Beta version (MVP)       & Customer+ Supervisor & Software architect         & L5: see time plan  \\ \hline
-STS v0.9        			   & Customer+ Supervisor & Quality engineer         & L5: see time plan  \\ \hline
+Lean canvas (latest version)   & Supervisor          & Project manager           & L5 \\ \hline
+SRS v0.9                       & Customer+ Supervisor & Requirements engineer    & L5 \\ \hline
+Robot Beta version (MVP)       & Customer+ Supervisor & Software architect         & L5 \\ \hline
+Class diagram  & Supervisor & Software architect          & L5 \\ \hline
+Javadoc						   & Supervisor & Sales engineer	& L5 \\ \hline 
+STS v0.9        			   & Customer+ Supervisor & Quality engineer         & L5 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -555,16 +557,18 @@ Table~\ref{tab:sprint3} shows the resulting deliverables from Sprint 3, their re
 
 \begin{table}[]
 \centering
-\caption{Deliverables due after Sprint 3, i.e., the Final Release.}
+\caption{Deliverables due after Sprint 3, i.e., in relation to the Final Release.}
 \label{tab:sprint3}
-\begin{tabular}{|p{4cm}|p{2cm}|p{2.5cm}|p{4.5cm}|}
+\begin{tabular}{|p{5cm}|p{2cm}|p{4cm}|p{1.5cm}|}
 \hline
 \textbf{Deliverable}           & \textbf{Receiver}   & \textbf{Responsible role} & \textbf{When?}     \\ \hline
-Lean canvas (final version)   & Supervisor          & Project manager           & L6: see time plan \\ \hline
-SRS review protocol            & Supervisor & Requirements engineer     & L6: see time plan \\ \hline
-SRS v1.0                       & Customer+ Supervisor & Requirements engineer     & L6: see time plan \\ \hline
-Robot Final version        & Customer+ Supervisor & Software architect          & L6: see time plan  \\ \hline
-STS v1.0        			   & Customer+ Supervisor & Quality engineer             & L6: see time plan  \\ \hline
+Lean canvas (final version)   & Supervisor          & Project manager           & L6 \\ \hline
+SRS review protocol            & Supervisor & Requirements engineer     & L6 \\ \hline
+SRS v1.0                       & Customer+ Supervisor & Requirements engineer     & L6 \\ \hline
+Robot Final version        & Customer+ Supervisor & Software architect          & L6  \\ \hline
+Class diagram  				& Supervisor & Software architect          & L6 \\ \hline
+Javadoc						   & Supervisor & Sales engineer	& L6 \\ \hline 
+STS v1.0        			   & Customer+ Supervisor & Quality engineer             & L6 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -584,13 +588,13 @@ Table~\ref{tab:postrelease} shows the resulting deliverables from the post relea
 \centering
 \caption{Deliverables due after Sprint 3, i.e., the Final Release.}
 \label{tab:postrelease}
-\begin{tabular}{|p{4cm}|p{2cm}|p{2.5cm}|p{4.5cm}|}
+\begin{tabular}{|p{5cm}|p{3.5cm}|p{4cm}|p{1.5cm}|}
 \hline
 \textbf{Deliverable}           & \textbf{Receiver}   & \textbf{Responsible role} & \textbf{When?}     \\ \hline
-Fixed Robot Market prices   & Robot Market          & Sales engineer           & L7: see time plan \\ \hline
-Acceptance test report   & Supervisor          & Project manager           & L7: see time plan \\ \hline
-Business claims (optional)                       & Course responsible & Project manager     & L7: see time plan \\ \hline
-Purchase orders and team composition       & Course responsible & Project manager         & L8: see time plan  \\ \hline
+Fixed Robot Market prices   & Robot Market          & Sales engineer           & L7 \\ \hline
+Acceptance test report   & Supervisor          & Project manager           & L7 \\ \hline
+Business claims (optional)                       & Course responsible & Project manager     & L7 \\ \hline
+Purchase orders and team composition       & Course responsible & Project manager         & L8 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -600,7 +604,7 @@ To support the post release phase, one session is scheduled:
 \end{itemize}
 
 \section{LU Rumble} \label{sec:rumble}
-The final phase consists of one single event: the LU Rumble. The LU Rumble will take place during the final lecture of the course on May 20, 2019. LU Rumble will follow a cup pairing according to single elimination knockout rules, see Figure~\ref{fig:bracket}. All robot teams will enter the bracket at random. LU Rumble will also have a third place playoff match. Each match in the LU Rumble will be played in a best-of-five format, and displayed live at reasonable speed for the entertainment of the spectators. Standard rules for Robocode team matches will apply on a 1200x1200 battlefield. 
+The final phase consists of one single event: the LU Rumble. The LU Rumble will take place during the final lecture of the course. LU Rumble will follow a cup pairing according to single elimination knockout rules, see Figure~\ref{fig:bracket}. All robot teams will enter the bracket at random. LU Rumble will also have a third place playoff match. Each match in the LU Rumble will be played in a best-of-five format, and displayed live at reasonable speed for the entertainment of the spectators. Standard rules for Robocode team matches will apply on a 1200x1200 battlefield. 
 
 %Prior to the event, the regulatory body will run a qualification session, inspired by the format used in Formula one racing. The purpose of the qualification session is twofold. First, it assures that all robot teams are functional on the Robocode arena. Second, it will let a number of robot teams get ``pole positions'', i.e., seeds for the LU Rumble main tournament. The qualification session entails a large number of simulations between all teams. Note that while the qualification session will indicate some robot teams as favourites, they might be good on average, but have weaknesses against certain team strategies. No matter the results of the qualification session, all robot teams can still win the LU Rumble. The four robot teams performing the best during the qualification session will be seeded into the tournament bracket.
 
@@ -617,43 +621,6 @@ Immediately after the LU Rumble, three awards will be given:
 \item The Monetizer Award goes to the most profitable student group. The profit is calculated as income from robot sales plus any money left from the initial \euro100 budget. 
 \item The Engineering Award goes to the most valuable robot during LU Rumble. The robot's value will be calculated as the total score of all robot instances during the LU Rumble, divided by the (non-zero) number of robot appearances (each round a robot instance enters the battle is counter as one appearance).
 \end{itemize}
-
-\chapter{Inter-group communication}
-\emph{To be written...}\\\\
-
-\section{The regulatory body} \label{sec:regbody}
-\emph{To be written...}\\\\
-Formal document templates:
-
-\begin{itemize}
-\item Contract of sale between supplier and customer
-\item Purchase order for Robot Market
-\item Business claims
-\end{itemize}
-
-\section{Maintaining supplier-customer relations}
-\emph{To be written...}\\\\
-What to do and what not to...\\
-
-Guidelines for suppliers:
-\begin{itemize}
-\item The customer is always right
-\item Do not sacrifice the chance to succeed on the open market
-\item Be open to new ideas from the customer.
-\item Embrace change -- it is inevitable anyway.
-\item Negotiate nicely.
-\end{itemize}
-
-Guidelines for customers:
-\begin{itemize}
-\item Accept what you've pre-booked.
-\item Do not provide feedback that deviates from the original vision of the robot.
-\item Be open to alternative solutions proposed by the supplier.
-\item Negotiate nicely.
-\end{itemize}
-
-\section{Group conflicts}
-\emph{To be written...}\\\\
 
 \chapter{Detailed instructions}
 This section presents some aspects of the project in detail: 1) the roles you should assign within the project group, 2) the time reporting, and 3) the course infrastructure.
@@ -676,7 +643,7 @@ As the project progresses through phases and sprints, different roles with have 
 \item[Requirements engineer] Needs to focus on the end-user perspective and is responsible for feature scoping and specification of detailed requirements. A requirements engineer is a generalist that bridges engineering and business. Requirements should be crystal clear -- assigning your ``language police'' to this role might be wise.\\
 \textbf{Deliverables} Lean canvas, SRS v0.5, SRS v0.9, SRS v1.0
 \item[Sales engineer] Responsible for marketing of the robot, the initial sales pitch, customer communication, and negotiations. During development, the sales engineer will also act as a proxy-customer if needed, i.e., steering development decisions in the interest of the real customer. Toward the end of the development project, the sales engineer is responsible for the concluding system testing. Identify your natural salesman, a person with excellent communication skills.\\
-\textbf{Deliverables: } Sales pitch video, test report. 
+\textbf{Deliverables: } Sales pitch video, Javadoc, test report. 
 \item[Software architect] Overall responsibility for the design and implementation of the software. Act as a development lead among the developers. Assign a group member comfortable with the art and science of programming, as well as an interest in object-oriented design. Responsible for source code and unit test cases. \\ \textbf{Deliverables:} \texttt{jar_v0.5}, \texttt{jar_v0.9}, \texttt{jar_v1.0}
 \end{description}
 
@@ -750,19 +717,6 @@ This section briefly explains what is expected of the various deliverables.
 \item[Robot Market prices] The groups shall specify the price of their robot on Robot Market, and also any bundle deals.
 \item[Acceptance test report] When the final release of another group's robot has been received, you shall test it to see if it complies with its SRS. You shall write an acceptance test report clearly stating how you tested the robot and what the results were. You are free to choose any format for this deliverable.
 \item[Business claims] This is an optional deliverable that you can send to the regulatory body. If you are not satisfied with the final release you received from another group, you can argue for your case in a written business claim. You are free to choose any format for the deliverable. 
-\end{description}
-
-\section{Project infrastructure}
-\emph{To be written...}\\\\
-The following infrastructure is central during the project:
-
-\begin{description}
-\item[SRS template]
-\item[Slack workspace]
-\item[Contract templates]
-\item[Collaboration contract]
-\item[Contract of sales]
-\item[Robot team composition sheet]
 \end{description}
 
 \end{document}
