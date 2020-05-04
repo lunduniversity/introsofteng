@@ -55,6 +55,8 @@ public class MessageWriter {
 		friendPosCount = 0;
 		enemyPos = new String[10];
 		enemyPosCount = 0;
+		enemyDetails = new String[10];
+		enemyDetailsCount = 0;
 		targetEnemy = new String();
 		targetPos = new String();
 		moveTo = new String();
