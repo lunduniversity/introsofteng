@@ -28,6 +28,9 @@ import robocode.MessageEvent;
 import robocode.RobotDeathEvent;
 import robocode.ScannedRobotEvent;
 import robocode.TeamRobot;
+import se.lth.cs.etsa02.MessageReader;
+import se.lth.cs.etsa02.MessageWriter;
+import se.lth.cs.etsa02.RobotColors;
 
 import java.awt.*;
 import java.io.IOException;
@@ -57,6 +60,7 @@ public class BasicLeaderBot extends TeamRobot {
 	 * run:  BLB's new behavior, improved by Teodor Ahlinder (2020)
 	 */
 	public void run() {
+		out.println("BasicLeaderBot ready.");
 		// ----------------------------------------------
 		// ------------- Starting behavior --------------
 		// ----------------------------------------------
@@ -132,7 +136,7 @@ public class BasicLeaderBot extends TeamRobot {
 			MessageWriter writer = new MessageWriter();
 			writer.addMyPos(getX(), getY());
 			for (DummyRobot allies : knownAlliedRobots) {
-				writer.addFriendPos(allies.getX(), allies.getY());
+				writer.addFriendPos(allies.getName(), allies.getX(), allies.getY());
 			}
 			// Send positions of known enemies to team
 			for (DummyRobot enemies : knownEnemyRobots) {

@@ -92,8 +92,8 @@ public class MessageWriter {
 	 * @param x
 	 * @param y
 	 */
-	public void addFriendPos(double x, double y) {
-		friendPos[friendPosCount] = "friendPos;" + x + ";" + y;
+	public void addFriendPos(String name, double x, double y) {
+		friendPos[friendPosCount] = "friendPos;" + name + ";" + x + ";" + y;
 		friendPosCount++;
 	}
 	
@@ -102,8 +102,8 @@ public class MessageWriter {
 	 * @param x
 	 * @param y
 	 */
-	public void addEnemyPos(double x, double y) {
-		enemyPos[enemyPosCount] = "enemyPos;" + x + ";" + y;
+	public void addEnemyPos(String name, double x, double y) {
+		enemyPos[enemyPosCount] = "enemyPos;" + name + ";" + x + ";" + y;
 		enemyPosCount++;
 	}
 	
