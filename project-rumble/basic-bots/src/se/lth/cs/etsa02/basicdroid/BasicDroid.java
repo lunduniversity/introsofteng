@@ -34,8 +34,6 @@ import static robocode.util.Utils.normalRelativeAngleDegrees;
 
 import java.io.IOException;
 
-import robocode.BulletHitEvent;
-
 
 /**
  *  BasicDroid - a simple droid that fires based on leader bot's orders
@@ -49,7 +47,13 @@ public class BasicDroid extends TeamRobot implements Droid {
 	 * run:  Droid's default behavior
 	 */
 	public void run() {
-		out.println("MyFirstDroid ready.");
+		out.println("BasicDroid ready.");
+		try {
+			// Declare to team that this bot is a follower
+			MessageWriter writer = new MessageWriter();
+			writer.addLeadership("leadMe");
+			broadcastMessage(writer.composeMessage());
+		} catch (IOException ignored) {}
 	}
 
 	/**
@@ -66,7 +70,9 @@ public class BasicDroid extends TeamRobot implements Droid {
 			setBulletColor(c.bulletColor);
 		} else {
 			MessageReader reader = new MessageReader((String)e.getMessage());
-			if (reader.getMoveTo() != null) goTo(reader.getMoveTo());
+			if (reader.getMoveTo() != null) {
+				goTo(reader.getMoveTo());
+			}
 			
 			// If enemy position, fire!
 			String[] values = reader.getEnemyDetails();
@@ -82,24 +88,14 @@ public class BasicDroid extends TeamRobot implements Droid {
 					double y = Double.parseDouble(ss[2]);
 					p = new Point(x,y);
 				} catch (RuntimeException err) {}
-				if (p != null) fireAtPoint(p);
+				if (p != null) {
+					fireAtPoint(p);
+				} else {
+				}
 			}
 		}
 	}
-	
-	/**
-	 * onHitBullet:  What to do when out bullet hits a robot
-	 */
-	private void onHitBullet(BulletHitEvent e) {
-		if (e.getEnergy() <= 0) {
-			try {
-				// Message allies that enemy bot is dead
-				MessageWriter writer = new MessageWriter();
-				writer.addEnemyDetails(e.getName(), 0, 0, 0, e.getEnergy(), 0, 0);
-				broadcastMessage(writer.composeMessage());
-			} catch (IOException ignored) {}
-		}
-	}
+
 	
 	private void fireAtPoint(Point p) {
 		// Calculate x and y to target
@@ -113,6 +109,7 @@ public class BasicDroid extends TeamRobot implements Droid {
 		// Fire hard!
 		fire(3);
 	}
+	
 	
 	/**
 	 * Set the robot to go to a certain point. 

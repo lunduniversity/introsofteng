@@ -25,6 +25,7 @@ package se.lth.cs.etsa02.basicleaderbot;
 
 import robocode.HitByBulletEvent;
 import robocode.MessageEvent;
+import robocode.RobotDeathEvent;
 import robocode.ScannedRobotEvent;
 import robocode.TeamRobot;
 import se.lth.cs.etsa02.MessageReader;
@@ -53,16 +54,20 @@ public class BasicLeaderBot extends TeamRobot {
 	private ArrayList<DummyRobot> knownEnemyRobots;
 	private ArrayList<DummyRobot> knownAlliedRobots;
 	
+	private static final boolean PRINT_DEBUG = true;
+	
 	/**
 	 * run:  BLB's new behavior, improved by Teodor Ahlinder (2020)
 	 */
 	public void run() {
+		out.println("BasicLeaderBot ready.");
 		// ----------------------------------------------
 		// ------------- Starting behavior --------------
 		// ----------------------------------------------
 		
-		// -------- Configuring list of enemies ---------
+		// ------------- Configuring lists --------------
 		knownEnemyRobots = new ArrayList<DummyRobot>();
+		knownAlliedRobots = new ArrayList<DummyRobot>();
 		
 		// ---------- Asserting leader control ----------
 		try {
@@ -129,9 +134,9 @@ public class BasicLeaderBot extends TeamRobot {
 		try {
 			// Send positions of known allies to team
 			MessageWriter writer = new MessageWriter();
-			writer.addMyPos(this.getX(), this.getY());
+			writer.addMyPos(getX(), getY());
 			for (DummyRobot allies : knownAlliedRobots) {
-				writer.addFriendPos(allies.getX(), allies.getY());
+				writer.addFriendPos(allies.getName(), allies.getX(), allies.getY());
 			}
 			// Send positions of known enemies to team
 			for (DummyRobot enemies : knownEnemyRobots) {
@@ -154,6 +159,9 @@ public class BasicLeaderBot extends TeamRobot {
 			DummyRobot robot = list.get(i);
 			if (r.getName() == robot.getName()) {
 				if (r.getEnergy() <= 0) {
+					if (PRINT_DEBUG) {
+						System.out.println("lists: energy 0, remove " + r.getName());
+					}
 					list.remove(i);
 					return -1;
 				}
@@ -188,6 +196,28 @@ public class BasicLeaderBot extends TeamRobot {
 			writer.addLeadership("leadMe");
 			broadcastMessage(writer.composeMessage());
 		} catch (IOException ignored) {}
+	}
+	
+	/**
+	 * onRobotDeath: Code executed when another robot dies.
+	 */
+	public void onRobotDeath(RobotDeathEvent e) {
+		String name = e.getName();
+		if (isTeammate(name)) {
+			for (int i = 0; i < knownAlliedRobots.size(); i++) {
+				if (e.getName() == knownAlliedRobots.get(i).getName()) {
+					knownAlliedRobots.remove(i);
+					return;
+				}
+			}
+		} else {
+			for (int i = 0; i < knownEnemyRobots.size(); i++) {
+				if (e.getName() == knownEnemyRobots.get(i).getName()) {
+					knownEnemyRobots.remove(i);
+					return;
+				}
+			}
+		}
 	}
 	
 	public void onMessageReceived(MessageEvent e) {

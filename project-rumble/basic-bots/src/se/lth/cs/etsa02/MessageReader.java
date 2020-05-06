@@ -74,26 +74,20 @@ public class MessageReader {
 	 * Returns the value of the friendPos line if the message contains it. Otherwise returns an empty array.
 	 * @return a point created from the (x,y) values in the friendPos line or null if the line is not included in the message or parsing fails.
 	 */
-	public Point[] getFriendPos() {
+	public String[] getFriendPos() {
 		String[] values = getValues("friendPos");
-		Point[] p = new Point[values.length];
-		for (int i = 0; i < values.length; i++) {
-			p[i] = parsePoint(values[i]);
-		}
-		return p;
+		if (values.length > 0) return values;
+		return null;
 	}
 	
 	/**
 	 * Returns the values of the enemyPos lines if the message contains any. Otherwise returns an empty array.
 	 * @return an array of points created from (x,y) values in the enemyPos lines or an empty array if no enemyPos line is included in the message.
 	 */
-	public Point[] getEnemyPos() {
+	public String[] getEnemyPos() {
 		String[] values = getValues("enemyPos");
-		Point[] p = new Point[values.length];
-		for (int i = 0; i < values.length; i++) {
-			p[i] = parsePoint(values[i]);
-		}
-		return p;
+		if (values.length > 0) return values;
+		return null;
 	}
 	
 	/**
