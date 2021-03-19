@@ -54,7 +54,7 @@ The main directories are:
 
 ## License
 
-Copyright © 2018-2019. Dept. of Computer Science at Lund University, Lund, Sweden.
+Copyright © 2018-2021. Dept. of Computer Science at Lund University, Lund, Sweden.
 
 This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 
