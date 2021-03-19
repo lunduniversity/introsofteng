@@ -28,7 +28,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{1.0 }
+\def\myversion{1.01 }
 \date{}
 %\title{%
 
@@ -124,6 +124,8 @@
         \hline
         Markus Borg & 2020-04-03 & Updates reflecting new course code and CI. & 1.0\\
         \hline
+        Markus Borg & 2021-03-19 & Updates for the 2021 online edition. & 1.01\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -137,7 +139,7 @@ This document is organized as follows: Section~\ref{sec:goals} presents the lear
 \section{Learning goals} \label{sec:goals}
 The project primarily aims to increase your ability to develop high quality software systems using established software engineering best practices. Moreover, basic software business concepts will be introduced as each project group will offer their product on a highly competitive market.
 
-The project complements the theoretical concepts introduced during the lectures by taking a practical approach to the presentation of fundamental software engineering concepts such as specification, version control, continuous integration, testing, sprints, and releases. By the end of the course, you will have acquired new skills with essential components of the contemporary software engineering tool chain: the Java programming language, the Eclipse integrated development environment, the JUnit testing framework, the git distributed version control system, GitHub cloud-based project hosting, the Gradle build system, Travis CI with modern code analysis tools such as CodeClimate and CodeScene.
+The project complements the theoretical concepts introduced during the lectures by taking a practical approach to the presentation of fundamental software engineering concepts such as specification, version control, continuous integration, testing, sprints, and releases. By the end of the course, you will have acquired new skills with essential components of the contemporary software engineering tool chain: the Java programming language, the Eclipse integrated development environment, the JUnit testing framework, the git distributed version control system, GitHub cloud-based project hosting, the Gradle build system, GitHub Actions for continuous integration with modern code analysis tools such as CodeClimate and CodeScene.
 
 On top of your skills with traditional software engineering concepts and the tool chain, you will address aspects of market-driven software engineering. Each project group will practice making critical business and engineering decisions in a controlled fashion. The course introduces several important activities in software business, including analyzing the business ecosystem, finding a niche market, marketing a product, competitive pricing strategies, and customer negotiations.
 
@@ -269,7 +271,7 @@ As most practical construction work will be done outside of scheduled sessions, 
 
 \begin{description}
 \item[Pair programming] All code is produced by two people programming  on one workstation. One programmer has control over the workstation and is thinking mostly about the coding in detail. The other programmer is more focused on the big picture, and is continually reviewing the code that is being produced by the first programmer. Programmers trade roles after minute to hour periods. The pairs are not fixed; programmers switch partners frequently, so that everyone knows what everyone is doing, and everybody remains familiar with the whole system, even the parts outside their skill set. This way, pair programming also can enhance team-wide communication and goes hand-in-hand with the concept of Collective Code Ownership.
-\item[Continuous integration] The development team should always be working on the latest version of the software. Since different team members may have versions saved locally with various changes and improvements, they should try to upload their current version to the code repository every few hours, or when a significant break presents itself. Continuous integration will avoid delays later on in the project cycle, caused by integration problems, aka. ``big bang integration''. In the projects, you will use  a continuous integration service provided by Travis CI. 
+\item[Continuous integration] The development team should always be working on the latest version of the software. Since different team members may have versions saved locally with various changes and improvements, they should try to upload their current version to the code repository every few hours, or when a significant break presents itself. Continuous integration will avoid delays later on in the project cycle, caused by integration problems, aka. ``big bang integration''. In the projects, you will use the GitHub Actions a continuous integration service. 
 \item[Code refactoring] Restructuring existing code without changing its external behavior. Refactoring improves quality attributes of the software, e.g., code readability, performance, maintainability. Refactoring is often initiated when a so called ``code smell'' is identified, i.e., structures in the code that indicate violation of fundamental design principles and negatively impact design quality. 
 \item[Test-driven development] Create unit tests before the eventual code is written. This approach is intended to stimulate the programmer to think about conditions in which his or her code could fail. Test driven development proceeds by quickly cycling through the following steps: 1) write unit tests, 2) run tests, watch them fail, 3) write code, 4) run tests, watch them pass, and 5) refactor the code. Adhering to test-driven development leads to a large set of test cases that can be automatically executed, increasing developers' confidence when e.g. refactoring code.
 \item[Collective code ownership] Everyone is responsible for all the code; therefore, everybody is allowed to change any part of the code. Collective code ownership is not only an organizational policy but also an attitude. Pair programming, especially overlapping pair rotation, contributes to this practice: by working in different pairs, programmers better understand the system context and contribute to more areas of the code base. Collective code ownership may accelerate development because a developer who spots an error can fix it immediately, which can reduce bugs overall. However, programmers may also introduce bugs when changing code that they do not understand well. Sufficiently well-defined unit tests should mitigate this problem: if unforeseen dependencies create errors, then when unit tests are run, they will show failures.
@@ -336,7 +338,7 @@ ETSA03 RoboTalk also specifies a string-based communication protocol. Teams are 
 [0-*] friendPos;name;x;y
 [0-*] enemyPos;name;x;y
 [0-*] enemyDetails;name;x;y;velocity;energy;heading;gunHeading
-[0-1] bullet;x;y;absBearing;bulletPower
+[0-1] bulletDetails;x;y;absBearing;bulletPower
 [0-1] targetEnemy;name
 [0-1] targetPos;x;y
 [0-1] moveTo;x;y
@@ -360,8 +362,8 @@ The commands shall have the following meaning:
 \item[myPos] Tells the receiving robot(s) its current position on the 2D battlefield.
 \item[friendPos] Tells the receiving robot(s) the position of an identified robot in the same team.
 \item[enemyPos] Tells the receiving robot(s) the position of an identified enemy robot.
-\item[enemtDetails] Tells the receiving robot(s) detailed information about an enemy robot.
-\item[bullet] Tells the receiving robot(s) that a bullet has been fired and details its trajectory.
+\item[enemyDetails] Tells the receiving robot(s) detailed information about an enemy robot.
+\item[bulletDetails] Tells the receiving robot(s) that a bullet has been fired and details its trajectory.
 \item[targetPos] Tells the receiving robot(s) to fire at a specific position on the 2D battlefield.
 \item[targetEnemy] Tells the receiving robot(s) to target a specific enemy robot.
 \item[moveTo] Tells the receiving robot(s) to move to a specific position on the 2D battlefield.
