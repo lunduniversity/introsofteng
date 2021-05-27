@@ -1,16 +1,2 @@
-LURumble.UnihorseForce_g01 1;Bob;MrRobot;MrRobot;MrRobot;MrRobot
-LURumble.BananaSplit_g02 1;Bob;DopeBot;X-Terminator;X-Terminator;X-Terminator
-LURumble.Alligators_g03 1;Bob;Rut;Rut;Rut;Dexterbot
-LURumble.SHARP_g04 1.0;Markov;MrRobot;MrRobot;MrRobot;MrRobot
-LURumble.Monochrome_g05 ;Hannibal;Wolftank;Wolftank;Wolftank;Wolftank
-LURumble.LOA3_g06 1.0;Markov;Coborode;Coborode;Coborode;Coborode
-LURumble.fsociety_g07 ;Hannibal;TRACIE;Wolftank;Wolftank;Wolftank
-LURumble.Trubbel_g08 ;BasicLeaderBot;Rainbow;Rainbow;MrRobot;MrRobot
-LURumble.Dementors_g09 ;BasicLeaderBot;Rut;Rut;Wolftank;Wolftank
-LURumble.DopeGang_g10 1;Bob;Rut;Rut;Rut;Rut
-LURumble.R2D2_g11 1;Bob;Rut;Rut;Rut;Rut
-LURumble.SpicyBoys_g12 ;Hannibal;Rainbow;Rainbow;Rainbow;Rainbow
-LURumble.Imperiet_g13 1;Bob;MrRobot;MrRobot;MrRobot;MrRobot
-LURumble.SjonsjonsNudistklubb_g14 ;Hannibal;Sharp;MrRobot;MrRobot;MrRobot
-LURumble.SpiritOfMorgan_g15 1.0;Markov;Wolftank;Wolftank;Wolftank;Wolftank
-LURumble.YouWontBelieve_g16 ;Hannibal;Rut;Rut;Rut;Rut
+sample.FireTeam;Fire;Fire
+sample.SittingDuckTeam;SittingDuck;SittingDuck;SittingDuck

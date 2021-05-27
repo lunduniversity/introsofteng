@@ -51,7 +51,7 @@ public class BattleResultReader {
 		int nRounds = Integer.parseInt(lines[1].replaceAll("[\\D]", ""));
 		for (int i = 3; i < lines.length; i++) {
 			String[] fields = lines[i].split(",");
-			String teamName = fields[1];
+			String teamName = fields[1].split("\\s+")[0];
 			String scoreText = fields[2];
 			Scanner sc = new Scanner(scoreText);
 			int score = sc.nextInt();
