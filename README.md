@@ -7,6 +7,7 @@ GitHub releases are used to manage versions of the teaching material for differe
 * 2019 - Made the lab sessions mandatory. Updated roles, all students are now developers+testers and then has yet another role.
 * 2020 - New course code ETSA03. Forced into an online format due to Covid-19. The project instructions reached v1.0.
 * 2021 - The course will again be given in an online format. Travis CI will be replaced by GitHub Actions.
+* 2022 - The course returns to the LTH campus. Fewer and more mature students this year.
 
 ## Contents of this repo
 
@@ -54,7 +55,7 @@ The main directories are:
 
 ## License
 
-Copyright © 2018-2021. Dept. of Computer Science at Lund University, Lund, Sweden.
+Copyright © 2018-2022. Dept. of Computer Science at Lund University, Lund, Sweden.
 
 This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 
