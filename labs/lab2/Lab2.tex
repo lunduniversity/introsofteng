@@ -119,12 +119,20 @@ The course material is maintained under an open source license on GitHub. Almost
 
 You are all welcome to contribute to the repositories if you find errors or obvious improvements. Once you are comfortable with git, you are most welcome to create ``pull requests'' to improve the course material, e.g., clarifying descriptions or correcting typos!
 
-To ensure that you get the correct version of the source code for Lab~2, we recommend that you download the latest \textit{release}, i.e., a container of one or more assets, associated to a git annotated tag. GitHub uses releases to package software versions to users. Open a web browser and go to https://github.com/lunduniversity/introsofteng-botexample. Figure~\ref{fig:github-release} shows where you find the releases created for this repository -- click on it. Figure~\ref{fig:github-zip} should appear and list all available releases. For Lab~2, download the source code for v1.1 as a zip file as indicated by the arrow.
+To ensure that you get the correct version of the source code for Lab~2, we recommend that you download the latest \textit{release}, i.e., a container of one or more assets, associated to a git annotated tag. GitHub uses releases to package software versions to users. Open a web browser and go to https://github.com/lunduniversity/introsofteng-botexample. Figures~\ref{fig:github-tags} and \ref{fig:github-release} show where you find the releases created for this repository.  Figure~\ref{fig:github-zip} lists all available releases. For Lab~2, download the source code for v1.1 as a zip file as indicated by the arrow.
+
 
 \begin{figure}
 \centering
-\includegraphics[width=0.99\textwidth]{figures/GitHub-release.png}
-\caption{Finding the releases of introsofteng-botexample on GitHub.}
+\includegraphics[width=0.99\textwidth]{figures/GitHub-tags.png}
+\caption{Finding the releases of introsofteng-botexample on GitHub, Step~1.}
+\label{fig:github-tags}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.4\textwidth]{figures/GitHub-release.png}
+\caption{Finding the releases of introsofteng-botexample on GitHub, Step~2.}
 \label{fig:github-release}
 \end{figure}
 
@@ -156,14 +164,14 @@ The first thing you need to do is to import the Lab~2 source code, then it is ti
 
 \begin{figure}
 \centering
-\includegraphics[width=0.99\textwidth]{figures/Eclipse-import.png}
+\includegraphics[width=0.65\textwidth]{figures/Eclipse-import.png}
 \caption{Downloading the source code corresponding to a release on GitHub. The arrow shows the zip archive.}
 \label{fig:eclipse-import}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.85\textwidth]{figures/packageExplorerAfterImport.png}
+\includegraphics[width=0.99\textwidth]{figures/packageExplorerAfterImport.png}
 \caption{The Package Explorer in Eclipse after importing the source code from introsofteng-examplebot.}
 \label{fig:afterImport}
 \end{figure}
@@ -183,9 +191,11 @@ The first thing you need to do is to import the Lab~2 source code, then it is ti
 \item Try the robot in Robocode to verify the anti gravity movement. For Robocode to find Basic Melee Bot, you first need to set the path to the root directory of the BasicMeleeBot project in the ``Development Options'' under ``Options$\rightarrow$Preferences'' in Robocode. Revisit the instructions for Lab~1 if you do not remember how to do this.
 \item BasicMeleeBot_AntiPattern does not comply with good object oriented design practices, instead all functionality is collected in one big class. A modular robot design would greatly increase the evolvability of the product. Figure~\ref{fig:classDiagram} shows a more feasible object oriented design. Perhaps you can use something similar in your project?
 \item Your task is now to refactor BasicMeleeBot_AntiPattern into the structure presented in the provided class diagram. BasicMeleeBot.java is already implemented for you, but you should complete the missing code in the other classes. A suggested implementation order is: 1) MathUtils, 2) PositioningSystem, 3) EnemyTracker, 4) TargetingSystem, and 5) MovementSystem. The unit tests are there to guide you in the process. Study the test cases to understand the intention behind the different methods. Most importantly, run them frequently to verify that you are on the right track -- when all test cases are green, you have completed Lab 2!
+
 \begin{center}
 \textbf{------ REACH THIS POINT TO PASS LAB 2! ------}
 \end{center}
+
 \item If time permits during Lab~2, uncomment the code snippet for ``wall avoidance'' in MovementSystem.java and move it according to the instructions. If you did not reach this point during the lab session, please do it before Lab~3 -- it is required to proceed with the automated system testing. Start Robocode and verify that Basic Melee Bot does not end up in any wall. \\\\If wall avoidance does not work, please pay attention to the red arrow in Figure~\ref{fig:classDiagram}. If you have copied the entire code snippet from the \#\#\#\#\#\#\# MOVEMENT \#\#\#\#\#\#\# section in BasicMeleeBot\_AntiPattern, then you have declared two new local variables with the same names in MovementSystem, i.e., these variables now \textit{shadow} the attributes -- make sure the update() method in MovementSystem indeed updates the attributes, not any local variables.
 \end{enumerate}
 
