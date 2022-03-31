@@ -1,5 +1,5 @@
 %
-% Copyright 2018 Markus Borg, Lund University
+% Copyright 2018-2022 Markus Borg, Lund University
 %
 % This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 % See http://creativecommons.org/licenses/by-sa/4.0/
@@ -27,7 +27,7 @@
     urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
-\def\myversion{1.5 }
+\def\myversion{1.6 }
 \date{}
 %\title{%
 
@@ -87,6 +87,8 @@
         \hline
         Mathias Haage & 2020-03-18 & Minor updates for 2020. & 1.5\\
         \hline
+        Markus Borg & 2022-03-31 & Update Robocode version to 1.9.3.9 & 1.6\\
+        \hline
     \end{tabular}
 \end{center}
 
@@ -126,7 +128,7 @@ Follow the instructions below to install the Robocode testing plugin and setup J
 \end{figure}
 
 \begin{enumerate}
-\item \textbf{Download Robot testing plugin}. Download the latest Robot testing plugin (1.9.3.7) from https://sourceforge.net/projects/robocode/files/robocode/1.9.3.7/ -- The file is called ``robocode.testing-1.9.3.7-setup.jar''
+\item \textbf{Download Robot testing plugin}. Download the correct Robot testing plugin (1.9.3.9) from https://sourceforge.net/projects/robocode/files/robocode/1.9.3.9/ -- The file is called ``robocode.testing-1.9.3.9-setup.jar''
 \item \textbf{Install Robot testing plugin}. Run\footnote{In a terminal (or command prompt) type java -jar robocode.testing-1.9.3.7-setup.jar} the downloaded jar file and 
 install the Robot testing plugin. The default option is to install the plugin in the existing Robocode folder -- this is correct.
 \item \textbf{Create a JUnit run configuration}. In Eclipse, right click ``BMBSystemTestSuite.java'' and choose ``Run as..'' and create a new JUnit run configuration. Give the configuration a descriptive name, such as ``Lab3 system tests''. Do this in the same way as when creating a normal JUnit run configuration (i.e., Lab 2), but you must also add -Drobocode.home=PATH\_TO\_ROBOCODE as an argument to the VM (in the second tab, in the second text field).\\\\Note: You must replace PATH\_TO\_ROBOCODE with the installation path of Robocode on your computer. Please refer to Figure~\ref{fig:runConfig} for an example.
@@ -135,7 +137,7 @@ install the Robot testing plugin. The default option is to install the plugin in
 \begin{figure}
 \centering
 \includegraphics[width=0.85\textwidth]{figures/runConfig.png}
-\caption{Example of arguments for a JUnit run configuration corresponding to Robocode being installed in ``C:\textbackslash robocode\_1.9.3.5''. Note: you should install 1.9.3.7.}
+\caption{Example of arguments for a JUnit run configuration corresponding to Robocode being installed in ``C:\textbackslash robocode\_1.9.3.5''. Note: you should have installed version 1.9.3.9 and point to the corresponding folder.}
 \label{fig:runConfig}
 \end{figure}
 
