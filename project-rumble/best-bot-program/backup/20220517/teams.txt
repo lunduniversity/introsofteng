@@ -1,0 +1,2 @@
+sample.FireTeam;Fire;Fire
+sample.SittingDuckTeam;SittingDuck;SittingDuck;SittingDuck
