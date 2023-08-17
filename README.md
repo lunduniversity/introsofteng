@@ -1,4 +1,7 @@
 # introsofteng
+
+[![CodeScene Code Health](https://codescene.io/projects/43001/status-badges/code-health)](https://codescene.io/projects/43001)
+
 Teaching material for "Introduction to Software Engineering" at Lund University, LTH. http://cs.lth.se/etsa03/
 
 GitHub releases are used to manage versions of the teaching material for different course sessions. Course history:
